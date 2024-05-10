@@ -6,11 +6,15 @@ name = "pypi"
 [packages]
 fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
+pydantic = "*"
+aiomysql = "*"
+mysql-connector-python = "*"
 
 [dev-packages]
 
 [scripts]
-start = "python src/main.py"
+start = "uvicorn src.main:app"
+dev = "uvicorn src.main:app --reload"
 
 [requires]
 python_version = "3.12"

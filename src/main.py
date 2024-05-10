@@ -1,11 +1,11 @@
 from fastapi import FastAPI
-import uvicorn
+from .controller.user import router as user_router
+from .repository.mysql_connection import load_database
 
 app = FastAPI()
 
-@app.get("/")
-def home():
-    return "Hola mundo"
+@app.on_event("startup")
+async def startup_event():
+    await load_database()
 
-if __name__ == "__main__":
-    uvicorn.run(app, port=8000, host="0.0.0.0")
+app.include_router(user_router, prefix="/user")
