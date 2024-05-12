@@ -1,11 +1,17 @@
 from fastapi import FastAPI
-import uvicorn
+from fastapi.staticfiles import StaticFiles
+from .controller.user import router as user_router
+from .controller.index import router as index_router
+from .repository.mysql_connection import load_database
+
+async def startup_database_loader():
+    await load_database() 
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="src/assets"), name="static") 
+app.add_event_handler("startup", startup_database_loader)
 
-@app.get("/")
-def home():
-    return "Hola mundo"
+app.include_router(index_router)
+app.include_router(user_router, prefix="/user")
 
-if __name__ == "__main__":
-    uvicorn.run(app, port=8000, host="0.0.0.0")
+
