@@ -9,7 +9,6 @@ async def save(user: User):
         
         cursor = mysql_connection.cursor()
         cursor.execute(query, user_data)
-        mysql_connection.commit()
         
         print("Usuario guardado correctamente")
         
