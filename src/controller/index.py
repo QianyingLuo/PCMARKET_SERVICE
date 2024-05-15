@@ -7,6 +7,6 @@ router = APIRouter()
 
 @router.get("/")
 async def index():
-    navbar_path = "../assets/templates/navbar.html"
+    navbar_path = "../assets/templates/base.html"
     path = get_file_path(navbar_path)
     return FileResponse(path)
