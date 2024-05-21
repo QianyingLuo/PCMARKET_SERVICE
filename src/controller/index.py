@@ -1,13 +1,12 @@
-import os
 from fastapi import APIRouter
 from fastapi.responses import FileResponse
 
+from ..useful.project import get_file_path
 
 router = APIRouter()
 
 @router.get("/")
 async def index():
-    current_directory = os.path.dirname(__file__)
-    navbar_path = "../assets/templates/navbar.html"
-    file_path = os.path.join(current_directory, navbar_path)
-    return FileResponse(file_path)
+    navbar_path = "../assets/templates/base.html"
+    path = get_file_path(navbar_path)
+    return FileResponse(path)
