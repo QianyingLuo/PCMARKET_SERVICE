@@ -9,12 +9,15 @@ uvicorn = {extras = ["standard"], version = "*"}
 pydantic = "*"
 aiomysql = "*"
 mysql-connector-python = "*"
+isort = "*"
+black = "*"
 
 [dev-packages]
 
 [scripts]
 start = "uvicorn src.main:app"
 dev = "uvicorn src.main:app --reload"
+fmt = "isort . && black -t py311 ."
 
 [requires]
 python_version = "3.12"
