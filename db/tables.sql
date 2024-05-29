@@ -228,6 +228,443 @@ WHERE NOT EXISTS (
 );
 
 INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Portátil - ASUS VivoBook 15 F1504ZA-NJ707W, 15.6" Full HD, Intel® Core™ i7-1255U, 16GB RAM, 512GB SSD, Iris® Xe, Windows 11 Home', 
+       'Descripción
+Convierte las tareas cotidianas en algo especial con VivoBook 15 F1504ZA-NJ707W, tu herramienta esencial para hacer las cosas más fácilmente, en cualquier lugar. También es completamente fácil de usar, con su bisagra plana de 180° y su protector físico para la cámara web. ASUS Antimicrobian Guard Plus protege las superficies que se tocan con frecuencia de bacterias, salvaguardando su salud. ¡Haz que todos tus días sean más agradables con Vivobook 15!
+
+Arquitectura híbrida de rendimiento
+El procesador Intel® Core™ de 12ª generación transforma tu experiencia informática y de juego, ya que integra dos microarquitecturas de núcleo totalmente nuevas en un único chip, gracias a Intel® Thread Director el procesador divide de forma inteligente el trabajo entre P-cores (núcleos de rendimiento) y E-cores (núcleos de eficiencia). Estas tecnologías mejoran los videojuegos y la productividad al garantizar que las tareas en segundo plano no distraen la atención de los núcleos más potentes, una optimización inteligente de las cargas de trabajo, lo que es un paso generacional en el rendimiento!
+
+Alta velocidad y rendimiento
+Equipado con un disco duro de 512 GB de SSD, un disco duro ultra rápido, con el que podrás acceder a tus archivos, fotos y bibliotecas multimedia en segundos. Iniciarás el sistema operativo en un momento. Tiene espacio más que suficiente para todos sus álbumes de fotos, bibliotecas de música y películas. Además abordarás tareas de productividad exigentes con sus 16 GB de RAM y trabajarás de forma fluida con el sistema operativo Windows 11 Home.
+
+Diseño innovador para inspirarte
+El portátil ASUS VivoBook 15  F1504ZA-NJ707W presenta una sólida, elegante y actual construcción montando una pantalla NanoEdge de 15.6” Full HD para que tengas una experiencia inmersiva al trabajar y jugar. Su panel FHD de visión amplia cuenta con un revestimiento antirreflectante que reduce las distracciones no deseadas de brillos y reflejos molestos, para que puedas centrarte realmente en lo que tienes delante.
+
+Auténtica gráfica Iris® Xe Graphics
+¡Con la tarjeta gráfica Intel® Iris® Xe Graphics lo tendrás todo! Gráficos increíbles, menor latencia y máxima fluidez.
+',
+       'portatil',
+       'Asus',
+       35,
+       879,
+       699,
+       4,
+       'static/images/category_portatil9.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Portátil - ASUS VivoBook 15 F1504ZA-NJ707W, 15.6" Full HD, Intel® Core™ i7-1255U, 16GB RAM, 512GB SSD, Iris® Xe, Windows 11 Home'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Portátil - Acer Chromebook CB315-4H-C4BQ, 15.6" Full HD, Intel® Celeron® N4500, 8GB RAM, 128GB eMMC, Intel® UHD Graphics, Google Chrome OS', 
+       'Descripción
+Diseñado para la vida móvil, este portátil Acer Chromebook CB315-4H-C4BQ antirreflejante de 15.6" con bisel delgado de 9,5 mm, ofrece una pantalla más grande para hacer más y una batería de larga duración de hasta 10 horas de autonomía. Gracias a su potente procesador Intel® Celeron® N4500 proporciona un bajo consumo de energía y una respuesta rápida. Cuenta con 8GB de memoria RAM, también cuenta con 128GB eMMC de almacenamiento.
+
+¿Qué es un Chromebook?
+Los Chromebook son ordenadores portátiles que utilizan el sistema operativo "Chrome OS", desarrollado por Google. Está diseñado para darte una solución rápida y constante, y lleva lo mejor de los servicios de Google integrados.
+
+Rendimiento con el procesador Intel® Celeron®
+Para trabajo, estudio y entretenimiento obtendrás eficacia y versatilidad con el procesador Intel® Celeron® N4500 con frecuencia base de 1.10 GHz y 4 MB de caché. Potencia fiable sin contratiempos para las aplicaciones de correo electrónico y la navegación por la Web, tiempos de inicio más breves y más acción, duración optimizada de la batería, sólido nivel de rendimiento para las tareas informáticas cotidianas. Cuenta con sistema operativo Chrome OS intuitivo y fácil de manejar en el día a día, con 8GB de RAM y capacidad de almacenamiento de 128GB eMMC.
+
+Sencillo e inteligente
+Realiza una copia de seguridad automática de tus datos y funciona con y sin conexión. Un dispositivo pensado para compartir y colaborar.
+
+Seguridad garantizada
+Con protección integrada, sin necesidad de programas adicionales y con múltiples niveles de seguridad. (El antivirus integrado y la comprobación de arranque de Chrome OS están diseñados para evitar los problemas persistentes que pueden darse durante un uso normal, pero esto no significa que Chromebook no pueda ser atacado por código malicioso).
+',
+       'portatil',
+       'Acer',
+       29,
+       299,
+       0,
+       4.5,
+       'static/images/category_portatil10.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Portátil - Acer Chromebook CB315-4H-C4BQ, 15.6" Full HD, Intel® Celeron® N4500, 8GB RAM, 128GB eMMC, Intel® UHD Graphics, Google Chrome OS'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Portátil - Apple MacBook Air Apple M1/8GB/256GB SSD/GPU Hepta Core/13.3" Plata', 
+       'Descripción
+El poder no ocupa lugar. El chip M1 de Apple redefine nuestro portátil más fino y ligero. La CPU es hasta 3,5 veces más potente. Los gráficos, hasta cinco veces más rápidos. Un Neural Engine más avanzado llega a multiplicar por nueve la velocidad del aprendizaje automático. Además tiene la mayor autonomía en un MacBook Air y un diseño sin ventilador que lo vuelve ultrasilencioso. Descubre un talento sin precedentes listo para seguirte a cualquier parte.
+Características:
+•	La potencia hecha chip. Ya está aquí. Nuestro primer chip diseñado específicamente para el Mac. El M1 de Apple es un sistema en chip (SoC) que reúne 16.000 millones de transistores e integra la CPU, la GPU, el Neural Engine, E/S y mucho más en un diseño minúsculo. Con un rendimiento top, tecnologías a medida y la mayor eficiencia del sector, el M1 no solo es un nuevo paso para el Mac. Es un antes y un después en su historia.
+•	Ávida de trabajo. No de batería. El chip M1 lleva la CPU más rápida que hemos desarrollado. Con semejante potencia en la recámara, el MacBook Air pisa a fondo al realizar procesos tan exigentes como editar vídeo con calidad profesional o echar partidas épicas. Y eso es solo el principio, porque además de multiplicar por hasta 3,5 la velocidad de la generación anterior,2 la CPU de ocho núcleos del chip M1 equilibra los núcleos de alto rendimiento y los de eficiencia, que se ocupan de las tareas cotidianas, para consumir solo una décima parte de la energía. Ahí es nada.
+•	La potencia de macOS Big Sur con el chip M1. macOS Big Sur se ha desarrollado para aprovechar el potencial del chip M1 y transformar el Mac. ¿El resultado? Un rendimiento superior, mejoras en las apps, un nuevo diseño espectacular y prestaciones de privacidad y seguridad líderes del sector. Es nuestro software más potente, y está a la altura de nuestro hardware más avanzado.
+•	Colores tan reales que no te lo crees. La resolución de 2.560 por 1.600 píxeles de la pantalla Retina de 13,3 pulgadas ofrece un nivel de detalle y realismo asombroso. El texto se ve con la máxima claridad, los colores brillan con luz propia y el vidrio llega hasta el borde de la carcasa para que nada te distraiga.
+•	Tecnología True Tone. Disfruta las vistas. Descansa los ojos. El MacBook Air sabe ajustar de forma automática el punto blanco de la pantalla según la temperatura del color ambiental, así resulta más cómodo mirarla.
+•	Cámara y micrófonos Saca tu mejor tú. El chip M1 lleva nuestro procesador de señal de imagen más avanzado para que siempre salgas estupendamente en tus videollamadas de FaceTime. A los tres micros integrados no se les escapa nada, ya estés en una llamada, dictando una nota o preguntándole a Siri qué tiempo hace.
+•	Un teclado con mayúsculas. Disfruta de una comodidad absoluta de la A a la Z. Además de escribir a tus anchas, con los atajos preprogramados de este teclado puedes acceder al instante a las prestaciones que más usas. Habla con Siri, cambia el idioma del teclado, responde con el emoji perfecto, encuentra documentos con Spotlight… Ni te imaginas todo lo que puedes hacer con un toque. Y la retroiluminación con sensor de luz ambiental te permite escribir incluso cuando estás medio a oscuras.
+•	Touch ID. Un solo toque basta para bloquear y desbloquear el MacBook Air. Tu huella sirve para alquilar una peli, comprar una app o acceder a documentos protegidos y a los ajustes del sistema sin teclear la contraseña. Y cuando usas Apple Pay para comprar online, Touch ID añade tu dirección y datos de facturación sin compartir el número de tu tarjeta de crédito.
+ ',
+       'portatil',
+       'Apple',
+       30,
+       1219,
+       1089,
+       4.5,
+       'static/images/category_portatil11.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Portátil - Apple MacBook Air Apple M1/8GB/256GB SSD/GPU Hepta Core/13.3" Plata'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Portátil - Apple MacBook Pro Apple M1 Pro/16GB/512GB SSD/16.2" Gris Espacial Reacondicionado', 
+       'Descripción
+Ya está aquí el MacBook Pro más potente de la historia. Su rendimiento y eficiencia son enormes gracias a los chips M1 Pro y M1 Max, los primeros que Apple diseña para profesionales. Incluye una asombrosa pantalla Liquid Retina XDR, la mejor cámara y el mejor sistema de sonido en un portátil Mac, además de todos los puertos que vas a necesitar. Estás ante el primer portátil de una nueva especie. Y es una bestia.
+Características:
+•	Espectacular pantalla Liquid Retina XDR con rango dinámico extremo y un contraste increíble
+•	Tres puertos Thunderbolt 4, ranura para tarjetas SDXC y puerto HDMI para conectar lo que haga falta
+•	Nueva cámara FaceTime HD a 1080p, sistema de sonido de seis altavoces de alta fidelidad y micrófonos con calidad de estudio para que te vean y oigan en tu mejor versión
+•	Hasta 17 horas de autonomía para que, vayas donde vayas, nada te pare
+•	El conector MagSafe 3 se acopla al instante y carga tu MacBook Pro a toda pastilla
+•	El Magic Keyboard con Touch ID ofrece autenticación sencilla, rápida y segura para iniciar sesión y comprar
+•	Con macOS Monterey y sus nuevas prestaciones de rendimiento, puedes trabajar, crear y colaborar como nunca en tu Mac
+Especificaciones:
+•	Chip:
+•	Chip M1 Pro de Apple
+•	CPU de 10 núcleos con 8 núcleos de rendimiento y 2 de eficiencia
+•	GPU de 16 núcleos
+•	Neural Engine de 16 núcleos
+•	200 GB/s de ancho de banda de memoria
+•	Motor multimedia
+•	Aceleración por hardware para H.264, HEVC, ProRes y ProRes RAW
+•	Motor de decodificación de vídeo
+•	Motor de codificación de vídeo
+•	Motor de codificación y decodificación ProRes
+•	Pantalla Liquid Retina XDR
+•	Pantalla Liquid Retina XDR de 16,2 pulgadas (41,05 cm) en diagonal;10 resolución nativa de 3.456 por 2.234 a 254 píxeles por pulgada
+•	Hasta 1.000 nits de brillo sostenido (a pantalla completa), 1.600 nits de brillo máximo
+•	Contraste de 1.000.000:1
+•	Color
+•	1.000 millones de colores
+•	Gama cromática amplia (P3)
+•	Tecnología True Tone
+•	Frecuencias de actualización
+•	Tecnología ProMotion con frecuencia de actualización adaptativa de hasta 120 Hz
+•	Frecuencias de actualización fijas: 47,95 Hz, 48 Hz, 50 Hz, 59,94 Hz y 60 Hz
+•	Memoria
+•	16 GB
+•	16 GB de memoria unificada
+',
+       'portatil',
+       'Apple',
+       27,
+       1707.10,
+       0,
+       5,
+       'static/images/category_portatil12.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Portátil - Apple MacBook Pro Apple M1 Pro/16GB/512GB SSD/16.2" Gris Espacial Reacondicionado'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Portátil - HP 255 G10, 15.6 " Full HD, AMD Ryzen 7 7730U, 32GB RAM, 512GB SSD, AMD Radeon™, Windows 11 H', 
+       'Descripción
+El portátil HP 255 G10 ofrece funciones esenciales para el negocio en un diseño compacto y ligero que permite llevarlo contigo a todas partes. Se trata de un equipo con pantalla de 15,6 pulgadas con una proporción entre pantalla y estructura del 85%, un sólido procesador AMD Ryzen™, una rápida memoria y opciones de almacenamiento diseñado para potenciar tu productividad y para que puedas conectar tus periféricos a los puertos que incluye...y todo ello por un precio que no te dejará indiferente.
+
+Procesador de rendimiento muy impresionante
+El procesador AMD Ryzen™ 7 7730U tiene mucha energía en reserva, junto con 32GB de memoria rápida, 512 GB de almacenamiento SSD rápido y conectividad WiFi 6 de alta velocidad que le permite cargar contenido en línea más rápido que nunca. incluye una nueva y revolucionaria arquitectura con una asombrosa duración de la batería, que ofrece un procesamiento de subprocesos concurrentes excepcional.
+
+Alta velocidad y rendimiento
+Equipado con un disco duro de 512GB de SSD, un disco duro ultra rápido, con el que podrás acceder a tus archivos, fotos y bibliotecas multimedia en segundos. Iniciarás el sistema operativo en un momento. Tiene espacio más que suficiente para todos sus álbumes de fotos, bibliotecas de música y películas. Además abordarás tareas de productividad exigentes con sus 32 GB de RAM.
+
+Gráficos para el día a día
+Con la magnifica AMD Radeon podrás ver el rendimiento grafico adaptado a tus necesidades, acelerando al máximo las aplicaciones mas populares de la actualidad y trabajando al máximo gracias a su capacidad.
+
+Obtén una nueva perspectiva con Windows 11 Home
+Windows 11 ofrece un espacio tranquilo y creativo en el que puedes dedicarte a tus pasiones a través de una novedosa experiencia. Desde un menú de Inicio rejuvenecido hasta nuevas formas de conectarte con tus personas, noticias, juegos y contenido favorito, Windows 11 es el lugar para pensar, expresar y crear de forma natural
+',
+       'portatil',
+       'HP',
+       36,
+       699,
+       0,
+       4,
+       'static/images/category_portatil13.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Portátil - HP 255 G10, 15.6 " Full HD, AMD Ryzen 7 7730U, 32GB RAM, 512GB SSD, AMD Radeon™, Windows 11 H'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Portátil - Microsoft Surface Laptop 5, 13.5" WQHD, Intel® Evo™ Core™ i5-1235U, 8GB RAM, 256GB SSD, Iris® Xe Graphics, Windows 11 Home', 
+       'Descripción
+Desbloquea más posibilidades que nunca con el Pro diseñado para un profesional como tú. El portátil para consumidores y diseñado para destacar lo mejor de Windows 11, Microsoft Surface Laptop 5, de color platinum, combina el poder de un portátil con la flexibilidad de una tableta, y todos los ángulos entremedios, con el icónico soporte trasero y teclado extraíble. Haz grandes cosas con una pantalla táctil más grande de 13.5", conexiones más rápidas y velocidad adicional cuando la necesitas.
+
+Arquitectura híbrida de rendimiento y Plataforma Intel® Evo™
+Si trabajas desde cualquier lugar, eres productivo, creativo, competitivo, buscas entretenerte o trabajar duro, con el procesador Intel® Core™ de 12ª generación diseñado en la plataforma Intel® Evo™ transformarás tu experiencia informática y de juego ya que hace que tu portátil funcione de manera fluida, intuitiva y con capacidad de respuesta excepcional. Integra dos microarquitecturas de núcleo totalmente nuevas en un único chip, gracias a Intel® Thread Director el procesador divide de forma inteligente el trabajo entre P-cores (núcleos de rendimiento) y E-cores (núcleos de eficiencia). Estas tecnologías mejoran la productividad y los videojuegos al garantizar que las tareas en segundo plano no distraen la atención de los núcleos más potentes, una optimización inteligente de las cargas de trabajo lo que es un paso generacional en el rendimiento!.
+
+Gran velocidad de transferencia de datos
+Gracias a su almacenamiento interno de 256 GB SSD, podrás transferir tus datos en alta velocidad. Lo mejor es que la memoria de tipo SSD, transfiere datos 20 veces más rápido que un disco duro convencional. Además, el portátil Surface Laptop 5 cuenta con 8 GB de memoria RAM, de tipo LPDDR5x, con una gran frecuencia, lo que supondrá una reducción considerable en los tiempos de carga.
+
+Ligereza
+El poder de un portátil ligero, con pantalla táctil de 13.5", resolución WQHD+ de 2256 x 1504 píxeles, el icónico soporte trasero y teclado extraíble. La pantalla PixelSense™ cuenta con función táctil multitáctil en 10 puntos y Gorilla Glass 5.
+
+Windows 11 Home instalado
+Windows 11 Home te acerca a lo que amas. La familia, los amigos, las obsesiones, la música y las creaciones... Windows 11 es el lugar para todo. Con un aspecto totalmente nuevo y herramientas que facilitan la eficacia, tiene lo que necesitas para el futuro.
+
+Excelente autonomía
+Céntrate en las ideas grandes, no en la duración de la batería, con hasta 18 horas de autonomía y carga rápida.
+',
+       'portatil',
+       'Microsoft',
+       22,
+       1179,
+       899,
+       4,
+       'static/images/category_portatil14.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Portátil - Microsoft Surface Laptop 5, 13.5" WQHD, Intel® Evo™ Core™ i5-1235U, 8GB RAM, 256GB SSD, Iris® Xe Graphics, Windows 11 Home'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Microsoft Surface Laptop 4 Negro Intel Core i5-1145G7/8GB/512 GB SSD/13.5" Táctil Reacondicionado', 
+       'Descripción
+Estilo y velocidad. Destaca en las videollamadas HD respaldadas con micrófonos de estudio. Captura ideas en la vibrante pantalla táctil. Hazlo todo con el equilibrio perfecto entre diseño moderno, velocidad, audio envolvente y una batería que dura significativamente más que antes.
+Características:
+•	Hazlo todo con estilo, rendimiento y velocidad: Ahora hasta un 70% más rápido que antes con una batería que dura significativamente más que ofrece hasta 19 horas de autonomía en el dispositivo de 13,5" con el procesador AMD Ryzen™ 5 Microsoft Surface® Edition. Destaca durante las videollamadas HD, captura ideas en la pantalla táctil de PixelSense™ y disfruta del audio envolvente de Dolby Atmos.
+•	Moderno, elegante y silencioso: Abre el dispositivo fácilmente con un dedo y disfruta de una productividad sin interrupciones en la pantalla táctil PixelSense™ gracias a la refrigeración ultra silenciosa. Personalízalo con la opción de dos tamaños y acabados de teclado, Alcantara® cálido o metálico moderno.
+•	Rendimiento para multitarea, videollamadas y entretenimiento: Aprovecha al máximo tu día con más potencia multitarea y hasta un 70% más de velocidad que antes, pon tu mejor cara y voz durante las videollamadas y disfruta de audio envolvente Dolby Atmos® para películas,5 todo ello respaldado por un potente poder de procesamiento.
+•	Comodidad, conveniencia y todas las conexiones que necesites: Aprovecha al máximo tu creatividad gracias a la batería que dura todo el día,1 carga rápida y una comodidad excepcional de escritura. Conéctate fácilmente con los puertos USB-C® y USB-A.
+•	Poder para hacer lo que quieras: Ejecuta Microsoft 365 y apps de creatividad.* Protege tus archivos y fotos en la nube con OneDrive. Disfruta de una navegación rápida con Microsoft Edge. Mira una película o disfruta de tu juego favorito.
+•	Dos procesadores increíbles, rendimiento de portátil excepcional: Diseñamos Surface Laptop 4 con procesadores Intel® Core™ de 11.ª generación y AMD Ryzen™ Microsoft Surface® Edition personalizados para ofrecer un rendimiento de portátil excepcional, fluidez entre pestañas de navegador y velocidad rápida para multitarea entre todas tus apps. ?
+Especificaciones
+•	Escenarios
+•	Diseño de nueva generación, con potencia, velocidad y sonido mejorados para disfrutar de una productividad diaria increíble, Microsoft Teams* y videollamadas, Microsoft 365,* streaming de música y series, compras y navegación
+•	Dimensiones
+•	Surface Laptop 4 13,5": 308 mm x 223 mm x 14,5 mm
+•	Pantalla
+•	Surface Laptop 4 13,5":
+•	Pantalla: pantalla PixelSense™ de 13,5"
+•	Resolución: 2256 x 1504 (201 ppp)
+•	Relación de aspecto: 3:2
+•	Compatible con el Lápiz para Surface*
+•	Función táctil: multitoque de 10 puntos
+•	Memoria
+•	Surface Laptop 4 13,5"
+•	RAM LPDDR4x de 8 GB
+•	Procesador
+•	Surface Laptop 4 13,5":
+•	Procesador Intel® Core™ i5-1135G7 de cuatro núcleos y 11.ª generación
+•	Duración de la batería
+•	Surface Laptop 4 de 13,5" con procesador Intel® Core™: hasta 17 horas de autonomía (para uso típico del dispositivo)
+',
+       'portatil',
+       'Microsoft',
+       25,
+       790.40,
+       0,
+       5,
+       'static/images/category_portatil15.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Microsoft Surface Laptop 4 Negro Intel Core i5-1145G7/8GB/512 GB SSD/13.5" Táctil Reacondicionado'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Portátil gaming - Lenovo LOQ 15IRH8, 15.6" FullHD, Intel® Core™ i5-12450H, 16GB RAM, 512GB SSD, GeForce RTX™ 4050, Windows 11 Home', 
+       'Descripción
+El portátil gaming Lenovo LOQ 15IRH8, funciona rápido con un procesador Intel® Core™ de 12va generación y tarjeta gráfica NVIDIA® GeForce RTX™ 4050. Disfruta de imágenes nítidas en una pantalla FHD de hasta 39.62 cm (15.6"), con una precisión de color asombrosa y Dolby Vision™. Por su parte, el sonido Nahimic Gaming Audio y el teclado te ayudan a atacar con precisión milimétrica.
+
+Máximo nivel desde cualquier lugar
+La potencia y rendimiento para jugar, compartir, grabar la consigues con el procesador Intel® Core™ de 12ª generación con su arquitectura de núcleo de procesador y una serie de tecnologías de aceleración con las que potenciar el rendimiento de cada núcleo. Gracias a Intel® Thread Director, el procesador divide de forma inteligente el trabajo entre P-cores y E-cores, mejorando los videojuegos y la productividad al garantizar que las tareas en segundo plano no distraen la atención de los núcleos más potentes. Incluye mejoras de plataforma como la compatibilidad con RAM DDR5 y la adopción de PCIe 5.0. Juega a 4K en un ordenador ultraportátil y gráficos NVIDIA® GeForce RTX™ 4050.
+
+Gran capacidad de almacenamiento
+Gracias a su gran almacenamiento interno 512 GB SSD, podrás transferir tus datos en alta velocidad. Lo mejor es que la memoria de tipo SSD, transfiere datos 20 veces más rápido que un disco duro convencional. Además, el portátil gaming Lenovo tiene hasta 16 GB de memoria RAM, de tipo DDR5, con una gran frecuencia de hasta 4800 MHz, lo que supondrá una reducción considerable en los tiempos de carga.
+
+Colores ricos y brillantes con 144 Hz
+Los colores claros y realistas cobran vida con una gran resolución FHD (1920x 1080píxeles) de 15.6" con 144 Hz tipo IPS. Visualiza contenido sin problemas desde cualquier ángulo con tus amigos y familiares.
+
+GeForce RTX™ serie 40
+Los portátiles más rápidos del mundo para jugadores y creadores se basan en las GPU de los portátiles NVIDIA® GeForce RTX™ serie 40. Cuentan con la arquitectura ultraeficiente NVIDIA Ada Lovelace. Además, suponen todo un salto cuántico en el rendimiento con DLSS 3, con tecnología de IA y permiten mundos virtuales realistas con trazado de rayos completo. El conjunto de tecnologías Max-Q optimiza el rendimiento del sistema, la potencia, la duración de la batería y la acústica para lograr la máxima eficiencia.
+
+Wi-Fi 6
+El Wi-Fi 6 aumenta la velocidad de transmisión, mejora la eficiencia y minimiza la congestión de la red cuando se utilizan múltiples dispositivos. La futura red WLAN requiere más rendimiento para hacer frente al aumento del tráfico de datos y gestionar más señales WLAN. El revolucionario y altamente eficiente estándar WLAN IEEE 802.11ax (Wi-Fi 6) hace frente a este desafío. Wi-Fi 6 cumple con su promesa de garantizar una red más rápida y estable en la próxima década.
+',
+       'portatil',
+       'Lenovo',
+       28,
+       1199,
+       0,
+       5,
+       'static/images/category_portatil16.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Portátil gaming - Lenovo LOQ 15IRH8, 15.6" FullHD, Intel® Core™ i5-12450H, 16GB RAM, 512GB SSD, GeForce RTX™ 4050, Windows 11 Home'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Lenovo ThinkPad L15 Gen 4 Intel Core i5-1335U/16GB/512GB SSD/15.6"', 
+       'Descripción
+Rendimiento y fiabilidad para tu empresa. Portátil Lenovo ThinkPad L15 de 39,62 cm con teclado numérico, ideal para las finanzas, la contabilidad y la introducción de datos. Equipado con un procesador hasta Intel vPro® con Intel® Core™ de 13.a generación. Compatible con PC con núcleo protegido de Microsoft 11 para una mayor seguridad en el trabajo.
+Características
+•	Rendimiento profesional. El portátil Lenovo ThinkPad L15 Gen 4 inspira productividad. Equipado con procesadores Intel vPro® con Intel® Core™ serie U de 13.ª generación, este dispositivo de 39,62 cm (15,6?) también incorpora excelentes opciones de tarjetas gráficas. Además, gracias a las baterías más grandes opcionales, disfrutarás de autonomía todo el día con este compañero que te ofrece el máximo rendimiento y con el que podrás trabajar desde cualquier lugar.
+•	No pierdas la conexión, no importa dónde ni cuándo. Al igual que un smartphone, el portátil ThinkPad L15 Gen 4 ofrece conectividad WiFi 6 rápida. También cuenta con cancelación de ruido Dolby Voice® basada en IA que, en combinación con la cámara HD, hará que parezca que todos se encuentran en la misma sala durante las videoconferencias.
+•	Diseñado para mejorar la colaboración. La serie L ofrece también procesamiento de imágenes y un marco de visión artificial avanzada que mejora la calidad de la cámara, todo ello a través de Lenovo View 3.0.
+•	Lleva la fiabilidad al siguiente nivel. Usamos los estándares MIL-STD 810H del Departamento de Defensa de EE. UU. para crear un equilibrio entre fiabilidad y durabilidad con nuestros portátiles ThinkPad. Los probamos con 12 estándares y más de 200 pruebas de calidad para asegurarnos de que funcionan en condiciones extremas. Estas pruebas incluyen variables extremas, como la aridez ártica y las tormentas de arena del desierto, como la temperatura, la presión, la humedad y la vibración, entre otros factores.
+Especificaciones Lenovo ThinkPad L15 Gen 4
+•	Procesador Intel Core i5-1335U, 10C (2P + 8E) / 12T, P-core 1.3 / 4.6GHz, E-core 0.9 / 3.4GHz, 12MB
+•	Memoria RAM 16GB SO-DIMM DDR4-3200
+•	Almacenamiento 512GB SSD M.2 2242 PCIe® 4.0x4 NVMe® Opal 2.0
+•	Unidad óptica No dispone
+•	Display 15.6" FHD (1920x1080) IPS 250nits Anti-glare, 45% NTSC
+•	Controlador gráfico Integrada Intel Iris Xe
+•	Conectividad
+•	Intel Wi-Fi 6 (11ax, 2x2)
+•	Bluetooth 5.1
+•	Webcam FHD 1080p
+•	Micrófono Si
+•	Teclado: Retroiluminado
+•	Audio
+•	Altavoces 2W x2, Dolby® Audio™
+•	Posibilidad de conexión por Bluetooth a dispositivos de reproducción de audio externos (altavoces, auriculares, etc.)
+•	Batería
+•	Polímero de Litio de 57Wh
+•	Cargador 65W USB-C® (3-pin)
+•	Conexiones
+•	1x Ethernet (RJ-45)
+•	1x HDMI® 2.1, up to 4K/60Hz
+•	1x Thunderbolt™ 4 / USB4® 40Gbps (support data transfer, Power Delivery 3.0 and DisplayPort™ 1.4)
+•	1x USB 3.2 Gen 1
+•	1x USB 3.2 Gen 1 (Always On)
+•	1x USB-C® 3.2 Gen 2 (support data transfer, Power Delivery 3.0 and DisplayPort™ 1.4)
+•	1 x Jack combo (auriculares+micro)
+•	Sistema operativo
+•	Windows 11 Pro
+',
+       'portatil',
+       'Lenovo',
+       19,
+       1248.01,
+       0,
+       4.5,
+       'static/images/category_portatil17.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Lenovo ThinkPad L15 Gen 4 Intel Core i5-1335U/16GB/512GB SSD/15.6"'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Portátil - Apple MacBook Pro Apple M1 Pro/16GB/512GB SSD/14.2" Plata Reacondicionado', 
+       'Descripción
+Ya está aquí el MacBook Pro más potente de la historia. Su rendimiento y eficiencia son enormes gracias a los chips M1 Pro y M1 Max, los primeros que Apple diseña para profesionales. Incluye una asombrosa pantalla Liquid Retina XDR, la mejor cámara y el mejor sistema de sonido en un portátil Mac, además de todos los puertos que vas a necesitar. Estás ante el primer portátil de una nueva especie. Y es una bestia.
+Características:
+•	Espectacular pantalla Liquid Retina XDR con rango dinámico extremo y un contraste increíble
+•	Tres puertos Thunderbolt 4, ranura para tarjetas SDXC y puerto HDMI para conectar lo que haga falta
+•	Nueva cámara FaceTime HD a 1080p, sistema de sonido de seis altavoces de alta fidelidad y micrófonos con calidad de estudio para que te vean y oigan en tu mejor versión
+•	Hasta 17 horas de autonomía para que, vayas donde vayas, nada te pare
+•	El conector MagSafe 3 se acopla al instante y carga tu MacBook Pro a toda pastilla
+•	El Magic Keyboard con Touch ID ofrece autenticación sencilla, rápida y segura para iniciar sesión y comprar
+•	Con macOS Monterey y sus nuevas prestaciones de rendimiento, puedes trabajar, crear y colaborar como nunca en tu Mac
+Especificaciones:
+•	Chip: Chip M1 Pro de Apple
+•	CPU de 8 núcleos con 6 núcleos  de rendimiento y 2 de eficiencia
+•	GPU de 14 núcleos
+•	Neural Engine de 16 núcleos
+•	200 GB/s de ancho de banda de memoria
+•	Motor multimedia
+•	Aceleración por hardware para H.264, HEVC, ProRes y ProRes RAW
+•	Motor de decodificación de vídeo
+•	Motor de codificación de vídeo
+•	Motor de codificación y decodificación ProRes
+•	Pantalla Liquid Retina XDR
+•	Pantalla Liquid Retina XDR de 14,2 pulgadas (35,97 cm) en diagonal;1 resolución
+•	nativa de 3.024 por 1.964 a 254 píxeles por pulgada
+•	XDR (rango dinámico extremo)
+•	Hasta 1.000 nits de brillo sostenido (a pantalla completa), 1.600 nits de brillo máximo
+•	Contraste de 1.000.000:1
+•	Color
+•	1.000 millones de colores
+•	Gama cromática amplia (P3)
+•	Tecnología True Tone
+•	Frecuencias de actualización
+•	Tecnología ProMotion con frecuencia de actualización adaptativa de hasta 120 Hz
+•	Frecuencias de actualización fijas: 47,95 Hz, 48 Hz, 50 Hz, 59,94 Hz y 60 Hz
+•	Memoria
+•	16 GB
+•	16 GB de memoria unificada
+•	Batería y alimentación
+•	Hasta 17 horas de reproducción de vídeo en la app Apple TV
+•	Hasta 11 horas de navegación web inalámbrica
+•	Batería de polímeros de litio de 70 vatios-hora2
+•	Adaptador de corriente USB?C de 67 W (incluido con el M1 Pro con CPU de 8 núcleos)
+•	Adaptador de corriente USB?C de 96 W (incluido con el M1 Pro con CPU de 10 núcleos y el M1 Max, opcional con el M1 Pro con CPU de 8 núcleos)
+•	Cable de USB?C a MagSafe 3
+•	Carga rápida con el adaptador de corriente USB?C de 96 W
+•	Capacidad
+•	512GB SSD
+',
+       'portatil',
+       'Apple',
+       31,
+       2249,
+       1496.24,
+       5,
+       'static/images/category_portatil18.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Portátil - Apple MacBook Pro Apple M1 Pro/16GB/512GB SSD/14.2" Plata Reacondicionado'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Portátil gaming - ASUS TUF A15 FA507NV-LP031W, 15.6" Full HD, AMD Ryzen 7 7735HS, 16GB RAM, 512GB SSD, GeForce RTX™ 4060, Windows 11 Home', 
+       'Descripción
+Salta directamente a la acción con el portátil gaming TUF Gaming A15. Con Windows 11 listo para usar, TUF Gaming A15 viene equipado con hasta un procesador AMD Ryzen™ 7 7735HS y hasta 16GB de RAM DDR5 de 4800 MHz increíblemente rápida que harán que tus streamings y todas tus tareas se manejen con gran facilidad. Aprovecha todo el potencial gaming con hasta una GPU para portátiles NVIDIA® GeForce RTX™ 4060 con MUX Switch dedicado. La ranura SSD M.2 NVMe te permitirá seguir llenando tu catálogo de juegos cuando tu biblioteca esté llena, haciendo muy fácil la capacidad para ampliar la memoria.
+
+Potencia y rendimiento
+El procesador AMD Ryzen™ 7 7735HS equipado con 8 núcleos, te permitirá jugar con los últimos juegos del mercado AAA y maratones gaming de manera ultra fluida y suave. Produce, crea, conecta y colabora como nunca antes. El portátil cuenta con,16GB de RAM DDR5 de 4800 MHz y 512GB SSD, para que ejecutes tus juegos como la multitarea de forma eficiente, y con un aumento del rendimiento gracias a su mayor ancho de banda.
+
+GeForce RTX™ serie 40
+Los portátiles más rápidos del mundo para jugadores y creadores se basan en las GPU de los portátiles NVIDIA® GeForce RTX™ serie 40. Cuentan con la arquitectura ultraeficiente NVIDIA Ada Lovelace. Además, suponen todo un salto cuántico en el rendimiento con DLSS 3, con tecnología de IA y permiten mundos virtuales realistas con trazado de rayos completo. El conjunto de tecnologías Max-Q optimiza el rendimiento del sistema, la potencia, la duración de la batería y la acústica para lograr la máxima eficiencia.
+
+Colores ricos y brillantes FHD
+Los colores claros y realistas cobran vida con una resolución Full HD y panel de 15.6" tipo IPS de 144 Hz. Visualiza contenido sin problemas desde cualquier ángulo con tus amigos y familiares.
+
+Wi-Fi 6
+El Wi-Fi 6 aumenta la velocidad de transmisión, mejora la eficiencia y minimiza la congestión de la red cuando se utilizan múltiples dispositivos. La futura red WLAN requiere más rendimiento para hacer frente al aumento del tráfico de datos y gestionar más señales WLAN. El revolucionario y altamente eficiente estándar WLAN IEEE 802.11ax (Wi-Fi 6) hace frente a este desafío. Wi-Fi 6 cumple con su promesa de garantizar una red más rápida y estable en la próxima década. La tarjeta ofrece velocidades de hasta 574 Mbps en la red de 2.40 GHz, mientras que ofrecerá hasta 2.402 Mbps en la de 5 GHz.
+',
+       'portatil',
+       'Asus',
+       28,
+       1379,
+       1049,
+       5,
+       'static/images/category_portatil19.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Portátil gaming - ASUS TUF A15 FA507NV-LP031W, 15.6" Full HD, AMD Ryzen 7 7735HS, 16GB RAM, 512GB SSD, GeForce RTX™ 4060, Windows 11 Home'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Portátil - ASUS Chromebook CX1400FKA-EC0077, 14" Full HD, Intel® Celeron® N4500, 8GB RAM, 128GB eMMC, UHD Graphics, Chrome OS', 
+       'Descripción
+El ASUS Chromebook CX1400FKA-EC0077 está hecho para potenciar la productividad y la multitarea sin que pare la diversión todo el día, todos los días. Además, el ASUS Chromebook Flip CX1 es tu puerta de entrada a lo mejor de Google, incluida la rica biblioteca de aplicaciones para trabajar o jugar en Google Play. El ASUS Chromebook Flip CX1 cuenta con un rendimiento fluido, una seguridad de gran solidez y unas funciones muy prácticas, por lo que es perfecto para que cualquiera pueda disfrutar de un entretenimiento y una productividad sin interrupciones.
+
+¿Qué es un Chromebook?
+Los Chromebook son ordenadores portátiles que utilizan el sistema operativo "Chrome OS", desarrollado por Google. Está diseñado para darte una solución rápida y constante, y lleva lo mejor de los servicios de Google integrados. 
+
+Rápido como el primer día
+Se inicia en cuestión de segundos y se actualiza de forma automática en segundo plano (requiere conexión a internet).
+
+Sencillo e inteligente
+Realiza una copia de seguridad automática de tus datos y funciona con y sin conexión. Un dispositivo pensado para compartir y colaborar.
+
+Seguridad garantizada
+Con protección integrada, sin necesidad de programas adicionales y con múltiples niveles de seguridad. (El antivirus integrado y la comprobación de arranque de Chrome OS están diseñados para evitar los problemas persistentes que pueden darse durante un uso normal, pero esto no significa que Chromebook no pueda ser atacado por código malicioso).
+
+Para toda la familia
+Con la aplicación Family Link, puedes establecer normas digitales básicas para acompañar y guiar a tus hijos en el uso del ordenador.
+
+Adaptado a todas tus necesidades
+Todas tus aplicaciones favoritas de Google vienen pre-instaladas en cada Chromebook, por lo que puedes editar, descargar y convertir documentos de Microsoft Office en Google Docs, Sheets y Slides. Además, en Google Play Store podrás acceder a miles de aplicaciones para escuchar música, ver vídeos, crear contenido, trabajar y compartir archivos. (Requiere una conexión a Internet. Algunas aplicaciones son de pago.) Y todo esto con una batería que dura hasta 12 horas (puede variar en función del uso y otras condiciones).
+',
+       'portatil',
+       'Asus',
+       16,
+       399,
+       0,
+       4,
+       'static/images/category_portatil20.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Portátil - ASUS Chromebook CX1400FKA-EC0077, 14" Full HD, Intel® Celeron® N4500, 8GB RAM, 128GB eMMC, UHD Graphics, Chrome OS'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
 SELECT 'Móvil - Samsung Galaxy S24, Onyx, 256GB, 8GB RAM, 6.2" FHD+, con IA, Exynos 2400, 4000 mAh, Android 14', 
        'Hazlo tuyo
 Galaxy S24 no pierde el característico diseño Galaxy, sino que lo mejora. Ahora con más pantalla, formas redondeadas y acabado mate antihuellas. También podrás disfrutar de un sinfín de opciones de personalización con One UI 6.1 y mantener lo que más importa bien protegido con la seguridad de Samsung Knox.
@@ -237,7 +674,7 @@ Galaxy S24 está disponible en cuatro colores: Amarillo Amber, Violeta Cobalt, G
 
 Crea contenido como un profesional
 El nuevo Galaxy S24 de Samsung no solo te asegura una experiencia fotográfica de diez, gracias a su cámara de 50MP de resolución, sino que la incorporación de la Inteligencia Artificial supone un cambio a la hora de crear contenido.
- ',
+',
        'smartphone',
        'Samsung',
        46,
@@ -260,7 +697,7 @@ El iPhone 15 Pro Max está equipado con una batería de 4441 mAh que representa 
 
 Prestaciones iPhone 15 Pro Max:
 El iPhone 15 Pro Max es un auténtico portento, diseñado para ofrecer un rendimiento inigualable en cualquier situación. En el corazón de esta máquina se encuentra el formidable procesador que garantiza respuestas inmediatas y operaciones fluidas. Esta potencia de procesamiento, unida a una memoria interna que puede ampliarse hasta unos impresionantes 1.000 GB, significa que no solo las aplicaciones y los juegos más exigentes se manejan con facilidad, sino que los usuarios disponen de un amplio espacio de almacenamiento para fotos, vídeos, aplicaciones y mucho más.
- ',
+',
        'smartphone',
        'Apple',
        50,
@@ -345,6 +782,463 @@ Redmi Note 13 Pro+ se destaca con una impresionante batería de 5000mAh y una ca
 WHERE NOT EXISTS (
     SELECT 1 FROM product WHERE name = 'Móvil - Xiaomi Redmi Note 13 Pro+ 5G, Moonlight White, 512 GB, 12 GB RAM, 6.67" AMOLED 1.5K, MediaTek Dimensity 7200, 5000 mAh'
 );
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Móvil - XIAOMI Redmi Note 10 5G, Azul, 128 GB, 4 GB RAM, 6,5 ", Full HD+, MediaTek, 5,000 mAh, Android', 
+       'Descripción
+El Xiaomi Redmi Note 10 5G está listo para desafiar los límites del rendimiento de los juegos. Su tecnología de procesamiento de 7 nm y su módem integrado ofrecen un mayor rendimiento con un menor consumo de energía para que los usuarios puedan disfrutar de un uso prolongado de su dispositivo sin preocuparse por el consumo de energía. Con soporte para 5G dual SIM, Redmi Note 10 5G es una bestia de productividad.
+Características:
+•	Pantalla AdaptiveSync de 90 Hz para una experiencia fluida
+Con una pantalla FHD + DotDisplay de 6.5 ”con frecuencia de actualización de 90Hz, Redmi Note 10 5G ofrece una hermosa pantalla con un uso más suave. Más allá de la frecuencia de actualización de 90Hz, el teléfono es capaz de ajustarse al contenido automáticamente
+
+•	Desde la transmisión de video a 30Hz o 60Hz hasta el desplazamiento de los feeds de las redes sociales
+•	Garantiza una experiencia fluida y un uso óptimo de la batería.
+•	Cámara trasera triple para una creatividad infinita
+¡Con una cámara trasera triple de 48MP, Redmi Note 10 5G fue creado para crear! Su configuración de triple cámara incluye una cámara principal de 48MP, una cámara macro de 2MP y un sensor de profundidad de 2MP, mientras que sus herramientas de creatividad, como el modo nocturno, cámara lenta, video a intervalos, convierten a cualquier usuario en un profesional creativo.
+•	Energía todo el día con alta eficiencia
+Redmi Note 10 5G promociona una batería masiva de 5,000 mAh (típica) con carga rápida de 18 W, por lo que los usuarios pueden permanecer encendidos durante todo el día, incluso durante períodos de uso intensivo.
+Especificaciones:
+•	Actuación
+
+•	MediaTek Dimensity 700
+•	CPU de ocho núcleos, hasta 2,2 GHz
+•	Proceso de fabricación de 7 nm
+•	Arm MailG57 MC2 GPU, hasta 950MHz
+•	4GB + 64GB, 4GB + 128GB, 6GB + 128GB *
+•	LPDDR4X RAM
+•	Almacenamiento UFS 2.2
+•	MIUI 12 basado en Android 11
+•	Pantalla y diseño
+
+•	Pantalla de puntos AdaptiveSync de 6.5 ”de 90Hz
+•	Pantalla AdaptiveSync: 30Hz ** / 50Hz / 60Hz / 90Hz
+•	Relación de contraste: 1500: 1
+•	Brillo: 400 nits (típico), HBM 500 nits (típico)
+•	Resolución: 2400 x 1080
+•	Modo de lectura 3.0
+•	Pantalla de luz solar
+•	Frente Corning® Gorilla® Glass 3
+•	Colores *: Plata Cromo, Gris Grafito, Azul Noche, Verde Aurora
+•	Dimensiones: 161,81 mm x 75,34 mm x 8,92 mm
+•	Peso: 190 g
+•	Cámara
+
+•	Triple cámara de 48MP
+•	Cámara gran angular de 48 MP
+•	Tamaño del sensor de 1/2 ”, 0,8 ?m f / 1,79
+•	Lente 6P
+•	Cámara macro de 2MP f / 2.4
+•	Sensor de profundidad de 2MP f / 2.4
+•	Cámara frontal de 8MP f / 2.0
+•	Bateria cargando
+
+•	Batería de 5000 mAh (típica)
+•	Carga rápida de 18 W
+•	Cargador integrado de 22,5 W
+',
+       'smartphone',
+       'Xiaomi',
+       46,
+       265.43,
+       137.45,
+       4,
+       'static/images/category_smartphone6.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Móvil - XIAOMI Redmi Note 10 5G, Azul, 128 GB, 4 GB RAM, 6,5 ", Full HD+, MediaTek, 5,000 mAh, Android'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Móvil - realme 12+ 5G, Beige, 512 GB, 12 GB RAM, 6.67" Full HD+ AMOLED 120Hz, MediaTek Dimensity 7050 5G, 5000 mAh, Android', 
+       'Descripción
+Sé un maestro de las imágenes y la comunicación con el móvil realme 12+ 5G. Cuenta con la triple cámara de 50 megapíxels y el procesador MediaTek Dimensity 7050 5G.
+
+Cámaras de gran resolución
+Este móvil cuenta con una cámara triple trasera de 50 megapíxeles f/1.88 con sensor Sony LYT-600 + una cámara gran angular 8 megapíxeles f/2.2 + cámara macro de 2 megapíxeles f/2.4. Además, cuenta con una cámara frontal de 16 MP f/2.45. Y por si fuera poco, es capaz de grabar vídeos a resolución 4K (4K 30fps).
+
+MediaTek Dimensity 7050 5G
+El procesador Dimensity 7050 5G, junto con su núcleo MediaTek de 6 nm, brindarán una gama completa de mejoras en el rendimiento del teléfono, con 8 núcleos a 2.6 GHz de velocidad.
+
+Pantalla Full HD+
+Esta pantalla de 6.67" insignia viene con luna tasa de respuesta de 120 Hz, que brinda un efecto de visualización de fotografías más vívidas a una resolución Full HD+ (2400x1080).
+
+realme UI 5.0, basado en Android 14
+La nueva UI 5.0 se actualiza tanto visual como funcionalmente, incluyendo nuevas funciones File Dock, Smart Image Matting y Phonelink para una experiencia de usuario más inteligente y conveniente.
+
+Gran capacidad de memoria
+El móvil realme cuenta con una memoria RAM de 12 GB y 512 GB de capacidad. La gran RAM admite la ejecución de múltiples aplicaciones en segundo plano, lo que hace que el cambio de aplicación sea más fluido.
+
+Carga SUPERVOOC de 67 W
+Una mayor capacidad de la batería (de 5000 mAh) garantiza un uso diario, una velocidad de carga más rápida y menos tiempo de espera para la carga.
+',
+       'smartphone',
+       'Xiaomi',
+       25,
+       349,
+       0,
+       3.5,
+       'static/images/category_smartphone7.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Móvil - realme 12+ 5G, Beige, 512 GB, 12 GB RAM, 6.67" Full HD+ AMOLED 120Hz, MediaTek Dimensity 7050 5G, 5000 mAh, Android'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Apple iPhone 13, Rosa, 128 GB, 5G, 6.1" OLED Super Retina XDR, Chip A15 Bionic, iOS', 
+       'Descripción
+iPhone 13: Tu nuevo superpoder. Nuestro sistema de cámara dual más avanzado. El chip que hace morder el polvo a la competencia. Un subidón de autonomía que vaya si notarás. Ceramic Shield, más duro que cualquier vidrio de smartphone. Pantalla Super Retina XDR de 6,1 pulgadas. Diseño robusto con bordes planos y resistente al agua.
+Características
+•	¿Cómo conseguimos introducir tanta innovación en la cámara? Pensando en diagonal. Como lo oyes: diseñamos una nueva arquitectura desde cero y giramos los objetivos 45 grados. De este modo, conseguimos espacio para nuestro sistema de cámara dual más avanzado y para el sensor del gran angular, que es más grande que nunca. También hemos integrado nuestra tecnología de estabili¬zación óptica de imagen por desplazamiento del sensor y hemos puesto al ultra gran angular un sensor más rápido. Ahí queda eso.
+•	El nuevo ultra gran angular muestra más detalle en las zonas oscuras de tus fotos.
+•	El nuevo gran angular captura un 47 % más de luz para lograr mejores instantáneas.
+•	La estabili¬zación óptica de imagen por desplazamiento del sensor consigue planos estables aunque tú te muevas.
+•	El iPhone ha estudiado cine. Así no tienes que hacerlo tú. Presentamos el modo Cine. En el cine se utiliza una técnica que consiste en cambiar el enfoque de manera selectiva para dirigir la atención del público hacia el sujeto protagonista de cada escena. Y ahora con el iPhone puedes usar este mismo recurso narrativo en tus vídeos. Érase una vez Hollywood, pero para todos los públicos.
+•	El modo Cine crea de forma automática bellos efectos de profundidad y cambios de enfoque. Al empezar a grabar en modo Cine, el iPhone enfoca el sujeto y desenfoca el fondo para crear un increíble efecto de profundidad de campo. Cuando percibe que un nuevo protagonista va a entrar en escena, el modo Cine cambia el enfoque automáticamente.
+•	Puedes incluso ajustar la profundidad de campo después de terminar la grabación. Si al ver el resultado no te convence el enfoque o quieres ajustar el difuminado, no pasa nada. Con tocar aquí y deslizar allá lo tienes todo hecho. Ni las cámaras de cine profesionales llegan a tanto.
+•	El modo Cine graba vídeos en HDR con Dolby Vision.
+•	Haz un fotón sin mover un dedo. Vale, solo uno.
+•	El modo Noche detecta los entornos con poca luz y ajusta de forma automática los parámetros para ofrecerte fotos más luminosas con colores intensos.
+•	El modo Retrato difumina el fondo y da más protagonismo al sujeto. Puedes ir deslizando entre los seis efectos de iluminación para elegir el que más te llame.
+•	El HDR Inteligente 4 ahora detecta hasta cuatro personas distintas en el plano y optimiza el contraste, la iluminación y el tono de piel de forma independiente. Lo mejor de cada casa, pero con mucha mejor cara.
+•	Deep Fusion se activa en ambientes con poca luz y analiza las distintas exposiciones píxel a píxel para captar todas las texturas y los detalles, por minúsculos que sean.
+•	El ultra gran angular amplía el campo de visión incluso cuando enfocas algo que está muy cerca. Así cabe todo en la imagen sin tener que alejarte.
+•	Los Recuerdos son pases de diapositivas que se crean de forma automática a partir de tus mejores fotos. Puedes personalizarlos como quieras y añadir una banda sonora con canciones de tu biblioteca.
+•	Una cámara con un estilo tan tú. Presentamos los Estilos Fotográficos. Los Estilos son tan inteligentes que suben o bajan los colores manteniendo la naturalidad de los tonos de piel.
+•	Con los Estilos Fotográficos puedes ponerle tu sello personal a las fotos. A diferencia de los filtros, los estilos aplican los ajustes necesarios a cada zona de la imagen, sin alterar los tonos de piel.
+•	Elige Brillante para dar luminosidad y brillo a las fotos, Contraste Intenso para sombras más oscuras y colores más vivos, y Frío o Cálido para acentuar los subtonos azules o dorados. A esto se le llama tener estilo.
+',
+       'smartphone',
+       'Apple',
+       28,
+       739,
+       628.99,
+       4.5,
+       'static/images/category_smartphone8.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Apple iPhone 13, Rosa, 128 GB, 5G, 6.1" OLED Super Retina XDR, Chip A15 Bionic, iOS'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Móvil - OPPO FIND X5, Negro, 256 GB, 8 GB RAM, 6,55 ", Qualcomm Snapdragon™ 888 5G, 4800 mAh, Android', 
+       'Descripción
+Vive el momento con el móvil OPPO Find X5 5G, en color negro. Con la capacidad para grabar vídeos asombrosos al alcance de tu mano, el límite lo marca tu imaginación, así que piensa a lo grande.
+
+Pantalla FHD+ de 120 Hz
+Navegar, ver vídeos, consultar las redes sociales… todo es más fluido en este smartphone con pantalla con velocidad de refresco de 120 Hz con panel Dynamic AMOLED 6.55" y resolución FHD+ (2400 x 1080 píxeles). Disfruta de una interacción asombrosamente sencilla.
+
+Captura todos tus momentos
+El equipo fotográfico de este OPPO Find X5 5G llega coronado por un tres cámaras de 50MP (f/1.8), 2 axis, 50MP (f/2.2), 13MP (f/2.4). Con tantas cámaras y megapíxeles obtendrás unas imágenes absolutamente impresionantes. Además, en el frontal cuenta con una cámara de 32MP (f/2.4) con sensor Sony IMX615 para selfies. Y todo el equipo fotográfico, trasero y frontal.
+
+Desata tu potencial
+El OPPO Find X5 5G utiliza una sofisticada combinación de características (Sensor cámara principal Sony IMX766, Teleobjetivo 5x hibrido, 4k Vídeo Ultra Nocturno) para grabar vídeos con colores intensos, brillantes y equilibrados, ya sea de día o de noche.
+
+Carga Super rápida
+La batería de 4800 mAh del Find X5 5G se ha diseñado para durar, independientemente del uso que le des al móvil, y para que cuando necesite cargarse, lo haga rápido. La carga SuperVOOC 80 W carga el teléfono al 100 % en solo unos minutos.
+
+Preparado para la red 5G
+El Find X5 5G de OPPO funciona con el procesador Qualcomm Snapdragon™ 888 5G y es compatible con bandas 5G. También ofrece 8 GB de RAM para un rendimiento fluido y una autonomía impresionante, más 256 GB de almacenamiento interno.
+
+Wi-Fi 6
+El Wi-Fi 6 aumenta la velocidad de transmisión, mejora la eficiencia y minimiza la congestión de la red cuando se utilizan múltiples dispositivos. La futura red WLAN requiere más rendimiento para hacer frente al aumento del tráfico de datos y gestionar más señales WLAN. El revolucionario y altamente eficiente estándar WLAN IEEE 802.11ax (Wi-Fi 6) hace frente a este desafío.
+',
+       'smartphone',
+       'Oppo',
+       49,
+       999,
+       399,
+       4,
+       'static/images/category_smartphone9.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Móvil - OPPO FIND X5, Negro, 256 GB, 8 GB RAM, 6,55 ", Qualcomm Snapdragon™ 888 5G, 4800 mAh, Android'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Móvil - Google Pixel 8a, Porcelana, 128 GB, 8 GB RAM, 6.1" OLED, Google Tensor G3, 4492 mAh, Android', 
+       'Descripción
+Descubre Pixel 8a, creado por Google. Saca fotos magníficas con la Cámara Pixel. Haz más en menos tiempo con la IA de Google, como arreglar imágenes borrosas, filtrar llamadas y aprender cosas nuevas. Sus funciones de seguridad del más alto nivel ayudan a proteger tus datos. Y se ha diseñado para durar. Todo, a un precio excepcional.
+
+La potencia de la IA de Google en Pixel
+Google Tensor G3 es el mismo chip que incluye Pixel 8 Pro. Hace que Pixel 8a sea rápido y eficiente. Además, incorpora la IA de Google para ayudarte de formas más inteligentes a lo largo del día.
+
+Todo se ve increíble en Pixel
+La pantalla OLED Actua de 6,1 pulgadas y alta resolución de Pixel (2400x1080p) tiene aún más brillo e intensidad, y te permite desplazarte por la interfaz, ver vídeos en streaming y cambiar de una aplicación a otra de manera superfluida.
+
+Fotos increíbles sin complicaciones
+La Cámara Pixel hace fotos y vídeos increíbles siempre. La IA de Google te permite conseguir fotos de grupo perfectas y arreglar imágenes borrosas. Esto es posible gracias a su doble cámara trasera de 64 MP + 13 MP y capacidad de grabar vídeo en resolución 4K.
+
+Alta capacidad y eficiencia
+El Google Pixel 8a cuenta con una memoria RAM de 8 GB y una capacidad de memoria de 128 GB, por lo que tendrás memoria para todo lo que necesites.
+
+Una batería fiable que dura todo el día
+La Batería Inteligente de tu Pixel puede durar más de 24 horas. Y si activas Ahorro de Batería Extremo, puede llegar hasta las 72 horas. Para que no te quedes sin batería cuando más la necesitas.
+
+Ni los arañazos ni los líquidos derramados son un problema
+Con su diseño duradero y protección IP67, Pixel 8a puede aguantar los descuidos, los líquidos derramados y el polvo. Además, la pantalla es resistente a los arañazos gracias a Corning® Gorilla® Glass 3.
+
+Colores divertidos. Diseño fresco.
+Pixel 8a tiene un diseño atrevido, y es muy agradable al tacto. Cuenta con un acabado pulido y la cubierta trasera es mate. Además, está fabricado con materiales reciclados.
+',
+       'smartphone',
+       'Google',
+       17,
+       549,
+       0,
+       4,
+       'static/images/category_smartphone10.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Móvil - Google Pixel 8a, Porcelana, 128 GB, 8 GB RAM, 6.1" OLED, Google Tensor G3, 4492 mAh, Android'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Móvil - Google Pixel 8, Rosa, 128 GB, 8 GB RAM, 6.2 " OLED Full HD+, Google Tensor G3, 4.575 mAh, Android', 
+       'Descripción
+Descubre Pixel 8 en color rosa, creado por Google. El chip Google Tensor G3 permite que tu teléfono sea rápido, y la Cámara Pixel hace fotos y vídeos increíbles. Pixel 8 incorpora las funciones mejor valoradas en materia de seguridad y además, la batería dura todo el día.
+
+La potencia de la IA de Google en Pixel
+Google Tensor G3 es el chip más potente de Pixel hasta la fecha. Está diseñado a medida con la IA de Google para ofrecerte funciones de fotografía y vídeo de vanguardia, así como maneras más inteligentes de ayudarte durante todo el día. Y hace que Pixel 8 sea superrápido y eficiente. Además, cuenta con una RAM de 8 GB y una capacidad de 128 GB, para que no te falte de nada.
+
+Una pantalla impresionante
+La pantalla de alta resolución OLED FHD+ de 6,2 pulgadas de Pixel muestra colores intensos y nítidos llenos de matices. Y tiene una tasa de refresco de hasta 120 Hz para que disfrutes de una experiencia muy fluida cuando juegues, navegues o cambies de aplicación.
+
+Una batería superfiable que dura todo el día
+La Batería Inteligente de Pixel puede durar más de 24 horas. Si activas Ahorro de Batería Extremo, puede durar hasta 72 horas, para que no te quedes sin batería cuando más lo necesites. Y tu Pixel se carga más rápido que nunca.
+
+Diseño innovador y moderno
+Pixel 8 sube el listón con un atractivo diseño que incorpora bordes contorneados, un acabado satinado y colores sofisticados. Y está fabricado con materiales reciclados.
+
+Los arañazos y los líquidos derramados no son un problema
+Con su diseño duradero y la protección IP68, Pixel 8 aguanta los descuidos, los líquidos derramados y el polvo. Además, es resistente a los arañazos gracias al recubrimiento de vidrio Corning® Gorilla® Glass Victus®.
+
+Fotos y vídeos magníficos, siempre
+La Cámara Pixel se ha actualizado por completo y cuenta con un procesamiento de imagen avanzado que capta colores intensos y detalles espectaculares con cualquier luz. Y ahora, gracias a Enfoque Macro, podrás crear imágenes increíbles por muy pequeño que sea lo que quieras inmortalizar. Todo esto con un sistema de cámara trasera dual de Gran Angular 50 MP f/1.68 + Ultra Gran Angular 12 MP f/2.2 + Sensor LDAF.
+
+Vídeos increíbles en cada toma
+La Cámara Pixel graba vídeos fluidos con una resolución asombrosa (hasta 4K a 24, 30 y 60 FPS) y un audio nítido, incluso en lugares concurridos y poco iluminados.
+
+Seguridad en la que puedes confiar
+Google Tensor G3 y el chip de seguridad Titan M2 aportan a Pixel varias capas de seguridad para que tu información personal esté protegida.
+',
+       'smartphone',
+       'Google',
+       18,
+       629,
+       0,
+       4.5,
+       'static/images/category_smartphone11.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Móvil - Google Pixel 8, Rosa, 128 GB, 8 GB RAM, 6.2 " OLED Full HD+, Google Tensor G3, 4.575 mAh, Android'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Móvil - Google Pixel 8, Verde liquen, 256 GB, 8 GB RAM, 6.2 " OLED Full HD+, Google Tensor G3, 4.575 mAh, Android', 
+       'Descripción
+Descubre Pixel 8 en color verde liquen, creado por Google. El chip Google Tensor G3 permite que tu teléfono sea rápido, y la Cámara Pixel hace fotos y vídeos increíbles. Pixel 8 incorpora las funciones mejor valoradas en materia de seguridad y además, la batería dura todo el día.
+
+La potencia de la IA de Google en Pixel
+Google Tensor G3 es el chip más potente de Pixel hasta la fecha. Está diseñado a medida con la IA de Google para ofrecerte funciones de fotografía y vídeo de vanguardia, así como maneras más inteligentes de ayudarte durante todo el día. Y hace que Pixel 8 sea superrápido y eficiente. Además, cuenta con una RAM de 8 GB y una capacidad de 256 GB, para que no te falte de nada.
+
+Una pantalla impresionante
+La pantalla de alta resolución OLED FHD+ de 6,2 pulgadas de Pixel muestra colores intensos y nítidos llenos de matices. Y tiene una tasa de refresco de hasta 120 Hz para que disfrutes de una experiencia muy fluida cuando juegues, navegues o cambies de aplicación.
+
+Una batería superfiable que dura todo el día
+La Batería Inteligente de Pixel puede durar más de 24 horas. Si activas Ahorro de Batería Extremo, puede durar hasta 72 horas, para que no te quedes sin batería cuando más lo necesites. Y tu Pixel se carga más rápido que nunca.
+
+Diseño innovador y moderno
+Pixel 8 sube el listón con un atractivo diseño que incorpora bordes contorneados, un acabado satinado y colores sofisticados. Y está fabricado con materiales reciclados.
+
+Los arañazos y los líquidos derramados no son un problema
+Con su diseño duradero y la protección IP68, Pixel 8 aguanta los descuidos, los líquidos derramados y el polvo. Además, es resistente a los arañazos gracias al recubrimiento de vidrio Corning® Gorilla® Glass Victus®.
+
+Fotos y vídeos magníficos, siempre
+La Cámara Pixel se ha actualizado por completo y cuenta con un procesamiento de imagen avanzado que capta colores intensos y detalles espectaculares con cualquier luz. Y ahora, gracias a Enfoque Macro, podrás crear imágenes increíbles por muy pequeño que sea lo que quieras inmortalizar. Todo esto con un sistema de cámara trasera dual de Gran Angular 50 MP f/1.68 + Ultra Gran Angular 12 MP f/2.2 + Sensor LDAF.
+
+Vídeos increíbles en cada toma
+La Cámara Pixel graba vídeos fluidos con una resolución asombrosa (hasta 4K a 24, 30 y 60 FPS) y un audio nítido, incluso en lugares concurridos y poco iluminados.
+',
+       'smartphone',
+       'Google',
+       18,
+       859,
+       689,
+       5,
+       'static/images/category_smartphone12.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Móvil - Google Pixel 8, Verde liquen, 256 GB, 8 GB RAM, 6.2 " OLED Full HD+, Google Tensor G3, 4.575 mAh, Android'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Apple iPhone 13, Verde, 128 GB, 5G, 6.1" OLED Super Retina XDR, Chip A15 Bionic, iOS', 
+       'Descripción
+iPhone 13: Tu nuevo superpoder. Nuestro sistema de cámara dual más avanzado. El chip que hace morder el polvo a la competencia. Un subidón de autonomía que vaya si notarás. Ceramic Shield, más duro que cualquier vidrio de smartphone. Pantalla Super Retina XDR de 6,1 pulgadas. Diseño robusto con bordes planos y resistente al agua.
+Características
+•	¿Cómo conseguimos introducir tanta innovación en la cámara? Pensando en diagonal. Como lo oyes: diseñamos una nueva arquitectura desde cero y giramos los objetivos 45 grados. De este modo, conseguimos espacio para nuestro sistema de cámara dual más avanzado y para el sensor del gran angular, que es más grande que nunca. También hemos integrado nuestra tecnología de estabili¬zación óptica de imagen por desplazamiento del sensor y hemos puesto al ultra gran angular un sensor más rápido. Ahí queda eso.
+•	El nuevo ultra gran angular muestra más detalle en las zonas oscuras de tus fotos.
+•	El nuevo gran angular captura un 47 % más de luz para lograr mejores instantáneas.
+•	La estabili¬zación óptica de imagen por desplazamiento del sensor consigue planos estables aunque tú te muevas.
+•	El iPhone ha estudiado cine. Así no tienes que hacerlo tú. Presentamos el modo Cine. En el cine se utiliza una técnica que consiste en cambiar el enfoque de manera selectiva para dirigir la atención del público hacia el sujeto protagonista de cada escena. Y ahora con el iPhone puedes usar este mismo recurso narrativo en tus vídeos. Érase una vez Hollywood, pero para todos los públicos.
+•	El modo Cine crea de forma automática bellos efectos de profundidad y cambios de enfoque. Al empezar a grabar en modo Cine, el iPhone enfoca el sujeto y desenfoca el fondo para crear un increíble efecto de profundidad de campo. Cuando percibe que un nuevo protagonista va a entrar en escena, el modo Cine cambia el enfoque automáticamente.
+•	El modo Cine graba vídeos en HDR con Dolby Vision.
+•	Haz un fotón sin mover un dedo. Vale, solo uno.
+•	El modo Noche detecta los entornos con poca luz y ajusta de forma automática los parámetros para ofrecerte fotos más luminosas con colores intensos.
+•	El modo Retrato difumina el fondo y da más protagonismo al sujeto. Puedes ir deslizando entre los seis efectos de iluminación para elegir el que más te llame.
+•	El HDR Inteligente 4 ahora detecta hasta cuatro personas distintas en el plano y optimiza el contraste, la iluminación y el tono de piel de forma independiente. Lo mejor de cada casa, pero con mucha mejor cara.
+•	Deep Fusion se activa en ambientes con poca luz y analiza las distintas exposiciones píxel a píxel para captar todas las texturas y los detalles, por minúsculos que sean.
+Especificaciones Apple iPhone 13
+•	Sistema operativo
+•	iOS 15
+•	iOS es el sistema operativo móvil más personal y seguro del mundo. Está repleto de funciones avanzadas y se ha diseñado para proteger tu privacidad.
+•	Procesador
+•	Chip A15 Bionic
+•	Nueva CPU de 6 núcleos con 2 núcleos de rendimiento y 4 de eficiencia
+•	Nueva GPU de 4 núcleos
+•	Nuevo Neural Engine de 16 núcleos
+•	Pantalla
+•	Pantalla Super Retina XDR
+•	Pantalla OLED de 6,1 pulgadas (15,40 cm) en diagonal
+•	Resolución de 2.532 por 1.170 píxeles a 460 p/p
+•	Pantalla HDR
+•	True Tone
+•	Gama cromática amplia (P3)
+•	Respuesta háptica
+•	Contraste de 2.000.000:1 (típico)
+•	Brillo máximo de 800 nits (típico) o de 1.200 nits (HDR)
+•	Cubierta oleófuga antihuellas
+•	SIM
+•	Doble SIM (Nano SIM y eSIM)
+•	Compatible con doble eSIM
+•	El iPhone 13 y el iPhone 13 mini no son compatibles con las tarjetas Micro SIM
+•	Memoria
+•	Almacenamiento interno: 128 GB
+',
+       'smartphone',
+       'Google',
+       22,
+       739,
+       619,
+       5,
+       'static/images/category_smartphone13.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Apple iPhone 13, Verde, 128 GB, 5G, 6.1" OLED Super Retina XDR, Chip A15 Bionic, iOS'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Móvil - OPPO Reno10 Pro 5G, Silvery Grey, 256 GB, 12 GB RAM, 6.7" AMOLED Full HD+, Qualcomm Snapdragon™ 778G, 4600 mAh, Android', 
+       'Descripción
+Disfruta del móvil OPPO Reno10 Pro 5G, el experto en retratos. Conn una capacidad de memoria de 256 GB, RAM de 12 GB y pantalla AMOLED de 6.7", sus cámaras y su batería acabarán de enamorarte.
+
+Sensor de imagen flagship en la cámara frontal
+Diseñado exclusivamente por OPPO y construido con hardware Sony, el sensor IMX709 de la cámara frontal cuenta con altísimos niveles de captación de luz. La mayor entrada de luz te permite capturar imágenes brillantes y claras.
+
+50 MP de cámara principal
+La cámara principal de 50 MP proporciona un nuevo nivel de claridad, garantizando que cada escena sea una obra maestra y que cada foto sea perfecta. Además, cuenta con un gran angular de 8MP y un teleobjetivo de 32MP. Para los selfies, contarás con 32MP.
+
+Más rápido que nunca
+Rendimiento para los más exigentes, con procesador Qualcomm Snapdragon™ 778G, hardware y software se unen para darte una mejor experiencia de juego.
+
+SuperVOOC 80W
+La batería cuenta con una capacidad de 4600 mAh, lo que te dará más de 1600 ciclos de carga. La carga rápida SuperVOOC de 80W te dará una carga del 100% en 28 minutos.
+',
+       'smartphone',
+       'Oppo',
+       30,
+       479,
+       0,
+       3.5,
+       'static/images/category_smartphone14.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Móvil - OPPO Reno10 Pro 5G, Silvery Grey, 256 GB, 12 GB RAM, 6.7" AMOLED Full HD+, Qualcomm Snapdragon™ 778G, 4600 mAh, Android'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Móvil - VIVO Snapdragon 6802.4GHZ*4 + 1.9GHZ*48 núcleos, Oro, 256 GB, 8 GB RAM, 6,58 ", Full HD+, Snapdragon, 5000 mAh, Android', 
+       'Descripción
+Dispositivo móvil vivo Y35 Dawn Gold, con un procesador Snapdragon 680,doble cámara, pantalla brillante Full-HD+ y una gran batería de 5000 mAh.
+
+Cámara de alta resolución de 50 MP
+vivo Y35 5G ofrece una experiencia fotográfica altamente versátil y de nivel profesional con una gama de cámaras traseras dobles de 50 MP ƒ/1.8 + 2MP ƒ/2.4, también tendrás 16 MP ƒ/2.0 de cámara frontal para selfies.
+
+Pantalla LCD FHD+
+Pantalla LCD de 6.58 pulgadas, la pantalla se actualiza y responde más rápido. Para incrementar la fluidez, especialmente en los juegos, lo que te permite tener una experiencia más fresca en la palma de tu mano. Sensor de huella integrado.
+
+Procesador potente y gran almacenamiento interno
+Con el procesador Snapdragon 680 y 8 GB RAM + 256 GB de memoria interna, podrás manejar diferentes juegos con facilidad. También te permitirá instalar y ejecutar todas las aplicaciones que quieras. Podrás ampliar el almacenamiento mediante una tarjeta microSD de hasta 256 GB.
+',
+       'smartphone',
+       'Vivo',
+       19,
+       224.99,
+       0,
+       4,
+       'static/images/category_smartphone15.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Móvil - VIVO Snapdragon 6802.4GHZ*4 + 1.9GHZ*48 núcleos, Oro, 256 GB, 8 GB RAM, 6,58 ", Full HD+, Snapdragon, 5000 mAh, Android'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Móvil - Samsung Galaxy A15 LTE, Azul, 128GB, 4GB RAM, 6.5" FHD+, MediaTek G99 Octa-Core, 5000mAh, Android 14', 
+       'Descripción
+Mejoras visuales para un resultado brillante
+La nueva pantalla de Galaxy A15 se apoya en la tecnología Vision Booster para que puedas ver imágenes, grabaciones de vídeos, documentos de texto y todo tipo de contenido en streaming en entornos exteriores, incluso a plena luz del sol, ya que el brillo de la pantalla se adapta de forma precisa a la iluminación del ambiente para que no tengas que forzar la vista. Además, con las funciones de Eye Comfort Shield, es posible disminuir la emisión de luz azul que emite la pantalla.
+Selección de cámaras para guardar todos tus recuerdos
+¡Luces, cámaras, diversión! Conviértete en un auténtico profesional de la fotografía con el amplio juego de lentes de Galaxy A15 y captura paisajes mágicos, selfies divertidísimos y momentos irrepetibles con una calidad excepcional. Al disponer de varias opciones, las posibilidades se multiplican: tienes la cámara principal de 50 MP con estabilización óptica de imagen, la cámara con gran angular de 5 MP, la cámara macro de 2 MP y la cámara frontal de 13 MP.
+Capacidad para guardar todo lo que necesitas
+¿Estás cansado de tener que eliminar fotos y vídeos que te gustan de tu smartphone para poder disponer de espacio libre? ¡Eso ya se ha acabado! Galaxy A15 cuenta con 4 GB de memoria RAM y 128 GB de memoria interna para que puedas almacenar todos tus documentos personales en un único dispositivo. ¿No es suficiente? También puedes ampliar la capacidad con una tarjeta MicroSD de hasta 1 TB.
+',
+       'smartphone',
+       'Samsung',
+       26,
+       199,
+       159,
+       4,
+       'static/images/category_smartphone16.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Móvil - Samsung Galaxy A15 LTE, Azul, 128GB, 4GB RAM, 6.5" FHD+, MediaTek G99 Octa-Core, 5000mAh, Android 14'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Móvil - Samsung Galaxy S23 5G, Botanic Green, 256GB, 8GB RAM, con IA, 6.1" FHD+, Qualcomm Snapdragon, 3900mAh, Android 13', 
+       'Descripción
+Comparte lo épico
+La experiencia de visualización mejora épicamente en exteriores. La pantalla Dynamic AMOLED 2x FHD+ de 6.1” cuenta con una visibilidad adaptativa para exteriores, alcanzando 1.750 nits de brillo máximo y un modo noche más agradable. Navega y haz scroll de manera suave y fluida gracias a sus 120 Hz de tasa de refresco.
+La mejor cámara con Nightography
+Dale un giro íncreíble a tus fotos y vídeos con la cámara de calidad profesional de Galaxy S23 y atrévete a ser el protagonista de la noche. Galaxy S23 ofrece una calidad de imagen de alta resolución y calidad sin precedentes. Haz selfies, retratos o vídeos llenos de brillo y siempre nítidas, incluso en situaciones de poca luz.
+Máximo rendimiento para tus partidas
+Cuando tus partidas online son épicas, lo normal es querer compartirlas. Galaxy S23 no solo te permite jugar con la máxima calidad los últimos juegos del mercado, también te permite compartirlos con tus amigos para que sean aún más épicos. Todo gracias a su increíble potencia.
+El chipset y sistema de refrigeración más avanzado
+Disfruta jugando, trabajando o compartiendo contenido en vivo durante muchísimo tiempo. El procesador de 4 nm de Galaxy S23 te ofrece una experiencia increíblemente fluida. Su sistema de refrigeración Vapor Cooling, aún más grande, mantendrá el calor a raya.
+',
+       'smartphone',
+       'Samsung',
+       55,
+       869,
+       619,
+       4.5,
+       'static/images/category_smartphone17.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Móvil - Samsung Galaxy S23 5G, Botanic Green, 256GB, 8GB RAM, con IA, 6.1" FHD+, Qualcomm Snapdragon, 3900mAh, Android 13'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Móvil - Samsung Galaxy S24 Ultra, Titanium Gray, 512GB, 12GB RAM, 6.8" QHD+, con IA, S Pen, Qualcomm Snapdragon 8, 5000mAh, Android 14', 
+       'Descripción
+Un diseño de referencia con ADN Galaxy
+El Galaxy S24 Ultra presenta el diseño icónico de la serie Ultra, compatible con S Pen, para que crees y trabajes sin límites. Con un bonito acabado metálico y marcos aún más pequeños, tu smartphone se ajusta a tus preferencias gracias a la tecnología One UI 6.1, que te permite customizarlo a tu gusto y, además, mantener tus datos e información a buen recaudo con la seguridad de Samsung Knox.
+Un dispositivo que razona, planifica y crea
+Si hay algo que destaca del nuevo lanzamiento de Samsung, es la innovación a la hora de interactuar con la información y el medio que nos rodea. La Inteligencia Artificial resuelve tus dudas y te presenta funciones impresionantes. Por ejemplo, te permite traducir al instante llamadas y chats, encontrar información haciendo un simple gesto en tu pantalla, y ahorrar tiempo navegando por internet con su Web Assist. Además, incorpora herramientas, como Note Assist y Transcript Assist, para ayudarte a trabajar y estudiar de manera aún más productiva.
+Eleva tu experiencia de fotografía
+El modelo más avanzado de la nueva Serie S te ofrece una tecnología cámara premium, con 200MP de resolución. Con Quad Zoom, solo disponible en Galaxy S24 Ultra, será como si llevaras un completo kit de lentes en el bolsillo. Y es que podrás tomar fotos y vídeos con hasta 4 niveles de zoom sin perder calidad.
+El chip más potente jamás visto en un Galaxy
+Si algo hay que remarcar de este modelo de la Serie S24 es su procesador. El Snapdragon 8 Gen 3 de 4nm te ofrece el máximo rendimiento sin comprometer la eficiencia. Su sistema de refrigeración es un 90% más grande, lo que reduce la temperatura y te garantiza una experiencia premium.
+',
+       'smartphone',
+       'Samsung',
+       34,
+       1459,
+       0,
+       5,
+       'static/images/category_smartphone18.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Móvil - Samsung Galaxy S24 Ultra, Titanium Gray, 512GB, 12GB RAM, 6.8" QHD+, con IA, S Pen, Qualcomm Snapdragon 8, 5000mAh, Android 14'
+);
+
 
 INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
 SELECT 'Monitor - LENOVO G34w-30, 34 ", UWQHD, 5 ms, 165 Hz, Negro', 
