@@ -37,4 +37,14 @@ def render_index(request: Request):
         "Monitores": monitors
     }
 
-    return templates.TemplateResponse("pages/index.html", {"request": request, "products_by_type": products_by_type})
+    category_urls = {
+        "Portátiles": "/category/laptops",
+        "Smartphones": "/category/smartphones",
+        "Monitores": "/category/monitors"
+    }
+
+    return templates.TemplateResponse("pages/index.html", {
+        "request": request,
+        "products_by_type": products_by_type,
+        "category_urls": category_urls
+    })
