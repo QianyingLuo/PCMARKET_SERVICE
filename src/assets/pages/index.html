@@ -1,0 +1,49 @@
+{% extends "templates/base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles/index_style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+
+
+<div class="container-index">
+    <div class="banner">
+        <a href="#">
+            <img src="/static/images/banner.png" alt="pcmarket banner">
+        </a>
+    </div>
+</div>    
+
+<div class="small-container-category">
+    {% for product_type, products in products_by_type.items() %}
+    <h2 class="category-title">{{ product_type }}</h2>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-4">
+            <img src="{{ product.image }}" alt="{{ product.name }}">
+            <h5>{{ product.name | truncate(120) }}</h5>
+            <div class="rating">
+                {% for _ in range(int(product.stars)) %}
+                <i class="fa-solid fa-star"></i>
+                {% endfor %}
+                {% if product.stars % 1 >= 0.5 %}
+                <i class="fa-regular fa-star-half-stroke"></i>
+                {% endif %}
+                {% for _ in range(5 - int(product.stars) - (1 if product.stars % 1 >= 0.5 else 0)) %}
+                <i class="fa-regular fa-star"></i>
+                {% endfor %}
+            </div>
+            <p>
+                {% if product.discounted_price != 0 %}
+                    <span style="text-decoration: line-through;">{{ product.price }}€</span><br>
+                    <span style="color: rgb(227, 43, 43)">{{ product.discounted_price }}€</span> 
+                {% else %}
+                    {{ product.price }}€
+                {% endif %}
+            </p>
+        </div>
+        {% endfor %}
+        <a class="discover-more" href="#" style="--clr:#ff523b"><span>Descubre más >></span></a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
