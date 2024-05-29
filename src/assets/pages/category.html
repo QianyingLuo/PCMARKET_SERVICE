@@ -1,0 +1,43 @@
+{% extends "templates/base.html" %}
+
+<title>{% block title %}Ofertas {{type}} al mejor precio | PcMarket{% endblock %}</title>
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles/category_style.css">
+
+<div class="small-container-category">
+    <div class="row-category">
+        <h2 class="category-title">{{type}}</h2>
+        <div class="row">
+            {% for product in products %}
+            <div class="col-4">
+                <img src="/{{ product.image }}" alt="{{ product.name }}">
+                <div>
+                    <h5>{{ product.name | truncate(135) }}</h5>
+                </div>
+                <div class="rating">
+                    {% for _ in range(int(product.stars)) %}
+                    <i class="fa-solid fa-star"></i>
+                    {% endfor %}
+                    {% if product.stars % 1 >= 0.5 %}
+                    <i class="fa-regular fa-star-half-stroke"></i>
+                    {% endif %}
+                    {% for _ in range(5 - int(product.stars) - (1 if product.stars % 1 >= 0.5 else 0)) %}
+                    <i class="fa-regular fa-star"></i>
+                    {% endfor %}
+                </div>
+                <p>
+                    {% if product.discounted_price != 0 %}
+                        <span style="text-decoration: line-through;">{{ product.price }}€</span><br>
+                        <span style="color: rgb(227, 43, 43)">{{ product.discounted_price }}€</span> 
+                    {% else %}
+                        {{ product.price }}€
+                    {% endif %}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>    
+</div>
+<br><br><br><br>
+{% endblock %}
