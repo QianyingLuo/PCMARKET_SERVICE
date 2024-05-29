@@ -1239,6 +1239,55 @@ WHERE NOT EXISTS (
     SELECT 1 FROM product WHERE name = 'Móvil - Samsung Galaxy S24 Ultra, Titanium Gray, 512GB, 12GB RAM, 6.8" QHD+, con IA, S Pen, Qualcomm Snapdragon 8, 5000mAh, Android 14'
 );
 
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Móvil - Xiaomi Redmi Note 13 Pro, Morado, 512 GB, 12 GB, 6.67" Full HD+AMOLED, MediaTek Helio G99 Ultra, 5000 mAh, Android', 
+       'Descripción
+Cámara triple de 200 MP con OIS
+Captura la grandeza de todo tu mundo con el sistema de cámara triple del Redmi Note 13 Pro, que incluye una increíble cámara principal de 200 MP con Estabilización Óptica de la Imagen. Además, con las cámaras dedicadas ultra gran angular y macro, tendrás aún más formas de ver y capturar el entorno.
+
+Pantalla AMOLED de 120 Hz
+Con una tasa de refresco de 120 Hz, el Redmi Note 13 Pro es suave como la seda y muy agradable de usar para todo, incluido desplazarse por las redes sociales y navegar por Internet. Disfruta de colores vivos y vibrantes, un contraste nítido y un brillo impresionante. Reduce la fatiga visual con la atenuación PWM de 1920 Hz y tres certificaciones independientes de TÜV Rheinland.
+
+IP54
+Con una clasificación IP54, Redmi Note 13 Pro 5G está bien equipado con protección contra salpicaduras y polvo. Además, la pantalla del Redmi Note 13 Pro 5G se ha optimizado para mejorar el reconocimiento y el control táctil, evitando disparos accidentales con el agua.
+',
+       'smartphone',
+       'Xiaomi',
+       49,
+       399,
+       345,
+       4,
+       'static/images/category_smartphone19.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Móvil - Xiaomi Redmi Note 13 Pro, Morado, 512 GB, 12 GB, 6.67" Full HD+AMOLED, MediaTek Helio G99 Ultra, 5000 mAh, Android'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Móvil - Samsung Galaxy A35 5G, 128GB, 6GB RAM, 6.6" FHD+, Exynos 1380, 5000 mAh, Android 14, Light Blue', 
+       'Descripción
+Una pantalla con mucho estilo
+Con una cubierta trasera brillante, Galaxy A35 exhibe una estética elegante y refinada. Su pantalla Super AMOLED FHD+ de 6,6” ofrece una tasa de refresco de 120 Hz, lo que garantiza una experiencia visual fluida y envolvente al disfrutar de tus series y películas favoritas. Con colores vivos y una calidad de imagen excepcional, te sumergirás por completo en la acción.
+
+Rendimiento digno de mención
+¡Galaxy A35 es la solución perfecta si estás preocupado por la velocidad de tu smartphone! Con su avanzado procesador Octa-Core integrado, este dispositivo proporciona la potencia necesaria para ejecutar aplicaciones de manera rápida, fluida y cómoda, sin limitaciones. Es prácticamente como llevar un ordenador en la palma de la mano.
+
+Fotografía como un profesional
+Conviértete en un maestro de la fotografía con el amplio conjunto de lentes del Galaxy A35 y disfruta capturando paisajes impresionantes, selfies divertidos y momentos inolvidables con una calidad excepcional. Al tener múltiples opciones disponibles, las oportunidades se multiplican: desde la cámara principal de 50 MP con estabilización óptica de imagen, hasta la cámara gran angular de 8 MP, la cámara macro de 5 MP y la cámara frontal de 13 MP.
+
+Almacenamiento destacable
+Despídete de tener que borrar tus imágenes y videos para liberar espacio en tu teléfono móvil. Con Galaxy A35, se acabaron las preocupaciones por la memoria. Equipado con 6 GB de RAM y 128 GB de almacenamiento interno, este dispositivo te permite guardar todos tus documentos personales en un solo lugar. ¿Necesitas aún más espacio? Podrás expandir la capacidad con una tarjeta MicroSD de hasta 1 TB.
+',
+       'smartphone',
+       'Samsung',
+       60,
+       339,
+       0,
+       4,
+       'static/images/category_smartphone20.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Móvil - Samsung Galaxy A35 5G, 128GB, 6GB RAM, 6.6" FHD+, Exynos 1380, 5000 mAh, Android 14, Light Blue'
+);
+
 
 INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
 SELECT 'Monitor - LENOVO G34w-30, 34 ", UWQHD, 5 ms, 165 Hz, Negro', 
@@ -1420,3 +1469,347 @@ WHERE NOT EXISTS (
     SELECT 1 FROM product WHERE name = 'Monitor - CHIQ 22F650, 22 ", Full-HD, 6 s, 100 Hz, Gris'
 );
 
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Monitor - HP M27F, 27", Full HD, 5 ms, 75Hz, HDMI, VGA, Negro, Plata', 
+       'Descripción
+Sumérgete en las perfectas imágenes que te ofrece este Monitor HP M27F, un espectacular lienzo diseñado para redefinir los conceptos de comodidad, bienestar y sostenibilidad. Juega, trabaja o simplemente disfruta gracias a esta redefinición del concepto de alta definición.
+
+Pantalla de gran amplitud
+Con unas dimensiones de 68,6 cm ideal para disfrutar jugando, este monitor FHD ofrece magníficos resultados combinados con el estilo más cuidado, e incorpora tecnología IPS para ángulos de visionado de máxima amplitud de 178 grados, cobertura del espacio de color sRGB del 99% para la máxima fidelidad cromática y Freesync para que tus ojos y tu imaginación trabajen a la misma velocidad. Pantalla de 1080p con una calidad inolvidable e imágenes brillantes en una impresionante pantalla Full HD. Optimización sin fisuras optimiza tu configuración gracias a un perfil fino, una innovadora reducción de cables y un impecable diseño para trabajar con monitores contiguos.
+
+Tecnología Eyesafe
+Mayor comodidad de visionado gracias a la tecnología Eyesafe, que no compromete la calidad cromática. Monitor fabricado con conciencia medioambiental, con un 85% de materiales reciclados y empaquetado también con materiales reciclados. La combinación perfecta entre sostenibilidad y estilo.
+
+Fabricado respetando el Medio Ambiente
+Basado en un análisis interno de HP. El monitor, fabricado en un 85% con plástico reciclado posconsumo, contiene un 5 % —calculado según el peso— de material plástico procedente de los océanos. El 100% del embalaje amortiguado externo en caja/cartón corrugado está elaborado a partir de fibras de origen sostenible certificadas y recicladas. Almohadillas de fibra elaboradas con un 100% de fibra de madera reciclada y material orgánico. Quedan excluidas las bolsas de plástico y el laminado de plástico.
+Detalles que marcan la diferencia
+Este monitor FHD ofrece magníficos resultados combinados con el estilo más cuidado posible, e incorpora tecnología IPS para un perfecto visionado de máxima amplitud de 178 grados, cobertura del espacio de color sRGB del 99 % para la máxima fidelidad cromática y Freesync para que tus ojos y tu imaginación trabajen a la misma velocidad. La tecnología IPS te ofrece vistas claras desde casi cualquier ángulo. 
+
+Optimización sin fisuras
+Optimiza tu configuración gracias a un perfil fino, una innovadora reducción de cables y un impecable diseño para trabajar con monitores contiguos. Goza de una experiencia de usuario muy fluida gracias a su gran calidad visual desde cualquier ángulo y a su combinación de 75Hz de tasa de refresco.
+',
+       'monitor',
+       'HP',
+       35,
+       199,
+       159,
+       4.5,
+       'static/images/category_monitor6.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Monitor - HP M27F, 27", Full HD, 5 ms, 75Hz, HDMI, VGA, Negro, Plata'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Monitor gaming - Samsung G5 LC34G55TWWPXEN, 34", UWQHD, 1 ms, 165Hz, Negro', 
+       'Descripción
+Llega más lejos
+Sumérgete mejor en tu juego y concentrarte en tu contenido gracias al monitor gaming curvo G5 LC34G55TWWPXEN de Samsung de 34 pulgadas. Con una resolución de pantalla de 3440x1440 píxeles, el G5 ofrece imágenes nítidas. Toma el control de tu juego con movimiento épicos.
+
+Curva 1000R
+El radio de curvatura del G5 con 1000R corresponde exactamente al del ojo humano y te catapulta directamente a la acción. Esto te permite sumergirte aún mejor en tu juego y concentrarte en tu contenido.
+
+Resolución Ultra WQHD
+Con una resolución de pantalla de 3440x1440 píxeles, que es aproximadamente 2,4 veces la densidad de un Full HD, el G5 ofrece imágenes nítidas. Y con más píxeles, puede ver más páginas web y documentos a la vez sin tener que desplazarse o acercarse.
+
+Siempre un paso adelante de tu enemigo
+Con la frecuencia de actualización de 165Hz, disfrutará de juegos fluidos sin tartamudeo ni desenfoque de movimiento. Para que puedas desarrollar todo tu potencial.
+
+AMD FreeSync Premium
+Las tecnologías AMD FreeSync Premium y Adaptive Sync reducen la distorsión de la imagen, el tartamudeo y el retraso de entrada para que siempre tengas una experiencia de juego fluida.
+
+Gráficos HDR verdaderamente realistas
+Gráficos impactantes con HDR10. Descubre todos los secretos que se esconden en las sombras del juego con negros oscuros profundos, blancos luminosos y una resolución increíblemente detallada.
+',
+       'monitor',
+       'Samsung',
+       52,
+       449,
+       379,
+       5,
+       'static/images/category_monitor7.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Monitor gaming - Samsung G5 LC34G55TWWPXEN, 34", UWQHD, 1 ms, 165Hz, Negro'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Monitor gaming - Acer Nitro KG241YM3, 23.8" Full HD, 1 ms, 180Hz, 2 x HDMI(2.0)+1 x DisplayPort(1.2)+SPK+Audio out, FreeSync Premium, Negro', 
+       'Descripción
+El monitor gaming Acer Nitro KG241YM3 de 23.8" Full HD, ofrece una experiencia de visualización adecuada para juegos y otras actividades multimedia
+
+Tamaño de pantalla
+El monitor Acer Nitro KG241YM3 presenta una pantalla de 23.8 pulgadas, lo que proporciona un amplio espacio de visualización y una experiencia inmersiva.
+
+Frecuencia de actualización
+El monitor Acer Nitro KG241YM3 tiene una frecuencia de actualización de 180 Hz, podrás ver el siguiente fotograma rápidamente y hacer que las imágenes sean más impecables. Podrás responder rápidamente a los adversarios y apuntar a los objetivos fácilmente.
+
+Tiempo de respuesta
+El Acer Nitro KG241YM3 tiene tiempo de respuesta de 1 milisegundo (ms) para reducir el desenfoque de movimiento en escenas rápidas y mejorar la experiencia de juego.
+
+Monitor 100% ergonómico
+Con inclinación de -5°a 35°para permitir una posición de visualización más cómoda y adaptarse a tus preferencias.
+
+Tecnología de sincronización
+AMD FreeSync Premium adapta la velocidad de fotogramas del monitor a la tarjeta gráfica, garantiza un mínimo de 120 Hz en FHD y velocidades de fotogramas mínimas (LFC). Si la velocidad de fotogramas cae por debajo del mínimo admitido de la pantalla, LFC garantiza que este mínimo de la pantalla esté garantizado y que el juego se mantenga fluido.
+',
+       'monitor',
+       'Acer',
+       48,
+       119,
+       0,
+       4.5,
+       'static/images/category_monitor8.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Monitor gaming - Acer Nitro KG241YM3, 23.8" Full HD, 1 ms, 180Hz, 2 x HDMI(2.0)+1 x DisplayPort(1.2)+SPK+Audio out, FreeSync Premium, Negro'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Monitor gaming - Samsung Odyssey G3 LS24AG320NUXEN , 24", Full-HD, 1 ms, FreeSync Premium, Negro', 
+       'Descripción
+Llega más lejos
+Las escenas cobrarán vida con el monitor gaming Samsung Odyssey G3 LS24AG320NUXEN de 24 pulgadas. Con el monitor gaming Samsung Odyssey G3 salta sobre los enemigos tan pronto como los veas y mantente al frente con movimientos precisos de tu ratón.
+
+Reacción en tiempo real
+Con la frecuencia de actualización de 165Hz, disfrutará de juegos fluidos sin retardos ni desenfoques de movimiento. Para que puedas desarrollar todo tu potencial.
+
+1ms de tiempo de respuesta
+Los píxeles de la pantalla cambian de color con una respuesta casi instantánea de un 1ms, lo que permite que la acción trepidante fluya con la misma precisión que en el mundo real.
+
+AMD FreeSync Premium
+Que nada detenga tu partida. AMD FreeSync Premium ofrece tecnología de sincronización adaptada para disminuir cortes, ralentizaciones y la latencia de entrada. Una velocidad inferior de fotogramas garantiza que cada escena fluya sin problemas.
+
+Modo Eye Saver y Flicker Free
+Juega aún más tiempo. El modo Eye Saver minimiza la luz azul lo suficiente para mantener los ojos relajados y cómodos cuando se juega durante periodos prolongados. La tecnología Flicker Free elimina continuamente los molestos parpadeos de la pantalla para que puedas concentrarte durante más tiempo con menos distracciones o fatiga visual.
+',
+       'monitor',
+       'Samsung',
+       51,
+       199,
+       159,
+       4,
+       'static/images/category_monitor9.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Monitor gaming - Samsung Odyssey G3 LS24AG320NUXEN , 24", Full-HD, 1 ms, FreeSync Premium, Negro'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Monitor - HP M24fwa, 24", Full HD, 75Hz, 5ms, IPS, 16:9, HDMI, VGA, Antirreflejo, Eye Ease, Blanco', 
+       'Descripción
+¿Estás buscando un monitor que lo aguante todo y ocupe poco? Disfruta al máximo de este monitor ultrafino con la máxima calidad de imagen, audio integrado y HP Eye Ease con tecnología con certificación Eyesafe® , con un diseño que te ofrece un nuevo concepto de comodidad, bienestar y sostenibilidad.
+
+La nueva definición de alta definición
+Este monitor de 23.8" incorpora tecnología IPS, cobertura del espacio de color sRGB del 99 %, una frecuencia de actualización de 75 Hz y AMD FreeSync™ para que las imágenes desfilen ante ti a la velocidad de tu imaginación
+
+Excelentes resultados
+Excelente en el plano visual Evita la fatiga ocular durante todo el día gracias a HP Eye Ease con tecnología con certificación Eyesafe® y evita que la calidad cromática se vea comprometida
+
+No creerás lo que ves; tampoco lo que oyes
+Este monitor te ofrece no solo excelente calidad visual, sino también de sonido, gracias a su audio integrado. Trabaja o juega disfrutando de una experiencia completa y de nivel superior. Además, podrás optimizar el espacio del que dispones gracias a su fino perfil, su diseño moderno y su innovadora gestión del cableado
+
+Calidad visual con conciencia medioambiental
+Monitor fabricado con conciencia medioambiental, con un 85 % de plástico reciclado posconsumo y empaquetado también con materiales reciclados . La combinación perfecta entre sostenibilidad y calidad visual.
+',
+       'monitor',
+       'HP',
+       37,
+       144,
+       0,
+       4,
+       'static/images/category_monitor10.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Monitor - HP M24fwa, 24", Full HD, 75Hz, 5ms, IPS, 16:9, HDMI, VGA, Antirreflejo, Eye Ease, Blanco'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Monitor - SMART TECH 270N02XIF, 27 ", Full-HD, 4 ms, 75 Hz, Black', 
+       'Descripción
+El monitor Smart Tech 270N02XIF es un dispositivo de visualización avanzado y versátil. Con una pantalla de alta resolución y tecnología inteligente, ofrece una experiencia visual impresionante. Sus características incluyen una pantalla de 27 pulgadas con resolución FullHD, lo que permite una reproducción de colores vívida y detalles nítidos.
+También incluye puertos HDMI y USB-C para facilitar la conexión con otros dispositivos. En general, el monitor Smart Tech 270N02XIF combina calidad de imagen excepcional con funcionalidades para satisfacer las necesidades tanto de usuarios profesionales como de entretenimiento en el hogar.
+Características:
+•	Diseño minimalista sin bisel
+•	Sincronización adaptativa
+•	Color verdadero en FHD
+•	Luz azul baja
+Especificaciones de la pantalla del monitor Smart Tech 270N02XIF:
+•	Pantalla
+•	Tratamiento de superficies: Anti-Glare, Hard Coating (3H)
+•	Diseño plano
+•	Tipo de panel (modo de visualización): IPS panel
+•	Brillo (Tipico): 300 cd/m² (Max.)
+•	Contraste: 1000 : 1
+•	Paso de píxel de color (mm): 0.3114(H) x 0.3114(V)
+•	Resolución (H x V) : 1920*1080
+•	Relación de aspecto: 16:9
+•	Tiempo de respuesta (típico): 14 ms Typ (con OD 5ms)
+•	Colores de pantalla: 16.7M
+•	Frecuencia horizontal: 52.32k-109KHzz
+•	Frecuencia vertical: 48 -100HZ
+•	Máx. frecuencia de visualización (Resolución H*V/Fv): 1920*1080 100Hz para HDMI
+•	Interfaz:
+•	1 x DP
+•	1 x HDMI
+•	Type-c PD 15W
+•	Fuerza:
+•	Consumo (tipico): On: <48W, Off<=0.5W
+•	Rango de alimentación de CA: 100-240V~, 50/60Hz
+•	Modo de energía: Adaptador 12V 4A
+•	Enchufe de audífonos: Sí
+•	Altavoz (típico, salida del amplificador): Sí 4ohms 3W*2 , soporte de placa base 4ohms 2W*2
+•	Dimensiones Físicas
+•	Dimensión con soporte (ancho x profundidad x altura): 614.47*443.18*187.69mm
+•	Dimensión sin soporte (W*D*H):614.47*43.72*359.27mm
+•	Dimensión con el paquete (W*D*H): 673*100*432mm
+•	Peso neto: 3.51 kg
+•	Peso del paquete: 5.16 kg
+•	Ergonomía
+•	Inclinación: -5°~15°(+/-2°)
+•	Cerradura Kensington: Sí
+•	Montaje VESA: 100*100 (agujero de tornillo: 4 agujeros con M4 x 8 mm)
+•	Otra información:
+•	Contra parpadeo: Sí
+•	Sincronización adaptativa: Sí
+•	Sincronización gratuita: adaptativa
+•	Anti-luz azul: Sí
+•	Anti reflejante: Sí
+•	Control de espalda: Sí
+•	Visualización en pantalla: 12 Idioma: inglés, francés, alemán, chino, italiano, Español, portugués, turco, polaco, holandés, japonés, coreano
+•	Clase de eficiencia energética: E
+',
+       'monitor',
+       'Smart Tech',
+       35,
+       229.9,
+       119.9,
+       3.5,
+       'static/images/category_monitor11.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Monitor - SMART TECH 270N02XIF, 27 ", Full-HD, 4 ms, 75 Hz, Black'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Monitor - LG 32MN500M-B, 31.5" Full-HD, 5 ms, 75 Hz, 2 x HDMI, Radeon FreeSync, Negro', 
+       'Descripción
+Trabaja con toda la comodidad que necesitas gracias al monitor LG 32MN500M-B de 31.5 pulgadas. Su resolución de 1920 x 1080 píxeles te asegura que está a la altura de las tareas que debes realizar. Si necesitas tener una calidad alta de imagen o bien debes pasar horas y horas delante de la pantalla, lo necesitas.
+
+Pantalla IPS Full HD. Color Verdadero desde cualquier ángulo
+La tecnología IPS destaca el rendimiento de las pantallas de cristal líquido. Los tiempos de respuesta se acortan, se mejora la reproducción del color y los usuarios pueden ver la pantalla prácticamente desde cualquier ángulo.
+
+Flicker Safe (parpadeo seguro). Reduce la fatiga visual
+Flicker Safe reduce el nivel de parpadeo en pantalla a casi cero, lo que ayuda a proteger sus ojos. Los usuarios pueden trabajar cómodamente durante todo el día.
+
+Menos azul, mayor comodidad visual
+Al reducir la luz azul para ayudar a disminuir la fatiga ocular, el Modo Lector proporciona una condición óptima para la lectura. Con solo unos pocos movimientos de control de joystick, puede leer más cómodamente la pantalla de su monitor.
+
+Imagen más clara y suave
+Con la tecnología Radeon FreeSync™, los jugadores pueden experimentar sin problema movimiento fluido en juegos de alta resolución y ritmo rápido. Radeon FreeSync ™ prácticamente elimina el desgarro y el tartamudeo de la pantalla.
+
+Reacciona más rápido a los oponentes
+Minimiza el input lag con Dynamic Action Sync para que los jugadores puedan ver cada momento en tiempo real.
+
+Interfaz de usuario más fácil
+Puedes personalizar el espacio de trabajo dividiendo la pantalla o ajustando las opciones básicas del monitor con solo unos pocos clics del mouse.
+',
+       'monitor',
+       'LG',
+       40,
+       155,
+       0,
+       4.5,
+       'static/images/category_monitor12.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Monitor - LG 32MN500M-B, 31.5" Full-HD, 5 ms, 75 Hz, 2 x HDMI, Radeon FreeSync, Negro'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Monitor - CHIQ 24F650, 23,8 ", Full-HD, 6 ms, 100 Hz, Gris', 
+       'Descripción
+Monitor LED IPS de 23.8" con resolución Full HD con un diseño minimalista sin marco.
+Características CHiQ 24F650:
+•	Panel IPS: optimice los colores y el brillo de la pantalla para mejorar su experiencia visual.
+•	Frecuencia de actualización de 100 Hz: responda más rápido con fotogramas más suaves.
+•	Amplia gama de colores: los colores y detalles del juego se verán más realistas y refinados.
+•	Diseño sin marco : disfruta de la mejor experiencia de juego con biseles superestrechos.
+•	Antiparpadeo (Flicker-free) y menos luz azul (Low Blue Light): Trabaje o juegue incluso más tiempo y evite la fatiga visual y la fatiga.
+•	Ángulo de visión amplio de 178°: los colores y los detalles permanecerán nítidos en más ángulos con un ángulo de visión amplio de 178°
+Especificaciones CHiQ 24F650:
+•	Tamaño: 23.8"
+•	Tipo panel: IPS
+•	Resoción (H x V): 1920*1080
+•	Tasa de refresco: 100Hz
+•	Curvature: Flat
+•	Aspect Ratio: 16:9
+•	Viewing Angle: ≥178(H), ≥178°(V)
+•	Ratio contraste: 1000:1
+•	DCR(Dynamic Contrast Ratio): 1M:1
+•	Brillo: 250cd/m2
+•	Tiempo respuesta: 6ms
+•	Panel Surface: Anti-glare
+•	Display Colors: 16.7M colors
+•	HDMI 1 | DP 1 | VGA 1 | Audio Output 1
+•	Frameless Design: Sí
+•	Color: Grís
+•	Kensington Lock: Sí
+•	Height Adjustable Stand: No
+•	Tilt (front 5°/ back 15°): Sí
+•	Speaker Availability: No
+•	GAME PLUS: Sí
+•	Filter Blue Light: Sí
+•	Flicker-free: Sí
+•	FPS/RTS Game Profiles Shifting: Sí
+•	Freesync: Sí
+•	G-sync compatible: No
+•	HDR Ready: No
+•	PIP/PBP: No
+•	HDMI Cable(option): 1.5m
+•	Peso Neto: 2.6Kg
+•	Peso con caja: 4.3Kg
+•	Dimensiones con peana (AxPxA) 539.6*139*411.4 mm
+•	Dimensiones sin peana (LxWxH) 539.6*45.7*319.1 mm
+•	VESA Wall Mount (mm): 75*75mm
+',
+       'monitor',
+       'Chiq',
+       53,
+       109.99,
+       89.99,
+       3.5,
+       'static/images/category_monitor13.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Monitor - CHIQ 24F650, 23,8 ", Full-HD, 6 ms, 100 Hz, Gris'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Monitor - LG 32SR85U-W, 31.5", UHD 4K, 5 ms, 60 Hz, HDMI x2, USB-C x1, Blanco', 
+       'Descripción
+Infinitas posibilidades de entretenimiento en streaming y teletrabajo con el Monitor LG 32SR85U-W. LG MyView Smart Monitor está diseñado para el trabajo y el entretenimiento. Mira tus series favoritas fácilmente desde múltiples plataformas de streaming y configura tu espacio de trabajo de manera rápida, con ordenador o sin él.
+
+WebOS 23: nueva home: Descubre lo que te espera
+Con WebOS 23, podrás explorar y disfrutar de todos tus contenidos favoritos como Netflix, Prime Video, Disney+, YouTube, Spotify, Twitch, Apple TV, RTVE Play, OrangeTV, MiTele y muchos más. Además, puedes obtener recomendaciones personalizadas, desde el contenido hasta la música y disfruta de aplicaciones incorporadas como deportes, juegos y LG Fitness.
+
+Pantalla UHD 4K IP de 31.5 pulgadas: Gran pantalla tanto para el trabajo como para el entretenimiento
+La pantalla IPS de 4K UHD (3840x2160), con una cobertura de hasta el 95% del espacio de color DCI-P3, reproduce imágenes nítidas y colores precisos desde ángulos amplios. Esto te permite experimentar una gran inmersión visual, ya sea disfrutando de entretenimiento o realizando tareas de trabajo.
+
+IA concierge: Escuchando tus gustos
+Para activar el asistente personal AI Concierge simplemente presiona el botón del mando Magic remote y recibirás recomendaciones basadas en tus preferencias en cualquier momento.
+
+Panel de control de ThinQ: Controla fácilmente tus electrodomésticos LG
+El panel de control de Thinq te hace la vida más fácil. Puedes verificar y controlar el estado de tus electrodomésticos LG en una sola pantalla con el mando a distancia.
+
+AirPlay 2 + Screen Share + Bluetooth: Refleja directamente de sus dispositivos
+Comparte fácilmente el contenido de tu dispositivo inteligente a tu monitor con AirPlay 2 (para dispositivos Apple) o Screen share (para dispositivos Android). También disfruta de una buena calidad de sonido con Bluetooth.
+
+USB Tipo-C™: Fácil control y conectividad
+Crea tu oficina perfecta en casa, incluso en un espacio pequeño. El puerto USB Type-C™ admite la conexión a varios dispositivos, transferencia de datos y hasta 65W de entrega de energía a través de solo un cable.
+
+Múltiples puertos: Interfaz variada
+LG MyView Smart Monitor ofrece tres puertos USB Tipo-C ™ y dos puertos HDMI compatibles con varios dispositivos para una visualización fluida.
+',
+       'monitor',
+       'LG',
+       52,
+       599,
+       0,
+       5,
+       'static/images/category_monitor14.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Monitor - LG 32SR85U-W, 31.5", UHD 4K, 5 ms, 60 Hz, HDMI x2, USB-C x1, Blanco'
+);
