@@ -1805,11 +1805,339 @@ LG MyView Smart Monitor ofrece tres puertos USB Tipo-C ™ y dos puertos HDMI co
 ',
        'monitor',
        'LG',
-       52,
+       47,
        599,
        0,
-       5,
+       4.5,
        'static/images/category_monitor14.jpg'
 WHERE NOT EXISTS (
     SELECT 1 FROM product WHERE name = 'Monitor - LG 32SR85U-W, 31.5", UHD 4K, 5 ms, 60 Hz, HDMI x2, USB-C x1, Blanco'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Monitor gaming - LG 24GN60R-B, 23,8", Full-HD, 1 ms, 144Hz, HDMI x1 , Display Port x1, Negro', 
+       'Descripción
+El Monitor Gaming LG 24GN600-B UltraGear, un equipo increíblemente potente, aumenta tus posibilidades de victoria.
+
+Diseñado para la máxima velocidad
+Con IPS 1ms comparable a la velocidad TN, te ofrece menor imagen residual y un tiempo de respuesta rápido, disfrutarás de un rendimiento del juego totalmente nuevo.
+
+Cuando juegas a 144Hz y 1ms cambia la historia
+Con una tasa de actualización de 144 Hz, podrás ver el siguiente fotograma rápidamente y hacer que las imágenes sean más impecables. Podrás responder rápidamente a los adversarios y apuntar a los objetivos fácilmente.
+
+Sumérgete en el combate real con True Colors
+Este monitor es compatible con HDR10 con sRGB 99 % (Typ.), lo que permite una inmersión visual realista con colores y contraste más ricos. Independientemente del campo de batalla, te ayudará a ver todos los colores impresionantes tal y como los pensaron los desarrolladores de los juegos.
+
+Más nítido, más fluido y más rápido
+Con la tecnología FreeSync™ Premium, podrás experimentar un movimiento fluido y perfecto en los juegos de alta resolución y ritmo rápido. Reduce prácticamente los cuadros interrumpidos y la fragmentación de la imagen.
+
+Ambiente Gaming Impresionante
+Mejora tu experiencia de juego con un diseño atractivo y prácticamente sin bordes. La base se puede ajustar para modificar la inclinación del monitor, para que puedas jugar más cómodamente.
+',
+       'monitor',
+       'LG',
+       46,
+       129,
+       0,
+       4.5,
+       'static/images/category_monitor15.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Monitor gaming - LG 24GN60R-B, 23,8", Full-HD, 1 ms, 144Hz, HDMI x1 , Display Port x1, Negro'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Monitor - HP V24i G5 FHD, 23.8 ", Full HD, 5 ms, 75Hz, Panel IPS, Modo de luz azul baja, Negro', 
+       'Descripción
+Amplía tu visión y productividad con el monitor HP V24i G5 mientras trabajas o estudias con este monitor FHD de 60,5 cm (23,8 pulgadas) en diagonal. Este dispositivo elegante y de gran tamaño simplifica y completa tus tareas informáticas gracias a la suavidad y definición de sus imágenes, además de su sencillo diseño, para que puedas mejorar tu rendimiento diariamente.
+
+Frecuencia de actualización de 75 Hz
+Disfruta de unos vídeos fluidos y realistas, así como de unos detalles claros, gracias a la frecuencia de actualización de 75 Hz que proporciona un movimiento fluido de fotograma a fotograma.
+
+Panel IPS
+Independientemente de dónde te encuentres, la tecnología IPS garantiza la precisión y uniformidad de la imagen desde amplios ángulos de visión horizontales y verticales de 178 grados.
+
+AMD FreeSync™
+La tecnología AMD FreeSync™ proporciona fluidez y una visualización perfecta de los vídeos al reducir la latencia de entrada, el rasgado de pantalla y la intermitencia.
+
+Modo de luz azul baja
+Mantén tu vista descansada gracias a los colores sutilmente más cálidos de la pantalla.
+',
+       'monitor',
+       'HP',
+       44,
+       129,
+       0,
+       4,
+       'static/images/category_monitor16.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Monitor - HP V24i G5 FHD, 23.8 ", Full HD, 5 ms, 75Hz, Panel IPS, Modo de luz azul baja, Negro'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Monitor - LG 27UL500-W (versión 2023), 27 " UHD 4K, 5ms, 60 Hz, DP, HDMI, Plata', 
+       'Descripción
+Colores más vivos y mejor contraste con HDR10 con el monitor LG 27UL500-W (versión 2023).
+
+Descubre el monitor HDR UHD 4K
+Este monitor, compatible con HDR10, representa todos los detalles en las partes brillantes y oscuras del contenido de alto rango dinámico.
+
+Colores auténticos y visión más amplia
+La pantalla IPS de LG tiene una precisión de color extraordinaria; cubre el 98 % del espectro de color sRGB. Asimismo, el ángulo de visualización también es más amplio para que puedas disfrutar más fácilmente de imágenes con colores auténticos.
+
+Calibración del color
+El color se ha calibrado para que sea más preciso en la pantalla y evitar así los cambios graduales; de esta manera se conserva el color previsto originalmente.
+
+Imagen más suave y nítida
+La función Radeon FreeSync™ reduce la fragmentación y la interrupción de la imagen que se producen entre la velocidad de imagen de la tarjeta gráfica y la frecuencia de actualización del monitor, lo que permite que el movimiento sea más suave y con menos interrupciones en los juegos exigentes.
+
+Modos personalizados para cualquier juego
+Los usuarios pueden elegir entre el modo FPS y el modo RTS, y personalizarlo. Los ajustes se pueden modificar y personalizar para cualquier tipo de juego.
+',
+       'monitor',
+       'LG',
+       39,
+       299,
+       219,
+       4.5,
+       'static/images/category_monitor17.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Monitor - LG 27UL500-W (versión 2023), 27 " UHD 4K, 5ms, 60 Hz, DP, HDMI, Plata'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Monitor - SAMSUNG LS27A800UJUXEN, 27 ", UHD 4K, 5 ms, 60 Hz, Negro', 
+       'Descripción
+Optimizado para entornos de trabajo profesionales. Los monitores Samsung de alta resolución incluyen un panel IPS, ofreciendo una calidad de color nítida y un amplio ángulo de visión de 178º. Todos los usuarios podrán disfrutar de una increíble experiencia de visualización desde cualquier ángulo, con colores vívidos y vibrantes.
+Explora y sumérgete en cada detalle. Con 4 veces los píxeles de Full HD, cada pequeño detalle se ve con mayor profundidad, mientras que la amplia pantalla proporciona más espacio para ver múltiples herramientas, aplicaciones y programas a lo largo de tu jornada. Disfruta de una experiencia de visualización de contenido con calidad cinematográfica 4K, durante el día y la noche.
+Características
+•	Panel IPS: Optimizado para entornos de trabajo profesionales. Los monitores Samsung de alta resolución incluyen un panel IPS, ofreciendo una calidad de color nítida y un amplio ángulo de visión de 178º. Todos los usuarios podrán disfrutar de una increíble experiencia de visualización desde cualquier ángulo, con colores vívidos y vibrantes.
+•	Mil millones de colores con HDR 10: Disfruta de cualquier contenido con una precisión y detalle de color impresionantes. Con un amplio rango de colores, tonalidades casi ilimitadas y HDR10, que hace que los tonos negros sean más oscuros y los tonos claros más brillantes, cada pieza de contenido se convierte en un placer a la vista. Todo podrá experimentarse tal y como el creador pretendía.
+•	Maximiza la comodidad, minimiza las distracciones: Coloca tu monitor cómo te sea más cómodo. Su diseño sin bordes, compatibilidad con montaje VESA y una variedad de posiciones de inclinación, giro y pivote te permiten montar tu monitor en cualquier entorno. Además, su soporte de metal delgado y su poca profundidad ocupan menos espacio en el escritorio para una configuración de trabajo ordenada y perfecta.
+•	Auto Source Switch: Con Automatic Source Switch, el monitor detecta los dispositivos que se acaban de conectar y les muestra la señal correcta. Se acabaron las búsquedas de la entrada correcta en el menú.
+Especificaciones:
+•	Exhibición
+•	Diagonal de la pantalla: 68,6 cm (27")
+•	Brillo de la pantalla (típico): 300 cd / m²
+•	Resolución de la pantalla: 3840 x 2160 Pixeles
+•	Relación de aspecto nativa: 16:9
+•	Tiempo de respuesta: 5 ms
+•	Tecnología de visualización: LCD
+•	Forma de la pantalla: Plana
+•	Formatos gráficos soportados: 3840 x 2160
+•	Razón de contraste (típica): 1000:1
+•	Máxima velocidad de actualización: 60 Hz
+•	Número de colores de la pantalla: 1,07 billones de colores
+•	Tipo de pantalla: IPS
+•	Diseño
+•	Posicionamiento de mercado: Negocios
+•	Color del producto: Negro
+•	Puertos e Interfaces
+•	Conector USB incorporado: Si
+•	Cantidad de puertos downstream USB tipo C: 1 90W
+•	HDMI: Si
+•	Número de puertos HDMI: 1
+•	Cantidad de DisplayPorts: 1
+•	Salida de auriculares: Si
+•	Ergonomía
+•	Interfaz de panel de montaje: 100 x 100 mm
+•	montaje VESA: Si
+•	Ajustes de altura: Si
+•	Ajuste de altura: 12 cm
+•	Eje: Si
+•	Ángulo de pivote: -2 - 92°
+•	Giratorio: Si
+•	Ángulo de giro (alcance): -30 - 30°
+•	Inclinable: Si
+•	Ángulo de inclinación: -2 - 25°
+•	Control de energía
+•	Clase de eficiencia energética (SDR): G
+•	Clase de eficiencia energética (HDR): G
+•	Consumo de energía (SDR) por 1000 horas: 30 kWh
+•	Consumo de energía (HDR) por 1000 horas: 37 kWh
+•	Consumo de energía (inactivo): 0,5 W
+•	Peso y dimensiones
+•	Ancho del dispositivo (con soporte): 615,5 mm
+•	Profundidad dispositivo (con soporte): 196,4 mm
+•	Altura del dispositivo (con soporte): 551,9 mm
+•	Peso (con soporte): 6,7 kg
+•	Ancho (sin base): 61,5 cm
+•	Profundidad (sin base): 4,27 cm
+•	Altura (sin base): 36,8 cm
+•	Empaquetado
+•	Ancho del paquete: 686 mm
+•	Profundidad del paquete: 450 mm
+•	Altura del paquete: 171 mm
+•	Peso del paquete: 8,4 kg
+',
+       'monitor',
+       'Samsung',
+       40,
+       334.66,
+       304.24,
+       5,
+       'static/images/category_monitor18.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Monitor - SAMSUNG LS27A800UJUXEN, 27 ", UHD 4K, 5 ms, 60 Hz, Negro'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Monitor - LG MyView Smart Monitor 27SR50F-W 27" LED IPS FullHD', 
+       'Descripción
+Si combinas trabajo y entretenimiento, cambia la historia. LG MyView Smart Monitor está diseñado para el trabajo y el entretenimiento. Mira tus series favoritas fácilmente desde múltiples plataformas de streaming y configura tu espacio de trabajo de manera rápida, con ordenador o sin él.
+Características:
+•	El único con el que disfrutar de más contenidos en streaming como: RTVE, Mitele, Orange, Netflix, Prime Video, Disney+, Apple TV , YouTube, videojuegos y mucho más. Smart TV WebOS23, más fácil, intuitivo y seguro.
+•	Crea perfiles por usuario y controla todos tus contenidos a través de tus periféricos y/o mando a distancia. Magic Remote opcional*.* El mando a distancia Magic Remote se vende por separado. Solo compatible con el modelo del mando MR23
+•	Comparte fácilmente contenido o música desde tu dispositivo inteligente con AirPlay 2* , Screen Share o Bluetooth.
+•	"Convierte tu casa en un hogar inteligente con ThinQ y Alexa. Compatible con Apple Home Kit, Airplay y Google**. **Apple Home Kit, Google Assistant y Amazon Alexa son servicios independientes de LG que podrían requerir cuentas de suscripción."
+•	Colores más vivos y mejor contraste con HDR10. Panel IPS que permite colores constantes a 178º de ángulo de visión.
+Especificaciones LG MyView Smart Monitor 27SR50F-W:
+•	Exhibición
+•	Diagonal de la pantalla: 68,6 cm (27")
+•	Resolución de la pantalla: 1920 x 1080 Pixeles
+•	Tipo HD: Full HD
+•	Relación de aspecto nativa: 16:9
+•	Tecnología de visualización: LED
+•	Tipo de pantalla: IPS
+•	Tipo de retroiluminación: LED
+•	Pantalla táctil: No
+•	Brillo de la pantalla (máximo): 250 cd / m²
+•	Brillo de la pantalla (típico): 250 cd / m²
+•	Tiempo de respuesta: 14 ms
+•	Superficie de la pantalla: Mate
+•	Pantalla antirreflectante: Si
+•	Forma de la pantalla: Plana
+•	Formatos gráficos soportados: 1920 x 1080 (HD 1080)
+•	Formato de vídeo soportado: 360p, 480p, 720p, 1080p
+•	Relación de aspecto: 16:9
+•	Razón de contraste (típica): 1000:1
+•	Máxima velocidad de actualización: 60 Hz
+•	Ángulo de visión, horizontal: 178°
+•	Ángulo de visión, vertical: 178°
+•	Número de colores de la pantalla: 16,7 millones de colores
+•	Tiempo de respuesta (rápido): 14 ms
+•	Tamaño de pixel: 0,3114 x 0,3114 mm
+•	Densidad del pixel: 81,59 ppp
+•	Alto Rango Dinámico (HDR): Si
+•	Tecnología HDR (High Dynamic Range, Alto rango dinámico): High Dynamic Range 10 (HDR10)
+•	DDC / CI: Si
+•	Contrast enhancer (Optimizador de contraste): No
+•	Profundidad de color: 8 bit
+•	Espacio de color RGB: NTSC
+•	Gama de colores: 72%
+•	Calibración del hardware: No
+•	Sensor de calibración integrado: No
+•	Cobertura NTSC (típica): 72%
+•	Desempeño
+•	NVIDIA G-SYNC: No
+•	AMD FreeSync: No
+•	Compatibilidad con Adaptive Sync de VESA: No
+•	Tecnología Flicker free (reduce el parpadeo de la pantalla): Si
+•	Tecnología Low Blue Light (baja luz azul): No
+•	Tiempo de latencia bajo: No
+•	Contador de FPS: No
+•	Dial point (cruceta de puntería): No
+•	Control de sombras: Si
+•	Reducción del desenfoque de movimiento: No
+•	Reproducción en pantalla del sonido de un dispositivo móvil: No
+•	Duplicación de pantalla: No
+•	Mejora de diálogo: No
+•	Compatibilidad con HBR3: No
+•	Modo de juego: No
+•	TV Plus: Si
+•	Compatibilidad con la aplicación SmartThings: Si
+•	Funciona con Samsung Bixby: No
+•	Compatibilidad con Office 365: No
+•	Compatibilidad con Wireless Dex: No
+•	Funciona con Google Home: No
+•	Tap view: No
+•	Navegador web: Si
+•	Modos inteligentes: Ahorro energético, Película, PC, Vivo
+•	Características inteligentes: Audio Bluetooth
+•	Sistema operativo instalado: webOS
+•	AirPlay: Si
+•	Versión de sistema operativo: WebOS 23
+•	Multimedia
+•	Altavoces incorporados: Si
+•	Cámara incorporada: No
+•	Número de altavoces: 2
+•	Potencia estimada RMS: 10 W
+•	Micrófono incorporado: No
+•	Diseño
+•	Posicionamiento de mercado: Smart
+•	Color del producto: Blanco
+•	Renovado: No
+•	Nombre del color: White
+•	Diseño sin marco: Si
+•	Bisel frontal: Blanco
+•	Soporte desmontable: Si
+•	Pie iluminado: No
+•	Color de pies: Blanco
+•	Año de introducción: 2023
+•	Mes de introducción: Diciembre
+•	Puertos e Interfaces
+•	Conector USB incorporado: Si
+•	Versión de conector USB: 3.2 Gen 1 (3.1 Gen 1)
+•	Cantidad de puertos USB descendentes de tipo A: 2
+•	USB Type-C DisplayPort Alternate Mode: No
+•	Suministro de potencia USB: No
+•	Puerto táctil USB: No
+•	Puerto DVI: No
+•	HDMI: Si
+•	Número de puertos HDMI: 2
+•	Versión HDMI: 2.1
+•	Entrada de audio: No
+•	Salida de audio: No
+•	Salida de auriculares: No
+•	Micrófono, jack de entrada: No
+•	Entrada de audio para PC: No
+•	Ranura para módulo OPS: No
+•	Built-in conmutador KVM: No
+•	HDCP: Si
+•	HDCP versión: 1.4
+•	Enchufe de entrada de CC: No
+•	Entrada de CA: Si
+•	Conexión
+•	Wifi: Si
+•	Wi-Fi Direct: Si
+•	Bluetooth: Si
+•	Ethernet: No
+•	Operado remotamente: No
+',
+       'monitor',
+       'LG',
+       42,
+       209,
+       179,
+       4.5,
+       'static/images/category_monitor19.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Monitor - LG MyView Smart Monitor 27SR50F-W 27" LED IPS FullHD'
+);
+
+INSERT INTO product (name, description, type, brand, stock, price, discounted_price, stars, image)
+SELECT 'Monitor gaming - ASUS PA278CV, 27 ", WQHD, 5 ms, Negro', 
+       'Descripción
+Aprovecha y llevaté el monitor ASUS ProArt Display PA278CV de color negro especialmente diseñado para el trabajo en la oficina. Gracias a su resolución QHD y gran dimensión de 27", podrás trabajar fácilmente con grandes hojas de cálculo sin ningún tipo de problemas.
+
+Amplio ángulo de visión
+La tecnología IPS está optimizada para obtener la mejor calidad de imagen con un ángulo de visión amplio de 178°. Soporte de diseño ergonómico con ajustes de inclinación, giro, pivote y altura.
+
+Compatible con VESA
+Diseño de panel sin marco para una configuración ideal de múltiples pantallas. Compatible con el estándar de montaje en pared VESA (100 x 100 mm). 
+
+ASUS Flicker-Free
+La tecnología ASUS Flicker-Free elimina el parpadeo que distrae y brinda comodidad de visualización.
+
+Reduce el estrés ocular
+Cuatro niveles de filtro de luz azul que ayudan a los usuarios a reducir eficazmente la luz azul dañina que provoca fatiga ocular.
+',
+       'monitor',
+       'Asus',
+       40,
+       334.07,
+       0,
+       4.5,
+       'static/images/category_monitor20.jpg'
+WHERE NOT EXISTS (
+    SELECT 1 FROM product WHERE name = 'Monitor gaming - ASUS PA278CV, 27 ", WQHD, 5 ms, Negro'
 );
