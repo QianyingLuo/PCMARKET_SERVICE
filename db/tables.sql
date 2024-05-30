@@ -64,8 +64,8 @@ Los colores claros y realistas cobran vida con una resolución Full HD (1920 x 1
        'portatil',
        'Lenovo',
        20,
+       685,
        599,
-       0,
        4.5,
        'static/images/category_portatil2.jpg'
 WHERE NOT EXISTS (
