@@ -17,5 +17,4 @@ app.add_event_handler("startup", startup_database_loader)
 
 app.include_router(index_router)
 app.include_router(login_router, prefix="/login")
-app.include_router(category_router, prefix="/category") 
-
+app.include_router(category_router, prefix="/category")
