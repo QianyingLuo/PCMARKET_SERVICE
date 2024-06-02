@@ -1,14 +1,11 @@
 CREATE TABLE IF NOT EXISTS user(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
-    password VARCHAR(50) NOT NULL,
+    name VARCHAR(50) NOT NULL,
     email VARCHAR(70) UNIQUE NOT NULL,
-    full_name VARCHAR(50) NOT NULL,
-    address VARCHAR(255) NOT NULL,
-    phone VARCHAR(100) NOT NULL
+    password VARCHAR(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT IGNORE INTO user (username, password, email, full_name, address, phone) VALUES ("admin", "admin", "admin", "admin", "admin", "admin");
+INSERT IGNORE INTO user (name, email, password) VALUES ("admin", "admin", "admin");
 
 
 CREATE TABLE IF NOT EXISTS product(
