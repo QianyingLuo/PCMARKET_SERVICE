@@ -9,11 +9,8 @@ async def save(user: User):
         query = "INSERT INTO user (username, password, email, full_name, address, phone) VALUES (%s, %s, %s, %s, %s, %s)"
         user_data = (
             user.username,
-            user.password,
             user.email,
-            user.full_name,
-            user.address,
-            user.phone,
+            user.password
         )
 
         cursor = mysql_connection.cursor()
