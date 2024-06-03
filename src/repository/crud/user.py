@@ -6,11 +6,13 @@ from ..mysql_connection import mysql_connection
 
 async def save(user: User):
     try:
-        query = "INSERT INTO user (username, password, email, full_name, address, phone) VALUES (%s, %s, %s, %s, %s, %s)"
+        query = "INSERT INTO user (name, email, password, address, phone) VALUES (%s, %s, %s, %s, %s)"
         user_data = (
             user.name,
             user.email,
-            user.password
+            user.password,
+            user.address,
+            user.phone
         )
 
         cursor = mysql_connection.cursor()

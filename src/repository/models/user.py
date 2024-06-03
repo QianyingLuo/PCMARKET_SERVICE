@@ -8,4 +8,6 @@ class User(BaseModel):
     name: str
     email: str
     password: str
+    address: Optional[str] = None
+    phone: Optional[str] = None
 
