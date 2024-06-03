@@ -28,7 +28,7 @@
                 </div>
                 <p>
                     <span style="text-decoration: line-through;">{{ offer.price }}€</span><br>
-                    <span style="color: rgb(227, 43, 43)">{{ offer.discounted_price }}€</span> 
+                    <span style="color: rgb(227, 43, 43)">{{ (offer.price * (1 - offer.discount_percentage)) | round(2) }}€</span> 
                 </p>
             </div>
             {% endfor %}
