@@ -27,9 +27,9 @@
                     {% endfor %}
                 </div>
                 <p>
-                    {% if product.discounted_price != 0 %}
+                    {% if product.discount_percentage != 0 %}
                         <span style="text-decoration: line-through;">{{ product.price }}€</span><br>
-                        <span style="color: rgb(227, 43, 43)">{{ product.discounted_price }}€</span> 
+                        <span style="color: rgb(227, 43, 43)">{{ product.price * (1-product.discount_percentage)}}€</span> 
                     {% else %}
                         {{ product.price }}€
                     {% endif %}
