@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS user(
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     email VARCHAR(70) UNIQUE NOT NULL,
-    password VARCHAR(50) NOT NULL,
+    password TEXT NOT NULL,
     address VARCHAR(70),
     phone VARCHAR(20)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

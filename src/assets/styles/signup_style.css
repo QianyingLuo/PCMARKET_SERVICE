@@ -69,7 +69,7 @@ body {
     display: flex;
     justify-content: space-between;
     font-size: 12px;
-    margin: -15px 0 15px;
+    margin: 15px 0;
 }
 
 .accept-privacy-policy label input{
@@ -106,3 +106,10 @@ body {
 .register-link p a:hover {
     text-decoration: underline;
 }
+
+.message {
+    color: #e06666;
+    font-size: 13px;
+    font-weight: 500;
+}
+

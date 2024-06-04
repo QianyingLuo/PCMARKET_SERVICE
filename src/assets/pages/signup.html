@@ -10,30 +10,46 @@
 </head>
 <body>
     <div class="wrapper">
-        <form action="">
+        <form action="/signup/validate" method="post">
             <h1>Crear cuenta</h1>
             <div class="input-box">
-                <input type="text" placeholder="Nombre*" required>
+                <input type="text" name="name" placeholder="Nombre*" required maxlength="50">
                 <i class='bx bxs-user'></i>
+                {% if name_length_error %}
+                <div class="message">{{ name_length_error }}</div>
+                {% endif %}
             </div>
             <div class="input-box">
-                <input type="text" placeholder="Email*" required>
+                <input type="text" name="email" placeholder="Email*" required>
                 <i class='bx bxs-envelope' ></i>
+                {% if email_format_error %}
+                <div class="message">{{ email_format_error }}</div>
+                {% endif %}
+
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Contraseña*" required>
+                <input type="password" name="password" placeholder="Contraseña*" required maxlength="64">
                 <i class='bx bxs-lock-alt' ></i>
+                {% if password_length_error %}
+                <div class="message">{{ password_length_error }}</div>
+                {% endif %}
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Repetir contraseña*" required>
+                <input type="password" name="confirm_password" placeholder="Repetir contraseña*" required maxlength="64">
                 <i class='bx bxs-lock'></i>
+                {% if confirm_password_error %}
+                <div class="message">{{ confirm_password_error }}</div>
+                {% endif %}
             </div>
 
             <div class="accept-privacy-policy">
-                <label><input type="checkbox">He leído y acepto la política de privacidad</label>
+                <label><input type="checkbox" required>He leído y acepto la política de privacidad</label>
             </div>
 
             <button type="submit" class="btn">Crear cuenta</button>
+            {% if http_error %}
+            <div class="message">{{ http_error }}</div>
+            {% endif %}
 
             <div class="register-link">
                 <p>Ya tengo una cuenta: <a href="/login">Iniciar sesión</a></p>

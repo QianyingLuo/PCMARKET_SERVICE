@@ -1,6 +1,7 @@
 from typing import Optional
 
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, EmailStr, Field
+
 
 class User(BaseModel):
     id: Optional[int] = Field(primary_key=True, autoincrement=True, default=None)

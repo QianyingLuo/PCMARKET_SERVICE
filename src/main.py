@@ -7,13 +7,13 @@ from .controller.signup import router as signup_router
 from .controller.category import router as category_router
 from .controller.offers import router as offers_router
 
-
 from .repository.mysql_connection import load_database
 
 async def startup_database_loader():
     await load_database()
 
 app = FastAPI()
+
 app.mount("/static", StaticFiles(directory="src/assets/"), name="static")
 app.add_event_handler("startup", startup_database_loader)
 
