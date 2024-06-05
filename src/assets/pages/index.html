@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="/static/styles/index_style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
 
-
 <div class="container-index">
     <div class="banner">
         <a href="#">
@@ -35,7 +34,7 @@
             <p>
                 {% if product.discount_percentage != 0 %}
                     <span style="text-decoration: line-through;">{{ product.price }}€</span><br>
-                    <span style="color: rgb(227, 43, 43)">{{ product.discounted_price }}€</span> 
+                    <span style="color: rgb(227, 43, 43)">{{ (product.price * (1 - product.discount_percentage)) | round(2) }}€</span> 
                 {% else %}
                     {{ product.price }}€
                 {% endif %}

@@ -3,7 +3,6 @@ from aiomysql import Error
 from ..models.user import User
 from ..mysql_connection import mysql_connection
 
-
 async def save(user: User):
     try:
         query = "INSERT INTO user (name, email, password, address, phone) VALUES (%s, %s, %s, %s, %s)"

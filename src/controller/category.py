@@ -10,7 +10,6 @@ router = APIRouter()
 templates = Jinja2Templates(directory="src/assets/")
 templates.env = ExtendedEnvironment(loader=FileSystemLoader("src/assets/"))
 
-
 @router.get("/laptops", response_class=HTMLResponse)
 def render_laptops(request: Request): 
     laptops = product_api.get_products_by_type("portatil")

@@ -11,7 +11,6 @@ templates = Jinja2Templates(directory="src/assets/")
 templates.env = ExtendedEnvironment(loader=FileSystemLoader("src/assets/"))
 templates.env.filters['truncate'] = templates.env.truncate
 
-
 @router.get("/", response_class=HTMLResponse)
 def render_index(request: Request): 
     laptops = product_api.get_top_products_by_type("portatil")

@@ -1,0 +1,39 @@
+{% extends "templates/base.html" %}
+
+<title>{% block title %}💥 Ofertas TOP ¡Super Descuentos! | Solo en PcMarket{% endblock %}</title>
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles/category_style.css">
+
+<div class="small-container-category">
+    <div class="row-category">
+        <h2 class="category-title">Ofertas</h2>
+        <div class="row">
+            {% for offer in offers %}
+            <div class="col-4">
+                <img src="/{{ offer.image }}" alt="{{ offer.name }}">
+                <div>
+                    <h5>{{ offer.name | truncate(135) }}</h5>
+                </div>
+                <div class="rating">
+                    {% for _ in range(int(offer.stars)) %}
+                    <i class="fa-solid fa-star"></i>
+                    {% endfor %}
+                    {% if offer.stars % 1 >= 0.5 %}
+                    <i class="fa-regular fa-star-half-stroke"></i>
+                    {% endif %}
+                    {% for _ in range(5 - int(offer.stars) - (1 if offer.stars % 1 >= 0.5 else 0)) %}
+                    <i class="fa-regular fa-star"></i>
+                    {% endfor %}
+                </div>
+                <p>
+                    <span style="text-decoration: line-through;">{{ offer.price }}€</span><br>
+                    <span style="color: rgb(227, 43, 43)">{{ (offer.price * (1 - offer.discount_percentage)) | round(2) }}€</span> 
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>    
+</div>
+<br><br><br><br>
+{% endblock %}
