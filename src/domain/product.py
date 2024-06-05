@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel
 
 class Product(BaseModel):
@@ -11,3 +12,4 @@ class Product(BaseModel):
     discount_percentage: float
     stars: float
     image: str
+    discounted_price: Optional[float] = None
