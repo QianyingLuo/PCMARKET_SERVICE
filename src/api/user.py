@@ -1,23 +1,8 @@
 import os
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-import bcrypt
-from ..repository.crud import user as user_crud
-from ..repository.models.user import User
-from fastapi import HTTPException, exceptions, status
-=======
 from ..useful import exceptions
 from ..repository.crud import user as user_crud
 from ..repository.models.user import User
 from fastapi import HTTPException, status
->>>>>>> Stashed changes
-=======
-from ..useful import exceptions
-from ..repository.crud import user as user_crud
-from ..repository.models.user import User
-from fastapi import HTTPException, status
->>>>>>> Stashed changes
 from jose import jwt
 from passlib.context import CryptContext
 from datetime import datetime, timedelta
