@@ -3,7 +3,7 @@ from ..repository.models.user import User
 
 async def save():
     user = User(
-        username="Pepe",
+        name="Pepe",
         email="pepe@gmail.com",
         password="12345"
     )

@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS user(
 
 INSERT IGNORE INTO user (name, email, password) VALUES ("admin", "admin", "admin");
 
+
 CREATE TABLE IF NOT EXISTS product(
      id INT AUTO_INCREMENT PRIMARY KEY,
      name VARCHAR(255) NOT NULL,
@@ -21,7 +22,6 @@ CREATE TABLE IF NOT EXISTS product(
      stars FLOAT,
      image TEXT NOT NULL
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_percentage, stars, image)
 SELECT 'Portátil - Samsung Galaxy Book4 Pro, 16" WQXGA+, Intel® Evo™ Edition Core™ Ultra 7-155H, 16GB RAM, 512GB, Arc®, W11H, IA, Gris', 
