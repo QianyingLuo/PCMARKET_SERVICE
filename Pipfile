@@ -10,6 +10,7 @@ pydantic = "*"
 aiomysql = "*"
 mysql-connector-python = "*"
 bcrypt = "*"
+python-jose = "*"
 
 [dev-packages]
 isort = "*"

@@ -56,7 +56,7 @@ def validate_signup(
         return templates.TemplateResponse("pages/login.html", {"request": request})
 
     except HTTPException as he:
-            return templates.TemplateResponse("pages/signup.html", {"request": request, "http_error": he.detail})
+        return templates.TemplateResponse("pages/signup.html", {"request": request, "http_error": he.detail})
 
 def check(email):
     pat = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
