@@ -21,3 +21,11 @@ def hash_password(password: str) -> str:
     return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
 
 
+async def save():
+    user = User(
+        name="Pepe",
+        email="pepe@gmail.com",
+        password="12345"
+    )
+    await user_crud.save(user)
+    return "Hola mundo"
