@@ -20,3 +20,10 @@ def get_products_by_type(product_type: str) -> list[product_domain.Product]:
         product.discounted_price = round(product.price * (1 - product.discount_percentage), 2) 
     return products
 
+def get_discounted_products() -> list[product_domain.Product]:
+    products = product_crud.get_discounted_products() 
+
+    for product in products:
+        product.discounted_price = round(product.price * (1 - product.discount_percentage), 2) 
+    return products
+
