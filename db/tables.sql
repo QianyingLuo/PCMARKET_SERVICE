@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS user(
     phone VARCHAR(20)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT IGNORE INTO user (username, password, email, full_name, address, phone) VALUES ("admin", "admin", "admin", "admin", "admin", "admin");
+INSERT IGNORE INTO user (name, email, password) VALUES ("admin", "admin", "admin");
 
 
 CREATE TABLE IF NOT EXISTS product(
