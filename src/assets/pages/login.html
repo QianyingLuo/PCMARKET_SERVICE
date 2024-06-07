@@ -7,17 +7,18 @@
     <link rel="stylesheet" href="/static/styles/login_style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" href="/static/icons/logo_title.ico" type="image/x-icon">
+
 </head>
 <body>
     <div class="wrapper">
-        <form action="">
+        <form action="/login/" method="post">
             <h1>Iniciar sesión</h1>
             <div class="input-box">
-                <input type="text" placeholder="Email*" required>
+                <input type="text" name="email" placeholder="Email*" required>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Contraseña" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
                 <i class='bx bxs-lock-alt' ></i>
             </div>
 
@@ -30,6 +31,12 @@
 
             <div class="register-link">
                 <p>¿Eres nuevo cliente? <a href="/signup">Regístrate</a></p>
+            </div>
+            
+            {% if error %}
+            <div class="error-message">{{ error }}</div>
+            {% endif %}
+         
             </div>
         </form>
     </div>
