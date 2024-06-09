@@ -10,7 +10,7 @@ from typing import Optional
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 ALGORITHM = os.environ.get("ALGORITHM")
-ACCESS_TOKEN_EXPIRE_MINUTES = os.environ.get("30")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES", 1))
 
 def save(user: user_domain.User) -> user_domain.User:
     try:
@@ -24,7 +24,8 @@ def save(user: user_domain.User) -> user_domain.User:
 
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
-    
+
+        
 def do_login(user_login: user_domain.UserLogin) -> str:
     
     user = user_crud.get_user_by_email(user_login.email)
@@ -36,7 +37,7 @@ def do_login(user_login: user_domain.UserLogin) -> str:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Los datos introducidos no son válidos")
 
     user_token = user_domain.UserToken(id=user.id, email=user.email, name=user.name)
-    token: str = create_access_token(user_token, ACCESS_TOKEN_EXPIRE_MINUTES)
+    token: str = create_access_token(user_token, timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
     return token
 
 
