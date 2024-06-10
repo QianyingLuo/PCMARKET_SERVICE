@@ -12,7 +12,7 @@ templates = Jinja2Templates(directory="src/assets/")
 
 @router.get("/", response_class=HTMLResponse)
 def render_signup_page(request: Request):
-    return templates.TemplateResponse("pages/signup.html", {"request": request })
+    return templates.TemplateResponse("pages/signup.html", {"request": request})
 
 @router.post("/validate")
 def validate_signup(
@@ -48,6 +48,7 @@ def validate_signup(
                                                                 "password_length_error": password_length_error,
                                                                 "confirm_password_error": confirm_password_error,
                                                                 })
+    
     
     user_to_save = User(name=name, email=email, password=password, address=address, phone=phone)
 

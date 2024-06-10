@@ -1,7 +1,5 @@
 from typing import Optional
-
 from pydantic import BaseModel, EmailStr, Field
-
 
 class User(BaseModel):
     id: Optional[int] = Field(primary_key=True, autoincrement=True, default=None)
@@ -10,7 +8,6 @@ class User(BaseModel):
     password: str = Field(min_length=6, max_length=500)
     address: Optional[str] = Field(None, max_length=70)
     phone: Optional[str] = Field(None, max_length=20)
-    is_active: bool = Field(default=True)
 
 class UserLogin(BaseModel):
     email: EmailStr

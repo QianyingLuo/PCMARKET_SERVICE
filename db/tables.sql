@@ -4,8 +4,7 @@ CREATE TABLE IF NOT EXISTS user(
     email VARCHAR(70) UNIQUE NOT NULL,
     password TEXT NOT NULL,
     address VARCHAR(70),
-    phone VARCHAR(20),
-    is_active BOOLEAN DEFAULT TRUE
+    phone VARCHAR(20)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT IGNORE INTO user (name, email, password) VALUES ("adminadmin", "admin@admin.com", "$2a$10$Y3/Ms/LwRUYVxsWG73ULOuW6rhL.pJx9k6tnp8Ci1E498wplVEmNC");

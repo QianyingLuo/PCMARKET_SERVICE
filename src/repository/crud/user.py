@@ -7,7 +7,7 @@ from mysql.connector import Error
 def save(user: user_domain.User) -> user_domain.User:
     check_query = "SELECT 1 FROM user WHERE email = %s"
 
-    user_crud: user_crud_domain.User = user_crud_domain.User.from_domain(user)
+    user_crud = user_crud_domain.User.from_domain(user_domain=user)
 
     cursor = mysql_connection.cursor()
     cursor.execute(check_query, (user_crud.email,))
@@ -16,14 +16,13 @@ def save(user: user_domain.User) -> user_domain.User:
     if result:
         raise exceptions.EmailAlreadyExists(f"El email {user.email} ya está registrado.")
 
-    insert_query = "INSERT INTO user (name, email, password, address, phone, is_active) VALUES (%s, %s, %s, %s, %s, %s)"
+    insert_query = "INSERT INTO user (name, email, password, address, phone) VALUES (%s, %s, %s, %s, %s)"
     user_data = (
         user_crud.name,
         user_crud.email,
         user_crud.password,
         user_crud.address,
         user_crud.phone,
-        user_crud.is_active
     )
     cursor.execute(insert_query, user_data)
     cursor.close()

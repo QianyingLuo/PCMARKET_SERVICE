@@ -117,6 +117,14 @@ nav a{
     font-weight: 600;
 }
 
+.sidebar-username{
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-weight: 400; 
+    color: #4a4648;
+}
+
 .sidebar{
     position: fixed;
     top: 0;
