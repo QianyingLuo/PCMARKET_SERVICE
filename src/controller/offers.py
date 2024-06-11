@@ -1,17 +1,12 @@
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import FileSystemLoader
 from ..api import product as product_api
+from ..useful.project import ExtendedEnvironment
+
 
 router = APIRouter()
-
-class ExtendedEnvironment(Environment):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.globals.update({
-            'int': int,
-        })
 
 templates = Jinja2Templates(directory="src/assets/")
 templates.env = ExtendedEnvironment(loader=FileSystemLoader("src/assets/"))

@@ -1,0 +1,12 @@
+{% extends "templates/base.html" %}
+
+<title>{% block title %} {{ product.name.split(' - ')[0] }} | {{ product.name.split(' - ')[1] }} {% endblock %}</title>
+
+{% block content %}
+<img src="/{{ product.image }}" alt="{{ product.name }}">
+<div>
+    <h5>{{ product.name }}</h5>
+    <h5>{{ product.description }}</h5>
+
+</div>
+{% endblock %}

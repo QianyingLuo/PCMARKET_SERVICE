@@ -7,6 +7,7 @@ from .controller.login import router as login_router
 from .controller.logout import router as logout_router
 from .controller.category import router as category_router
 from .controller.offers import router as offers_router
+from .controller.product import router as product_router
 from .useful import verify_token
 
 from .repository.mysql_connection import load_database
@@ -41,3 +42,4 @@ app.include_router(login_router, prefix="/login")
 app.include_router(logout_router, prefix="/logout")
 app.include_router(category_router, prefix="/category") 
 app.include_router(offers_router, prefix="/offers") 
+app.include_router(product_router, prefix="/product") 

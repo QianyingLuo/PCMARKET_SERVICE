@@ -62,3 +62,15 @@ def get_discounted_products():
         print(f"Error al obtener productos rebajados:", e)
         return []
 
+def get_product_by_id(product_id: int):
+    try:
+        product: list[product_model.Product] = []
+        cursor = mysql_connection.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM product WHERE id = %s", (product_id,))
+        product_data = cursor.fetchone()
+        product: product_model.Product = product_model.Product.model_validate(product_data)
+        return product.to_domain()
+    except Error as e:
+        print(f"Error al obtener productos del tipo {product_id}:", e)
+        return []
+

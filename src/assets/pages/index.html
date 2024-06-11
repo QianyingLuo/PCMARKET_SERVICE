@@ -1,7 +1,7 @@
 {% extends "templates/base.html" %}
 
 {% block content %}
-<link rel="stylesheet" href="/static/styles/index_style.css">
+<link rel="stylesheet" href="/static/styles/index.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
 
 <div class="container-index">
@@ -26,8 +26,12 @@
     <div class="row">
         {% for product in products %}
         <div class="col-4">
-            <img src="{{ product.image }}" alt="{{ product.name }}">
-            <h5>{{ product.name | truncate(120) }}</h5>
+            <a href="/product/{{ product.id }}">
+                <img src="{{ product.image }}" alt="{{ product.name }}">
+            </a>
+            <a class="product-link" href="/product/{{ product.id }}">
+                <h5>{{ product.name | truncate(120) }}</h5>
+            </a>
             <div class="rating">
                 {% for _ in range(int(product.stars)) %}
                 <i class="fa-solid fa-star"></i>

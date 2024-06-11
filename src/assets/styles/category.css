@@ -56,6 +56,15 @@
     color: #333;
 }
 
+.product-link {
+    text-decoration: none;
+    color: inherit; 
+}
+
+.product-link:hover {
+    text-decoration: none;
+}
+
 @media (max-width: 768px) {
     .col-4 {
         flex: 1 1 calc(50% - 20px);

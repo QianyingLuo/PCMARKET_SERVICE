@@ -416,7 +416,7 @@ WHERE NOT EXISTS (
 );
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_percentage, stars, image)
-SELECT 'Microsoft Surface Laptop 4 Negro Intel Core i5-1145G7/8GB/512 GB SSD/13.5" Táctil Reacondicionado', 
+SELECT 'Portátil - Microsoft Surface Laptop 4 Negro Intel Core i5-1145G7/8GB/512 GB SSD/13.5" Táctil Reacondicionado', 
        'Descripción
 Estilo y velocidad. Destaca en las videollamadas HD respaldadas con micrófonos de estudio. Captura ideas en la vibrante pantalla táctil. Hazlo todo con el equilibrio perfecto entre diseño moderno, velocidad, audio envolvente y una batería que dura significativamente más que antes.
 Características:
@@ -490,7 +490,7 @@ WHERE NOT EXISTS (
 );
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_percentage, stars, image)
-SELECT 'Lenovo ThinkPad L15 Gen 4 Intel Core i5-1335U/16GB/512GB SSD/15.6"', 
+SELECT 'Portátil - Lenovo ThinkPad L15 Gen 4 Intel Core i5-1335U/16GB/512GB SSD/15.6"', 
        'Descripción
 Rendimiento y fiabilidad para tu empresa. Portátil Lenovo ThinkPad L15 de 39,62 cm con teclado numérico, ideal para las finanzas, la contabilidad y la introducción de datos. Equipado con un procesador hasta Intel vPro® con Intel® Core™ de 13.a generación. Compatible con PC con núcleo protegido de Microsoft 11 para una mayor seguridad en el trabajo.
 Características
@@ -685,7 +685,7 @@ WHERE NOT EXISTS (
 );
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_percentage, stars, image)
-SELECT 'Apple iPhone 15 Pro Max, Titanio Natural, 256 GB, 5G, 6.7" Pantalla Super Retina XDR, Chip A17 Bionic, iOS', 
+SELECT 'Móvil - Apple iPhone 15 Pro Max, Titanio Natural, 256 GB, 5G, 6.7" Pantalla Super Retina XDR, Chip A17 Bionic, iOS', 
        'Descripción
 Pantalla iPhone 15 Pro Max:
 La pieza central de la experiencia visual que ofrece el iPhone 15 Pro Max es, sin duda, su majestuosa pantalla de 6,7 pulgadas. Esta pantalla, con una resolución de 1290 x 2796 píxeles y una densidad de píxeles de 460ppi, garantiza una representación cristalina de todos los detalles. La tecnología OLED, conocida por su capacidad para producir colores brillantes y negros realmente profundos, eleva aún más la calidad de la imagen, ofreciendo un contraste que resalta todos los matices.
@@ -880,7 +880,7 @@ WHERE NOT EXISTS (
 );
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_percentage, stars, image)
-SELECT 'Apple iPhone 13, Rosa, 128 GB, 5G, 6.1" OLED Super Retina XDR, Chip A15 Bionic, iOS', 
+SELECT 'Móvil - Apple iPhone 13, Rosa, 128 GB, 5G, 6.1" OLED Super Retina XDR, Chip A15 Bionic, iOS', 
        'Descripción
 iPhone 13: Tu nuevo superpoder. Nuestro sistema de cámara dual más avanzado. El chip que hace morder el polvo a la competencia. Un subidón de autonomía que vaya si notarás. Ceramic Shield, más duro que cualquier vidrio de smartphone. Pantalla Super Retina XDR de 6,1 pulgadas. Diseño robusto con bordes planos y resistente al agua.
 Características
@@ -1063,7 +1063,7 @@ WHERE NOT EXISTS (
 );
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_percentage, stars, image)
-SELECT 'Apple iPhone 13, Verde, 128 GB, 5G, 6.1" OLED Super Retina XDR, Chip A15 Bionic, iOS', 
+SELECT 'Móvil - Apple iPhone 13, Verde, 128 GB, 5G, 6.1" OLED Super Retina XDR, Chip A15 Bionic, iOS', 
        'Descripción
 iPhone 13: Tu nuevo superpoder. Nuestro sistema de cámara dual más avanzado. El chip que hace morder el polvo a la competencia. Un subidón de autonomía que vaya si notarás. Ceramic Shield, más duro que cualquier vidrio de smartphone. Pantalla Super Retina XDR de 6,1 pulgadas. Diseño robusto con bordes planos y resistente al agua.
 Características
