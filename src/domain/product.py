@@ -9,7 +9,9 @@ class Product(BaseModel):
     brand: str
     stock: int
     price: float
-    discount_percentage: float
+    discount_decimal: float
     stars: float
     image: str
     discounted_price: Optional[float] = None
+    discount_percentage: Optional[float] = None
+

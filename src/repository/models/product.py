@@ -9,7 +9,7 @@ class Product(BaseModel):
     brand: str
     stock: int
     price: float
-    discount_percentage: float
+    discount_decimal: float
     stars: float
     image: str
     

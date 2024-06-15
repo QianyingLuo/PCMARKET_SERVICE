@@ -52,7 +52,7 @@ def get_discounted_products():
     try:
         discounted_products: list[product_model.Product] = []
         cursor = mysql_connection.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM product WHERE discount_percentage != 0")
+        cursor.execute("SELECT * FROM product WHERE discount_decimal != 0")
         rows = cursor.fetchall()
         for row in rows:
             discounted_product = product_model.Product.model_validate(row)
@@ -72,5 +72,19 @@ def get_product_by_id(product_id: int):
         return product.to_domain()
     except Error as e:
         print(f"Error al obtener productos del tipo {product_id}:", e)
+        return []
+
+def get_random_products_by_type(product_type: str, limit: int = 4):
+    try:
+        products: list[product_model.Product] = []
+        cursor = mysql_connection.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM product WHERE type = %s ORDER BY RAND() LIMIT %s", (product_type, limit))
+        rows = cursor.fetchall()
+        for row in rows:
+            product = product_model.Product.model_validate(row)
+            products.append(product)
+        return [product.to_domain() for product in products]
+    except Error as e:
+        print(f"Error al obtener productos aleatorios del tipo {product_type}:", e)
         return []
 
