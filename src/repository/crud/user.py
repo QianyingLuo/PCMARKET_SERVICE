@@ -1,5 +1,3 @@
-from mysql.connector import Error
-
 from ...domain import user as user_domain
 from ..models import user as user_crud_domain
 from ...config.database.mysql_connection import mysql_connection

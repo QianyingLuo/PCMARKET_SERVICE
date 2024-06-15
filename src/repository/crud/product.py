@@ -54,28 +54,22 @@ def get_discounted_products():
     return [discounted_product.to_domain() for discounted_product in discounted_products]
 
 def get_product_by_id(product_id: int):
-    try:
-        product: list[product_model.Product] = []
-        cursor = mysql_connection.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM product WHERE id = %s", (product_id,))
-        product_data = cursor.fetchone()
-        product: product_model.Product = product_model.Product.model_validate(product_data)
-        return product.to_domain()
-    except Error as e:
-        print(f"Error al obtener productos del tipo {product_id}:", e)
-        return []
+    cursor = mysql_connection.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM product WHERE id = %s", (product_id,))
+    product_data = cursor.fetchone()
+    product: product_model.Product = product_model.Product.model_validate(product_data)
+    return product.to_domain()
 
-def get_random_products_by_type(product_type: str, limit: int = 4):
-    try:
-        products: list[product_model.Product] = []
-        cursor = mysql_connection.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM product WHERE type = %s ORDER BY RAND() LIMIT %s", (product_type, limit))
-        rows = cursor.fetchall()
-        for row in rows:
-            product = product_model.Product.model_validate(row)
-            products.append(product)
-        return [product.to_domain() for product in products]
-    except Error as e:
-        print(f"Error al obtener productos aleatorios del tipo {product_type}:", e)
-        return []
+def get_random_products_by_type(product_type: str, limit: int):
+    products: list[product_model.Product] = []
+
+    cursor = mysql_connection.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM product WHERE type = %s ORDER BY RAND() LIMIT %s", (product_type, limit))
+    rows = cursor.fetchall()
+
+    for row in rows:
+        product = product_model.Product.model_validate(row)
+        products.append(product)
+
+    return [product.to_domain() for product in products]
 
