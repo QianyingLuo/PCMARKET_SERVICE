@@ -1,6 +1,5 @@
 import os
 import sys
-
 import aiomysql
 import mysql.connector as mysql_connector
 

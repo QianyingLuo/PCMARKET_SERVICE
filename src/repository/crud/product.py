@@ -1,10 +1,6 @@
 from aiomysql import Error
-
-
 from ..models import product as product_model
 from ..mysql_connection import mysql_connection
-
-
 
 def get_all():
     try:

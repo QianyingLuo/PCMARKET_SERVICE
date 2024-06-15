@@ -20,7 +20,7 @@ app.mount("/static", StaticFiles(directory="src/assets/"), name="static")
 app.add_event_handler("startup", startup_database_loader)
 
 @app.middleware("http")
-async def check_token(request: Request, call_next):
+async def check_token_middleware(request: Request, call_next):
     user = verify_token.get_current_user(request)
 
     if user:
