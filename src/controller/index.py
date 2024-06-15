@@ -1,26 +1,23 @@
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
-from jinja2 import FileSystemLoader
-from ..api import product as product_api
-from ..useful.project import ExtendedEnvironment
 
+from ..api import product as product_api
+from ..middlewares import get_current_user
+from ..utils.jinja import templates
+from ..config import types
+from ..config.log import logger
 
 router = APIRouter()
-
-templates = Jinja2Templates(directory="src/assets/")
-templates.env = ExtendedEnvironment(loader=FileSystemLoader("src/assets/"))
-templates.env.filters['truncate'] = templates.env.truncate
-
-    
+ 
 @router.get("/", response_class=HTMLResponse)
 def render_index(request: Request): 
+    logger.info("GET: Index page")
 
-    user = request.state.data.get("user", None)
+    user = get_current_user(request)
     
-    laptops = product_api.get_top_products_by_type("portatil")
-    smartphones = product_api.get_top_products_by_type("smartphone")
-    monitors = product_api.get_top_products_by_type("monitor")
+    laptops = product_api.get_top_products_by_type(types.LAPTOP)
+    smartphones = product_api.get_top_products_by_type(types.SMARTPHONE)
+    monitors = product_api.get_top_products_by_type(types.MONITOR)
 
     products_by_type = {
         "Portátiles": laptops,

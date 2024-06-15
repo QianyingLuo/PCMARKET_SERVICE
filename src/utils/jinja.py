@@ -1,9 +1,5 @@
-import os
-from jinja2 import Environment
-
-def get_file_path(file: str) -> str:
-    current_directory = os.path.dirname(__file__)
-    return os.path.join(current_directory, file)
+from fastapi.templating import Jinja2Templates
+from jinja2 import Environment, FileSystemLoader
 
 class ExtendedEnvironment(Environment):
     def __init__(self, **kwargs):
@@ -17,3 +13,8 @@ class ExtendedEnvironment(Environment):
           return s
       else:
           return s[:length].rstrip() + suffix
+
+
+templates = Jinja2Templates(directory="src/assets/")
+templates.env = ExtendedEnvironment(loader=FileSystemLoader("src/assets/"))
+templates.env.filters['truncate'] = templates.env.truncate

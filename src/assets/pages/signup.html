@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <form action="/signup/validate" method="post">
+        <form action="/user/signup" method="post">
             <h1>Crear cuenta</h1>
             <div class="input-box">
                 <input type="text" name="name" placeholder="Nombre*" required maxlength="50">
@@ -47,12 +47,12 @@
             </div>
 
             <button type="submit" class="btn">Crear cuenta</button>
-            {% if http_error %}
-            <div class="message email-repeat">{{ http_error }}</div>
+            {% if error %}
+            <div class="message email-repeat">{{ error }}</div>
             {% endif %}
 
             <div class="register-link">
-                <p>Ya tengo una cuenta: <a href="/login">Iniciar sesión</a></p>
+                <p>Ya tengo una cuenta: <a href="/user/login">Iniciar sesión</a></p>
             </div>
         </form>
     </div>

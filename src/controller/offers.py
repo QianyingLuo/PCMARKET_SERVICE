@@ -1,20 +1,12 @@
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
-from fastapi.templating import Jinja2Templates
-from jinja2 import Environment, FileSystemLoader
+
 from ..api import product as product_api
+from ..utils.jinja import templates 
+from ..config import types
+from ..config.log import logger
 
 router = APIRouter()
-
-class ExtendedEnvironment(Environment):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.globals.update({
-            'int': int,
-        })
-
-templates = Jinja2Templates(directory="src/assets/")
-templates.env = ExtendedEnvironment(loader=FileSystemLoader("src/assets/"))
 
 @router.get("/", response_class=HTMLResponse)
 def render_offers(request: Request): 
@@ -23,13 +15,14 @@ def render_offers(request: Request):
 
 @router.get("/favourites", response_class=HTMLResponse)
 def render_favourites(request: Request): 
+    logger.info("GET: Favourites page")
 
     if not check_token(request): 
         return RedirectResponse(url="/login/", status_code=302)
 
-    laptops = product_api.get_top_products_by_type("portatil")
-    smartphones = product_api.get_top_products_by_type("smartphone")
-    monitors = product_api.get_top_products_by_type("monitor")
+    laptops = product_api.get_top_products_by_type(types.LAPTOP)
+    smartphones = product_api.get_top_products_by_type(types.SMARTPHONE)
+    monitors = product_api.get_top_products_by_type(types.MONITOR)
 
     products_by_type = {
         "Portátiles": laptops,
