@@ -6,14 +6,13 @@ from jinja2 import FileSystemLoader
 from ..api import product as product_api
 from ..useful.project import ExtendedEnvironment
 
+
 router = APIRouter()
 
 templates = Jinja2Templates(directory="src/assets/")
 templates.env = ExtendedEnvironment(loader=FileSystemLoader("src/assets/"))
 templates.env.filters['truncate'] = templates.env.truncate
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
-ALGORITHM = os.environ.get("ALGORITHM")
     
 @router.get("/", response_class=HTMLResponse)
 def render_index(request: Request): 

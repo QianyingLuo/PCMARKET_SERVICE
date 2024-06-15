@@ -52,7 +52,7 @@ def get_discounted_products():
     try:
         discounted_products: list[product_model.Product] = []
         cursor = mysql_connection.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM product WHERE discount_percentage != 0")
+        cursor.execute("SELECT * FROM product WHERE discount_decimal != 0")
         rows = cursor.fetchall()
         for row in rows:
             discounted_product = product_model.Product.model_validate(row)

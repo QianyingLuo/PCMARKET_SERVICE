@@ -1,11 +1,6 @@
-import os
 from fastapi import Request
 from jose import ExpiredSignatureError, JWTError, jwt
-
-SECRET_KEY = os.environ.get("SECRET_KEY")
-ALGORITHM = os.environ.get("ALGORITHM")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES", 1))
-
+from .. import config
 
 def get_current_user(request: Request):
     token = request.cookies.get("token")
@@ -13,7 +8,7 @@ def get_current_user(request: Request):
         return None
 
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(token, config.SECRET_KEY, algorithms=[config.ALGORITHM])
 
         username: str = payload.get("name")
         if username is None:

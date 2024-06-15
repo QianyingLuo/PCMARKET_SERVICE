@@ -1,4 +1,3 @@
-import os
 import bcrypt
 from ..useful import exceptions
 from ..repository.crud import user as user_crud
@@ -7,10 +6,8 @@ from fastapi import HTTPException, status
 from jose import jwt
 from datetime import datetime, timedelta, timezone
 from typing import Optional
+from .. import config
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
-ALGORITHM = os.environ.get("ALGORITHM")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES", 1))
 
 def save(user: user_domain.User) -> user_domain.User:
     try:
@@ -37,7 +34,7 @@ def do_login(user_login: user_domain.UserLogin) -> str:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Los datos introducidos no son válidos")
 
     user_token = user_domain.UserToken(id=user.id, email=user.email, name=user.name)
-    token: str = create_access_token(user_token, timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
+    token: str = create_access_token(user_token, timedelta(minutes=config.ACCESS_TOKEN_EXPIRE_MINUTES))
     return token
 
 
@@ -55,4 +52,4 @@ def create_access_token(data: user_domain.UserToken, expires_delta: Optional[tim
 
     encoded_data: dict = data.model_dump()
     encoded_data.update({"exp": expire})
-    return jwt.encode(encoded_data, SECRET_KEY, algorithm=ALGORITHM)
+    return jwt.encode(encoded_data, config.SECRET_KEY, algorithm=config.ALGORITHM)

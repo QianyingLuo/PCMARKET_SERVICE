@@ -1,4 +1,3 @@
-import os
 from fastapi import APIRouter, Form, HTTPException, Request, Response
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
@@ -9,9 +8,6 @@ from ..useful import verify_token
 router = APIRouter()
 templates = Jinja2Templates(directory="src/assets/")
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
-ALGORITHM = os.environ.get("ALGORITHM")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES", 1))
 
 @router.get("/", response_class=HTMLResponse)
 def render_login_page(request: Request, response: Response):
