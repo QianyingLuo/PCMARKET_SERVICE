@@ -1,6 +1,5 @@
-from typing import Optional, Self
-from pydantic import BaseModel, Field, EmailStr
-from ...domain import user as user_domain
+from typing import Optional
+from pydantic import BaseModel, EmailStr, Field
 
 class User(BaseModel):
     id: Optional[int] = Field(primary_key=True, autoincrement=True, default=None)
@@ -10,7 +9,11 @@ class User(BaseModel):
     address: Optional[str] = Field(None, max_length=70)
     phone: Optional[str] = Field(None, max_length=20)
 
-    @classmethod
-    def from_domain(cls, user_domain: user_domain.User) -> Self:
-        return cls.model_validate(user_domain.model_dump())
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
 
+class UserToken(BaseModel):
+    id: Optional[int] = Field(primary_key=True, autoincrement=True, default=None)
+    email: EmailStr
+    name: str = Field (min_length=8, max_length=50)

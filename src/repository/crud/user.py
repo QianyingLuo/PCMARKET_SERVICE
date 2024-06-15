@@ -1,26 +1,34 @@
-from aiomysql import Error
+from mysql.connector import Error
 
-from ..models.user import User
-from ..mysql_connection import mysql_connection
+from ...domain import user as user_domain
+from ..models import user as user_crud_domain
+from ...config.database.mysql_connection import mysql_connection
 
-async def save(user: User):
-    try:
-        query = "INSERT INTO user (name, email, password, address, phone) VALUES (%s, %s, %s, %s, %s)"
-        user_data = (
-            user.name,
-            user.email,
-            user.password,
-            user.address,
-            user.phone
-        )
+def save(user: user_domain.User) -> user_domain.User:
+    user_crud = user_crud_domain.User.from_domain(user_domain=user)
+    cursor = mysql_connection.cursor()
 
-        cursor = mysql_connection.cursor()
-        cursor.execute(query, user_data)
+    insert_query = "INSERT INTO user (name, email, password, address, phone) VALUES (%s, %s, %s, %s, %s)"
+    user_data = (
+        user_crud.name,
+        user_crud.email,
+        user_crud.password,
+        user_crud.address,
+        user_crud.phone,
+    )
+    cursor.execute(insert_query, user_data)
+    cursor.close()
+    
+    return user
 
-        print("Usuario guardado correctamente")
-
-    except Error as e:
-        print("Error al guardar el usuario:", type(e).__name__, e)
-
-    finally:
-        cursor.close()
+def get_user_by_email(email: str):
+    cursor = mysql_connection.cursor(dictionary=True)
+    query = "SELECT * FROM user WHERE email = %s"
+    cursor.execute(query, (email,))
+    user_data = cursor.fetchone()
+    cursor.close()
+     
+    if user_data:
+        return user_domain.User.model_validate(user_data)
+    else:
+        return None

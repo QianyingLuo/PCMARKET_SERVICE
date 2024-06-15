@@ -9,10 +9,12 @@ uvicorn = {extras = ["standard"], version = "*"}
 pydantic = "*"
 aiomysql = "*"
 mysql-connector-python = "*"
-isort = "*"
-black = "*"
+bcrypt = "*"
+python-jose = "*"
 
 [dev-packages]
+isort = "*"
+black = "*"
 
 [scripts]
 start = "uvicorn src.main:app"
