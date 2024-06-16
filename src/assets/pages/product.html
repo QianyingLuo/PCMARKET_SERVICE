@@ -33,6 +33,40 @@
     <div class="product-description">
         <h3>Descripción<hr></h3>
         <p>{{ product.description }}</p>
+        {% for section in product.description_sections %}
+        <div class="col-4">
+            <p class="description-title">{{ section.title }}</p>
+            <p class="description-text">{{ section.description }}</p>
+        </div>
+        {% endfor %}
+
+        {% if product.description_list %}
+        <div class="col-4">
+            <p class="specification-title">{{ product.description_list.title }}</p>
+            <ul class="specification-text">
+                {% for text in product.description_list.description %}
+                <li class="section-text">{{ text }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        {% if product.description_dictionary %}
+        <div class="col-4">
+            <p class="specification-list-title">{{ product.description_dictionary.title }}</p>
+            {% for key, description_list in product.description_dictionary.description.items() %}
+            <div class="col-4">
+                <strong>{{ key }}</strong>
+                <ul>
+                {% for description in description_list %}
+                    <li class="section-text">{{ description }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+            <br />
+            {% endfor %}
+        </div>
+        {% endif %}
     </div>
 
     <div class="related-products">

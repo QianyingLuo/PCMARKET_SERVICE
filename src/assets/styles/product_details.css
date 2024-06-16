@@ -204,3 +204,8 @@
 .rating span{
     font-size: 8px;
 }
+
+.description-title {
+    font-size: 18px !important;
+    font-weight: 700;
+}

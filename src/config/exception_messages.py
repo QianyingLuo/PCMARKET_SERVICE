@@ -1,6 +1,8 @@
 EMAIL_ALREADY_EXISTS_EXCEPTION = "El email introducido ya consta como registrado"
 NOT_AUTHORIZED_USER_EXCEPTION = "Los datos introducidos no son válidos"
 
+PRODUCT_NOT_FOUND =  "Product not found"
+
 GENERIC_ERROR = "Algo ha salido mal . . ."
 CONNECTION_ERROR = "Failed to connect to database. Please, check database credentials."
 
