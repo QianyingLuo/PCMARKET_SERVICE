@@ -15,7 +15,7 @@ class DescriptionList(BaseModel):
     description: str 
     
     def to_domain(self)-> product_domain.DescriptionList:
-        converted_description = self.description.split("/")
+        converted_description = self.description.split("//")
 
         result = dict()
         result["title"] = self.title

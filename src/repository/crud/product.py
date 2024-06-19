@@ -57,7 +57,7 @@ def get_discounted_products() -> list[product_domain.Product]:
 def get_product_by_id(product_id: int) -> product_domain.Product:
     cursor = mysql_connection.cursor(dictionary=True)
 
-    query = "SELECT * FROM product WHERE id = %s"
+    query = "SELECT * FROM product WHERE id = %s LIMIT 1"
     cursor.execute(query, (product_id,))
     product_data = cursor.fetchone()
 

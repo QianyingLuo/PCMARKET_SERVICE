@@ -1,15 +1,24 @@
-from typing import Any
+from typing import Any, Optional
 from fastapi import FastAPI, Request, Response
 from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
 from jose import ExpiredSignatureError, JWTError, jwt
 
 from . import config
+from .api import cart as cart_api
 
-def get_current_user(request: Request) -> dict[str, Any]:
-    return request.state.data.get("user", None)
 
-class CheckLoggedUserMiddleware(BaseHTTPMiddleware):
-    def check_user_token(self, request: Request):
+def get_current_user(request: Request) -> Optional[dict[str, Any]]:
+    if hasattr(request.state, 'data') and request.state.data:
+        return request.state.data.get("user", None)
+    return None
+
+def get_current_cart(request: Request) -> Optional[Any]:
+    if hasattr(request.state, 'data') and request.state.data:
+        return request.state.data.get("cart", None)
+    return None
+
+class CheckLoggedUserAndCartMiddleware(BaseHTTPMiddleware):
+    def check_user_token(self, request: Request) -> Optional[dict[str, Any]]: 
         token = request.cookies.get("token")
         if token is None:
             return None
@@ -17,11 +26,19 @@ class CheckLoggedUserMiddleware(BaseHTTPMiddleware):
         try:
             payload = jwt.decode(token, config.SECRET_KEY, algorithms=[config.ALGORITHM])
 
-            username: str = payload.get("name")
-            if username is None:
-                return None
+            user_id: int = payload.get("id")
+            user_name: str = payload.get("name")
 
-            return {"name": username}
+            if user_id is None or user_name is None:
+                return None
+            else:
+                info = {"id": user_id, "name": user_name}
+                cart_exists = cart_api.get_cart_by_user_id(user_id)
+
+                if cart_exists:
+                    info["cart"] = cart_exists
+                
+                return info
         
         except ExpiredSignatureError:
             return None
@@ -29,13 +46,20 @@ class CheckLoggedUserMiddleware(BaseHTTPMiddleware):
         except JWTError as e:
             return None
     
+    
     async def dispatch(self, request: Request, call_next: RequestResponseEndpoint) -> Response:
+        if not hasattr(request.state, 'data'):
+            request.state.data = {}
+
         user_data = self.check_user_token(request)
 
         if user_data:
-            request.state.data = {"user": user_data}
+            request.state.data["user"] = user_data
+            
+            if "cart" in user_data:
+                request.state.data["cart"] = user_data["cart"]
         else:
-            request.state.data = {}
+            request.state.data = None
 
         response = await call_next(request)
 
@@ -43,7 +67,6 @@ class CheckLoggedUserMiddleware(BaseHTTPMiddleware):
             response.delete_cookie("token")
 
         return response
-
-
+    
 def set_middlewares(app: FastAPI) -> None:
-    app.add_middleware(CheckLoggedUserMiddleware)
+    app.add_middleware(CheckLoggedUserAndCartMiddleware)

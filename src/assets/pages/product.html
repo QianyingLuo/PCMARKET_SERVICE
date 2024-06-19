@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="/static/styles/product_details.css">
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-
 <div class="small-container-single-product">
     <div class="row">
         <div class="col-2">
@@ -23,43 +22,47 @@
             {% else %}
             <span class="no-discount">{{ product.price }}€</span>
             {% endif %}
+
             <div class="product-action">
-                <input type="number" value="1">
-                <a href="" class="add-to-cart">Añadir al carrito</a>
-                <a href=""><i class='bx bx-heart'></i></a>
+                <form action="/product/{{ product.id }}" method="post" id="add-cart-form">
+                    <input type="number" name="product_quantity" id="product_quantity" value="1" required>
+                    <button type="submit">Añadir al carrito</button>
+                    <a href=""><i class='bx bx-heart'></i></a>
+                </form>
             </div>
+            <div class="message" id="response-message"></div>
         </div>
     </div>
     <div class="product-description">
         <h3>Descripción<hr></h3>
-        <p>{{ product.description }}</p>
+        <p class="description">{{ product.description }}</p>
         {% for section in product.description_sections %}
-        <div class="col-4">
-            <p class="description-title">{{ section.title }}</p>
-            <p class="description-text">{{ section.description }}</p>
+        <div>
+            <p class="section-title">{{ section.title }}</p>
+            <p class="section-text">{{ section.description }}</p>
         </div>
         {% endfor %}
 
         {% if product.description_list %}
-        <div class="col-4">
-            <p class="specification-title">{{ product.description_list.title }}</p>
-            <ul class="specification-text">
+        <div>
+            <p class="list-title">{{ product.description_list.title }}</p>
+            <ul class="list-text">
                 {% for text in product.description_list.description %}
-                <li class="section-text">{{ text }}</li>
+                <li>{{ text }}</li>
                 {% endfor %}
             </ul>
         </div>
         {% endif %}
 
         {% if product.description_dictionary %}
-        <div class="col-4">
-            <p class="specification-list-title">{{ product.description_dictionary.title }}</p>
+        <div>
+            <p class="dictionary-title">{{ product.description_dictionary.title }}</p>
             {% for key, description_list in product.description_dictionary.description.items() %}
-            <div class="col-4">
+            <div>
                 <strong>{{ key }}</strong>
                 <ul>
                 {% for description in description_list %}
-                    <li class="section-text">{{ description }}</li>
+                    <li class="dictionary-text">{{ description }}</li>
                 {% endfor %}
                 </ul>
             </div>
@@ -106,5 +109,5 @@
         {% endfor %}
     </div>
 </div>
-
+<script type="text/javascript" src="/static/js/addCart.js"></script>
 {% endblock %}

@@ -50,6 +50,15 @@ def get_product_by_id(product_id: int) -> product_domain.Product:
         product.discount_percentage = round(product.discount_decimal * 100)
     return product
 
+def get_product_stock_by_id(product_id: int) -> int:
+     
+    product = product_crud.get_product_by_id(product_id)
+
+    if not product:
+        raise HTTPException(status_code=404, detail=exception_messages.PRODUCT_NOT_FOUND)
+
+    return product.stock
+
 def get_random_products_by_type(product_type: str) -> list[product_domain.Product]:
     products = product_crud.get_random_products_by_type(product_type, config.NUMBER_TOP_PRODUCTS)
     

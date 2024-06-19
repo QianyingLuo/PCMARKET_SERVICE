@@ -12,14 +12,6 @@
     </div>
 </div>    
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const token = document.cookie.split('; ').find(row => row.startsWith('token='));
-            if (token) {
-                console.log("Tengooo token")
-            }
-    });
-</script>
 <div class="small-container-category">
     {% for product_type, products in products_by_type.items() %}
     <h2 class="category-title">{{ product_type }}</h2>

@@ -1,27 +1,3 @@
-CREATE TABLE IF NOT EXISTS user(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    email VARCHAR(70) UNIQUE NOT NULL,
-    password TEXT NOT NULL,
-    address VARCHAR(70),
-    phone VARCHAR(20)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-INSERT IGNORE INTO user (name, email, password) VALUES ("adminadmin", "admin@admin.com", "$2a$10$Y3/Ms/LwRUYVxsWG73ULOuW6rhL.pJx9k6tnp8Ci1E498wplVEmNC");
-
-CREATE TABLE IF NOT EXISTS product(
-     id INT AUTO_INCREMENT PRIMARY KEY,
-     name VARCHAR(255) NOT NULL,
-     description TEXT NULL,
-     type VARCHAR(50) NOT NULL,
-     brand VARCHAR(50) NOT NULL,
-     stock INT NOT NULL,
-     price FLOAT NOT NULL,
-     discount_decimal FLOAT,
-     stars FLOAT,
-     image TEXT NOT NULL
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil - Samsung Galaxy Book4 Pro, 16" WQXGA+, Intel® Evo™ Edition Core™ Ultra 7-155H, 16GB RAM, 512GB, Arc®, W11H, IA, Gris', 
        '',
@@ -38,17 +14,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil gaming - Lenovo IdeaPad Gaming 3 15ACH6, 15.6" Full-HD, AMD Ryzen™ 5 5500H, 16GB RAM, 512GB SSD, GeForce RTX™ 2050, Sin sistema operativo', 
-       'Potencia y rendimiento a raudales es lo que vas a encontrar con el portátil gaming IdeaPad Gaming 3 15ACH6 en color Shadow Black. Equipado con un procesador AMD Ryzen™ 5 5500H, una gráfica GeForce® RTX™ 2050 de 4 GB y con 16 GB de RAM, podrás jugar durante horas y hacer maratones gaming con gran fluidez, sin que el equipo se resienta. Con un almacenamiento de 512 GB podrás guardar todo aquello que necesites, y al ser SSD, el equipo trabajará y cargará aplicaciones y juegos a gran velocidad.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Gran capacidad de almacenamiento</strong><br>
-Gracias a su gran almacenamiento interno 512 GB SSD, podrás transferir tus datos en alta velocidad. Lo mejor es que la memoria de tipo SSD, transfiere datos 20 veces más rápido que un disco duro convencional. Además, el portátil gaming Lenovo tiene 16 GB de memoria RAM, de tipo DDR4, con una gran frecuencia de hasta 3200 MHz, lo que supondrá una reducción considerable en los tiempos de carga.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Gráficos NVIDIA® GeForce® RTX 2050</strong><br>
-Con la revolucionaria arquitectura NVIDIA, los juegos y el contenido en streaming nunca volverán a ser lo mismo. Consigue toda la potencia que necesitas para obtener un rendimiento rápido, fluido y eficiente con NVIDIA® GeForce® RTX 2050.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Colores ricos y brillantes Full HD con 144 Hz</strong><br>
-Los colores claros y realistas cobran vida con una resolución Full HD (1920 x 1080 ) de 15.6" con 144 Hz tipo IPS. Visualiza contenido sin problemas desde cualquier ángulo con tus amigos y familiares.
-',
+       'Potencia y rendimiento a raudales es lo que vas a encontrar con el portátil gaming IdeaPad Gaming 3 15ACH6 en color Shadow Black. Equipado con un procesador AMD Ryzen™ 5 5500H, una gráfica GeForce® RTX™ 2050 de 4 GB y con 16 GB de RAM, podrás jugar durante horas y hacer maratones gaming con gran fluidez, sin que el equipo se resienta. Con un almacenamiento de 512 GB podrás guardar todo aquello que necesites, y al ser SSD, el equipo trabajará y cargará aplicaciones y juegos a gran velocidad.',
        'portatil',
        'Lenovo',
        20,
@@ -62,17 +28,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil - Lenovo IdeaPad Slim 3 15IAH8, 15.6" Full-HD, Intel® Core™ i5-12450H, 16GB RAM, 512GB SSD, UHD Graphics, Sin sistema operativo, Gris', 
-       'El portátil IdeaPad Slim 3 15IAH8 de Lenovo combina un perfil fino, potencia y velocidad para que salgas a la carretera día y noche. Es lo suficientemente resistente como para afrontar cualquier cosa que le pidas y lo suficientemente ligero como para transportarlo sin esfuerzo. No renuncies a nada con este dispositivo Smart, ligero y basado en pruebas de especificaciones militares.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Arquitectura híbrida de rendimiento</strong><br>
-El procesador Intel® Core™ de 12ª generación transforma tu experiencia informática y de juego, ya que integra dos microarquitecturas de núcleo totalmente nuevas en un único chip, gracias a Intel® Thread Director el procesador divide de forma inteligente el trabajo entre P-cores (núcleos de rendimiento) y E-cores (núcleos de eficiencia). Estas tecnologías mejoran los videojuegos y la productividad al garantizar que las tareas en segundo plano no distraen la atención de los núcleos más potentes, una optimización inteligente de las cargas de trabajo, lo que es un paso generacional en el rendimiento.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Almacenamiento SSD</strong><br>
-El espacio de este ordenador nunca va a ser un problema. Su disco duro SSD tiene una capacidad de 512 GB por lo que podrás guardar infinidad de archivos sin estar preocupándote por añadir memorias externas o ir borrando documentos. Además, cuenta con 16 GB de RAM tipo LPDDR5 a 4800 MHz.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Tus proyectos en alta definición Full HD</strong><br>
-Tus juegos o proyectos ahora tienen una nitidez nunca imaginada gracias a la pantalla TN de 15.6 pulgadas y alta definición. Su resolución Full-HD de 1920 x 1080 píxeles proporciona una imagen detallada, clarísima y con los colores más vivos que nunca.
-',
+       'El portátil IdeaPad Slim 3 15IAH8 de Lenovo combina un perfil fino, potencia y velocidad para que salgas a la carretera día y noche. Es lo suficientemente resistente como para afrontar cualquier cosa que le pidas y lo suficientemente ligero como para transportarlo sin esfuerzo. No renuncies a nada con este dispositivo Smart, ligero y basado en pruebas de especificaciones militares.',
        'portatil',
        'Lenovo',
        60,
@@ -86,17 +42,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil - Acer Chromebook CB315-3H-C27W, 15.6" HD, Intel® Celeron® N4120, 4GB RAM, 64GB eMMC, Intel® UHD 600, Google Chrome OS', 
-       'Diseñado para la vida móvil, este portátil Acer Chromebook CB315-3H-C27W antirreflejante de 15.6" con bisel delgado de 9,5 mm, ofrece una pantalla más grande para hacer más y una batería de larga duración de hasta 12.5 horas de autonomía. Gracias a su potente procesador Intel® Celeron® N4500 proporciona un bajo consumo de energía y una respuesta rápida. Cuenta con 4 GB de memoria RAM, también cuenta con 64 GB eMMC de almacenamiento.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">¿Qué es un Chromebook?</strong><br>
-Los Chromebook son ordenadores portátiles que utilizan el sistema operativo "Chrome OS", desarrollado por Google. Está diseñado para darte una solución rápida y constante, y lleva lo mejor de los servicios de Google integrados.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Rendimiento con el procesador Intel® Celeron®</strong><br>
-Para trabajo, estudio y entretenimiento obtendrás eficacia y versatilidad con el procesador Intel® Celeron® N4120 con frecuencia base de 1.10 GHz y 4 MB de caché. Cuenta con sistema operativo Chrome OS intuitivo y fácil de manejar en el día a día, con 4 GB de RAM y capacidad de almacenamiento de 64 GB eMMC.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">64 GB de almacenamiento eMMC</strong><br>
-No hará falta que te preocupes por todos esos archivos que quieres conservar para el futuro. Cuenta con un disco duro eMMC de 64 GB y RAM de 4GB. Disfruta de cumplir con tus prioridades y de entretenerte, con total tranquilidad.
-',
+       'Diseñado para la vida móvil, este portátil Acer Chromebook CB315-3H-C27W antirreflejante de 15.6" con bisel delgado de 9,5 mm, ofrece una pantalla más grande para hacer más y una batería de larga duración de hasta 12.5 horas de autonomía. Gracias a su potente procesador Intel® Celeron® N4500 proporciona un bajo consumo de energía y una respuesta rápida. Cuenta con 4 GB de memoria RAM, también cuenta con 64 GB eMMC de almacenamiento.',
        'portatil',
        'Acer',
        42,
@@ -110,17 +56,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil - HP 15S-FQ5048NS , 15.6" Full HD, Intel® Core™ i7-1255U, 16GB RAM, 512GB SSD, Iris® Xᵉ, W11 Home', 
-       'Permanece conectado para trabajar o jugar siempre que lo necesites gracias al ordenador portátil HP Laptop HP 15s-fq5048ns de 15,6 pulgadas. Este dispositivo tiene una batería de larga duración, un fino y ligero diseño ligero con una pantalla microborde, pantalla Full HD y viene con tecnología antirreflectante.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Procesador que supera a todos los de su clase</strong><br>
-Los procesadores Intel® Core™ de 12ª generación presentan grandes avances en todas las áreas que importan ya que combinan el rendimiento de CPU líder en la industria, unos gráficos envolventes, una increíble aceleración de IA (Inteligencia artificial) y una conectividad por cable de gama alta e inalámbrica para ayudar a concentrarte, crear y participar de nuevas formas. <br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Gran almacenamiento interno y notable memoria RAM</strong><br>
-Gracias a su gran almacenamiento interno 512 GB SSD, podrás transferir tus datos en alta velocidad. Lo mejor es que la memoria de tipo SSD, transfiere datos 20 veces más rápido que un disco duro convencional. No hay que olvidar del almacenamiento interno de512 GB SSD, con el que podrás almacenar todo tipo de archivos, películas, videojuegos sin tener que estar pendiente de la memoria disponible. <br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Panel antirreflectante</strong><br>
-Disfruta del sol y de tu contenido favorito con este panel antirreflectante. Que sea antirreflectante y de bajo brillo significa que gozarás de menos reflejos cuando esté al aire libre ya que no te afectarán los destellos.
-',
+       'Permanece conectado para trabajar o jugar siempre que lo necesites gracias al ordenador portátil HP Laptop HP 15s-fq5048ns de 15,6 pulgadas. Este dispositivo tiene una batería de larga duración, un fino y ligero diseño ligero con una pantalla microborde, pantalla Full HD y viene con tecnología antirreflectante.',
        'portatil',
        'HP',
        26,
@@ -134,19 +70,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil - Lenovo IdeaPad 1 15ALC7, 15.6" Full-HD, AMD Ryzen™ 5 5500U, 16GB RAM, 512GB SSD, Radeon™ Onboard Graphics, Windows 11 Home, Gris', 
-       'Con el portátil Lenovo IdeaPad 1 15ALC7 en color Cloud Grey, no encontrarás rival en tu proyectos y trabajos. Además de ser ultra ligero y fino, tiene una autonomía de 9.32h y unos gráficos Radeon™ Graphics que te harán elevar tus diseños a otra dimensión.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">AMD® Ryzen™ 5 5500U, potencia sin límites</strong><br>
-Si de verdad quieres rendimiento sin bloqueos, el procesador AMD® Ryzen™ 5 5500U será lo que más necesites, ya que con su frecuencia turbo de 4.0 GHz, los tiempos de carga en programas se reducirán considerablemente. Además, podrás completar grandes hojas de cálculo sin momentos de ralentización o bloqueos.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Tus proyectos en alta definición Full HD</strong><br>
-Tus juegos ahora tienen una nitidez nunca imaginada gracias a la pantalla TN de 15.6 pulgadas y alta definición. Su resolución Full-HD de 1920 x 1080 píxeles proporciona una imagen detallada, clarísima y con los colores más vivos que nunca.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Almacenamiento SSD</strong><br>
-El espacio de este ordenador nunca va a ser un problema. Su disco duro SSD tiene una capacidad de 512 GB por lo que podrás guardar infinidad de archivos sin estar preocupándote por añadir memorias externas o ir borrando documentos. Además, cuenta con una memoria RAM de 16 GB.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Auténtica gráfica Radeon™ Graphics</strong><br>
-Rendimiento rapidísimo, avanzadas tecnologías potentes y alta resolución: ¡con la tarjeta gráfica AMD Radeon™ Graphics lo tendrás todo! Gráficos espectaculares, menor latencia y máxima fluidez para que no haya ningún problema.',
+       'Con el portátil Lenovo IdeaPad 1 15ALC7 en color Cloud Grey, no encontrarás rival en tu proyectos y trabajos. Además de ser ultra ligero y fino, tiene una autonomía de 9.32h y unos gráficos Radeon™ Graphics que te harán elevar tus diseños a otra dimensión.',
        'portatil',
        'Lenovo',
        80,
@@ -160,20 +84,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil - Acer Aspire Go 15 AG15-31P, 15.6" Full HD, Intel® Core™ i3-N305, 8GB RAM, 512GB SSD, UHD Graphics, Windows 11 Home', 
-       'El portátil Acer Aspire Go 15 AG15-31P en color plata con pantalla de 15.6" Full HD y tiene un diseño ligero y fino y con él podrás realizar todas tus tareas gracias a su potente procesador Intel® Core™ i3-N305.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Intel® Core™ i3-N305 desempeño y valor ampliado</strong><br>
-Los procesadores Intel® Core™ i3-N305 para experiencias fáciles, receptivas, optimizada y procesamiento para aplicaciones de inteligencia artificial, cuentan con hasta 8 núcleos, el mismo núcleo eficiente (o E-core) y Gráficos UHD Intel® impulsados por la arquitectura Xe que los procesadores Intel® Core™ de 12a Generación, ofrecen memoria LPDDR5 y DDR5, y E/S ampliada y capacidades para uso de periféricos de Inteligencia artificial como virtualización de hardware, compatibilidad con múltiples sistemas operativos. Colaborar y transmitir con confianza, unidad de procesamiento de imágenes mejorada, gran autonomía de batería habilitada, el procesador aprovecha la energía y la eficiencia para respaldar el aprendizaje inmersivo y de nuevas formas, la navegación y la productividad. Juegos casuales, streaming y mejora adicional en el desempeño de gráficos.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Almacenamiento de 512 GB</strong><br>
-Cuenta con un disco SSD de 512 GB en el que podrás guardar todos tus archivos, proyectos, imágenes, vídeos y mucho más sin preocuparte por la falta de espacio. Además, cuenta con una memoria RAM de 8GB de tipo DDR5.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">15.6" con resolución Full HD</strong><br>
-Trabaja en alta calidad con la pantalla de 15.6 pulgadas con resolución Full HD (1920 x 1080 píxeles) y tecnología Acer ComfyView LED LCD podrás disfrutar al máximo viendo películas y fotografías con la gran calidad de imagen y los detalles de alta definición de 1 millón de píxeles.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Wifi 6</strong><br>
-El Wi-Fi 6 aumenta la velocidad de transmisión, mejora la eficiencia y minimiza la congestión de la red cuando se utilizan múltiples dispositivos. La futura red WLAN requiere más rendimiento para hacer frente al aumento del tráfico de datos y gestionar más señales WLAN. 
-',
+       'El portátil Acer Aspire Go 15 AG15-31P en color plata con pantalla de 15.6" Full HD y tiene un diseño ligero y fino y con él podrás realizar todas tus tareas gracias a su potente procesador Intel® Core™ i3-N305.',
        'portatil',
        'Acer',
        18,
@@ -187,17 +98,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil - HP 15s-fq5099ns, 15.6" Full HD, Intel® Core™ i7-1255U, 16GB RAM, 512GB SSD, Intel® Iris® Xᵉ, Sin sistema operativo, Plata', 
-       '¿Buscas un notable portátil ligero para trabajar y/o jugar siempre que quieras? Disfruta de una pantalla con tecnología antirreflectante, batería de larga duración y con un rendimiento fiable para el día a día, gracias al dispositivo HP 15s-fq5099ns<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Procesador que supera a todos los de su clase</strong><br>
-Los procesadores Intel® Core™ de 12a generación presentan grandes avances en todas las áreas que importan ya que combinan el rendimiento de CPU líder en la industria, unos gráficos envolventes, una increíble aceleración de IA (Inteligencia artificial) y una conectividad por cable de gama alta e inalámbrica para ayudar a concentrarte, crear y participar de nuevas formas. La arquitectura de gráficos Xe, los gráficos integrados Intel® Iris® Xe ofrecen gráficos transformacionales y un nivel realista de multimedia para creación, videojuegos y entretenimiento en portátiles delgados y ligeros.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Buen almacenamiento PCIe SSD</strong><br>
-Este portátil HP se enciende en pocos segundos obteniendo una alta velocidad y confort gracias a su fiable procesador. A diferencia del antiguo PCI, los nuevos PCI Express (o PCIe) ofrecen una mejor eficiencia entre los diferentes componentes del hardware del PC, haciendo que sus componentes no se subdividan sino que se compartan aumentando el rendimiento de este ordenador. Este dispositivo portátil tiene 512GB de almacenamiento pudiendo guardar y procesar cualquier tipo de archivo, trabajo, videojuego o proyecto en el que estés trabajando. Es un ordenador profesional rápido y fiable para el día a día.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">16 GB de memoria RAM DDR4</strong><br>
-Este portátil tiene una notable memoria RAM de 16 GB DDR4 que te permitirá alcanzar una mayor velocidad y eficiencia gracias a sus mayores tasas de transferencia y a su menor voltaje. Esta generación de memoria RAM nos ofrece un mayor rendimiento que las anteriores así como una gran escalabilidad y eficiencia energética. 
-',
+       '¿Buscas un notable portátil ligero para trabajar y/o jugar siempre que quieras? Disfruta de una pantalla con tecnología antirreflectante, batería de larga duración y con un rendimiento fiable para el día a día, gracias al dispositivo HP 15s-fq5099ns',
        'portatil',
        'HP',
        52,
@@ -211,20 +112,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil - ASUS VivoBook 15 F1504ZA-NJ707W, 15.6" Full HD, Intel® Core™ i7-1255U, 16GB RAM, 512GB SSD, Iris® Xe, Windows 11 Home', 
-       'Convierte las tareas cotidianas en algo especial con VivoBook 15 F1504ZA-NJ707W, tu herramienta esencial para hacer las cosas más fácilmente, en cualquier lugar. También es completamente fácil de usar, con su bisagra plana de 180° y su protector físico para la cámara web. ASUS Antimicrobian Guard Plus protege las superficies que se tocan con frecuencia de bacterias, salvaguardando su salud. ¡Haz que todos tus días sean más agradables con Vivobook 15!<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Arquitectura híbrida de rendimiento</strong><br>
-El procesador Intel® Core™ de 12ª generación transforma tu experiencia informática y de juego, ya que integra dos microarquitecturas de núcleo totalmente nuevas en un único chip, gracias a Intel® Thread Director el procesador divide de forma inteligente el trabajo entre P-cores (núcleos de rendimiento) y E-cores (núcleos de eficiencia). Estas tecnologías mejoran los videojuegos y la productividad al garantizar que las tareas en segundo plano no distraen la atención de los núcleos más potentes, una optimización inteligente de las cargas de trabajo, lo que es un paso generacional en el rendimiento!<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Alta velocidad y rendimiento</strong><br>
-Equipado con un disco duro de 512 GB de SSD, un disco duro ultra rápido, con el que podrás acceder a tus archivos, fotos y bibliotecas multimedia en segundos. Iniciarás el sistema operativo en un momento. Tiene espacio más que suficiente para todos sus álbumes de fotos, bibliotecas de música y películas. Además abordarás tareas de productividad exigentes con sus 16 GB de RAM y trabajarás de forma fluida con el sistema operativo Windows 11 Home.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Diseño innovador para inspirarte</strong><br>
-El portátil ASUS VivoBook 15  F1504ZA-NJ707W presenta una sólida, elegante y actual construcción montando una pantalla NanoEdge de 15.6” Full HD para que tengas una experiencia inmersiva al trabajar y jugar. Su panel FHD de visión amplia cuenta con un revestimiento antirreflectante que reduce las distracciones no deseadas de brillos y reflejos molestos, para que puedas centrarte realmente en lo que tienes delante.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Auténtica gráfica Iris® Xe Graphics</strong><br>
-¡Con la tarjeta gráfica Intel® Iris® Xe Graphics lo tendrás todo! Gráficos increíbles, menor latencia y máxima fluidez.
-',
+       'Convierte las tareas cotidianas en algo especial con VivoBook 15 F1504ZA-NJ707W, tu herramienta esencial para hacer las cosas más fácilmente, en cualquier lugar. También es completamente fácil de usar, con su bisagra plana de 180° y su protector físico para la cámara web. ASUS Antimicrobian Guard Plus protege las superficies que se tocan con frecuencia de bacterias, salvaguardando su salud. ¡Haz que todos tus días sean más agradables con Vivobook 15!',
        'portatil',
        'Asus',
        35,
@@ -238,20 +126,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image) 
 SELECT 'Portátil - Acer Chromebook CB315-4H-C4BQ, 15.6" Full HD, Intel® Celeron® N4500, 8GB RAM, 128GB eMMC, Intel® UHD Graphics, Google Chrome OS', 
-       'Diseñado para la vida móvil, este portátil Acer Chromebook CB315-4H-C4BQ antirreflejante de 15.6" con bisel delgado de 9,5 mm, ofrece una pantalla más grande para hacer más y una batería de larga duración de hasta 10 horas de autonomía. Gracias a su potente procesador Intel® Celeron® N4500 proporciona un bajo consumo de energía y una respuesta rápida. Cuenta con 8GB de memoria RAM, también cuenta con 128GB eMMC de almacenamiento.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">¿Qué es un Chromebook?</strong><br>
-Los Chromebook son ordenadores portátiles que utilizan el sistema operativo "Chrome OS", desarrollado por Google. Está diseñado para darte una solución rápida y constante, y lleva lo mejor de los servicios de Google integrados.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Rendimiento con el procesador Intel® Celeron®</strong><br>
-Para trabajo, estudio y entretenimiento obtendrás eficacia y versatilidad con el procesador Intel® Celeron® N4500 con frecuencia base de 1.10 GHz y 4 MB de caché. Potencia fiable sin contratiempos para las aplicaciones de correo electrónico y la navegación por la Web, tiempos de inicio más breves y más acción, duración optimizada de la batería, sólido nivel de rendimiento para las tareas informáticas cotidianas. Cuenta con sistema operativo Chrome OS intuitivo y fácil de manejar en el día a día, con 8GB de RAM y capacidad de almacenamiento de 128GB eMMC.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Sencillo e inteligente</strong><br>
-Realiza una copia de seguridad automática de tus datos y funciona con y sin conexión. Un dispositivo pensado para compartir y colaborar.<br><br>
-
-<strong style="font-size: 18px; margin-bottom: 25px;">Seguridad garantizada</strong><br>
-Con protección integrada, sin necesidad de programas adicionales y con múltiples niveles de seguridad. (El antivirus integrado y la comprobación de arranque de Chrome OS están diseñados para evitar los problemas persistentes que pueden darse durante un uso normal, pero esto no significa que Chromebook no pueda ser atacado por código malicioso).
-',
+       'Diseñado para la vida móvil, este portátil Acer Chromebook CB315-4H-C4BQ antirreflejante de 15.6" con bisel delgado de 9,5 mm, ofrece una pantalla más grande para hacer más y una batería de larga duración de hasta 10 horas de autonomía. Gracias a su potente procesador Intel® Celeron® N4500 proporciona un bajo consumo de energía y una respuesta rápida. Cuenta con 8GB de memoria RAM, también cuenta con 128GB eMMC de almacenamiento.',
        'portatil',
        'Acer',
        29,
@@ -265,17 +140,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil - Apple MacBook Air Apple M1/8GB/256GB SSD/GPU Hepta Core/13.3" Plata', 
-       'El poder no ocupa lugar. El chip M1 de Apple redefine nuestro portátil más fino y ligero. La CPU es hasta 3,5 veces más potente. Los gráficos, hasta cinco veces más rápidos. Un Neural Engine más avanzado llega a multiplicar por nueve la velocidad del aprendizaje automático. Además tiene la mayor autonomía en un MacBook Air y un diseño sin ventilador que lo vuelve ultrasilencioso. Descubre un talento sin precedentes listo para seguirte a cualquier parte.<br><br>
-<strong style="font-size: 18px; margin-bottom: 25px;">Características: </strong><br>
-<strong>•	La potencia hecha chip.</strong> Ya está aquí. Nuestro primer chip diseñado específicamente para el Mac. El M1 de Apple es un sistema en chip (SoC) que reúne 16.000 millones de transistores e integra la CPU, la GPU, el Neural Engine, E/S y mucho más en un diseño minúsculo. Con un rendimiento top, tecnologías a medida y la mayor eficiencia del sector, el M1 no solo es un nuevo paso para el Mac. Es un antes y un después en su historia.<br>
-<strong>•	Ávida de trabajo. No de batería.</strong> El chip M1 lleva la CPU más rápida que hemos desarrollado. Con semejante potencia en la recámara, el MacBook Air pisa a fondo al realizar procesos tan exigentes como editar vídeo con calidad profesional o echar partidas épicas. Y eso es solo el principio, porque además de multiplicar por hasta 3,5 la velocidad de la generación anterior,2 la CPU de ocho núcleos del chip M1 equilibra los núcleos de alto rendimiento y los de eficiencia, que se ocupan de las tareas cotidianas, para consumir solo una décima parte de la energía. Ahí es nada.<br>
-<strong>•	La potencia de macOS Big Sur con el chip M1.</strong> macOS Big Sur se ha desarrollado para aprovechar el potencial del chip M1 y transformar el Mac. ¿El resultado? Un rendimiento superior, mejoras en las apps, un nuevo diseño espectacular y prestaciones de privacidad y seguridad líderes del sector. Es nuestro software más potente, y está a la altura de nuestro hardware más avanzado.<br>
-<strong>•	Colores tan reales que no te lo crees.</strong> La resolución de 2.560 por 1.600 píxeles de la pantalla Retina de 13,3 pulgadas ofrece un nivel de detalle y realismo asombroso. El texto se ve con la máxima claridad, los colores brillan con luz propia y el vidrio llega hasta el borde de la carcasa para que nada te distraiga.<br>
-<strong>•	Tecnología True Tone.</strong> Disfruta las vistas. Descansa los ojos. El MacBook Air sabe ajustar de forma automática el punto blanco de la pantalla según la temperatura del color ambiental, así resulta más cómodo mirarla.<br>
-<strong>•	Cámara y micrófonos Saca tu mejor tú.</strong> El chip M1 lleva nuestro procesador de señal de imagen más avanzado para que siempre salgas estupendamente en tus videollamadas de FaceTime. A los tres micros integrados no se les escapa nada, ya estés en una llamada, dictando una nota o preguntándole a Siri qué tiempo hace.<br>
-<strong>•	Un teclado con mayúsculas.</strong> Disfruta de una comodidad absoluta de la A a la Z. Además de escribir a tus anchas, con los atajos preprogramados de este teclado puedes acceder al instante a las prestaciones que más usas. Habla con Siri, cambia el idioma del teclado, responde con el emoji perfecto, encuentra documentos con Spotlight… Ni te imaginas todo lo que puedes hacer con un toque. Y la retroiluminación con sensor de luz ambiental te permite escribir incluso cuando estás medio a oscuras.<br>
-<strong>•	Touch ID.</strong> Un solo toque basta para bloquear y desbloquear el MacBook Air. Tu huella sirve para alquilar una peli, comprar una app o acceder a documentos protegidos y a los ajustes del sistema sin teclear la contraseña. Y cuando usas Apple Pay para comprar online, Touch ID añade tu dirección y datos de facturación sin compartir el número de tu tarjeta de crédito.<br>
- ',
+       'El poder no ocupa lugar. El chip M1 de Apple redefine nuestro portátil más fino y ligero. La CPU es hasta 3,5 veces más potente. Los gráficos, hasta cinco veces más rápidos. Un Neural Engine más avanzado llega a multiplicar por nueve la velocidad del aprendizaje automático. Además tiene la mayor autonomía en un MacBook Air y un diseño sin ventilador que lo vuelve ultrasilencioso. Descubre un talento sin precedentes listo para seguirte a cualquier parte.',
        'portatil',
        'Apple',
        30,
@@ -303,21 +168,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil - HP 255 G10, 15.6 " Full HD, AMD Ryzen 7 7730U, 32GB RAM, 512GB SSD, AMD Radeon™, Windows 11 H', 
-       'Descripción
-El portátil HP 255 G10 ofrece funciones esenciales para el negocio en un diseño compacto y ligero que permite llevarlo contigo a todas partes. Se trata de un equipo con pantalla de 15,6 pulgadas con una proporción entre pantalla y estructura del 85%, un sólido procesador AMD Ryzen™, una rápida memoria y opciones de almacenamiento diseñado para potenciar tu productividad y para que puedas conectar tus periféricos a los puertos que incluye...y todo ello por un precio que no te dejará indiferente.
-
-Procesador de rendimiento muy impresionante
-El procesador AMD Ryzen™ 7 7730U tiene mucha energía en reserva, junto con 32GB de memoria rápida, 512 GB de almacenamiento SSD rápido y conectividad WiFi 6 de alta velocidad que le permite cargar contenido en línea más rápido que nunca. incluye una nueva y revolucionaria arquitectura con una asombrosa duración de la batería, que ofrece un procesamiento de subprocesos concurrentes excepcional.
-
-Alta velocidad y rendimiento
-Equipado con un disco duro de 512GB de SSD, un disco duro ultra rápido, con el que podrás acceder a tus archivos, fotos y bibliotecas multimedia en segundos. Iniciarás el sistema operativo en un momento. Tiene espacio más que suficiente para todos sus álbumes de fotos, bibliotecas de música y películas. Además abordarás tareas de productividad exigentes con sus 32 GB de RAM.
-
-Gráficos para el día a día
-Con la magnifica AMD Radeon podrás ver el rendimiento grafico adaptado a tus necesidades, acelerando al máximo las aplicaciones mas populares de la actualidad y trabajando al máximo gracias a su capacidad.
-
-Obtén una nueva perspectiva con Windows 11 Home
-Windows 11 ofrece un espacio tranquilo y creativo en el que puedes dedicarte a tus pasiones a través de una novedosa experiencia. Desde un menú de Inicio rejuvenecido hasta nuevas formas de conectarte con tus personas, noticias, juegos y contenido favorito, Windows 11 es el lugar para pensar, expresar y crear de forma natural
-',
+       'El portátil HP 255 G10 ofrece funciones esenciales para el negocio en un diseño compacto y ligero que permite llevarlo contigo a todas partes. Se trata de un equipo con pantalla de 15,6 pulgadas con una proporción entre pantalla y estructura del 85%, un sólido procesador AMD Ryzen™, una rápida memoria y opciones de almacenamiento diseñado para potenciar tu productividad y para que puedas conectar tus periféricos a los puertos que incluye...y todo ello por un precio que no te dejará indiferente.',
        'portatil',
        'HP',
        36,
@@ -331,24 +182,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil - Microsoft Surface Laptop 5, 13.5" WQHD, Intel® Evo™ Core™ i5-1235U, 8GB RAM, 256GB SSD, Iris® Xe Graphics, Windows 11 Home', 
-       'Descripción
-Desbloquea más posibilidades que nunca con el Pro diseñado para un profesional como tú. El portátil para consumidores y diseñado para destacar lo mejor de Windows 11, Microsoft Surface Laptop 5, de color platinum, combina el poder de un portátil con la flexibilidad de una tableta, y todos los ángulos entremedios, con el icónico soporte trasero y teclado extraíble. Haz grandes cosas con una pantalla táctil más grande de 13.5", conexiones más rápidas y velocidad adicional cuando la necesitas.
-
-Arquitectura híbrida de rendimiento y Plataforma Intel® Evo™
-Si trabajas desde cualquier lugar, eres productivo, creativo, competitivo, buscas entretenerte o trabajar duro, con el procesador Intel® Core™ de 12ª generación diseñado en la plataforma Intel® Evo™ transformarás tu experiencia informática y de juego ya que hace que tu portátil funcione de manera fluida, intuitiva y con capacidad de respuesta excepcional. Integra dos microarquitecturas de núcleo totalmente nuevas en un único chip, gracias a Intel® Thread Director el procesador divide de forma inteligente el trabajo entre P-cores (núcleos de rendimiento) y E-cores (núcleos de eficiencia). Estas tecnologías mejoran la productividad y los videojuegos al garantizar que las tareas en segundo plano no distraen la atención de los núcleos más potentes, una optimización inteligente de las cargas de trabajo lo que es un paso generacional en el rendimiento!.
-
-Gran velocidad de transferencia de datos
-Gracias a su almacenamiento interno de 256 GB SSD, podrás transferir tus datos en alta velocidad. Lo mejor es que la memoria de tipo SSD, transfiere datos 20 veces más rápido que un disco duro convencional. Además, el portátil Surface Laptop 5 cuenta con 8 GB de memoria RAM, de tipo LPDDR5x, con una gran frecuencia, lo que supondrá una reducción considerable en los tiempos de carga.
-
-Ligereza
-El poder de un portátil ligero, con pantalla táctil de 13.5", resolución WQHD+ de 2256 x 1504 píxeles, el icónico soporte trasero y teclado extraíble. La pantalla PixelSense™ cuenta con función táctil multitáctil en 10 puntos y Gorilla Glass 5.
-
-Windows 11 Home instalado
-Windows 11 Home te acerca a lo que amas. La familia, los amigos, las obsesiones, la música y las creaciones... Windows 11 es el lugar para todo. Con un aspecto totalmente nuevo y herramientas que facilitan la eficacia, tiene lo que necesitas para el futuro.
-
-Excelente autonomía
-Céntrate en las ideas grandes, no en la duración de la batería, con hasta 18 horas de autonomía y carga rápida.
-',
+       'Desbloquea más posibilidades que nunca con el Pro diseñado para un profesional como tú. El portátil para consumidores y diseñado para destacar lo mejor de Windows 11, Microsoft Surface Laptop 5, de color platinum, combina el poder de un portátil con la flexibilidad de una tableta, y todos los ángulos entremedios, con el icónico soporte trasero y teclado extraíble. Haz grandes cosas con una pantalla táctil más grande de 13.5", conexiones más rápidas y velocidad adicional cuando la necesitas.',
        'portatil',
        'Microsoft',
        22,
@@ -362,36 +196,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil - Microsoft Surface Laptop 4 Negro Intel Core i5-1145G7/8GB/512 GB SSD/13.5" Táctil Reacondicionado', 
-       'Descripción
-Estilo y velocidad. Destaca en las videollamadas HD respaldadas con micrófonos de estudio. Captura ideas en la vibrante pantalla táctil. Hazlo todo con el equilibrio perfecto entre diseño moderno, velocidad, audio envolvente y una batería que dura significativamente más que antes.
-Características:
-•	Hazlo todo con estilo, rendimiento y velocidad: Ahora hasta un 70% más rápido que antes con una batería que dura significativamente más que ofrece hasta 19 horas de autonomía en el dispositivo de 13,5" con el procesador AMD Ryzen™ 5 Microsoft Surface® Edition. Destaca durante las videollamadas HD, captura ideas en la pantalla táctil de PixelSense™ y disfruta del audio envolvente de Dolby Atmos.
-•	Moderno, elegante y silencioso: Abre el dispositivo fácilmente con un dedo y disfruta de una productividad sin interrupciones en la pantalla táctil PixelSense™ gracias a la refrigeración ultra silenciosa. Personalízalo con la opción de dos tamaños y acabados de teclado, Alcantara® cálido o metálico moderno.
-•	Rendimiento para multitarea, videollamadas y entretenimiento: Aprovecha al máximo tu día con más potencia multitarea y hasta un 70% más de velocidad que antes, pon tu mejor cara y voz durante las videollamadas y disfruta de audio envolvente Dolby Atmos® para películas,5 todo ello respaldado por un potente poder de procesamiento.
-•	Comodidad, conveniencia y todas las conexiones que necesites: Aprovecha al máximo tu creatividad gracias a la batería que dura todo el día,1 carga rápida y una comodidad excepcional de escritura. Conéctate fácilmente con los puertos USB-C® y USB-A.
-•	Poder para hacer lo que quieras: Ejecuta Microsoft 365 y apps de creatividad.* Protege tus archivos y fotos en la nube con OneDrive. Disfruta de una navegación rápida con Microsoft Edge. Mira una película o disfruta de tu juego favorito.
-•	Dos procesadores increíbles, rendimiento de portátil excepcional: Diseñamos Surface Laptop 4 con procesadores Intel® Core™ de 11.ª generación y AMD Ryzen™ Microsoft Surface® Edition personalizados para ofrecer un rendimiento de portátil excepcional, fluidez entre pestañas de navegador y velocidad rápida para multitarea entre todas tus apps. ?
-Especificaciones
-•	Escenarios
-•	Diseño de nueva generación, con potencia, velocidad y sonido mejorados para disfrutar de una productividad diaria increíble, Microsoft Teams* y videollamadas, Microsoft 365,* streaming de música y series, compras y navegación
-•	Dimensiones
-•	Surface Laptop 4 13,5": 308 mm x 223 mm x 14,5 mm
-•	Pantalla
-•	Surface Laptop 4 13,5":
-•	Pantalla: pantalla PixelSense™ de 13,5"
-•	Resolución: 2256 x 1504 (201 ppp)
-•	Relación de aspecto: 3:2
-•	Compatible con el Lápiz para Surface*
-•	Función táctil: multitoque de 10 puntos
-•	Memoria
-•	Surface Laptop 4 13,5"
-•	RAM LPDDR4x de 8 GB
-•	Procesador
-•	Surface Laptop 4 13,5":
-•	Procesador Intel® Core™ i5-1135G7 de cuatro núcleos y 11.ª generación
-•	Duración de la batería
-•	Surface Laptop 4 de 13,5" con procesador Intel® Core™: hasta 17 horas de autonomía (para uso típico del dispositivo)
-',
+       'Estilo y velocidad. Destaca en las videollamadas HD respaldadas con micrófonos de estudio. Captura ideas en la vibrante pantalla táctil. Hazlo todo con el equilibrio perfecto entre diseño moderno, velocidad, audio envolvente y una batería que dura significativamente más que antes.',
        'portatil',
        'Microsoft',
        25,
@@ -405,24 +210,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil gaming - Lenovo LOQ 15IRH8, 15.6" FullHD, Intel® Core™ i5-12450H, 16GB RAM, 512GB SSD, GeForce RTX™ 4050, Windows 11 Home', 
-       'Descripción
-El portátil gaming Lenovo LOQ 15IRH8, funciona rápido con un procesador Intel® Core™ de 12va generación y tarjeta gráfica NVIDIA® GeForce RTX™ 4050. Disfruta de imágenes nítidas en una pantalla FHD de hasta 39.62 cm (15.6"), con una precisión de color asombrosa y Dolby Vision™. Por su parte, el sonido Nahimic Gaming Audio y el teclado te ayudan a atacar con precisión milimétrica.
-
-Máximo nivel desde cualquier lugar
-La potencia y rendimiento para jugar, compartir, grabar la consigues con el procesador Intel® Core™ de 12ª generación con su arquitectura de núcleo de procesador y una serie de tecnologías de aceleración con las que potenciar el rendimiento de cada núcleo. Gracias a Intel® Thread Director, el procesador divide de forma inteligente el trabajo entre P-cores y E-cores, mejorando los videojuegos y la productividad al garantizar que las tareas en segundo plano no distraen la atención de los núcleos más potentes. Incluye mejoras de plataforma como la compatibilidad con RAM DDR5 y la adopción de PCIe 5.0. Juega a 4K en un ordenador ultraportátil y gráficos NVIDIA® GeForce RTX™ 4050.
-
-Gran capacidad de almacenamiento
-Gracias a su gran almacenamiento interno 512 GB SSD, podrás transferir tus datos en alta velocidad. Lo mejor es que la memoria de tipo SSD, transfiere datos 20 veces más rápido que un disco duro convencional. Además, el portátil gaming Lenovo tiene hasta 16 GB de memoria RAM, de tipo DDR5, con una gran frecuencia de hasta 4800 MHz, lo que supondrá una reducción considerable en los tiempos de carga.
-
-Colores ricos y brillantes con 144 Hz
-Los colores claros y realistas cobran vida con una gran resolución FHD (1920x 1080píxeles) de 15.6" con 144 Hz tipo IPS. Visualiza contenido sin problemas desde cualquier ángulo con tus amigos y familiares.
-
-GeForce RTX™ serie 40
-Los portátiles más rápidos del mundo para jugadores y creadores se basan en las GPU de los portátiles NVIDIA® GeForce RTX™ serie 40. Cuentan con la arquitectura ultraeficiente NVIDIA Ada Lovelace. Además, suponen todo un salto cuántico en el rendimiento con DLSS 3, con tecnología de IA y permiten mundos virtuales realistas con trazado de rayos completo. El conjunto de tecnologías Max-Q optimiza el rendimiento del sistema, la potencia, la duración de la batería y la acústica para lograr la máxima eficiencia.
-
-Wi-Fi 6
-El Wi-Fi 6 aumenta la velocidad de transmisión, mejora la eficiencia y minimiza la congestión de la red cuando se utilizan múltiples dispositivos. La futura red WLAN requiere más rendimiento para hacer frente al aumento del tráfico de datos y gestionar más señales WLAN. El revolucionario y altamente eficiente estándar WLAN IEEE 802.11ax (Wi-Fi 6) hace frente a este desafío. Wi-Fi 6 cumple con su promesa de garantizar una red más rápida y estable en la próxima década.
-',
+       'El portátil gaming Lenovo LOQ 15IRH8, funciona rápido con un procesador Intel® Core™ de 12va generación y tarjeta gráfica NVIDIA® GeForce RTX™ 4050. Disfruta de imágenes nítidas en una pantalla FHD de hasta 39.62 cm (15.6"), con una precisión de color asombrosa y Dolby Vision™. Por su parte, el sonido Nahimic Gaming Audio y el teclado te ayudan a atacar con precisión milimétrica.',
        'portatil',
        'Lenovo',
        28,
@@ -436,43 +224,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil - Lenovo ThinkPad L15 Gen 4 Intel Core i5-1335U/16GB/512GB SSD/15.6"', 
-       'Descripción
-Rendimiento y fiabilidad para tu empresa. Portátil Lenovo ThinkPad L15 de 39,62 cm con teclado numérico, ideal para las finanzas, la contabilidad y la introducción de datos. Equipado con un procesador hasta Intel vPro® con Intel® Core™ de 13.a generación. Compatible con PC con núcleo protegido de Microsoft 11 para una mayor seguridad en el trabajo.
-Características
-•	Rendimiento profesional. El portátil Lenovo ThinkPad L15 Gen 4 inspira productividad. Equipado con procesadores Intel vPro® con Intel® Core™ serie U de 13.ª generación, este dispositivo de 39,62 cm (15,6?) también incorpora excelentes opciones de tarjetas gráficas. Además, gracias a las baterías más grandes opcionales, disfrutarás de autonomía todo el día con este compañero que te ofrece el máximo rendimiento y con el que podrás trabajar desde cualquier lugar.
-•	No pierdas la conexión, no importa dónde ni cuándo. Al igual que un smartphone, el portátil ThinkPad L15 Gen 4 ofrece conectividad WiFi 6 rápida. También cuenta con cancelación de ruido Dolby Voice® basada en IA que, en combinación con la cámara HD, hará que parezca que todos se encuentran en la misma sala durante las videoconferencias.
-•	Diseñado para mejorar la colaboración. La serie L ofrece también procesamiento de imágenes y un marco de visión artificial avanzada que mejora la calidad de la cámara, todo ello a través de Lenovo View 3.0.
-•	Lleva la fiabilidad al siguiente nivel. Usamos los estándares MIL-STD 810H del Departamento de Defensa de EE. UU. para crear un equilibrio entre fiabilidad y durabilidad con nuestros portátiles ThinkPad. Los probamos con 12 estándares y más de 200 pruebas de calidad para asegurarnos de que funcionan en condiciones extremas. Estas pruebas incluyen variables extremas, como la aridez ártica y las tormentas de arena del desierto, como la temperatura, la presión, la humedad y la vibración, entre otros factores.
-Especificaciones Lenovo ThinkPad L15 Gen 4
-•	Procesador Intel Core i5-1335U, 10C (2P + 8E) / 12T, P-core 1.3 / 4.6GHz, E-core 0.9 / 3.4GHz, 12MB
-•	Memoria RAM 16GB SO-DIMM DDR4-3200
-•	Almacenamiento 512GB SSD M.2 2242 PCIe® 4.0x4 NVMe® Opal 2.0
-•	Unidad óptica No dispone
-•	Display 15.6" FHD (1920x1080) IPS 250nits Anti-glare, 45% NTSC
-•	Controlador gráfico Integrada Intel Iris Xe
-•	Conectividad
-•	Intel Wi-Fi 6 (11ax, 2x2)
-•	Bluetooth 5.1
-•	Webcam FHD 1080p
-•	Micrófono Si
-•	Teclado: Retroiluminado
-•	Audio
-•	Altavoces 2W x2, Dolby® Audio™
-•	Posibilidad de conexión por Bluetooth a dispositivos de reproducción de audio externos (altavoces, auriculares, etc.)
-•	Batería
-•	Polímero de Litio de 57Wh
-•	Cargador 65W USB-C® (3-pin)
-•	Conexiones
-•	1x Ethernet (RJ-45)
-•	1x HDMI® 2.1, up to 4K/60Hz
-•	1x Thunderbolt™ 4 / USB4® 40Gbps (support data transfer, Power Delivery 3.0 and DisplayPort™ 1.4)
-•	1x USB 3.2 Gen 1
-•	1x USB 3.2 Gen 1 (Always On)
-•	1x USB-C® 3.2 Gen 2 (support data transfer, Power Delivery 3.0 and DisplayPort™ 1.4)
-•	1 x Jack combo (auriculares+micro)
-•	Sistema operativo
-•	Windows 11 Pro
-',
+       'Rendimiento y fiabilidad para tu empresa. Portátil Lenovo ThinkPad L15 de 39,62 cm con teclado numérico, ideal para las finanzas, la contabilidad y la introducción de datos. Equipado con un procesador hasta Intel vPro® con Intel® Core™ de 13.a generación. Compatible con PC con núcleo protegido de Microsoft 11 para una mayor seguridad en el trabajo.',
        'portatil',
        'Lenovo',
        19,
@@ -486,54 +238,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil - Apple MacBook Pro Apple M1 Pro/16GB/512GB SSD/14.2" Plata Reacondicionado', 
-       'Descripción
-Ya está aquí el MacBook Pro más potente de la historia. Su rendimiento y eficiencia son enormes gracias a los chips M1 Pro y M1 Max, los primeros que Apple diseña para profesionales. Incluye una asombrosa pantalla Liquid Retina XDR, la mejor cámara y el mejor sistema de sonido en un portátil Mac, además de todos los puertos que vas a necesitar. Estás ante el primer portátil de una nueva especie. Y es una bestia.
-Características:
-•	Espectacular pantalla Liquid Retina XDR con rango dinámico extremo y un contraste increíble
-•	Tres puertos Thunderbolt 4, ranura para tarjetas SDXC y puerto HDMI para conectar lo que haga falta
-•	Nueva cámara FaceTime HD a 1080p, sistema de sonido de seis altavoces de alta fidelidad y micrófonos con calidad de estudio para que te vean y oigan en tu mejor versión
-•	Hasta 17 horas de autonomía para que, vayas donde vayas, nada te pare
-•	El conector MagSafe 3 se acopla al instante y carga tu MacBook Pro a toda pastilla
-•	El Magic Keyboard con Touch ID ofrece autenticación sencilla, rápida y segura para iniciar sesión y comprar
-•	Con macOS Monterey y sus nuevas prestaciones de rendimiento, puedes trabajar, crear y colaborar como nunca en tu Mac
-Especificaciones:
-•	Chip: Chip M1 Pro de Apple
-•	CPU de 8 núcleos con 6 núcleos  de rendimiento y 2 de eficiencia
-•	GPU de 14 núcleos
-•	Neural Engine de 16 núcleos
-•	200 GB/s de ancho de banda de memoria
-•	Motor multimedia
-•	Aceleración por hardware para H.264, HEVC, ProRes y ProRes RAW
-•	Motor de decodificación de vídeo
-•	Motor de codificación de vídeo
-•	Motor de codificación y decodificación ProRes
-•	Pantalla Liquid Retina XDR
-•	Pantalla Liquid Retina XDR de 14,2 pulgadas (35,97 cm) en diagonal;1 resolución
-•	nativa de 3.024 por 1.964 a 254 píxeles por pulgada
-•	XDR (rango dinámico extremo)
-•	Hasta 1.000 nits de brillo sostenido (a pantalla completa), 1.600 nits de brillo máximo
-•	Contraste de 1.000.000:1
-•	Color
-•	1.000 millones de colores
-•	Gama cromática amplia (P3)
-•	Tecnología True Tone
-•	Frecuencias de actualización
-•	Tecnología ProMotion con frecuencia de actualización adaptativa de hasta 120 Hz
-•	Frecuencias de actualización fijas: 47,95 Hz, 48 Hz, 50 Hz, 59,94 Hz y 60 Hz
-•	Memoria
-•	16 GB
-•	16 GB de memoria unificada
-•	Batería y alimentación
-•	Hasta 17 horas de reproducción de vídeo en la app Apple TV
-•	Hasta 11 horas de navegación web inalámbrica
-•	Batería de polímeros de litio de 70 vatios-hora2
-•	Adaptador de corriente USB?C de 67 W (incluido con el M1 Pro con CPU de 8 núcleos)
-•	Adaptador de corriente USB?C de 96 W (incluido con el M1 Pro con CPU de 10 núcleos y el M1 Max, opcional con el M1 Pro con CPU de 8 núcleos)
-•	Cable de USB?C a MagSafe 3
-•	Carga rápida con el adaptador de corriente USB?C de 96 W
-•	Capacidad
-•	512GB SSD
-',
+       'Ya está aquí el MacBook Pro más potente de la historia. Su rendimiento y eficiencia son enormes gracias a los chips M1 Pro y M1 Max, los primeros que Apple diseña para profesionales. Incluye una asombrosa pantalla Liquid Retina XDR, la mejor cámara y el mejor sistema de sonido en un portátil Mac, además de todos los puertos que vas a necesitar. Estás ante el primer portátil de una nueva especie. Y es una bestia.',
        'portatil',
        'Apple',
        31,
@@ -547,21 +252,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil gaming - ASUS TUF A15 FA507NV-LP031W, 15.6" Full HD, AMD Ryzen 7 7735HS, 16GB RAM, 512GB SSD, GeForce RTX™ 4060, Windows 11 Home', 
-       'Descripción
-Salta directamente a la acción con el portátil gaming TUF Gaming A15. Con Windows 11 listo para usar, TUF Gaming A15 viene equipado con hasta un procesador AMD Ryzen™ 7 7735HS y hasta 16GB de RAM DDR5 de 4800 MHz increíblemente rápida que harán que tus streamings y todas tus tareas se manejen con gran facilidad. Aprovecha todo el potencial gaming con hasta una GPU para portátiles NVIDIA® GeForce RTX™ 4060 con MUX Switch dedicado. La ranura SSD M.2 NVMe te permitirá seguir llenando tu catálogo de juegos cuando tu biblioteca esté llena, haciendo muy fácil la capacidad para ampliar la memoria.
-
-Potencia y rendimiento
-El procesador AMD Ryzen™ 7 7735HS equipado con 8 núcleos, te permitirá jugar con los últimos juegos del mercado AAA y maratones gaming de manera ultra fluida y suave. Produce, crea, conecta y colabora como nunca antes. El portátil cuenta con,16GB de RAM DDR5 de 4800 MHz y 512GB SSD, para que ejecutes tus juegos como la multitarea de forma eficiente, y con un aumento del rendimiento gracias a su mayor ancho de banda.
-
-GeForce RTX™ serie 40
-Los portátiles más rápidos del mundo para jugadores y creadores se basan en las GPU de los portátiles NVIDIA® GeForce RTX™ serie 40. Cuentan con la arquitectura ultraeficiente NVIDIA Ada Lovelace. Además, suponen todo un salto cuántico en el rendimiento con DLSS 3, con tecnología de IA y permiten mundos virtuales realistas con trazado de rayos completo. El conjunto de tecnologías Max-Q optimiza el rendimiento del sistema, la potencia, la duración de la batería y la acústica para lograr la máxima eficiencia.
-
-Colores ricos y brillantes FHD
-Los colores claros y realistas cobran vida con una resolución Full HD y panel de 15.6" tipo IPS de 144 Hz. Visualiza contenido sin problemas desde cualquier ángulo con tus amigos y familiares.
-
-Wi-Fi 6
-El Wi-Fi 6 aumenta la velocidad de transmisión, mejora la eficiencia y minimiza la congestión de la red cuando se utilizan múltiples dispositivos. La futura red WLAN requiere más rendimiento para hacer frente al aumento del tráfico de datos y gestionar más señales WLAN. El revolucionario y altamente eficiente estándar WLAN IEEE 802.11ax (Wi-Fi 6) hace frente a este desafío. Wi-Fi 6 cumple con su promesa de garantizar una red más rápida y estable en la próxima década. La tarjeta ofrece velocidades de hasta 574 Mbps en la red de 2.40 GHz, mientras que ofrecerá hasta 2.402 Mbps en la de 5 GHz.
-',
+       'Salta directamente a la acción con el portátil gaming TUF Gaming A15. Con Windows 11 listo para usar, TUF Gaming A15 viene equipado con hasta un procesador AMD Ryzen™ 7 7735HS y hasta 16GB de RAM DDR5 de 4800 MHz increíblemente rápida que harán que tus streamings y todas tus tareas se manejen con gran facilidad. Aprovecha todo el potencial gaming con hasta una GPU para portátiles NVIDIA® GeForce RTX™ 4060 con MUX Switch dedicado. La ranura SSD M.2 NVMe te permitirá seguir llenando tu catálogo de juegos cuando tu biblioteca esté llena, haciendo muy fácil la capacidad para ampliar la memoria.',
        'portatil',
        'Asus',
        28,
@@ -575,27 +266,7 @@ WHERE NOT EXISTS (
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
 SELECT 'Portátil - ASUS Chromebook CX1400FKA-EC0077, 14" Full HD, Intel® Celeron® N4500, 8GB RAM, 128GB eMMC, UHD Graphics, Chrome OS', 
-       'Descripción
-El ASUS Chromebook CX1400FKA-EC0077 está hecho para potenciar la productividad y la multitarea sin que pare la diversión todo el día, todos los días. Además, el ASUS Chromebook Flip CX1 es tu puerta de entrada a lo mejor de Google, incluida la rica biblioteca de aplicaciones para trabajar o jugar en Google Play. El ASUS Chromebook Flip CX1 cuenta con un rendimiento fluido, una seguridad de gran solidez y unas funciones muy prácticas, por lo que es perfecto para que cualquiera pueda disfrutar de un entretenimiento y una productividad sin interrupciones.
-
-¿Qué es un Chromebook?
-Los Chromebook son ordenadores portátiles que utilizan el sistema operativo "Chrome OS", desarrollado por Google. Está diseñado para darte una solución rápida y constante, y lleva lo mejor de los servicios de Google integrados. 
-
-Rápido como el primer día
-Se inicia en cuestión de segundos y se actualiza de forma automática en segundo plano (requiere conexión a internet).
-
-Sencillo e inteligente
-Realiza una copia de seguridad automática de tus datos y funciona con y sin conexión. Un dispositivo pensado para compartir y colaborar.
-
-Seguridad garantizada
-Con protección integrada, sin necesidad de programas adicionales y con múltiples niveles de seguridad. (El antivirus integrado y la comprobación de arranque de Chrome OS están diseñados para evitar los problemas persistentes que pueden darse durante un uso normal, pero esto no significa que Chromebook no pueda ser atacado por código malicioso).
-
-Para toda la familia
-Con la aplicación Family Link, puedes establecer normas digitales básicas para acompañar y guiar a tus hijos en el uso del ordenador.
-
-Adaptado a todas tus necesidades
-Todas tus aplicaciones favoritas de Google vienen pre-instaladas en cada Chromebook, por lo que puedes editar, descargar y convertir documentos de Microsoft Office en Google Docs, Sheets y Slides. Además, en Google Play Store podrás acceder a miles de aplicaciones para escuchar música, ver vídeos, crear contenido, trabajar y compartir archivos. (Requiere una conexión a Internet. Algunas aplicaciones son de pago.) Y todo esto con una batería que dura hasta 12 horas (puede variar en función del uso y otras condiciones).
-',
+       'El ASUS Chromebook CX1400FKA-EC0077 está hecho para potenciar la productividad y la multitarea sin que pare la diversión todo el día, todos los días. Además, el ASUS Chromebook Flip CX1 es tu puerta de entrada a lo mejor de Google, incluida la rica biblioteca de aplicaciones para trabajar o jugar en Google Play. El ASUS Chromebook Flip CX1 cuenta con un rendimiento fluido, una seguridad de gran solidez y unas funciones muy prácticas, por lo que es perfecto para que cualquiera pueda disfrutar de un entretenimiento y una productividad sin interrupciones.',
        'portatil',
        'Asus',
        16,
@@ -1366,7 +1037,7 @@ Características CHiQ 22F650:
 •	Antiparpadeo (Flicker-free) y menos luz azul (Low Blue Light): Trabaje o juegue incluso más tiempo y evite la fatiga visual y la fatiga.
 •	Ángulo de visión amplio de 178°: los colores y los detalles permanecerán nítidos en más ángulos con un ángulo de visión amplio de 178°
 Especificaciones CHiQ 22F650:
-•	Tamaño: 21.5"
+•	Tamaño: 21.5
 •	Tipo panel: VA
 •	Resoción (H x V): 1920*1080
 •	Tasa de refresco: 100Hz
@@ -2083,79 +1754,4 @@ Cuatro niveles de filtro de luz azul que ayudan a los usuarios a reducir eficazm
        'static/images/category_monitor20.jpg'
 WHERE NOT EXISTS (
     SELECT 1 FROM product WHERE name = 'Monitor gaming - ASUS PA278CV, 27 ", WQHD, 5 ms, Negro'
-);
-
-
-CREATE TABLE IF NOT EXISTS description_section(
-     id INT AUTO_INCREMENT PRIMARY KEY,
-     product_id INT,
-     title VARCHAR(255) NOT NULL,
-     description TEXT NOT NULL,
-     FOREIGN KEY (product_id) REFERENCES product(id)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
-INSERT INTO description_section(product_id, title, description)
-SELECT 1,
-'Potencia para mantenerte en marcha',
-'El procesador de la versión pro de Galaxy Book4 roza casi la perfección. Estamos hablando del Intel® Core™ Ultra de última generación, que te ofrece un rendimiento incomparable, ahora impulsado por la IA más potente. Con una NPU avanzada integrada, las imágenes se generan a alta velocidad, con precisión y eficiencia de consumo, para que puedas completar incluso los proyectos más exigentes con facilidad.'
-WHERE NOT EXISTS (
-    SELECT 1 FROM description_section WHERE title = 'Potencia para mantenerte en marcha'
-);
-
-INSERT INTO description_section(product_id, title, description)
-SELECT 1,
-'Pantalla táctil antirreflejos. Un nuevo mundo de posibilidades',
-'Con el nuevo panel táctil de Galaxy Book4 y Galaxy Book4 360 podrás impulsar tu creatividad a nuevas cotas desplazando tus dedos por la pantalla para navegar fácilmente. Y en el caso de Galaxy Book4 360, podrás doblar la pantalla para convertir tu PC en una Tablet, y utilizar el S Pen para dar vida a tus obras de arte como un profesional.'
-WHERE NOT EXISTS (
-    SELECT 1 FROM description_section WHERE title = 'Pantalla táctil antirreflejos. Un nuevo mundo de posibilidades'
-);
-
-INSERT INTO description_section(product_id, title, description)
-SELECT 1,
-'Expón tus ideas a todo color',
-'Experimenta un nivel de detalle, nitidez y calidad que no te esperas. Reduce la emisión de luz azul para mayor comodidad ocular y te ofrece un brillo máximo de 400 nits, llegando hasta 500 nits en contenidos HDR.'
-WHERE NOT EXISTS (
-    SELECT 1 FROM description_section WHERE title = 'Expón tus ideas a todo color'
-);
-
-INSERT INTO description_section(product_id, title, description)
-SELECT 1,
-'Vision Booster. La claridad está de moda',
-'Una de las ventajas que te ofrece Galaxy Book4 Pro y Galaxy Book4 Pro 360 es Vision Booster. Una funcionalidad que detecta automáticamente la cantidad de luz solar y ajusta el contraste y color de la pantalla. Así, podrás disfrutar de todo tipo de contenido sin importar las condiciones de luz del ambiente.'
-WHERE NOT EXISTS (
-    SELECT 1 FROM description_section WHERE title = 'Vision Booster. La claridad está de moda'
-);
-
-CREATE TABLE IF NOT EXISTS description_list(
-     id INT AUTO_INCREMENT PRIMARY KEY,
-     product_id INT,
-     title VARCHAR(255) NOT NULL,
-     description TEXT NOT NULL,
-     FOREIGN KEY (product_id) REFERENCES product(id)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-INSERT INTO description_list(product_id, title, description)
-SELECT 12,
-'Características',
-'Una de las ventajas que te ofrece Galaxy Book4 Pro y Galaxy Book4 Pro 360 es Vision Booster. Una funcionalidad que detecta automáticamente la cantidad de luz solar y ajusta el contraste y color de la pantalla. Así, podrás disfrutar de todo tipo de contenido sin importar las condiciones de luz del ambiente./Hasta 17 horas de autonomía para que, vayas donde vayas, nada te pare/El conector MagSafe 3 se acopla al instante y carga tu MacBook Pro a toda pastilla/El Magic Keyboard con Touch ID ofrece autenticación sencilla, rápida y segura para iniciar sesión y comprar/Con macOS Monterey y sus nuevas prestaciones de rendimiento, puedes trabajar, crear y colaborar como nunca en tu Mac'
-WHERE NOT EXISTS (
-    SELECT 1 FROM description_list WHERE title = 'Características'
-);
-
-
-CREATE TABLE IF NOT EXISTS description_dictionary(
-     id INT AUTO_INCREMENT PRIMARY KEY,
-     product_id INT,
-     title VARCHAR(255) NOT NULL,
-     description TEXT NOT NULL,
-     FOREIGN KEY (product_id) REFERENCES product(id)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-INSERT INTO description_dictionary(product_id, title, description)
-SELECT 12,
-'Especificaciones',
-'{"Chip": ["Chip M1 Pro de Apple","CPU de 10 núcleos con 8 núcleos de rendimiento y 2 de eficiencia","GPU de 16 núcleos","Neural Engine de 16 núcleos","200 GB/s de ancho de banda de memoria"],"Motor multimedia": ["Aceleración por hardware para H.264, HEVC, ProRes y ProRes RAW","Motor de decodificación de vídeo","Motor de codificación de vídeo","Motor de codificación y decodificación ProRes"],"Pantalla Liquid Retina XDR": ["Pantalla Liquid Retina XDR de 16,2 pulgadas (41,05 cm) en diagonal;10 resolución nativa de 3.456 por 2.234 a 254 píxeles por pulgada","Hasta 1.000 nits de brillo sostenido (a pantalla completa), 1.600 nits de brillo máximo","Contraste de 1.000.000:1","1.000 millones de colores","Gama cromática amplia (P3)","Tecnología True Tone/Frecuencias de actualización","Tecnología ProMotion con frecuencia de actualización adaptativa de hasta 120 Hz","Frecuencias de actualización fijas: 47,95 Hz, 48 Hz, 50 Hz, 59,94 Hz y 60 Hz"],"Memoria": ["16 GB","16 GB de memoria unificada"]}'
-WHERE NOT EXISTS (
-    SELECT 1 FROM description_dictionary WHERE title = 'Especificaciones'
 );
