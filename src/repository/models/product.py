@@ -28,7 +28,6 @@ class DescriptionDictionary(BaseModel):
 
     def to_domain(self)-> product_domain.DescriptionDictionary:
         converted_description = json.loads(self.description)
-        print(converted_description)
 
         result = dict()
         result["title"] = self.title

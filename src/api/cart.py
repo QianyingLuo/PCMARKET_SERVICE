@@ -7,7 +7,6 @@ def add_to_cart(cart_data: cart_domain.Cart):
     return cart_to_add
 
 def get_cart_by_user_id(user_id: int) -> int:
-    print(user_id)
     cart = cart_crud.get_cart_exists_by_user_id(user_id)
     if not cart:
         return None

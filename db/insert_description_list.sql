@@ -37,3 +37,67 @@ SELECT 18,
 WHERE NOT EXISTS (
     SELECT 1 FROM description_list WHERE product_id = 18 AND title = 'Características'
 );
+
+INSERT INTO description_list(product_id, title, description)
+SELECT 26,
+'Características',
+'Pantalla AdaptiveSync de 90 Hz para una experiencia fluida. Con una pantalla FHD + DotDisplay de 6.5 ”con frecuencia de actualización de 90Hz, Redmi Note 10 5G ofrece una hermosa pantalla con un uso más suave.//Cámara trasera triple para una creatividad infinita. ¡Con una cámara trasera triple de 48MP, Redmi Note 10 5G fue creado para crear! Su configuración de triple cámara incluye una cámara principal de 48MP, una cámara macro de 2MP y un sensor de profundidad de 2MP.//Energía todo el día con alta eficiencia. Redmi Note 10 5G promociona una batería masiva de 5,000 mAh (típica) con carga rápida de 18 W, por lo que los usuarios pueden permanecer encendidos durante todo el día, incluso durante períodos de uso intensivo.'
+WHERE NOT EXISTS (
+    SELECT 1 FROM description_list WHERE product_id = 26 AND title = 'Características'
+);
+
+INSERT INTO description_list(product_id, title, description)
+SELECT 33,
+'Características',
+'El nuevo ultra gran angular muestra más detalle en las zonas oscuras de tus fotos.//El nuevo gran angular captura un 47 % más de luz para lograr mejores instantáneas.//•	En el cine se utiliza una técnica que consiste en cambiar el enfoque de manera selectiva para dirigir la atención del público hacia el sujeto protagonista de cada escena. Y ahora con el iPhone puedes usar este mismo recurso narrativo en tus vídeos.//•	El modo Noche detecta los entornos con poca luz y ajusta de forma automática los parámetros para ofrecerte fotos más luminosas con colores intensos.//•	El modo Retrato difumina el fondo y da más protagonismo al sujeto. Puedes ir deslizando entre los seis efectos de iluminación para elegir el que más te llame.//•	El HDR Inteligente 4 ahora detecta hasta cuatro personas distintas en el plano y optimiza el contraste, la iluminación y el tono de piel de forma independiente. Lo mejor de cada casa, pero con mucha mejor cara.'
+WHERE NOT EXISTS (
+    SELECT 1 FROM description_list WHERE product_id = 33 AND title = 'Características'
+);
+
+INSERT INTO description_list(product_id, title, description)
+SELECT 41,
+'Especificaciones',
+'Marca: Lenovo.//Series: G34W-30//Color: Negro//Tamaño del monitor: 34.0"//Resolución máxima: 3440 x 1440 Píxeles//Resolución: UWQHD//Tiempo de respuesta: 4 Milisegundos//Frecuencia de actualización: 165 Hz//Interfaz de hardware: DisplayPort, HDMI//Brillo: 350 cd//Relación de aspecto: 21//Relación de contraste: 2500//Tipo de conexión: 2 HDMI 2.0; 1 DP 1.4; 1 salida de audio (3,5 mm)//Número de modelo del producto: 66F1GAC1EU//Dimensiones del producto: 104,5 mm x 365,8 mm x 809,3 mm; 6.6 kilogramos'
+WHERE NOT EXISTS (
+    SELECT 1 FROM description_list WHERE product_id = 41 AND title = 'Especificaciones'
+);
+
+INSERT INTO description_list(product_id, title, description)
+SELECT 45,
+'Características',
+'Frecuencia de actualización de 100 Hz: responda más rápido con fotogramas más suaves.//Amplia gama de colores: los colores y detalles del juego se verán más realistas y refinados.//Diseño sin marco : disfruta de la mejor experiencia de juego con biseles superestrechos.//Antiparpadeo (Flicker-free) y menos luz azul (Low Blue Light): Trabaje o juegue incluso más tiempo y evite la fatiga visual y la fatiga.//Ángulo de visión amplio de 178°: los colores y los detalles permanecerán nítidos en más ángulos con un ángulo de visión amplio de 178°'
+WHERE NOT EXISTS (
+    SELECT 1 FROM description_list WHERE product_id = 45 AND title = 'Características'
+);
+
+INSERT INTO description_list(product_id, title, description)
+SELECT 51,
+'Características',
+'Diseño minimalista sin bisel//Sincronización adaptativa//Color verdadero en FHD//Luz azul baja'
+WHERE NOT EXISTS (
+    SELECT 1 FROM description_list WHERE product_id = 51 AND title = 'Características'
+);
+
+INSERT INTO description_list(product_id, title, description)
+SELECT 53,
+'Características',
+'Panel IPS: optimice los colores y el brillo de la pantalla para mejorar su experiencia visual.//Frecuencia de actualización de 100 Hz: responda más rápido con fotogramas más suaves.//Amplia gama de colores: los colores y detalles del juego se verán más realistas y refinados.//Diseño sin marco: disfruta de la mejor experiencia de juego con biseles superestrechos.//Antiparpadeo (Flicker-free) y menos luz azul (Low Blue Light): Trabaje o juegue incluso más tiempo y evite la fatiga visual y la fatiga.//Ángulo de visión amplio de 178°: los colores y los detalles permanecerán nítidos en más ángulos con un ángulo de visión amplio de 178°'
+WHERE NOT EXISTS (
+    SELECT 1 FROM description_list WHERE product_id = 53 AND title = 'Características'
+);
+
+INSERT INTO description_list(product_id, title, description)
+SELECT 58,
+'Características',
+'Panel IPS: Optimizado para entornos de trabajo profesionales. Los monitores Samsung de alta resolución incluyen un panel IPS, ofreciendo una calidad de color nítida y un amplio ángulo de visión de 178º.//Mil millones de colores con HDR 10: Disfruta de cualquier contenido con una precisión y detalle de color impresionantes. Con un amplio rango de colores, tonalidades casi ilimitadas y HDR10, que hace que los tonos negros sean más oscuros y los tonos claros más brillantes, cada pieza de contenido se convierte en un placer a la vista.//Maximiza la comodidad, minimiza las distracciones: Coloca tu monitor cómo te sea más cómodo. Su diseño sin bordes, compatibilidad con montaje VESA y una variedad de posiciones de inclinación, giro y pivote te permiten montar tu monitor en cualquier entorno.//Auto Source Switch: Con Automatic Source Switch, el monitor detecta los dispositivos que se acaban de conectar y les muestra la señal correcta. Se acabaron las búsquedas de la entrada correcta en el menú.'
+WHERE NOT EXISTS (
+    SELECT 1 FROM description_list WHERE product_id = 58 AND title = 'Características'
+);
+
+INSERT INTO description_list(product_id, title, description)
+SELECT 59,
+'Características',
+'El único con el que disfrutar de más contenidos en streaming como: RTVE, Mitele, Orange, Netflix, Prime Video, Disney+, Apple TV , YouTube, videojuegos y mucho más. Smart TV WebOS23, más fácil, intuitivo y seguro.//Crea perfiles por usuario y controla todos tus contenidos a través de tus periféricos y/o mando a distancia. Magic Remote opcional. El mando a distancia Magic Remote se vende por separado. Solo compatible con el modelo del mando MR23//Comparte fácilmente contenido o música desde tu dispositivo inteligente con AirPlay 2, Screen Share o Bluetooth.//Colores más vivos y mejor contraste con HDR10. Panel IPS que permite colores constantes a 178º de ángulo de visión.'
+WHERE NOT EXISTS (
+    SELECT 1 FROM description_list WHERE product_id = 59 AND title = 'Características'
+);

@@ -38,9 +38,10 @@ addCartForm.addEventListener("submit", async function(event) {
                 emptyCartLink.appendChild(fullIcon)
                 emptyCart.append(emptyCartLink)
             }
-            setTimeout(() => {
-                textField.textContent = ""
-            }, 5000)
         } 
+
+        setTimeout(() => {
+            textField.textContent = ""
+        }, 5000)
     }
 });
