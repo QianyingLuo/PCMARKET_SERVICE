@@ -28,16 +28,19 @@ async def load_database():
         sys.exit(1)
 
     try:
-        with open(config.SCRIPT_PATH, "r", encoding='utf-8') as file:
-            sql_script = file.read()
-        async with pool.acquire() as conn:
-            async with conn.cursor() as cur:
-                await cur.execute("SET NAMES utf8mb4 COLLATE utf8mb4_general_ci")
-                await cur.execute(sql_script)
-                await conn.commit()
-                logger.info(f"MySQL database loaded successfully from: {config.SCRIPT_PATH}")
+        for script_path in config.SQL_PATHS:
+            with open(script_path, "r", encoding='utf-8') as file:
+                sql_script = file.read()
+            async with pool.acquire() as conn:
+                async with conn.cursor() as cur:
+                    await cur.execute("SET NAMES utf8mb4 COLLATE utf8mb4_general_ci")
+                    await cur.execute(sql_script)
+                    await conn.commit()
+                    logger.info(f"MySQL database loaded successfully from: {script_path}")
     except Exception as error:
-        logger.error(exception_messages.DATABASE_LOADER_ERROR(config.SCRIPT_PATH))
+        index = config.SQL_PATHS.index(script_path) if 'script_path' in locals() else 0
+        current_script_path = config.SQL_PATHS[index]
+        logger.error(exception_messages.DATABASE_LOADER_ERROR(current_script_path))
         logger.error(exception_messages.DETAILED_ERROR(error))
         sys.exit(1)
 

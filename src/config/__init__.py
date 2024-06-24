@@ -21,6 +21,14 @@ def print_env_vars():
     for key, value in environment_variables.items():
         print(f"    {key}:  {value}")
 
+SQL_PATHS = [
+    "db/create_tables.sql", 
+    "db/insert_product.sql", 
+    "db/insert_description_section.sql", 
+    "db/insert_description_list.sql", 
+    "db/insert_description_dictionary.sql"
+]
+
 SECRET_KEY = get_mandatory_env_var("SECRET_KEY")
 ALGORITHM = get_mandatory_env_var("ALGORITHM")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(get_env_var("ACCESS_TOKEN_EXPIRE_MINUTES", 15))
@@ -29,7 +37,6 @@ PORT = int(get_env_var("DB_PORT", "3306"))
 USER = get_env_var("DB_USER", "root")
 PASSWORD = get_mandatory_env_var("DB_PASSWORD")
 DATABASE = get_env_var("DB_NAME", "pcmarket")
-SCRIPT_PATH = get_env_var("DB_SCRIPT", "db/tables.sql")
 NUMBER_TOP_PRODUCTS = int(get_env_var("NUMBER_TOP_PRODUCTS", "4")) 
 
 print_env_vars()

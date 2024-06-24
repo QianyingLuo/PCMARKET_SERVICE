@@ -57,6 +57,14 @@ nav li:hover .drop-menu {
     display: none;
 }
 
+.bxs-shopping-bag{
+    font-size: 22px;
+    color: #2493e7;
+}
+
+.bx-shopping-bag{
+    font-size: 22px;
+}
 
 @media(max-width: 700px){
     .hideOnMobile{

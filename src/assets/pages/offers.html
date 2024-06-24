@@ -3,7 +3,7 @@
 <title>{% block title %}💥 Ofertas TOP ¡Super Descuentos! | Solo en PcMarket{% endblock %}</title>
 
 {% block content %}
-<link rel="stylesheet" href="/static/styles/category_style.css">
+<link rel="stylesheet" href="/static/styles/category.css">
 
 <div class="small-container-category">
     <div class="row-category">
@@ -11,10 +11,12 @@
         <div class="row">
             {% for offer in offers %}
             <div class="col-4">
-                <img src="/{{ offer.image }}" alt="{{ offer.name }}">
-                <div>
+                <a href="/product/{{ offer.id }}"> 
+                    <img src="/{{ offer.image }}" alt="{{ offer.name }}">
+                </a>
+                <a class="product-link" href="/product/{{ offer.id }}">
                     <h5>{{ offer.name | truncate(135) }}</h5>
-                </div>
+                </a>
                 <div class="rating">
                     {% for _ in range(int(offer.stars)) %}
                     <i class="fa-solid fa-star"></i>

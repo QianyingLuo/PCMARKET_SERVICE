@@ -13,8 +13,8 @@ class ExtendedEnvironment(Environment):
           return s
       else:
           return s[:length].rstrip() + suffix
-
-
+    
+    
 templates = Jinja2Templates(directory="src/assets/")
 templates.env = ExtendedEnvironment(loader=FileSystemLoader("src/assets/"))
 templates.env.filters['truncate'] = templates.env.truncate

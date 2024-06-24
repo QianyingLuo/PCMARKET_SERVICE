@@ -1,20 +1,25 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 
 from ..api import product as product_api
 from ..utils.jinja import templates 
 from ..config import types
 from ..config.log import logger
+from ..middlewares import get_current_user, get_current_cart
 
 router = APIRouter()
 
 @router.get("/", response_class=HTMLResponse)
-def render_offers(request: Request): 
+def render_offers(request: Request, user: dict = Depends(get_current_user), cart: dict = Depends(get_current_cart)): 
+    logger.info("GET: Getting all offers")
+
+    user = get_current_user(request)
+
     offers = product_api.get_discounted_products()
-    return templates.TemplateResponse("pages/offers.html", {"request": request, "offers": offers})
+    return templates.TemplateResponse("pages/offers.html", {"request": request, "user": user, "cart":cart, "offers": offers})
 
 @router.get("/favourites", response_class=HTMLResponse)
-def render_favourites(request: Request): 
+def render_favourites(request: Request, user: dict = Depends(get_current_user), cart: dict = Depends(get_current_cart)): 
     logger.info("GET: Favourites page")
 
     if not check_token(request): 
@@ -38,6 +43,8 @@ def render_favourites(request: Request):
 
     return templates.TemplateResponse("pages/index.html", {
         "request": request,
+        "user": user,
+        "cart":cart,
         "products_by_type": products_by_type,
         "category_urls": category_urls
     })

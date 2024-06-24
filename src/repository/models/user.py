@@ -1,5 +1,6 @@
 from typing import Optional, Self
 from pydantic import BaseModel, Field, EmailStr
+
 from ...domain import user as user_domain
 
 class User(BaseModel):
