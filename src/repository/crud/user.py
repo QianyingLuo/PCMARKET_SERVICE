@@ -1,5 +1,3 @@
-from mysql.connector import Error
-
 from ...domain import user as user_domain
 from ..models import user as user_crud_domain
 from ...config.database.mysql_connection import mysql_connection
@@ -23,7 +21,7 @@ def save(user: user_domain.User) -> user_domain.User:
 
 def get_user_by_email(email: str):
     cursor = mysql_connection.cursor(dictionary=True)
-    query = "SELECT * FROM user WHERE email = %s"
+    query = "SELECT * FROM user WHERE email = %s LIMIT 1"
     cursor.execute(query, (email,))
     user_data = cursor.fetchone()
     cursor.close()

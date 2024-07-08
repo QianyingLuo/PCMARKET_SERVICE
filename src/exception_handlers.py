@@ -7,6 +7,7 @@ from .config import exception_messages
 async def generic_exception_handler(request: Request, exc: Exception):
     templates = Jinja2Templates(directory="src/assets/")
     logger.error(exception_messages.GENERIC_ERROR)
+    logger.error(exception_messages.DETAILED_ERROR(exc))
     return templates.TemplateResponse("pages/error.html", {"request": request, "error": str(exc)})
 
 

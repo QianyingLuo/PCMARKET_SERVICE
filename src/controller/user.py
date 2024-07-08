@@ -121,7 +121,7 @@ def do_login(
         response = RedirectResponse(url="/", status_code=302)
         response.set_cookie(key="token", value=token, httponly=True)
         return response
-
+    
     except HTTPException as e:
         return templates.TemplateResponse("pages/login.html", status_code=401 ,context={"request": request, "error": e.detail})
 
