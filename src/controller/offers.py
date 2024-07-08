@@ -16,6 +16,7 @@ def render_offers(request: Request, user: dict = Depends(get_current_user), cart
     user = get_current_user(request)
 
     offers = product_api.get_discounted_products()
+    
     return templates.TemplateResponse("pages/offers.html", {"request": request, "user": user, "cart":cart, "offers": offers})
 
 @router.get("/favourites", response_class=HTMLResponse)
@@ -23,7 +24,7 @@ def render_favourites(request: Request, user: dict = Depends(get_current_user), 
     logger.info("GET: Favourites page")
 
     if not check_token(request): 
-        return RedirectResponse(url="/login/", status_code=302)
+        return RedirectResponse(url="user/login/", status_code=302)
 
     laptops = product_api.get_top_products_by_type(types.LAPTOP)
     smartphones = product_api.get_top_products_by_type(types.SMARTPHONE)

@@ -1,0 +1,75 @@
+{% extends "templates/base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles/cart.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+{% if cart_exists and cart %}
+<div class="small-container">
+    <table>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+        </tr>
+        {% for item in cart %}
+        <tr>
+            <td>
+                <div class="cart-info">
+                    <a href="/product/{{ item.product_id }}">
+                        <img src="/{{ item.image }}" alt="{{ item.name }}">
+                    </a>
+                    <div class="product-details">
+                        <a class="product-name" href="/product/{{ item.product_id }}">
+                            {{ item.name | truncate(70)}}
+                        </a>
+                        <div class="price-trash">
+                            <small>{{ item.price }} €</small>
+                            <a href="#"><i class='bx bx-trash'></i></a>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="number" value="{{item.product_quantity}}">
+            </td>
+            <td class="subtotal">
+                {{ item.subtotal }} €
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="total-price">
+
+        <table>
+            <tr>
+                <td>Subtotal</td>
+                <td>{{ total }} €</td>
+            </tr>
+            <tr>
+                <td>Envío</td>
+                <td>Gratis</td>
+            </tr>
+            <tr>
+                <td>Total<br><p>IVA incluido</p></td>
+                <td>{{ total }} €</td>
+            </tr>
+            <tr>
+                <td><button a href="" class="confirm">Confirmar</a></button></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+{% else %}
+<div class="empty-cart">
+    <p class="empty-cart-title">TU CARRITO ESTÁ VACÍO</p>
+    <p class="empty-cart-text">Cuando hayas añadido algo al carrito, aparecerá aquí. ¿Quieres empezar?</p>
+    <a href="/"><button>COMENZAR →</button></a>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -33,7 +33,7 @@ class CheckLoggedUserAndCartMiddleware(BaseHTTPMiddleware):
                 return None
             else:
                 info = {"id": user_id, "name": user_name}
-                cart_exists = cart_api.get_cart_by_user_id(user_id)
+                cart_exists = cart_api.get_cart_exists_by_user_id(user_id)
 
                 if cart_exists:
                     info["cart"] = cart_exists

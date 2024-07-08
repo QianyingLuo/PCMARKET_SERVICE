@@ -57,12 +57,11 @@ async def add_to_cart(product_id: int,
     
     try:
         cart = cart_api.add_to_cart(cart_to_save)
-        return JSONResponse(status_code=200, content={"message": "Producto añadido al carrito", "cart":cart})
-
+        return JSONResponse(status_code=200, content={"message": "Producto añadido al carrito", "cart": cart})
     
     except HTTPException as he:
         logger.warn(exception_messages.ADD_IN_CART_ERROR)
-        return JSONResponse()
+        return JSONResponse(status_code=500, content={"message": str(he)})
     
 
 

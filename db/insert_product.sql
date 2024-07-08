@@ -205,7 +205,7 @@ SELECT 'Portátil - Microsoft Surface Laptop 4 Negro Intel Core i5-1145G7/8GB/51
        5,
        'static/images/category_portatil15.jpg'
 WHERE NOT EXISTS (
-    SELECT 1 FROM product WHERE name = 'Microsoft Surface Laptop 4 Negro Intel Core i5-1145G7/8GB/512 GB SSD/13.5" Táctil Reacondicionado'
+    SELECT 1 FROM product WHERE name = 'Portátil - Microsoft Surface Laptop 4 Negro Intel Core i5-1145G7/8GB/512 GB SSD/13.5" Táctil Reacondicionado'
 );
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
@@ -233,7 +233,7 @@ SELECT 'Portátil - Lenovo ThinkPad L15 Gen 4 Intel Core i5-1335U/16GB/512GB SSD
        4.5,
        'static/images/category_portatil17.jpg'
 WHERE NOT EXISTS (
-    SELECT 1 FROM product WHERE name = 'Lenovo ThinkPad L15 Gen 4 Intel Core i5-1335U/16GB/512GB SSD/15.6"'
+    SELECT 1 FROM product WHERE name = 'Portátil - Lenovo ThinkPad L15 Gen 4 Intel Core i5-1335U/16GB/512GB SSD/15.6"'
 );
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
@@ -303,7 +303,7 @@ SELECT 'Móvil - Apple iPhone 15 Pro Max, Titanio Natural, 256 GB, 5G, 6.7" Pant
        5,
        'static/images/category_smartphone2.jpg'
 WHERE NOT EXISTS (
-    SELECT 1 FROM product WHERE name = 'Apple iPhone 15 Pro Max, Titanio Natural, 256 GB, 5G, 6.7" Pantalla Super Retina XDR, Chip A17 Bionic, iOS'
+    SELECT 1 FROM product WHERE name = 'Móvil - Apple iPhone 15 Pro Max, Titanio Natural, 256 GB, 5G, 6.7" Pantalla Super Retina XDR, Chip A17 Bionic, iOS'
 );
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
@@ -391,7 +391,7 @@ iPhone 13: Tu nuevo superpoder. Nuestro sistema de cámara dual más avanzado. E
        4.5,
        'static/images/category_smartphone8.jpg'
 WHERE NOT EXISTS (
-    SELECT 1 FROM product WHERE name = 'Apple iPhone 13, Rosa, 128 GB, 5G, 6.1" OLED Super Retina XDR, Chip A15 Bionic, iOS'
+    SELECT 1 FROM product WHERE name = 'Móvil - Apple iPhone 13, Rosa, 128 GB, 5G, 6.1" OLED Super Retina XDR, Chip A15 Bionic, iOS'
 );
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
@@ -466,7 +466,7 @@ iPhone 13: Tu nuevo superpoder. Nuestro sistema de cámara dual más avanzado. E
        5,
        'static/images/category_smartphone13.jpg'
 WHERE NOT EXISTS (
-    SELECT 1 FROM product WHERE name = 'Apple iPhone 13, Verde, 128 GB, 5G, 6.1" OLED Super Retina XDR, Chip A15 Bionic, iOS'
+    SELECT 1 FROM product WHERE name = 'Móvil - Apple iPhone 13, Verde, 128 GB, 5G, 6.1" OLED Super Retina XDR, Chip A15 Bionic, iOS'
 );
 
 INSERT INTO product (name, description, type, brand, stock, price, discount_decimal, stars, image)
