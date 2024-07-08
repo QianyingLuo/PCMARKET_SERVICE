@@ -49,7 +49,7 @@ def get_password_hash(password: str) -> str:
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     return bcrypt.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
 
-def create_access_token(data: user_domain.UserToken, expires_delta: timedelta):
+def create_access_token(data: user_domain.UserToken, expires_delta: timedelta) -> str:
     expire = datetime.now(timezone.utc) + expires_delta
     encoded_data: dict = data.model_dump()
     encoded_data.update({"exp": expire})

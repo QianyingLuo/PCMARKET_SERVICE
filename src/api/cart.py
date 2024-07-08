@@ -1,7 +1,6 @@
 from fastapi import HTTPException
 from ..domain import cart as cart_domain
 from ..repository.crud import cart as cart_crud
-from ..config import exception_messages
 
 def add_to_cart(cart_data: cart_domain.Cart) -> dict:
     cart_to_add = cart_crud.add_to_cart(cart_data)
@@ -20,5 +19,4 @@ def get_cart_by_user_id(user_id: int) -> list[cart_domain.Cart]:
         return None
     
     return cart
-
 
