@@ -8,6 +8,8 @@ CART_NOT_FOUND =  "Cart not found"
 GENERIC_ERROR = "Algo ha salido mal . . ."
 CONNECTION_ERROR = "Failed to connect to database. Please, check database credentials."
 ADD_IN_CART_ERROR = "Failed to add product to cart."
+EDIT_QUANTITY_IN_CART_ERROR = "Failed to edit product quantity in cart."
+DELETE_PRODUCT_IN_CART_ERROR = "Failed to delete product in cart."
 
 def DATABASE_LOADER_ERROR(script_path: str) -> str: 
     return f"Error loading MySQL database from: {script_path}"

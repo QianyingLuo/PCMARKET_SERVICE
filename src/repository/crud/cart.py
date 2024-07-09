@@ -31,6 +31,27 @@ def add_to_cart(cart_data: cart_domain.Cart) -> dict:
         "product_quantity": cart_crud.product_quantity
     }
 
+def update_product_quantity(cart_data: cart_domain.Cart) -> dict:
+    cart_crud = cart_model.Cart.from_domain(cart_domain=cart_data)
+    cursor = mysql_connection.cursor(dictionary=True)
+
+    update_query = "UPDATE temporary_cart SET product_quantity = %s WHERE user_id = %s AND product_id = %s"
+    cursor.execute(update_query, (cart_crud.product_quantity, cart_crud.user_id, cart_crud.product_id))
+
+    cursor.close()
+    
+    return {
+        "user_id": cart_crud.user_id,
+        "product_id": cart_crud.product_id,
+        "product_quantity": cart_crud.product_quantity
+    }
+
+def delete_product(product_id: int, user_id: int) -> None:
+    cursor = mysql_connection.cursor(dictionary=True)
+    delete_query = "DELETE FROM temporary_cart WHERE user_id = %s AND product_id = %s"
+    cursor.execute(delete_query, (user_id, product_id))
+    cursor.close()
+
 def get_cart_exists_by_user_id(user_id: int) -> bool:
     cursor = mysql_connection.cursor(dictionary=True)
     query = "SELECT * FROM temporary_cart WHERE user_id = %s LIMIT 1"
@@ -56,5 +77,21 @@ def get_products_in_cart_by_user_id(user_id: int) -> list[cart_domain.Cart]:
     for row in rows:
         product = cart_model.Cart.model_validate(row)
         products.append(product)
-        
+
+    cursor.close()
+     
     return [product.to_domain() for product in products]
+
+def get_product_quantity_in_cart(user_id: int, product_id: int) -> int:
+    cursor = mysql_connection.cursor(dictionary=True)
+    select_query = "SELECT product_quantity FROM temporary_cart WHERE user_id = %s AND product_id = %s"
+    cursor.execute(select_query, (user_id, product_id))
+    product_quantity = cursor.fetchone()
+    cursor.fetchall()
+    
+    if not product_quantity:
+        return None
+    
+    cursor.close()
+
+    return product_quantity

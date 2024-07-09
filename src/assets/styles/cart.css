@@ -1,6 +1,6 @@
 .small-container{
     max-width: 1080px;
-    margin: 80px auto;
+    margin: 60px auto;
     padding-left: 25px;
     padding-right: 25px;
     color:#555;
@@ -75,13 +75,55 @@ td input{
     font-size: 14px;
 }
 
-.price-trash a:hover{
-    color: #ff523b;
-}
 
 .bx-trash {
     font-size: 16px;
     margin-top: 3px;
+}
+
+.trash-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.trash-button:hover{
+    color: #ff523b;
+}
+
+.refresh-quantity {
+    display: flex;
+    align-items: center;
+}
+
+.refresh-quantity-form{
+    display: flex;
+    align-items: center; 
+}
+
+.refresh-quantity-form input{
+    border-radius: 8px;
+    border-width: 2px;
+    padding: 5px;
+    margin-right: 10px;
+    width: 55px;
+    height: 35px;
+    text-align: center;
+}
+
+.refresh-button{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.bx-refresh{
+    font-size: 24px;
+    margin-top: 3px;
+}
+
+.refresh-button:hover{
+    color: #ff523b;
 }
 
 .subtotal {
@@ -99,7 +141,7 @@ td input{
 .total-price table{
     border-top: 3px solid #ff523b;
     width: 100%;
-    max-width: 280px;
+    max-width: 300px;
 }
 
 .total-price p{
@@ -155,4 +197,19 @@ th:last-child{
     font-size: 14px;
     padding: 12px 16px;
     cursor: pointer;
+}
+
+.message{
+    min-height: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.error{
+    color: #e06666;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-align: center;
 }

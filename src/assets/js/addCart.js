@@ -22,21 +22,13 @@ addCartForm.addEventListener("submit", async function(event) {
         document.getElementById("product_quantity").value = 1
 
         if (response.ok) {
-            const fullCartIcon = document.getElementById("cart-full")
+            const fullCartIcon = document.getElementById("fullCartIcon")
 
             if (fullCartIcon == null) {
-                const emptyCart = document.getElementById("emptyCart")
-                const emptyCartLink = document.getElementById("emptyCartLink")
-                emptyCartLink.href = "/user/login"
-                const emptyCartIcon = document.getElementById("emptyCartIcon")
-
-                const fullIcon = document.createElement("i")
-                fullIcon.classList.add("bx")
-                fullIcon.classList.add("bxs-shopping-bag")
-                
-                emptyCartLink.removeChild(emptyCartIcon);
-                emptyCartLink.appendChild(fullIcon)
-                emptyCart.append(emptyCartLink)
+                const cartIcon = document.getElementById("emptyCartIcon")
+        
+                cartIcon.classList.remove("bx-shopping-bag")
+                cartIcon.classList.add("bxs-shopping-bag")
             }
         } 
 

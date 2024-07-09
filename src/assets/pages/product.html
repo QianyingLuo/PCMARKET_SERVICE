@@ -24,7 +24,7 @@
             {% endif %}
 
             <div class="product-action">
-                <form action="/product/{{ product.id }}" method="post" id="add-cart-form">
+                <form action="/cart/{{ product.id }}" method="post" id="add-cart-form">
                     <input type="number" name="product_quantity" id="product_quantity" value="1" required>
                     <button type="submit">Añadir al carrito</button>
                     <a href=""><i class='bx bx-heart'></i></a>

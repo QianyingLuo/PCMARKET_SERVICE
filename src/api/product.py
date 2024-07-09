@@ -44,10 +44,8 @@ def get_product_by_id(product_id: int) -> product_domain.Product:
     
     if not product:
         raise HTTPException(status_code=404, detail=exception_messages.PRODUCT_NOT_FOUND)
-
-    product.discounted_price = round(product.price * (1 - product.discount_decimal), 2) 
-    if product.discount_decimal != 0:
-        product.discount_percentage = round(product.discount_decimal * 100)
+    
+    product = add_discount(product)
     return product
 
 def get_product_stock_by_id(product_id: int) -> int:
@@ -65,3 +63,11 @@ def get_random_products_by_type(product_type: str) -> list[product_domain.Produc
     for product in products:
         product.discounted_price = round(product.price * (1 - product.discount_decimal), 2)
     return products 
+
+
+def add_discount(product: product_domain.Product) -> product_domain.Product:
+    product.discounted_price = round(product.price * (1 - product.discount_decimal), 2) 
+    if product.discount_decimal != 0:
+        product.discount_percentage = round(product.discount_decimal * 100)
+    
+    return product

@@ -31,7 +31,7 @@ SQL_PATHS = [
 
 SECRET_KEY = get_mandatory_env_var("SECRET_KEY")
 ALGORITHM = get_mandatory_env_var("ALGORITHM")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(get_env_var("ACCESS_TOKEN_EXPIRE_MINUTES", 15))
+ACCESS_TOKEN_EXPIRE_MINUTES = int(get_env_var("ACCESS_TOKEN_EXPIRE_MINUTES", 30))
 HOST = get_env_var("DB_HOST", "localhost")
 PORT = int(get_env_var("DB_PORT", "3306"))
 USER = get_env_var("DB_USER", "root")
