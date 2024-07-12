@@ -1,0 +1,62 @@
+{% extends "templates/base.html" %}
+
+<title>{% block title %}Checkout | PcMarket{% endblock %}</title>
+
+{% block content %}
+    <link rel="stylesheet" href="/static/styles/delivery.css">
+
+    <div class="wrapper">
+        <form action="/checkout/delivery" method="post">
+            <h1>Información de envío</h1>
+            <div class="two-boxes">
+                <div class="input-box">
+                    <input type="text" name="first_name" placeholder="Nombre*" required maxlength="15">
+                </div>
+                <div class="input-box">
+                    <input type="text" name="last_name" placeholder="Apellidos*" required maxlength="15">
+                </div>
+            </div>
+
+            <div class="input-box">
+                <input type="text" name="address" placeholder="Dirección*" required maxlength="40">
+            </div>
+            <div class="input-box">
+                <input type="text" name="complement_address" placeholder="Complemento dirección 1">
+                {% if complement_address_error %}
+                <div class="message">{{ complement_address_error }}</div>
+                {% endif %} 
+            </div>
+
+            <div class="two-boxes">
+                <div class="input-box">
+                    <input type="text" name="postcode" placeholder="Código postal*" required maxlength="10">
+                </div>
+                <div class="input-box">
+                    <input type="text" name="city" placeholder="Ciudad*" required maxlength="15">
+                </div>
+            </div>
+            <div class="two-boxes">
+                <div class="input-box">
+                    <input type="text" name="phone" placeholder="Número de teléfono*" required maxlength="15">
+                </div>
+                <div class="input-box">
+                    <input type="text" name="country" placeholder="País*" required maxlength="15">
+                </div>
+            </div>
+            {% if phone_error %}
+            <div class="message">{{ phone_error }}</div>
+            {% endif %}
+
+            {% if empty_field_error %}
+            <div class="message">{{ empty_field_error }}</div>
+            {% endif %}
+
+            <button type="submit" class="pay-button">Pagar</button>
+            {% if error %}
+            <div class="message">{{ error }}</div>
+            {% endif %}
+
+        </form>
+    </div>
+
+{% endblock %}

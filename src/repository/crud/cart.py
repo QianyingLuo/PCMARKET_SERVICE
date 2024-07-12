@@ -2,8 +2,8 @@ from ...domain import cart as cart_domain
 from ..models import cart as cart_model
 from ...config.database.mysql_connection import mysql_connection
 
-def add_to_cart(cart_data: cart_domain.Cart) -> dict:
-    cart_crud = cart_model.Cart.from_domain(cart_domain=cart_data)
+def add_to_cart(cart: cart_domain.Cart) -> cart_domain.Cart:
+    cart_crud = cart_model.Cart.from_domain(cart_domain=cart)
     cursor = mysql_connection.cursor(dictionary=True)
 
     select_query = "SELECT product_quantity FROM temporary_cart WHERE user_id = %s AND product_id = %s"
@@ -25,14 +25,10 @@ def add_to_cart(cart_data: cart_domain.Cart) -> dict:
         cursor.execute(insert_query, cart_data)
     cursor.close()
     
-    return {
-        "user_id": cart_crud.user_id,
-        "product_id": cart_crud.product_id,
-        "product_quantity": cart_crud.product_quantity
-    }
+    return cart_crud.to_domain()
 
-def update_product_quantity(cart_data: cart_domain.Cart) -> dict:
-    cart_crud = cart_model.Cart.from_domain(cart_domain=cart_data)
+def update_product_quantity(cart: cart_domain.Cart) -> cart_domain.Cart:
+    cart_crud = cart_model.Cart.from_domain(cart_domain=cart)
     cursor = mysql_connection.cursor(dictionary=True)
 
     update_query = "UPDATE temporary_cart SET product_quantity = %s WHERE user_id = %s AND product_id = %s"
@@ -40,11 +36,7 @@ def update_product_quantity(cart_data: cart_domain.Cart) -> dict:
 
     cursor.close()
     
-    return {
-        "user_id": cart_crud.user_id,
-        "product_id": cart_crud.product_id,
-        "product_quantity": cart_crud.product_quantity
-    }
+    return cart_crud.to_domain()
 
 def delete_product(product_id: int, user_id: int) -> None:
     cursor = mysql_connection.cursor(dictionary=True)
@@ -86,12 +78,13 @@ def get_product_quantity_in_cart(user_id: int, product_id: int) -> int:
     cursor = mysql_connection.cursor(dictionary=True)
     select_query = "SELECT product_quantity FROM temporary_cart WHERE user_id = %s AND product_id = %s"
     cursor.execute(select_query, (user_id, product_id))
-    product_quantity = cursor.fetchone()
+    result = cursor.fetchone()
     cursor.fetchall()
+    cursor.close()
     
-    if not product_quantity:
+    if not result:
         return None
     
-    cursor.close()
-
+    product_quantity = result["product_quantity"]
+    
     return product_quantity

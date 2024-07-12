@@ -163,6 +163,7 @@ td input{
     letter-spacing: 1px;
     box-sizing: border-box;
     margin-left: 74px;
+    text-decoration: none;
 }
 
 td:last-child{

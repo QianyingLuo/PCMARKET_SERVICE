@@ -3,7 +3,7 @@ from ..repository.crud import cart as cart_crud
 from ..repository.crud import product as product_crud
 from ..api import product as product_api
 
-def add_to_cart(cart_data: cart_domain.Cart) -> dict:
+def add_to_cart(cart_data: cart_domain.Cart) -> cart_domain.Cart:
     cart_to_add = cart_crud.add_to_cart(cart_data)
     return cart_to_add
 

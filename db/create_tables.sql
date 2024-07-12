@@ -58,3 +58,17 @@ CREATE TABLE IF NOT EXISTS temporary_cart (
     FOREIGN KEY (user_id) REFERENCES user(id),
     FOREIGN KEY (product_id) REFERENCES product(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS delivery_info (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    first_name VARCHAR(15) NOT NULL,
+    last_name VARCHAR(15) NOT NULL,
+    address VARCHAR(40) NOT NULL,
+    complement_address VARCHAR(30) NULL,
+    postcode VARCHAR(10) NOT NULL,
+    city VARCHAR(30) NOT NULL,
+    phone VARCHAR(15) NOT NULL,
+    country VARCHAR(20) NULL,
+    FOREIGN KEY (user_id) REFERENCES user(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

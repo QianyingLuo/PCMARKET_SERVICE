@@ -38,19 +38,24 @@ def render_cart(request: Request,
                 else:
                     price = product_details.price
 
+                subtotal = price * item.product_quantity
+
                 cart_details.append({
                     "product_id": item.product_id,
                     "product_quantity": item.product_quantity,
                     "name": product_details.name,
                     "image": product_details.image,
                     "price": price,
-                    "subtotal": round(price * item.product_quantity, 2)
+                    "subtotal": round(subtotal, 2)
                 })
-        for index in range(len(cart_details)):
-            total += cart_details[index]["subtotal"]
+                total += subtotal
                 
-    return templates.TemplateResponse("pages/cart.html", {"request": request, "user":user, "cart_exists": cart_exists, "cart": cart, "cart": cart_details, "total": total})
+    total = round(total, 2)
+                
+    return templates.TemplateResponse("pages/cart.html", {"request": request, "user":user, "cart_exists": cart_exists, "cart": cart_details, "total": total})
 
+
+    
 @router.post("/{product_id}", response_class=JSONResponse, response_model=dict)
 async def add_to_cart(product_id: int, 
                       product_quantity: int = Form(...), 
@@ -81,13 +86,20 @@ async def add_to_cart(product_id: int,
     
     try:
         cart = cart_api.add_to_cart(cart_to_save)
-        return JSONResponse(status_code=200, content={"message": "Producto añadido al carrito", "cart":cart})
+        cart_dict = {
+            "user_id": cart.user_id,
+            "product_id": cart.product_id,
+            "product_quantity": cart.product_quantity
+        }
+
+        return JSONResponse(status_code=200, content={"message": "Producto añadido al carrito", "cart":cart_dict})
 
     
     except HTTPException as he:
         logger.warn(exception_messages.ADD_IN_CART_ERROR)
         return JSONResponse()
-    
+
+
 @router.patch("/{product_id}", response_class=JSONResponse, response_model=dict)
 async def edit_cart(product_id: int, 
                     product_quantity: int = Form(...), 
@@ -96,6 +108,8 @@ async def edit_cart(product_id: int,
     logger.info(f"PATCH: Editing quantity of product {product_id} in cart")
 
     user_id = user["id"]
+
+    previous_quantity = cart_api.get_product_quantity_in_cart(user_id, product_id)
 
     quantity_error = None
 
@@ -108,13 +122,10 @@ async def edit_cart(product_id: int,
         quantity_error =  "Cantidad introducida superior al stock disponible"
 
     if quantity_error:
-        previous_quantity = cart_api.get_product_quantity_in_cart(user_id, product_id)
         return JSONResponse(content={
             "error": quantity_error,
             "previous_quantity": previous_quantity,
-            
         }, status_code=200)
-    
 
     quantity_to_update = cart_domain.Cart(user_id=user_id, product_id=product_id, product_quantity=product_quantity)
     
@@ -124,9 +135,15 @@ async def edit_cart(product_id: int,
         cart = cart_api.update_product_quantity(quantity_to_update)
         total_cart = cart_api.get_total_user_cart_price(user_id)
 
+        cart_dict = {
+            "user_id": cart.user_id,
+            "product_id": cart.product_id,
+            "product_quantity": cart.product_quantity
+        }
+
         return JSONResponse(status_code=200, content={
             "message": "Cantidad actualizada en el carrito", 
-            "cart":cart, 
+            "cart": cart_dict,  
             "product_price": product_price,
             "total_cart": total_cart
         })

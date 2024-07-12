@@ -15,8 +15,8 @@ async function submitUpdateForm(event, product_id) {
 
     if (body.error != null) {
         textField.textContent = body.error
-        event.target.reset()
         textField.classList.add("error")
+        event.target.product_quantity.value = body.previous_quantity;
 
     } else {
         textField.textContent = body.message

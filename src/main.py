@@ -10,6 +10,7 @@ from .controller.category import router as category_router
 from .controller.offers import router as offers_router
 from .controller.product import router as product_router
 from .controller.cart import router as cart_router
+from .controller.checkout import router as checkout_router
 
 app = FastAPI()
 
@@ -25,3 +26,4 @@ app.include_router(category_router, prefix="/category")
 app.include_router(offers_router, prefix="/offers") 
 app.include_router(product_router, prefix="/product") 
 app.include_router(cart_router, prefix="/cart") 
+app.include_router(checkout_router, prefix="/checkout") 
