@@ -209,8 +209,8 @@ th:last-child{
 
 .error{
     color: #e06666;
+    min-height: 30px;
     font-size: 14px;
     font-weight: 500;
-    margin-bottom: 10px;
     text-align: center;
 }

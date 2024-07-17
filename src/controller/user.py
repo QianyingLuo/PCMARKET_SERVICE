@@ -13,7 +13,6 @@ from ..config.log import logger
 
 router = APIRouter()
 
-
 @router.get("/signup", response_class=HTMLResponse)
 def render_signup_page(request: Request):
     logger.info("GET: Register page")
@@ -103,7 +102,6 @@ def validate_signup(
 
     except HTTPException as he:
         return templates.TemplateResponse("pages/signup.html", {"request": request, "error": he.detail}) 
-    
     
 
 @router.post("/login", response_class=HTMLResponse)

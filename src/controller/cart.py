@@ -49,11 +49,10 @@ def render_cart(request: Request,
                     "subtotal": round(subtotal, 2)
                 })
                 total += subtotal
-                
+
     total = round(total, 2)
                 
     return templates.TemplateResponse("pages/cart.html", {"request": request, "user":user, "cart_exists": cart_exists, "cart": cart_details, "total": total})
-
 
     
 @router.post("/{product_id}", response_class=JSONResponse, response_model=dict)
@@ -79,7 +78,7 @@ async def add_to_cart(product_id: int,
         quantity_error =  "Cantidad introducida superior al stock disponible"
 
     if quantity_error:
-        return JSONResponse(content={"message": quantity_error}, status_code=409)
+        return JSONResponse(content={"error": quantity_error}, status_code=409)
     
 
     cart_to_save = cart_domain.Cart(user_id=user_id, product_id=product_id, product_quantity=product_quantity)

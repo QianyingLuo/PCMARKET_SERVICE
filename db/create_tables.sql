@@ -72,3 +72,29 @@ CREATE TABLE IF NOT EXISTS delivery_info (
     country VARCHAR(20) NULL,
     FOREIGN KEY (user_id) REFERENCES user(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS order_table (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    amount FLOAT NOT NULL,
+    user_id INT NOT NULL,
+    first_name VARCHAR(15) DEFAULT NULL,
+    last_name VARCHAR(15) DEFAULT NULL,
+    address VARCHAR(40) DEFAULT NULL,
+    complement_address VARCHAR(30) DEFAULT NULL,
+    postcode VARCHAR(10) DEFAULT NULL,
+    city VARCHAR(30) DEFAULT NULL,
+    phone VARCHAR(15) DEFAULT NULL,
+    country VARCHAR(20) DEFAULT NULL,
+    creation_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS order_cart (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    product_id INT NOT NULL,
+    product_quantity INT NOT NULL,
+    subtotal FLOAT NOT NULL,
+    order_id INT DEFAULT NULL,
+    FOREIGN KEY (order_id) REFERENCES order_table(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

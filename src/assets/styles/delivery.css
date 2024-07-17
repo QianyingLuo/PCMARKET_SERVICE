@@ -70,3 +70,9 @@
     font-size: 13px;
     font-weight: 500;
 }
+
+.payment-message {
+    color: #e06666;
+    font-size: 12px;
+    display: none;
+}

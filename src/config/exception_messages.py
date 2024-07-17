@@ -3,7 +3,7 @@ NOT_AUTHORIZED_USER_EXCEPTION = "Los datos introducidos no son válidos"
 
 PRODUCT_NOT_FOUND =  "Product not found"
 CART_NOT_FOUND =  "Cart not found"
-
+TEMPORARY_CART_NOT_FOUND = "No items found in temporary cart"
 
 GENERIC_ERROR = "Algo ha salido mal . . ."
 CONNECTION_ERROR = "Failed to connect to database. Please, check database credentials."

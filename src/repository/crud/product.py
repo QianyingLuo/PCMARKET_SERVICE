@@ -15,6 +15,7 @@ def get_all() -> list[product_domain.Product]:
 
     return [product.to_domain() for product in products]
 
+
 def get_top_products_by_type(product_type: str, limit: int) -> list[product_domain.Product]:
     products: list[product_model.Product] = []
 
@@ -27,6 +28,7 @@ def get_top_products_by_type(product_type: str, limit: int) -> list[product_doma
         products.append(product)
 
     return [product.to_domain() for product in products]
+
 
 def get_products_by_type(product_type: str) -> list[product_domain.Product]:
     products: list[product_model.Product] = []
@@ -41,6 +43,7 @@ def get_products_by_type(product_type: str) -> list[product_domain.Product]:
         
     return [product.to_domain() for product in products]
 
+
 def get_discounted_products() -> list[product_domain.Product]:
     discounted_products: list[product_model.Product] = []
 
@@ -53,6 +56,7 @@ def get_discounted_products() -> list[product_domain.Product]:
         discounted_products.append(discounted_product)
 
     return [discounted_product.to_domain() for discounted_product in discounted_products]
+
 
 def get_product_by_id(product_id: int) -> product_domain.Product:
     cursor = mysql_connection.cursor(dictionary=True)
@@ -67,6 +71,7 @@ def get_product_by_id(product_id: int) -> product_domain.Product:
     product: product_model.Product = product_model.Product.model_validate(product_data)
     return product.to_domain()
 
+
 def get_random_products_by_type(product_type: str, limit: int) -> list[product_domain.Product]:
     products: list[product_model.Product] = []
 
@@ -78,6 +83,7 @@ def get_random_products_by_type(product_type: str, limit: int) -> list[product_d
         products.append(product)
 
     return [product.to_domain() for product in products]
+
 
 def get_description_sections(product_id: int) -> list[product_model.DescriptionSection]:
     descriptions_sections: list[product_model.DescriptionSection] = []
@@ -91,6 +97,7 @@ def get_description_sections(product_id: int) -> list[product_model.DescriptionS
         descriptions_sections.append(description_section)
 
     return [description_section.to_domain() for description_section in descriptions_sections]
+
 
 def get_description_list(product_id: int) -> product_model.DescriptionList:
     cursor = mysql_connection.cursor(dictionary=True)

@@ -1,13 +1,10 @@
-from fastapi import APIRouter, Depends, Form, HTTPException, Request
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi import APIRouter, Depends, Request
+from fastapi.responses import HTMLResponse
 from ..api import product as product_api
-from ..api import cart as cart_api
 from ..utils.jinja import templates
-from ..config import types, exception_messages
+from ..config import types
 from ..config.log import logger
 from ..middlewares import get_current_user, get_current_cart
-from ..domain import cart as cart_domain
-
 
 router = APIRouter()
 

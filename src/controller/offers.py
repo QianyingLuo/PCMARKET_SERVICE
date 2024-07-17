@@ -18,6 +18,7 @@ def render_offers(request: Request, user: dict = Depends(get_current_user), cart
     offers = product_api.get_discounted_products()
     return templates.TemplateResponse("pages/offers.html", {"request": request, "user": user, "cart":cart, "offers": offers})
 
+
 @router.get("/favourites", response_class=HTMLResponse)
 def render_favourites(request: Request, user: dict = Depends(get_current_user), cart: dict = Depends(get_current_cart)): 
     logger.info("GET: Favourites page")

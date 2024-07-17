@@ -31,6 +31,7 @@ def get_discounted_products() -> list[product_domain.Product]:
             product.discounted_price = round(product.price * (1 - product.discount_decimal), 2) 
         return products
 
+
 def get_product_by_id(product_id: int) -> product_domain.Product:
     
     product = product_crud.get_product_by_id(product_id)
@@ -48,6 +49,7 @@ def get_product_by_id(product_id: int) -> product_domain.Product:
     product = add_discount(product)
     return product
 
+
 def get_product_stock_by_id(product_id: int) -> int:
      
     product = product_crud.get_product_by_id(product_id)
@@ -56,6 +58,7 @@ def get_product_stock_by_id(product_id: int) -> int:
         raise HTTPException(status_code=404, detail=exception_messages.PRODUCT_NOT_FOUND)
 
     return product.stock
+
 
 def get_random_products_by_type(product_type: str) -> list[product_domain.Product]:
     products = product_crud.get_random_products_by_type(product_type, config.NUMBER_TOP_PRODUCTS)

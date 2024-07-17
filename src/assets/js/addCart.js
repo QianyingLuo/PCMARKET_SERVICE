@@ -17,7 +17,13 @@ addCartForm.addEventListener("submit", async function(event) {
         window.location.href = body.redirect_url;
     
     else {
-        textField.textContent = body.message
+        if (body.error != null) {
+            textField.textContent = body.error
+            textField.classList.add("error")
+    
+        } else {
+            textField.textContent = body.message
+
 
         document.getElementById("product_quantity").value = 1
 
@@ -31,9 +37,15 @@ addCartForm.addEventListener("submit", async function(event) {
                 cartIcon.classList.add("bxs-shopping-bag")
             }
         } 
+        }
 
         setTimeout(() => {
             textField.textContent = ""
+        
+            if (textField.classList.contains("error")) {
+                textField.classList.remove("error")
+            }
+
         }, 5000)
     }
 });

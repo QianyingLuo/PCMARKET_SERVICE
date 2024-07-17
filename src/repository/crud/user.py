@@ -19,6 +19,7 @@ def save(user: user_domain.User) -> user_domain.User:
     
     return user
 
+
 def get_user_by_email(email: str):
     cursor = mysql_connection.cursor(dictionary=True)
     query = "SELECT * FROM user WHERE email = %s LIMIT 1"

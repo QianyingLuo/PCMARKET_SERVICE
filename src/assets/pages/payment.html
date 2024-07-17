@@ -6,68 +6,35 @@
     <link rel="stylesheet" href="/static/styles/delivery.css">
 
     <div class="wrapper">
-        <form action="/cart/delivery" method="post">
+        <form id="payment-form" action="/checkout" method="post">
             <h1>Pago</h1>
-            <div class="two-boxes">
-                <div class="input-box">
-                    <input type="text" name="first_name" placeholder="Nombre*" required maxlength="15">
-                    {% if name_length_error %}
-                    <div class="message">{{ name_length_error }}</div>
-                    {% endif %}
-                </div>
-                <div class="input-box">
-                    <input type="text" name="last_name" placeholder="Apellidos*" required maxlength="15">
-                    {% if email_format_error %}
-                    <div class="message">{{ email_format_error }}</div>
-                    {% endif %}
-                </div>
-            </div>
 
             <div class="input-box">
-                <input type="text" name="address" placeholder="Dirección*" required maxlength="64">
-                {% if password_length_error %}
-                <div class="message">{{ password_length_error }}</div>
-                {% endif %}
+                <input type="text" id="card_number" name="card_number" placeholder="Número de tarjeta*" required>
+                <div id="card-number-error-message" class="payment-message" style="display: none;"></div>
+                <div id="card-number-helper-message" class="payment-message"></div>
             </div>
             <div class="input-box">
-                <input type="text" name="complement_address" placeholder="Complemento dirección 1">
+                <input type="text" id="card_holder" name="card_holder" placeholder="Nombre del titular*" required>
             </div>
 
             <div class="two-boxes">
                 <div class="input-box">
-                    <input type="text" name="postcode" placeholder="Código postal*" required maxlength="10">
-                    {% if password_length_error %}
-                    <div class="message">{{ password_length_error }}</div>
-                    {% endif %}
+                    <input type="text" id="expiration_date" name="expiration_date" placeholder="Fecha de caducidad* MM/AA" maxlength="5" required>
+                    <div id="expiration-error-message" class="payment-message" style="display: none;"></div>
+                    <div id="expiration-helper-message" class="payment-message"></div>
                 </div>
-                <div class="input-box">
-                    <input type="text" name="city" placeholder="Ciudad*" required maxlength="15">
-                    {% if password_length_error %}
-                    <div class="message">{{ password_length_error }}</div>
-                    {% endif %}
-                </div>
-            </div>
-            <div class="two-boxes">
-                <div class="input-box">
-                    <input type="text" name="phone" placeholder="Número de teléfono*" required maxlength="15">
-                    {% if confirm_password_error %}
-                    <div class="message">{{ confirm_password_error }}</div>
-                    {% endif %}
-                </div>
-                <div class="input-box">
-                    <input type="text" name="country" placeholder="País*" required maxlength="15">
-                    {% if password_length_error %}
-                    <div class="message">{{ password_length_error }}</div>
-                    {% endif %}
-                </div>
-            </div>
 
+                <div class="input-box">
+                    <input type="text" id="cvv" name="cvv" placeholder="CVV*" maxlength="3" required>
+                    <div id="cvv-error-message" class="payment-message" style="display: none;"></div>
+                    <div id="cvv-helper-message" class="payment-message"></div>
+                </div>
+            </div>
 
             <button type="submit" class="pay-button">Pagar</button>
-            {% if error %}
-            <div class="message email-repeat">{{ error }}</div>
-            {% endif %}
-
         </form>
     </div>
+
+    <script type="text/javascript" src="/static/js/payment.js"></script>
 {% endblock %}

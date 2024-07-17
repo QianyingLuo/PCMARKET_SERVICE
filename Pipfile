@@ -11,6 +11,7 @@ aiomysql = "*"
 mysql-connector-python = "*"
 bcrypt = "*"
 python-jose = "*"
+stripe = "*"
 
 [dev-packages]
 isort = "*"
