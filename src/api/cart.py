@@ -1,3 +1,4 @@
+from typing import Optional
 from ..domain import cart as cart_domain
 from ..repository.crud import cart as cart_crud
 from ..repository.crud import product as product_crud
@@ -24,20 +25,12 @@ def delete_product(product_id: int, user_id: int) -> None:
     cart_crud.delete_product(product_id, user_id)
 
 
-def get_cart_exists_by_user_id(user_id: int) -> int:
-    cart = cart_crud.get_cart_exists_by_user_id(user_id)
-    if not cart:
-        return None
-
-    return cart
+def get_cart_exists_by_user_id(user_id: int) -> Optional[bool]:
+    return cart_crud.get_cart_exists_by_user_id(user_id)
 
 
 def get_cart_by_user_id(user_id: int) -> list[cart_domain.Cart]:
-    cart = cart_crud.get_products_in_cart_by_user_id(user_id)
-    if not cart:
-        return None
-    
-    return cart
+    return cart_crud.get_products_in_cart_by_user_id(user_id)    
 
 
 def get_product_quantity_in_cart(user_id: int, product_id: int) -> int:
@@ -62,6 +55,7 @@ def get_total_user_cart_price(user_id: int) -> float:
 
 def get_total_from_subtotal_in_order_cart(user_id: int) -> float:
     return cart_crud.get_total_from_subtotal_in_order_cart(user_id)
+
 
 
 def update_order_id_in_order_cart(user_id: int, order_id: int) -> None:

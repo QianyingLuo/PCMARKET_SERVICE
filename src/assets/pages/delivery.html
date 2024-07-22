@@ -3,10 +3,11 @@
 <title>{% block title %}Checkout | PcMarket{% endblock %}</title>
 
 {% block content %}
+    <script src="https://js.stripe.com/v3/"></script>
     <link rel="stylesheet" href="/static/styles/delivery.css">
 
     <div class="wrapper">
-        <form action="/checkout/delivery" method="post">
+        <form onsubmit="delivery(event)">
             <h1>Información de envío</h1>
             <div class="two-boxes">
                 <div class="input-box">
@@ -51,12 +52,16 @@
             <div class="message">{{ empty_field_error }}</div>
             {% endif %}
 
-            <button type="submit" class="pay-button">Pagar</button>
+            <div id="card-element" class="input-box card-fields"></div>
+            <div id="card-errors" role="alert"></div>
+            <button type="submit" data-pay-later="false" class="pay-button">Pagar</button>
             {% if error %}
             <div class="message">{{ error }}</div>
             {% endif %}
-
+            <button type="submit" data-pay-later="true" class="pay-button">Pagar más tarde</button>
         </form>
     </div>
+
+    <script type="text/javascript" src="/static/js/delivery.js"></script>
 
 {% endblock %}

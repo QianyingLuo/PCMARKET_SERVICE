@@ -17,9 +17,9 @@ class Product(BaseModel):
     id: int
     name: str
     description: Optional[str] = None
-    type: str
-    brand: str
-    stock: int
+    type: Optional[str] = None
+    brand: Optional[str] = None
+    stock: Optional[int] = None
     price: float
     discount_decimal: float
     stars: float

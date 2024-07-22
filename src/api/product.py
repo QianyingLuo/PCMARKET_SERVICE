@@ -35,6 +35,10 @@ def get_discounted_products() -> list[product_domain.Product]:
 def get_product_by_id(product_id: int) -> product_domain.Product:
     
     product = product_crud.get_product_by_id(product_id)
+    
+    if not product:
+        raise HTTPException(status_code=404, detail=exception_messages.PRODUCT_NOT_FOUND)
+    
     description_sections = product_crud.get_description_sections(product_id)
     description_list = product_crud.get_description_list(product_id)
     description_dictionary = product_crud.get_description_dictionary(product_id)
@@ -42,9 +46,6 @@ def get_product_by_id(product_id: int) -> product_domain.Product:
     product.description_sections = description_sections
     product.description_list = description_list
     product.description_dictionary = description_dictionary
-    
-    if not product:
-        raise HTTPException(status_code=404, detail=exception_messages.PRODUCT_NOT_FOUND)
     
     product = add_discount(product)
     return product

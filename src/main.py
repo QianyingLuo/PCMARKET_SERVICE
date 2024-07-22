@@ -9,6 +9,7 @@ from .controller.user import router as user_router
 from .controller.category import router as category_router
 from .controller.offers import router as offers_router
 from .controller.product import router as product_router
+from .controller.favorites import router as favorites_router
 from .controller.cart import router as cart_router
 from .controller.checkout import router as checkout_router
 
@@ -25,5 +26,7 @@ app.include_router(user_router, prefix="/user")
 app.include_router(category_router, prefix="/category") 
 app.include_router(offers_router, prefix="/offers") 
 app.include_router(product_router, prefix="/product") 
+app.include_router(favorites_router, prefix="/favorites")
 app.include_router(cart_router, prefix="/cart") 
 app.include_router(checkout_router, prefix="/checkout") 
+

@@ -1,5 +1,7 @@
 {% extends "templates/base.html" %}
 
+<title>{% block title %}Mi cesta{% endblock %}</title>
+
 {% block content %}
 <link rel="stylesheet" href="/static/styles/cart.css">
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -27,7 +29,7 @@
                             <div class="price-trash">
                                 <small>{{ item.price }} €</small>
                                 <form onsubmit="submitRemoveForm(event, {{ item.product_id }})">
-                                    <button type="submit" class="trash-button"><i class='bx bx-trash'></i></a>
+                                    <button type="submit" class="trash-button"><i class='bx bx-trash'></i>
                                 </form>
                             </div>
                         </div>

@@ -6,7 +6,7 @@ from ..api import product as product_api
 from ..utils.jinja import templates 
 from ..config import exception_messages
 from ..config.log import logger
-from ..middlewares import get_current_user, get_current_cart
+from ..middlewares import get_current_user, get_current_cart, get_current_favorite
 from ..domain import cart as cart_domain
 
 router = APIRouter()
@@ -14,13 +14,13 @@ router = APIRouter()
 @router.get("/", response_class=HTMLResponse)
 def render_cart(request: Request, 
                 user: dict = Depends(get_current_user),
+                favorite_navbar: dict = Depends(get_current_favorite),
                 cart: dict = Depends(get_current_cart)):
     
-    logger.info("GET: cart page")
-
     if not user:
         return RedirectResponse(url="/user/login/", status_code=302)
-    
+
+    logger.info("GET: cart page")
     
     user_id = user["id"]
     cart_exists = cart_api.get_cart_exists_by_user_id(user_id)
@@ -52,7 +52,7 @@ def render_cart(request: Request,
 
     total = round(total, 2)
                 
-    return templates.TemplateResponse("pages/cart.html", {"request": request, "user":user, "cart_exists": cart_exists, "cart": cart_details, "total": total})
+    return templates.TemplateResponse("pages/cart.html", {"request": request, "user": user, "favorite_navbar": favorite_navbar, "cart_exists": cart_exists, "cart": cart_details, "total": total})
 
     
 @router.post("/{product_id}", response_class=JSONResponse, response_model=dict)
@@ -83,20 +83,14 @@ async def add_to_cart(product_id: int,
 
     cart_to_save = cart_domain.Cart(user_id=user_id, product_id=product_id, product_quantity=product_quantity)
     
-    try:
-        cart = cart_api.add_to_cart(cart_to_save)
-        cart_dict = {
-            "user_id": cart.user_id,
-            "product_id": cart.product_id,
-            "product_quantity": cart.product_quantity
-        }
+    cart = cart_api.add_to_cart(cart_to_save)
+    cart_dict = {
+        "user_id": cart.user_id,
+        "product_id": cart.product_id,
+        "product_quantity": cart.product_quantity
+    }
 
-        return JSONResponse(status_code=200, content={"message": "Producto añadido al carrito", "cart":cart_dict})
-
-    
-    except HTTPException as he:
-        logger.warn(exception_messages.ADD_IN_CART_ERROR)
-        return JSONResponse()
+    return JSONResponse(status_code=200, content={"message": "Producto añadido al carrito", "cart":cart_dict})
 
 
 @router.patch("/{product_id}", response_class=JSONResponse, response_model=dict)
@@ -104,6 +98,9 @@ async def edit_cart(product_id: int,
                     product_quantity: int = Form(...), 
                     user: dict = Depends(get_current_user)):
 
+    if not user:
+        return RedirectResponse(url="/user/login/", status_code=302)
+    
     logger.info(f"PATCH: Editing quantity of product {product_id} in cart")
 
     user_id = user["id"]
@@ -127,56 +124,44 @@ async def edit_cart(product_id: int,
         }, status_code=200)
 
     quantity_to_update = cart_domain.Cart(user_id=user_id, product_id=product_id, product_quantity=product_quantity)
-    
-    try:
-        product = product_api.get_product_by_id(product_id)
-        product_price = product.discounted_price if product.discount_decimal != 0 else product.price
-        cart = cart_api.update_product_quantity(quantity_to_update)
-        total_cart = cart_api.get_total_user_cart_price(user_id)
+    product = product_api.get_product_by_id(product_id)
+    product_price = product.discounted_price if product.discount_decimal != 0 else product.price
+    cart = cart_api.update_product_quantity(quantity_to_update)
+    total_cart = cart_api.get_total_user_cart_price(user_id)
 
-        cart_dict = {
-            "user_id": cart.user_id,
-            "product_id": cart.product_id,
-            "product_quantity": cart.product_quantity
-        }
+    cart_dict = {
+        "user_id": cart.user_id,
+        "product_id": cart.product_id,
+        "product_quantity": cart.product_quantity
+    }
 
-        return JSONResponse(status_code=200, content={
-            "message": "Cantidad actualizada en el carrito", 
-            "cart": cart_dict,  
-            "product_price": product_price,
-            "total_cart": total_cart
-        })
-    
-    except HTTPException as he:
-        logger.warn(exception_messages.EDIT_QUANTITY_IN_CART_ERROR)
-        return JSONResponse(status_code=500, content={
-            "error": exception_messages.DETAILED_ERROR(he.detail)
-        })
+    return JSONResponse(status_code=200, content={
+        "message": "Cantidad actualizada en el carrito", 
+        "cart": cart_dict,  
+        "product_price": product_price,
+        "total_cart": total_cart
+    })
     
 
 @router.delete("/{product_id}", response_class=JSONResponse, response_model=dict)
-async def edit_cart(product_id: int, 
+async def delete_product_in_cart(product_id: int, 
                     user: dict = Depends(get_current_user)):
-
+    if not user:
+        return RedirectResponse(url="/user/login/", status_code=302)
+    
     logger.info(f"DELETE: Deleting product {product_id} from cart")
 
     user_id = user["id"]
     
-    try:
-        cart_api.delete_product(product_id, user_id)
-        total_cart = cart_api.get_total_user_cart_price(user_id)
+    cart_api.delete_product(product_id, user_id)
+    total_cart = cart_api.get_total_user_cart_price(user_id)
 
-        is_empty = False
-        if not total_cart:
-            is_empty = True
+    is_empty = False
+    if not total_cart:
+        is_empty = True
 
-        return JSONResponse(status_code=200, content={
-            "total_cart": total_cart,
-            "is_empty": is_empty
-        })
+    return JSONResponse(status_code=200, content={
+        "total_cart": total_cart,
+        "is_empty": is_empty
+    })
     
-    except HTTPException as he:
-        logger.warn(exception_messages.DELETE_PRODUCT_IN_CART_ERROR)
-        return JSONResponse(status_code=500, content={
-            "error": exception_messages.DETAILED_ERROR(he.detail)
-        })

@@ -142,7 +142,7 @@ def get_total_from_subtotal_in_order_cart(user_id: int) -> float:
         return result["total"]
     else:
         return 0.0
-
+    
 
 def update_order_id_in_order_cart(user_id: int, order_id: int) -> None:
     cursor = mysql_connection.cursor(dictionary=True)

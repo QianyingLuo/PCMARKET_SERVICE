@@ -1,6 +1,16 @@
+import enum
 from typing import Optional
 from pydantic import BaseModel, Field
 from datetime import datetime, timezone
+
+
+class OrderStatus(enum.Enum):
+    PAID = "PAID",
+    PENDING = "PENDING",
+    CANCELLED = "CANCELLED"
+
+class OrderStatusParameter(BaseModel):
+    status: OrderStatus
 
 class Order(BaseModel):
     id: Optional[int] = Field(primary_key=True, autoincrement=True, default=None)
@@ -15,4 +25,5 @@ class Order(BaseModel):
     phone: Optional[str] = None
     country: Optional[str] = None
     creation_time: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
-    status: Optional[str] = None
+    status: OrderStatus
+

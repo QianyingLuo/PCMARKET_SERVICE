@@ -76,3 +76,17 @@
     font-size: 12px;
     display: none;
 }
+
+.card-fields {
+    background: #fff none repeat scroll 0 0;
+    box-sizing: border-box;
+    border: 1px solid #e9e3de;
+    box-shadow: 0 0 0 3px transparent;
+    height: 44px;
+    padding: 12px 15px;
+    color: #333;
+    width: 100%;
+    margin: 0;
+    border-radius: 5px;
+    font-size: 14px;
+}

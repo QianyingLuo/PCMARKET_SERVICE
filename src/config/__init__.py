@@ -1,4 +1,5 @@
 import os
+import stripe
 
 environment_variables = dict()
 
@@ -38,6 +39,9 @@ USER = get_env_var("DB_USER", "root")
 PASSWORD = get_mandatory_env_var("DB_PASSWORD")
 DATABASE = get_env_var("DB_NAME", "pcmarket")
 NUMBER_TOP_PRODUCTS = int(get_env_var("NUMBER_TOP_PRODUCTS", "4")) 
+STRIPE_PUBLIC_KEY = get_mandatory_env_var("STRIPE_PUBLIC_KEY")
 STRIPE_SECRET_KEY = get_mandatory_env_var("STRIPE_SECRET_KEY")
 
 print_env_vars()
+
+stripe.api_key = STRIPE_SECRET_KEY

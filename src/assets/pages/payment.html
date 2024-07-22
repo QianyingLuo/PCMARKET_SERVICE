@@ -3,7 +3,7 @@
 <title>{% block title %}Checkout | PcMarket{% endblock %}</title>
 
 {% block content %}
-    <link rel="stylesheet" href="/static/styles/delivery.css">
+    <link rel="stylesheet" href="/static/styles/payment.css">
 
     <div class="wrapper">
         <form id="payment-form" action="/checkout" method="post">
@@ -34,7 +34,10 @@
 
             <button type="submit" class="pay-button">Pagar</button>
         </form>
+
+        
+    <script type="text/javascript" src="/static/js/payment.js"></script>
     </div>
 
-    <script type="text/javascript" src="/static/js/payment.js"></script>
+
 {% endblock %}

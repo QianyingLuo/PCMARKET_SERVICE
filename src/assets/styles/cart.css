@@ -175,7 +175,10 @@ th:last-child{
 }
 
 .empty-cart{
-    padding: 80px 400px;
+    max-width: 1080px;
+    margin: 60px auto;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 .empty-cart-title{

@@ -1,5 +1,6 @@
-from fastapi import APIRouter, Depends, Form, HTTPException, Request
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi import APIRouter, Depends, Form, Request, Body
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
+import stripe
 
 from ..api import cart as cart_api
 from ..api import product as product_api
@@ -7,18 +8,20 @@ from ..api import delivery as delivery_api
 from ..api import order as order_api
 from ..utils.jinja import templates 
 from ..config.log import logger
-from ..config import exception_messages
-from ..middlewares import get_current_user, get_current_cart
+from ..middlewares import get_current_user, get_current_cart, get_current_favorite
 from ..domain.delivery import Delivery
 from ..domain import order_cart as order_cart_domain
 from ..domain import order as order_domain
+
 
 router = APIRouter()
 
 @router.get("/delivery", response_class=HTMLResponse)
 def render_delivery_page(request: Request, 
                         user: dict = Depends(get_current_user),
+                        favorite_navbar: dict = Depends(get_current_favorite), 
                         cart: dict = Depends(get_current_cart)):
+    
     logger.info("GET: Delivery page")
     
     if not user:
@@ -30,12 +33,13 @@ def render_delivery_page(request: Request,
     if not cart_exists:
         return RedirectResponse(url="/cart", status_code=302)
 
-    return templates.TemplateResponse("pages/delivery.html", {"request": request, "user":user, "cart_exists": cart_exists, "cart": cart})
+    return templates.TemplateResponse("pages/delivery.html", {"request": request, "user":user, "favorite_navbar": favorite_navbar, "cart_exists": cart_exists, "cart": cart})
 
 
 @router.get("/payment", response_class=HTMLResponse)
 def render_payment_page(request: Request, 
                         user: dict = Depends(get_current_user),
+                        favorite_navbar: dict = Depends(get_current_favorite), 
                         cart: dict = Depends(get_current_cart)):
     logger.info("GET: Payment page")
     
@@ -48,10 +52,10 @@ def render_payment_page(request: Request,
     if not cart_exists:
         return RedirectResponse(url="/cart", status_code=302)
 
-    return templates.TemplateResponse("pages/payment.html", {"request": request, "user":user, "cart_exists": cart_exists, "cart": cart})
+    return templates.TemplateResponse("pages/payment.html", {"request": request, "user":user, "favorite_navbar": favorite_navbar, "cart_exists": cart_exists, "cart": cart})
 
 
-@router.post("/delivery", response_class=HTMLResponse)
+@router.post("/delivery", response_class=JSONResponse)
 def save_delivery_info(
     request: Request, 
     first_name: str = Form(...),
@@ -65,7 +69,10 @@ def save_delivery_info(
     user: dict = Depends(get_current_user)
 ):
     logger.info("POST: Saving delivery data")
-        
+
+    if not user:
+        return RedirectResponse(url="/user/login/", status_code=302)
+    
     user_id = user["id"]
 
     errors = {}
@@ -78,7 +85,6 @@ def save_delivery_info(
 
     if errors:
         return templates.TemplateResponse("pages/delivery.html", {"request": request, **errors})
-    
 
     delivery_info_to_save = Delivery(user_id=user_id, 
                                      first_name=first_name, 
@@ -90,23 +96,26 @@ def save_delivery_info(
                                      phone=phone,
                                      country=country)
 
-    try:
-        delivery_api.save(delivery_info_to_save)
-        return RedirectResponse(url="/checkout/payment", status_code=302)
+    delivery_api.save(delivery_info_to_save)
 
-    except HTTPException as he:
-        return templates.TemplateResponse("pages/delivery.html", {"request": request, "error": he.detail}) 
+    total = cart_api.get_total_user_cart_price(user_id)
+
+    intent_client_secret = stripe.PaymentIntent.create(
+            amount=int(total * 100),
+            currency='eur'
+        )
+    return JSONResponse(content={"clientSecret": intent_client_secret['client_secret']}, status_code=200)
 
 
-@router.post("/", response_class=HTMLResponse)
-def create_order(request: Request, user: dict = Depends(get_current_user)):
+@router.post("/", response_class=JSONResponse)
+def create_order(
+    status: order_domain.OrderStatusParameter = Body(...),
+    user: dict = Depends(get_current_user), 
+):
     
     user_id = user["id"]
  
     temporary_cart_items = cart_api.get_cart_by_user_id(user_id)
-
-    if not temporary_cart_items:
-        raise HTTPException(status_code=404, detail=exception_messages.TEMPORARY_CART_NOT_FOUND)
 
     for item in temporary_cart_items:
 
@@ -125,27 +134,23 @@ def create_order(request: Request, user: dict = Depends(get_current_user)):
             subtotal=subtotal,
             order_id=None
         )
-        try:
-            cart_api.save_temporary_cart_in_order_cart(cart_to_save)
 
-        except HTTPException as he:
-            return templates.TemplateResponse("pages/payment.html", {"request": request, "error": he.detail})
+        cart_api.save_temporary_cart_in_order_cart(cart_to_save)
+
     
     total = cart_api.get_total_from_subtotal_in_order_cart(user_id)
 
     order_to_save = order_domain.Order(
         user_id=user_id,
-        amount=total
+        amount=total,
+        status=status
     )
 
-    try:
-        order_id = order_api.save_order(order_to_save)
-        cart_api.update_order_id_in_order_cart(user_id, order_id)
-        order_api.save_delivery_info_in_order(user_id, order_id) 
-        order_api.delete_temporary_cart_by_user_id(user_id)
-        order_api.delete_delivery_info_by_user_id(user_id)
+    order_id = order_api.save_order(order_to_save)
+    cart_api.update_order_id_in_order_cart(user_id, order_id)
+    order_api.save_delivery_info_in_order(user_id, order_id) 
+    order_api.delete_temporary_cart_by_user_id(user_id)
+    order_api.delete_delivery_info_by_user_id(user_id)
 
-    except HTTPException as he:
-        return templates.TemplateResponse("pages/payment.html", {"request": request, "error": he.detail})
-
-    return RedirectResponse(url="/", status_code=302)
+    redirect_url = "/" if status.PAID else "/"
+    return JSONResponse(content={"redirect_url": redirect_url}, status_code=200)
