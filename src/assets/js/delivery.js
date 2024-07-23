@@ -28,7 +28,12 @@ async function delivery(event) {
 
     const data = await responseDelivery.json()
 
-    //DELIVERY ERRORS
+    const textField = document.getElementById("response-message");
+    const body = await response.json()
+
+    if (body.error != null) {
+        textField.textContent = body.error
+        
 
     if (!isPayLater) {
         const { error, paymentIntent } = await stripe.confirmCardPayment(data.clientSecret, {
@@ -68,4 +73,5 @@ async function delivery(event) {
         const data = await finishPaymentResponse.json()
         //window.location.href = data.redirect_url;
     }
+}
 }

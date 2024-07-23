@@ -20,9 +20,8 @@
 }
 
 .col-4 {
-    flex: 1 1 calc(25% - 20px); 
     box-sizing: border-box;
-    margin: 10px; 
+    margin: 15px; 
     text-align: left;
 }
 
@@ -44,6 +43,7 @@
 
 .rating {
     margin: 10px 0;
+    position: relative;
 }
 
 .col-4 h5 {
@@ -59,6 +59,8 @@
 .product-link {
     text-decoration: none;
     color: inherit; 
+    min-height: 50px;
+
 }
 
 .product-link:hover {
@@ -115,8 +117,15 @@
     border: none;
     background: none;
     margin: 3px 0 0 5px;
+    position: absolute;
+    right: 10px;
+    top: 0;
 }
 
 .add-or-remove-favorite-button:hover{
     color: rgb(223, 0, 0);
+}
+
+.heart-favorites {
+    transform: scale(1.5);
 }

@@ -65,16 +65,33 @@
     height: 44px;
 }
 
+.pay-later-button {
+    padding: 3px 20px;
+    margin-top: 20px;
+    background: #c0c0c0;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-sizing: border-box;
+    text-decoration: none;
+    width: 700px;
+    height: 44px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .message {
     color: #e06666;
     font-size: 13px;
     font-weight: 500;
-}
-
-.payment-message {
-    color: #e06666;
-    font-size: 12px;
-    display: none;
 }
 
 .card-fields {

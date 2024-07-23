@@ -16,7 +16,7 @@ from ..domain import order as order_domain
 
 router = APIRouter()
 
-@router.get("/delivery", response_class=HTMLResponse)
+@router.get("/delivery-payment", response_class=HTMLResponse)
 def render_delivery_page(request: Request, 
                         user: dict = Depends(get_current_user),
                         favorite_navbar: dict = Depends(get_current_favorite), 
@@ -34,25 +34,6 @@ def render_delivery_page(request: Request,
         return RedirectResponse(url="/cart", status_code=302)
 
     return templates.TemplateResponse("pages/delivery.html", {"request": request, "user":user, "favorite_navbar": favorite_navbar, "cart_exists": cart_exists, "cart": cart})
-
-
-@router.get("/payment", response_class=HTMLResponse)
-def render_payment_page(request: Request, 
-                        user: dict = Depends(get_current_user),
-                        favorite_navbar: dict = Depends(get_current_favorite), 
-                        cart: dict = Depends(get_current_cart)):
-    logger.info("GET: Payment page")
-    
-    if not user:
-        return RedirectResponse(url="/user/login/", status_code=302)
-
-    user_id = user["id"]
-    cart_exists = cart_api.get_cart_exists_by_user_id(user_id)
-
-    if not cart_exists:
-        return RedirectResponse(url="/cart", status_code=302)
-
-    return templates.TemplateResponse("pages/payment.html", {"request": request, "user":user, "favorite_navbar": favorite_navbar, "cart_exists": cart_exists, "cart": cart})
 
 
 @router.post("/delivery", response_class=JSONResponse)
@@ -75,16 +56,14 @@ def save_delivery_info(
     
     user_id = user["id"]
 
-    errors = {}
+    phone_error = None
 
-    if complement_address and len(complement_address) > 30:
-        errors['complement_address_error'] = "¡Ay! Tu dirección complementaria debe tener menos de 30 caracteres"
 
     if not phone.isdigit():
-        errors['phone_error'] = "¡Ay! Tu número de teléfono debe contener solo números"
+        phone_error = "¡Ay! Tu número de teléfono debe contener solo números"
 
-    if errors:
-        return templates.TemplateResponse("pages/delivery.html", {"request": request, **errors})
+    if phone_error:
+        return JSONResponse(content={"error": phone_error}, status_code=409)
 
     delivery_info_to_save = Delivery(user_id=user_id, 
                                      first_name=first_name, 

@@ -10,16 +10,11 @@
         <div class="row">
             {% for product in favorite_products %}
             <div class="col-4" id="product-row-{{ product.id }}">
-                <form onsubmit="submitRemoveForm(event, {{ product.id }})">    
-                    <button type="submit" class="add-or-remove-favorite-button">
-                        <i id="favoriteIcon" class="bx bxs-heart"></i>
-                    </button>
-                </form>
                 <a href="/product/{{ product.id }}"> 
                     <img src="/{{ product.image }}" alt="{{ product.name }}">
                 </a>
                 <a class="product-link" href="/product/{{ product.id }}">
-                    <h5>{{ product.name | truncate(135) }}</h5>
+                    <h5>{{ product.name | truncate(60) }}</h5>
                 </a>
                 <div class="rating">
                     {% for _ in range(int(product.stars)) %}
@@ -31,6 +26,11 @@
                     {% for _ in range(5 - int(product.stars) - (1 if product.stars % 1 >= 0.5 else 0)) %}
                     <i class="fa-regular fa-star"></i>
                     {% endfor %}
+                    <form onsubmit="submitRemoveForm(event, {{ product.id }})">    
+                        <button type="submit" class="add-or-remove-favorite-button">
+                            <i id="favoriteIcon" class="bx bxs-heart heart-favorites"></i>
+                        </button>
+                    </form>
                 </div>
                 <p>
                     {% if product.discount_decimal != 0 %}
