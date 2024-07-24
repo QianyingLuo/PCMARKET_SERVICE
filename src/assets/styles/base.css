@@ -120,7 +120,7 @@ nav li{
     position: relative;
 }
 
-nav a{
+nav a, nav p {
     height: 100%;
     text-decoration: none;
     display: flex;
@@ -128,6 +128,10 @@ nav a{
     color: #1D1D1D;
     margin-right: auto;
     margin-top: 10px;
+}
+
+.dashboard {
+    padding: 20px 0 0 10px;
 }
 
 .products {
@@ -148,7 +152,7 @@ nav a{
 .sidebar-username{
     display: flex;
     align-items: center;
-    padding-left: 10px;
+    padding: 0 10px;
     font-weight: 400; 
     color: #4a4648;
 }

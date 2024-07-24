@@ -34,11 +34,12 @@ class CheckLoggedUserCartFavoriteMiddleware(BaseHTTPMiddleware):
 
             user_id: int = payload.get("id")
             user_name: str = payload.get("name")
+            user_type: str = payload.get("type")
 
-            if user_id is None or user_name is None:
+            if user_id is None or user_name is None or user_type is None:
                 return None
             else:
-                info = {"id": user_id, "name": user_name}
+                info = {"id": user_id, "name": user_name, "type": user_type}
                 cart_exists = cart_api.get_cart_by_user_id(user_id)
                 favorite_exists = favorite_api.check_if_favorite_list_has_items(user_id)
 

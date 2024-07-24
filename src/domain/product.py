@@ -1,5 +1,5 @@
 from typing import Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 class DescriptionSection(BaseModel):
     title: str
@@ -14,7 +14,7 @@ class DescriptionDictionary(BaseModel):
     description: dict[str, list[str]]
 
 class Product(BaseModel):
-    id: int
+    id: Optional[int] = Field(primary_key=True, autoincrement=True, default=None)
     name: str
     description: Optional[str] = None
     type: Optional[str] = None

@@ -35,11 +35,14 @@ def do_login(user_login: user_domain.UserLogin) -> str:
         logger.warn(exception_messages.NOT_AUTHORIZED_USER_EXCEPTION)
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=exception_messages.NOT_AUTHORIZED_USER_EXCEPTION)
 
-    user_token = user_domain.UserToken(id=user.id, email=user.email, name=user.name)
+    user_token = user_domain.UserToken(id=user.id, email=user.email, name=user.name, type=user.type)
     token: str = create_access_token(user_token, timedelta(minutes=config.ACCESS_TOKEN_EXPIRE_MINUTES))
     return token
 
 
+def get_all() -> list[user_domain.User]: 
+    users = user_crud.get_all()
+    return users 
 
 # UTILS ################################################################################################################
 

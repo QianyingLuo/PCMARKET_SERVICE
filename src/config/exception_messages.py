@@ -1,5 +1,7 @@
 EMAIL_ALREADY_EXISTS_EXCEPTION = "El email introducido ya consta como registrado"
 NOT_AUTHORIZED_USER_EXCEPTION = "Los datos introducidos no son válidos"
+PRODUCT_ALREADY_EXISTS_EXCEPTION = "El producto introducido ya consta en base de datos"
+PRODUCT_IMAGE_PATH_ALREADY_EXISTS_EXCEPTION = "La ruta de imagen introducida ya consta en base de datos"
 
 PRODUCT_NOT_FOUND =  "Product not found"
 CART_NOT_FOUND =  "Cart not found"

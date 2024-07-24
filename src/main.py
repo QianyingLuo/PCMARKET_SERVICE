@@ -6,6 +6,7 @@ from .middlewares import set_middlewares
 from .exception_handlers import set_exception_handlers
 from .controller.index import router as index_router
 from .controller.user import router as user_router
+from .controller.dashboard import router as dashboard_router
 from .controller.category import router as category_router
 from .controller.offers import router as offers_router
 from .controller.product import router as product_router
@@ -23,6 +24,7 @@ app.mount("/static", StaticFiles(directory="src/assets/"), name="static")
 
 app.include_router(index_router)
 app.include_router(user_router, prefix="/user")
+app.include_router(dashboard_router, prefix="/dashboard") 
 app.include_router(category_router, prefix="/category") 
 app.include_router(offers_router, prefix="/offers") 
 app.include_router(product_router, prefix="/product") 

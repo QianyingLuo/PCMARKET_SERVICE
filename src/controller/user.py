@@ -74,8 +74,8 @@ def validate_signup(
     password_length_error = None
     confirm_password_error = None
 
-    if len(name) < 8 or len(name) > 50:
-        name_length_error = "¡Ay! Tu nombre debe tener entre 8 y 50 caracteres"
+    if len(name) < 3 or len(name) > 50:
+        name_length_error = "¡Ay! Tu nombre debe tener entre 3 y 50 caracteres"
 
     if not check(email):
         email_format_error = "¡Ojo! El formato del correo es incorrecto"
@@ -94,7 +94,7 @@ def validate_signup(
                                                                 "confirm_password_error": confirm_password_error,
                                                                 })
     
-    user_to_save = User(name=name, email=email, password=password, address=address, phone=phone)
+    user_to_save = User(name=name, email=email, password=password, type="cliente")
 
     try:
         user_api.save(user_to_save)

@@ -3,11 +3,10 @@ CREATE TABLE IF NOT EXISTS user(
     name VARCHAR(50) NOT NULL,
     email VARCHAR(70) UNIQUE NOT NULL,
     password TEXT NOT NULL,
-    address VARCHAR(70),
-    phone VARCHAR(20)
+    type VARCHAR(15) DEFAULT 'cliente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT IGNORE INTO user (name, email, password) VALUES ("adminadmin", "admin@admin.com", "$2a$10$Y3/Ms/LwRUYVxsWG73ULOuW6rhL.pJx9k6tnp8Ci1E498wplVEmNC");
+INSERT IGNORE INTO user (name, email, password, type) VALUES ("adminadmin", "admin@admin.com", "$2a$10$Y3/Ms/LwRUYVxsWG73ULOuW6rhL.pJx9k6tnp8Ci1E498wplVEmNC", "administrador");
 
 CREATE TABLE IF NOT EXISTS product(
      id INT AUTO_INCREMENT PRIMARY KEY,

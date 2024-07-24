@@ -1,18 +1,17 @@
 from ...domain import user as user_domain
-from ..models import user as user_crud_domain
+from ..models import user as user_model
 from ...config.database.mysql_connection import mysql_connection
 
 def save(user: user_domain.User) -> user_domain.User:
-    user_crud = user_crud_domain.User.from_domain(user_domain=user)
+    user_crud = user_model.User.from_domain(user_domain=user)
     cursor = mysql_connection.cursor()
 
-    insert_query = "INSERT INTO user (name, email, password, address, phone) VALUES (%s, %s, %s, %s, %s)"
+    insert_query = "INSERT INTO user (name, email, password, type) VALUES (%s, %s, %s, %s)"
     user_data = (
         user_crud.name,
         user_crud.email,
         user_crud.password,
-        user_crud.address,
-        user_crud.phone,
+        user_crud.type
     )
     cursor.execute(insert_query, user_data)
     cursor.close()
@@ -31,3 +30,16 @@ def get_user_by_email(email: str):
         return user_domain.User.model_validate(user_data)
     else:
         return None
+
+def get_all() -> list[user_domain.User]:
+    users: list[user_model.User] = []
+
+    cursor = mysql_connection.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM user")
+    rows = cursor.fetchall()
+
+    for row in rows:
+        user = user_model.User.model_validate(row)
+        users.append(user)
+
+    return [user.to_domain() for user in users]

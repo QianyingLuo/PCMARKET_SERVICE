@@ -1,11 +1,16 @@
-from fastapi import HTTPException
+from fastapi import HTTPException, status
 from ..domain import product as product_domain
 from ..repository.crud import product as product_crud
 from .. import config
 from ..config import exception_messages
+from ..config.log import logger
 
 def get_all() -> list[product_domain.Product]: 
-        return product_crud.get_all()
+    products = product_crud.get_all()
+        
+    for product in products:
+        product = add_discount(product)
+    return products 
 
 
 def get_top_products_by_type(product_type: str) -> list[product_domain.Product]:
@@ -75,3 +80,20 @@ def add_discount(product: product_domain.Product) -> product_domain.Product:
         product.discount_percentage = round(product.discount_decimal * 100)
     
     return product
+
+
+def add_product(product: product_domain.Product) -> product_domain.Product:
+
+    repeated_image_path = product_crud.get_product_by_image_path(product.image)
+    if repeated_image_path:
+        logger.warn(exception_messages.PRODUCT_IMAGE_PATH_ALREADY_EXISTS_EXCEPTION)
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=exception_messages.PRODUCT_IMAGE_PATH_ALREADY_EXISTS_EXCEPTION)
+
+    repeated_product_name = product_crud.get_product_by_name(product.name)
+
+    if not repeated_product_name:
+        return product_crud.add_product(product)
+
+    else:
+        logger.warn(exception_messages.PRODUCT_ALREADY_EXISTS_EXCEPTION)
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=exception_messages.PRODUCT_ALREADY_EXISTS_EXCEPTION)

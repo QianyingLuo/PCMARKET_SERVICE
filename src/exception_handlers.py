@@ -25,7 +25,6 @@ async def starlette_exception_handler(request: Request, exc: StarletteHTTPExcept
 
 
 def set_exception_handlers(app: FastAPI) -> None:
-    ...
-    #app.add_exception_handler(Exception, generic_exception_handler)
-    #app.add_exception_handler(HTTPException, http_exception_handler)
-    #app.add_exception_handler(StarletteHTTPException, starlette_exception_handler)
+    app.add_exception_handler(Exception, generic_exception_handler)
+    app.add_exception_handler(HTTPException, http_exception_handler)
+    app.add_exception_handler(StarletteHTTPException, starlette_exception_handler)
