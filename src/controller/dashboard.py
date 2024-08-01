@@ -150,7 +150,7 @@ async def logout_get(request: Request, response: Response):
     
     return response
 
-@router.delete("/product/{product_id}", response_class=JSONResponse, response_model=dict)
+@router.delete("/products/{product_id}", response_class=JSONResponse, response_model=dict)
 async def delete_product(product_id: int,
                          user: dict = Depends(get_current_user)):
 
@@ -163,7 +163,7 @@ async def delete_product(product_id: int,
 
     return JSONResponse(status_code=200, content={"message": "Producto eliminado de base de datos"})
 
-@router.delete("/user/{user_id}", response_class=JSONResponse, response_model=dict)
+@router.delete("/users/{user_id}", response_class=JSONResponse, response_model=dict)
 async def delete_user(user_id: int,
                       user: dict = Depends(get_current_user)):
 
@@ -176,7 +176,7 @@ async def delete_user(user_id: int,
 
     return JSONResponse(status_code=200, content={"message": "Usuario eliminado de base de datos"})
 
-@router.get("/{product_id}", response_class=JSONResponse, response_model=dict)
+@router.get("/products/{product_id}", response_class=JSONResponse, response_model=dict)
 async def get_product_details(product_id: int,
                               user: dict = Depends(get_current_user)):
     if not user:
@@ -190,18 +190,18 @@ async def get_product_details(product_id: int,
     
 
 
-@router.put("/{product_id}", response_class=JSONResponse, response_model=dict)
+@router.put("/products/{product_id}", response_class=JSONResponse, response_model=dict)
 async def update_product(product_id: int,
                          user: dict = Depends(get_current_user),
-                         name: str = Form(...),
-                         description: str = Form(...),
-                         type: str = Form(...),
-                         brand: str = Form(...),
-                         stock: int = Form(...),
-                         price: float = Form(...),
-                         discount_decimal: float = Form(...),
-                         stars: float = Form(...),
-                         image: UploadFile = File(None)):
+                         name: str = Form(default=None),
+                         description: str = Form(default=None),
+                         type: str = Form(default=None),
+                         brand: str = Form(default=None),
+                         stock: int = Form(default=None),
+                         price: float = Form(default=None),
+                         discount_decimal: float = Form(default=None),
+                         stars: float = Form(default=None),
+                         image: UploadFile = File(default=None)):
     
     if not user:
         return JSONResponse(content={"redirect_url": "/user/login"}, status_code=401)

@@ -4,7 +4,7 @@ function openEditModal(product_id) {
     console.log("hola" + product_id);
     currentProductId = product_id;
 
-    fetch(`/dashboard/${product_id}`)
+    fetch(`/dashboard/products/${product_id}`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -35,7 +35,11 @@ function editProduct(event) {
 
     const formData = new FormData();
     formData.append('id', document.getElementById('edit-product-id').value);
-    formData.append('image', document.getElementById('edit-product-image').files[0]);
+
+    if (document.getElementById('edit-product-image').files[0] !== undefined) {
+        formData.append('image', document.getElementById('edit-product-image').files[0]);
+    }
+
     formData.append('name', document.getElementById('edit-product-name').value);
     formData.append('description', document.getElementById('edit-product-description').value);
     formData.append('type', document.getElementById('edit-product-type').value);
@@ -45,13 +49,16 @@ function editProduct(event) {
     formData.append('price', document.getElementById('edit-product-price').value);
     formData.append('discount_decimal', document.getElementById('edit-product-discount').value);
 
-    fetch(`/dashboard/${productId}`, {
-        method: 'PUT', // Usa PUT para actualizaciones
+    fetch(`/dashboard/products/${productId}`, {
+        method: 'PUT',
         body: formData,
     })
     .then(response => response.json())
     .then(data => {
-        if (data.message) {
+
+        if (data.error) {
+            window.alert(data.error)
+        } else if (data.message) {
 
             document.getElementById("productName-" + productId).textContent = form.productName.value
 

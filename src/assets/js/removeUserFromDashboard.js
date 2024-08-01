@@ -2,7 +2,7 @@ async function submitRemoveForm(event, user_id) {
     event.preventDefault();
 
     try {
-        const response = await fetch(`/dashboard/user/${user_id}`, {
+        const response = await fetch(`/dashboard/users/${user_id}`, {
             method: "DELETE",
         });
 
