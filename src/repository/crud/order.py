@@ -2,14 +2,25 @@ from ..models import order as order_model
 from ...domain import order as order_domain
 from ...config.database.mysql_connection import mysql_connection
 
-def save_order(order: order_domain.Order) -> int:
+def save_order(order: order_domain.Order, delivery_info: dict) -> int:
     order_crud = order_model.Order.from_domain(order_domain=order)
     cursor = mysql_connection.cursor(dictionary=True)
 
-    insert_query = "INSERT INTO order_table (user_id, amount) VALUES (%s, %s)"
+    insert_query = '''INSERT INTO order_table (user_id, amount, first_name, 
+                last_name, address, complement_address, postcode, 
+                city, phone, country, status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'''
     order_data = (
         order_crud.user_id,
-        order_crud.amount
+        order_crud.amount,
+        delivery_info['first_name'], 
+        delivery_info['last_name'], 
+        delivery_info['address'], 
+        delivery_info['complement_address'], 
+        delivery_info['postcode'],
+        delivery_info['city'],
+        delivery_info['phone'], 
+        delivery_info['country'],
+        order_crud.status
     )
     cursor.execute(insert_query, order_data)
 

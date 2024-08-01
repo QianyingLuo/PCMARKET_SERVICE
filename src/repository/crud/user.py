@@ -30,6 +30,18 @@ def get_user_by_email(email: str):
         return user_domain.User.model_validate(user_data)
     else:
         return None
+    
+def get_user_by_id(id: int):
+    cursor = mysql_connection.cursor(dictionary=True)
+    query = "SELECT * FROM user WHERE id = %s LIMIT 1"
+    cursor.execute(query, (id,))
+    user_data = cursor.fetchone()
+    cursor.close()
+     
+    if user_data:
+        return user_domain.User.model_validate(user_data)
+    else:
+        return None
 
 def get_all() -> list[user_domain.User]:
     users: list[user_model.User] = []
@@ -43,3 +55,9 @@ def get_all() -> list[user_domain.User]:
         users.append(user)
 
     return [user.to_domain() for user in users]
+
+def delete_user(user_id: int) -> None:
+    cursor = mysql_connection.cursor()
+    delete_query = "DELETE FROM user WHERE id = %s"
+    cursor.execute(delete_query, (user_id,))
+    cursor.close()

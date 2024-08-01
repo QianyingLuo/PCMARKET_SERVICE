@@ -88,9 +88,8 @@ def save_delivery_info(
 
 @router.post("/", response_class=JSONResponse)
 def create_order(
-    status: order_domain.OrderStatusParameter = Body(...),
-    user: dict = Depends(get_current_user), 
-):
+    status_data: order_domain.OrderStatusParameter = Body(...),
+    user: dict = Depends(get_current_user)):
     
     user_id = user["id"]
  
@@ -122,14 +121,13 @@ def create_order(
     order_to_save = order_domain.Order(
         user_id=user_id,
         amount=total,
-        status=status
+        status=status_data.status
     )
 
     order_id = order_api.save_order(order_to_save)
-    cart_api.update_order_id_in_order_cart(user_id, order_id)
-    order_api.save_delivery_info_in_order(user_id, order_id) 
+    cart_api.update_order_id_in_order_cart(user_id, order_id) 
     order_api.delete_temporary_cart_by_user_id(user_id)
     order_api.delete_delivery_info_by_user_id(user_id)
 
-    redirect_url = "/" if status.PAID else "/"
+    redirect_url = "/" if status_data.status.PAID else "/"
     return JSONResponse(content={"redirect_url": redirect_url}, status_code=200)

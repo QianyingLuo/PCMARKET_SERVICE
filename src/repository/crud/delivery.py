@@ -21,6 +21,5 @@ def save(delivery: delivery_domain.Delivery) -> delivery_domain.Delivery:
         delivery_crud.country
     )
     cursor.execute(insert_query, delivery_data)
-    cursor.close()
 
     return delivery

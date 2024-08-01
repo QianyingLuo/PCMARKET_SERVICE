@@ -97,3 +97,14 @@ def add_product(product: product_domain.Product) -> product_domain.Product:
     else:
         logger.warn(exception_messages.PRODUCT_ALREADY_EXISTS_EXCEPTION)
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=exception_messages.PRODUCT_ALREADY_EXISTS_EXCEPTION)
+
+def delete_product(product_id: int) -> None:
+    product = product_crud.get_product_by_id(product_id)
+    
+    if not product:
+        raise HTTPException(status_code=404, detail=exception_messages.PRODUCT_NOT_FOUND)
+    
+    product_crud.delete_product(product_id)
+
+def update_product(product: product_domain.Product) -> product_domain.Product:
+    product_crud.update_product(product)

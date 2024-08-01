@@ -12,7 +12,11 @@
             <input type="text" name="name" class="client-input" placeholder="Nombre" required/>
             <input type="email" name="email" class="client-input" placeholder="Email" required/>
             <input type="password" name="password" class="client-input" placeholder="Contraseña" required maxlength="64"/>
-            <input type="text" name="type" class="client-input" placeholder="Tipo(cliente/administrador)" required/>
+            <select name="type" class="client-type" required>
+                <option value="" disabled selected>Tipo</option>
+                <option value="cliente">cliente</option>
+                <option value="administrador">administrador</option>
+            </select>
         </div>
         <button type="submit" class="add-new">+ Añadir Nuevo</button>
     </form>
@@ -22,7 +26,8 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th class="narrow-column">Acciones</th>
+                    <th class="narrow-column">ID</th>
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Tipo</th>
@@ -30,8 +35,13 @@
             </thead>
             <tbody>
                 {% for user in users %}
-                <tr class="text-center">
-                    <td >{{ user.id }}</td>
+                <tr id="user-row-{{ user.id }}" class="text-center">
+                    <td class="narrow-column">
+                        <form onsubmit="submitRemoveForm(event, '{{ user.id }}')">
+                            <button type="submit" class="trash-button"><i class='bx bx-trash'></i></button>
+                        </form>
+                    </td>
+                    <td class="narrow-column">{{ user.id }}</td>
                     <td>{{ user.name }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.type }}</td>
@@ -43,4 +53,5 @@
 </div>
 
 <script type="text/javascript" src="/static/js/addUser.js"></script>
+<script type="text/javascript" src="/static/js/removeUserFromDashboard.js"></script>
 {% endblock %}

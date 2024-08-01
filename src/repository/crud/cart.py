@@ -76,6 +76,7 @@ def get_products_in_cart_by_user_id(user_id: int) -> list[cart_domain.Cart]:
 
     cursor = mysql_connection.cursor(dictionary=True)
     cursor.execute("SELECT * FROM temporary_cart WHERE user_id = %s", (user_id,))
+    cursor.fetchall()
     rows = cursor.fetchall()
 
     if not rows:

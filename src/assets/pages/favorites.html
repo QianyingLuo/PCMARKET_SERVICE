@@ -26,7 +26,7 @@
                     {% for _ in range(5 - int(product.stars) - (1 if product.stars % 1 >= 0.5 else 0)) %}
                     <i class="fa-regular fa-star"></i>
                     {% endfor %}
-                    <form onsubmit="submitRemoveForm(event, {{ product.id }})">    
+                    <form onsubmit="submitRemoveForm(event, '{{ product.id }}')">    
                         <button type="submit" class="add-or-remove-favorite-button">
                             <i id="favoriteIcon" class="bx bxs-heart heart-favorites"></i>
                         </button>

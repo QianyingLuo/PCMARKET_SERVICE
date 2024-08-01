@@ -36,7 +36,7 @@
     object-fit: contain; 
 }
 
-.rating i {
+.fa-solid, .fa-regular {
     color: #ff523b;
     font-size: 12px;
 }
@@ -118,14 +118,10 @@
     background: none;
     margin: 3px 0 0 5px;
     position: absolute;
-    right: 10px;
+    right: 15px;
     top: 0;
 }
 
 .add-or-remove-favorite-button:hover{
     color: rgb(223, 0, 0);
-}
-
-.heart-favorites {
-    transform: scale(1.5);
 }

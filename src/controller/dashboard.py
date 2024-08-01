@@ -122,9 +122,6 @@ async def add_user(user: dict = Depends(get_current_user),
     if len(name) < 3 or len(name) > 50:
         input_error = "¡Ay! Tu nombre debe tener entre 3 y 50 caracteres"
 
-    if type not in ["cliente", "administrador"]:
-        input_error = "¡Ay! El tipo de usuario debe ser o cliente o administrador"
-
     if input_error:
         return JSONResponse(content={"error": input_error}, status_code=409)
     
@@ -152,3 +149,104 @@ async def logout_get(request: Request, response: Response):
         return RedirectResponse(url="/", status_code=302)
     
     return response
+
+@router.delete("/product/{product_id}", response_class=JSONResponse, response_model=dict)
+async def delete_product(product_id: int,
+                         user: dict = Depends(get_current_user)):
+
+    logger.info(f"POST: Removing {product_id} from dashboard")
+    
+    if not user:
+        return JSONResponse(content={"redirect_url": "/user/login"}, status_code=401)
+    
+    product_api.delete_product(product_id)
+
+    return JSONResponse(status_code=200, content={"message": "Producto eliminado de base de datos"})
+
+@router.delete("/user/{user_id}", response_class=JSONResponse, response_model=dict)
+async def delete_user(user_id: int,
+                      user: dict = Depends(get_current_user)):
+
+    logger.info(f"POST: Removing {user_id} from dashboard")
+    
+    if not user:
+        return JSONResponse(content={"redirect_url": "/user/login"}, status_code=401)
+    
+    user_api.delete_user(user_id)
+
+    return JSONResponse(status_code=200, content={"message": "Usuario eliminado de base de datos"})
+
+@router.get("/{product_id}", response_class=JSONResponse, response_model=dict)
+async def get_product_details(product_id: int,
+                              user: dict = Depends(get_current_user)):
+    if not user:
+        return JSONResponse(content={"redirect_url": "/user/login"}, status_code=401)
+
+    logger.info(f"GET: Fetching details for product {product_id}")
+
+    product = product_api.get_product_by_id(product_id)
+
+    return JSONResponse(status_code=200, content={"product": product.model_dump()})
+    
+
+
+@router.put("/{product_id}", response_class=JSONResponse, response_model=dict)
+async def update_product(product_id: int,
+                         user: dict = Depends(get_current_user),
+                         name: str = Form(...),
+                         description: str = Form(...),
+                         type: str = Form(...),
+                         brand: str = Form(...),
+                         stock: int = Form(...),
+                         price: float = Form(...),
+                         discount_decimal: float = Form(...),
+                         stars: float = Form(...),
+                         image: UploadFile = File(None)):
+    
+    if not user:
+        return JSONResponse(content={"redirect_url": "/user/login"}, status_code=401)
+
+    logger.info(f"PUT: Updating product {product_id}")
+
+    input_error = None
+
+    if any(value < 0 for value in [stock, price, discount_decimal, stars]):
+        input_error =  "Cantidad introducida debe ser un número positivo"
+
+    if stars > 5:
+        input_error =  "La cantidad de estrellas debe ser entre 0 y 5"
+
+    if discount_decimal >= 1:
+        input_error = "El descuento en decimal debe ser entre 0 y 1"
+
+    if input_error:
+        return JSONResponse(content={"error": input_error}, status_code=409)
+
+    product_exists = product_api.get_product_by_id(product_id)
+
+    if not product_exists:
+        raise HTTPException(status_code=404, detail="Producto no encontrado")
+    
+    if image:
+        image_path = os.path.join(config.UPLOAD_FOLDER, image.filename)
+        with open(image_path, "wb") as buffer:
+            shutil.copyfileobj(image.file, buffer)
+        url_image_path = os.path.join("static/images", image.filename).replace(os.sep, '/')
+    else:
+        url_image_path = product_exists.image
+    
+    updated_product = product_domain.Product(
+        id=product_id,
+        image=url_image_path,
+        name=name,
+        description=description,
+        type=type,
+        brand=brand,
+        stock=stock,
+        price=price,
+        discount_decimal=discount_decimal,
+        stars=stars
+    )
+
+    product_api.update_product(updated_product)
+    return JSONResponse(status_code=200, content={"message": "Producto actualizado correctamente"})

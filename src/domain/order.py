@@ -4,7 +4,7 @@ from pydantic import BaseModel, Field
 from datetime import datetime, timezone
 
 
-class OrderStatus(enum.Enum):
+class OrderStatus(str, enum.Enum):
     PAID = "PAID",
     PENDING = "PENDING",
     CANCELLED = "CANCELLED"

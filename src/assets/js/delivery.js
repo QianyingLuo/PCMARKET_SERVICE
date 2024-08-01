@@ -4,20 +4,12 @@ const card = elements.create('card');
 
 document.addEventListener('DOMContentLoaded', async () => {
     card.mount('#card-element');
-
-    card.on('change', event => {
-        const displayError = document.getElementById('card-errors');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
-        }
-    });
 });
 
 async function delivery(event) {
     event.preventDefault();
 
+    const textField = document.getElementById("response-message");
     const isPayLater = event.submitter.getAttribute('data-pay-later');
     const deliveryFormData = new FormData(event.target);
     
@@ -26,27 +18,23 @@ async function delivery(event) {
         body: deliveryFormData
     });
 
-    const data = await responseDelivery.json()
+    const body = await responseDelivery.json()
 
-    const textField = document.getElementById("response-message");
-    const body = await response.json()
-
-    if (body.error != null) {
+    if (body.error != null) 
         textField.textContent = body.error
         
 
-    if (!isPayLater) {
-        const { error, paymentIntent } = await stripe.confirmCardPayment(data.clientSecret, {
+    if (isPayLater === "false") {
+        const { error, paymentIntent } = await stripe.confirmCardPayment(body.clientSecret, {
             payment_method: {
                 card: card
             }
         });
 
+
         if (!error) {
             if (paymentIntent.status === 'succeeded') {
-                console.log('Pago exitoso!');
-    
-    
+
                 const finishPaymentResponse = await fetch('/checkout', {
                     method: 'POST',
                     headers: {
@@ -57,8 +45,16 @@ async function delivery(event) {
                     })
                 });
                 const data = await finishPaymentResponse.json()
-                //window.location.href = data.redirect_url;
+                window.location.href = data.redirect_url;
             }
+        } else {
+            const displayError = document.getElementById('card-errors');
+            displayError.textContent = error.message
+            
+            setTimeout(() => {
+                displayError.textContent = '';
+
+            }, 5000)     
         }
     } else {
         const finishPaymentResponse = await fetch('/checkout', {
@@ -71,7 +67,6 @@ async function delivery(event) {
             })
         });
         const data = await finishPaymentResponse.json()
-        //window.location.href = data.redirect_url;
+        window.location.href = data.redirect_url;
     }
-}
 }

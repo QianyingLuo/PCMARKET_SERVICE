@@ -167,3 +167,44 @@ def add_product(product: product_domain.Product) -> product_domain.Product:
     
     return product
 
+def delete_product(product_id: int) -> None:
+    cursor = mysql_connection.cursor()
+    delete_query = "DELETE FROM product WHERE id = %s"
+    cursor.execute(delete_query, (product_id,))
+    cursor.close()
+
+def update_product(product: product_domain.Product) -> product_domain.Product:
+    product_crud = product_crud_domain.Product.from_domain(product_domain=product)
+    cursor = mysql_connection.cursor()
+    
+    update_query = """
+        UPDATE product
+        SET image = %s,
+            name = %s,
+            description = %s,
+            type = %s,
+            brand = %s,
+            stock = %s,
+            price = %s,
+            discount_decimal = %s,
+            stars = %s
+        WHERE id = %s
+    """
+    
+    product_data = (
+        product_crud.image,
+        product_crud.name,
+        product_crud.description,
+        product_crud.type,
+        product_crud.brand,
+        product_crud.stock,
+        product_crud.price,
+        product_crud.discount_decimal,
+        product_crud.stars,
+        product_crud.id
+    )
+    
+    cursor.execute(update_query, product_data)
+    cursor.close()
+    
+    return product
