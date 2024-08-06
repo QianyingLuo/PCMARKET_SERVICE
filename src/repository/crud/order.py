@@ -1,5 +1,8 @@
+import mysql.connector
+
 from ..models import order as order_model
 from ...domain import order as order_domain
+from ...config.log import logger
 from ...config.database.mysql_connection import mysql_connection
 
 def save_order(order: order_domain.Order, delivery_info: dict) -> int:
@@ -75,3 +78,87 @@ def delete_delivery_info_by_user_id(user_id: int) -> None:
     delete_query = "DELETE FROM delivery_info WHERE user_id = %s"
     cursor.execute(delete_query, (user_id,))
     cursor.close()
+
+def get_order_exists_by_user_id(user_id: int) -> bool:
+    cursor = mysql_connection.cursor(dictionary=True)
+    query = "SELECT * FROM order_table WHERE user_id = %s LIMIT 1"
+    cursor.execute(query, (user_id,))
+    order_data = cursor.fetchone()
+    cursor.close()
+     
+    if order_data:
+        return True
+    else:
+        return False
+    
+def get_products_by_order_id(order_id: int) -> list[dict]:
+    cursor = mysql_connection.cursor(dictionary=True)
+    query = """
+        SELECT oc.product_id, oc.product_quantity, oc.subtotal, p.name, p.image
+        FROM order_cart oc
+        JOIN product p ON oc.product_id = p.id
+        WHERE oc.order_id = %s
+    """
+    cursor.execute(query, (order_id,))
+    products = cursor.fetchall()
+    cursor.close()
+    print("PRODUCTOOOOOOS:", products)
+    return products
+
+
+def get_orders_by_user_id(user_id: int) -> list[dict]:
+    orders = []
+
+    try:
+        if not mysql_connection.is_connected():
+            mysql_connection.connect()
+
+        with mysql_connection.cursor(dictionary=True) as cursor:
+            cursor.execute("SELECT * FROM order_table WHERE user_id = %s", (user_id,))
+            rows = cursor.fetchall()
+
+            if not rows:
+                return []
+
+            for row in rows:
+                order = order_model.Order.model_validate(row).to_domain()
+                products = get_products_by_order_id(order.id)
+                order_dict = order.model_dump()
+                order_dict['products'] = products
+                orders.append(order_dict)
+
+    except mysql.connector.Error as e:
+        logger.error(f"Database operation failed: {str(e)}")
+        return []
+
+    return orders
+
+
+def get_order_by_order_id(order_id: int) -> order_domain.Order:
+    cursor = mysql_connection.cursor(dictionary=True)
+
+    query = "SELECT * FROM order_table WHERE id = %s LIMIT 1"
+    cursor.execute(query, (order_id,))
+    order_data = cursor.fetchone()
+
+    if not order_data:
+        return None
+    
+    order: order_model.Order = order_model.Order.model_validate(order_data)
+    return order.to_domain()
+
+
+def product_reference_count(order_id: int) -> int:
+    cursor = mysql_connection.cursor(dictionary=True)
+    
+    query = """
+        SELECT COUNT(DISTINCT product_id) AS unique_product_count
+        FROM order_cart
+        WHERE order_id = %s
+    """
+    
+    cursor.execute(query, (order_id,))
+    result = cursor.fetchone()
+    cursor.close()
+    
+    return result['unique_product_count'] if result else 0

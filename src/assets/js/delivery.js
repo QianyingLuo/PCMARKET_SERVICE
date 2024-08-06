@@ -19,8 +19,9 @@ async function delivery(event) {
     });
 
     const body = await responseDelivery.json()
-
-    if (body.error != null) 
+    if (body.redirect_url != null) {
+        window.location.href = body.redirect_url;
+    } else if (body.error != null) 
         textField.textContent = body.error
         
 
@@ -41,7 +42,7 @@ async function delivery(event) {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        "status": "PAID"
+                        "status": "PAGADO"
                     })
                 });
                 const data = await finishPaymentResponse.json()
@@ -63,7 +64,7 @@ async function delivery(event) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "status": "PENDING"
+                "status": "PENDIENTE"
             })
         });
         const data = await finishPaymentResponse.json()

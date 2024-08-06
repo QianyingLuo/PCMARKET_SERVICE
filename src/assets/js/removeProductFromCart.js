@@ -8,7 +8,11 @@ async function submitRemoveForm(event, product_id) {
 
     const textField = document.getElementById("response-message");
 
-    if (body.error != null) {
+    
+    if (body.redirect_url != null) {
+        window.location.href = body.redirect_url;
+    
+    } else if (body.error != null) {
         textField.classList.add("error")
         textField.textContent = body.error
 

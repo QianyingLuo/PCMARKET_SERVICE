@@ -5,9 +5,9 @@ from datetime import datetime, timezone
 
 
 class OrderStatus(str, enum.Enum):
-    PAID = "PAID",
-    PENDING = "PENDING",
-    CANCELLED = "CANCELLED"
+    PAGADO = "PAGADO"
+    PENDIENTE = "PENDIENTE"
+    CANCELADO = "CANCELADO"
 
 class OrderStatusParameter(BaseModel):
     status: OrderStatus

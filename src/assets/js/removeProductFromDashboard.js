@@ -2,7 +2,7 @@ async function submitRemoveForm(event, product_id) {
     event.preventDefault();
 
     try {
-        const response = await fetch(`/dashboard/product/${product_id}`, {
+        const response = await fetch(`/dashboard/products/${product_id}`, {
             method: "DELETE",
         });
 
@@ -12,6 +12,9 @@ async function submitRemoveForm(event, product_id) {
 
         const body = await response.json();
 
+        if (body.redirect_url != null) 
+            window.location.href = body.redirect_url;
+        
 
         const productRow = document.getElementById("product-row-" + product_id);
         if (productRow) {

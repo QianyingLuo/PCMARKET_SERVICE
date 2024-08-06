@@ -1,0 +1,59 @@
+{% extends "templates/base.html" %}
+
+<title>{% block title %}Mi pedido{% endblock %}</title>
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles/order_detail.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<div class="small-container">
+    <table>
+        <tr>
+            <th colspan="4" class="order-id">Número de pedido: {{ order.id }}</th>
+        </tr>
+
+        {% for product in products %}
+            <tr>
+                <td>
+                    {{ product.name }}
+                </td>
+
+                <td class="product-image">
+                    <img src="/{{ product.image }}" alt="{{ product.name }}">
+                </td>
+                
+                <td class="product-quantity">
+                    Cantidad: {{ product.product_quantity }}
+                </td>
+
+                <td class="product-subtotal">
+                    {{ product.subtotal }} €
+                </td>
+            </tr>
+        {% endfor %}
+        
+        <tr>
+            <td colspan="4" class="order-amount">
+                Importe del pedido: {{ order.amount }} €
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="4" class="delivery-address">
+                <i class='bx bxs-truck'></i>
+                <p>Dirección de envío</p>
+            </td>
+
+            <td colspan="4" class="delivery-address detail">
+                <span>{{ order.first_name }} {{ order.last_name }}</span>
+                <span>{{ order.address }}</span>
+                {% if order.complement_address %}
+                <span>{{ order.complement_address }}</span>
+                {% endif %}
+                <span>{{ order.postcode }} {{ order.city }} {{ order.country }}</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}

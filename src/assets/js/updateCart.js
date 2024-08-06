@@ -13,31 +13,34 @@ async function submitUpdateForm(event, product_id) {
 
     const textField = document.getElementById("response-message");
 
-    if (body.error != null) {
-        textField.textContent = body.error
-        textField.classList.add("error")
-        event.target.product_quantity.value = body.previous_quantity;
-
+    if (body.redirect_url != null) {
+        window.location.href = body.redirect_url;
     } else {
-        textField.textContent = body.message
+        if (body.error != null) {
+            textField.textContent = body.error
+            textField.classList.add("error")
+            event.target.product_quantity.value = body.previous_quantity;
 
-        const subtotalField = document.getElementById("product-subtotal-" + product_id)
-        subtotalField.textContent = `${(body.product_price * product_quantity)} €`
+        } else {
+            textField.textContent = body.message
 
-        const subTotalField = document.getElementById("cart-subtotal")
-        subTotalField.textContent = `${body.total_cart} €`
+            const subtotalField = document.getElementById("product-subtotal-" + product_id)
+            subtotalField.textContent = `${(body.product_price * product_quantity)} €`
 
-        const totalField = document.getElementById("cart-total")
-        totalField.textContent = `${body.total_cart} €`
+            const subTotalField = document.getElementById("cart-subtotal")
+            subTotalField.textContent = `${body.total_cart} €`
 
-    }
+            const totalField = document.getElementById("cart-total")
+            totalField.textContent = `${body.total_cart} €`
 
-    setTimeout(() => {
-        textField.textContent = ""
-
-        if (textField.classList.contains("error")) {
-            textField.classList.remove("error")
         }
+
+        setTimeout(() => {
+            textField.textContent = ""
         
-    }, 5000)
+            if (textField.classList.contains("error")) {
+                textField.classList.remove("error")
+            }
+            
+        }, 5000)
 }

@@ -1,7 +1,10 @@
+import mysql.connector
+
 from ...domain import cart as cart_domain
 from ..models import cart as cart_model
 from ..models import order_cart as order_cart_model
 from ...domain import order_cart as order_cart_domain
+from ...config.log import logger
 from ...config.database.mysql_connection import mysql_connection
 
 def add_to_cart(cart: cart_domain.Cart) -> cart_domain.Cart:
@@ -74,20 +77,25 @@ def get_cart_exists_by_user_id(user_id: int) -> bool:
 def get_products_in_cart_by_user_id(user_id: int) -> list[cart_domain.Cart]:
     products: list[cart_model.Cart] = []
 
-    cursor = mysql_connection.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM temporary_cart WHERE user_id = %s", (user_id,))
-    cursor.fetchall()
-    rows = cursor.fetchall()
+    try:
+        if not mysql_connection.is_connected():
+            mysql_connection.connect()
 
-    if not rows:
+        with mysql_connection.cursor(dictionary=True) as cursor:
+            cursor.execute("SELECT * FROM temporary_cart WHERE user_id = %s", (user_id,))
+            rows = cursor.fetchall()
+
+            if not rows:
+                return None
+
+            for row in rows:
+                product = cart_model.Cart.model_validate(row)
+                products.append(product)
+
+    except mysql.connector.Error as e:
+        logger.error(f"Database operation failed: {str(e)}")
         return None
-    
-    for row in rows:
-        product = cart_model.Cart.model_validate(row)
-        products.append(product)
 
-    cursor.close()
-     
     return [product.to_domain() for product in products]
 
 

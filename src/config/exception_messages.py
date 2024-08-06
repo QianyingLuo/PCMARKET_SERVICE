@@ -6,6 +6,7 @@ PRODUCT_IMAGE_PATH_ALREADY_EXISTS_EXCEPTION = "La ruta de imagen introducida ya 
 USER_NOT_FOUND =  "User not found"
 PRODUCT_NOT_FOUND =  "Product not found"
 CART_NOT_FOUND =  "Cart not found"
+ORDER_NOT_FOUND =  "Product not found"
 TEMPORARY_CART_NOT_FOUND = "No items found in temporary cart"
 
 GENERIC_ERROR = "Algo ha salido mal . . ."

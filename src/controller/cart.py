@@ -1,10 +1,9 @@
-from fastapi import APIRouter, Depends, Form, HTTPException, Request
+from fastapi import APIRouter, Depends, Form, Request
 from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 
 from ..api import cart as cart_api
 from ..api import product as product_api
 from ..utils.jinja import templates 
-from ..config import exception_messages
 from ..config.log import logger
 from ..middlewares import get_current_user, get_current_cart, get_current_favorite
 from ..domain import cart as cart_domain
@@ -23,9 +22,11 @@ def render_cart(request: Request,
     logger.info("GET: cart page")
     
     user_id = user["id"]
+
     cart_exists = cart_api.get_cart_exists_by_user_id(user_id)
 
     cart = cart_api.get_cart_by_user_id(user_id)
+
     cart_details = []
     total = 0
     

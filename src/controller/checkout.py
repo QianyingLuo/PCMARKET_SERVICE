@@ -10,6 +10,7 @@ from ..utils.jinja import templates
 from ..config.log import logger
 from ..middlewares import get_current_user, get_current_cart, get_current_favorite
 from ..domain.delivery import Delivery
+from ..domain.order import OrderStatus
 from ..domain import order_cart as order_cart_domain
 from ..domain import order as order_domain
 
@@ -52,7 +53,7 @@ def save_delivery_info(
     logger.info("POST: Saving delivery data")
 
     if not user:
-        return RedirectResponse(url="/user/login/", status_code=302)
+        return JSONResponse(content={"redirect_url": "/user/login"}, status_code=401)
     
     user_id = user["id"]
 
@@ -129,5 +130,5 @@ def create_order(
     order_api.delete_temporary_cart_by_user_id(user_id)
     order_api.delete_delivery_info_by_user_id(user_id)
 
-    redirect_url = "/" if status_data.status.PAID else "/"
+    redirect_url = "/order-confirmation/paid" if status_data.status == OrderStatus.PAGADO else "/order-confirmation/pending-payment"
     return JSONResponse(content={"redirect_url": redirect_url}, status_code=200)

@@ -42,6 +42,22 @@ def render_dashboard_clients(request: Request,
     return templates.TemplateResponse("pages/dashboard_clients.html", {"request": request, "user": user, "users": users})
 
 
+@router.get("/logout")
+async def logout_get(request: Request, response: Response):
+    logger.info("GET: Logout page")
+
+    user = get_current_user(request)
+
+    if user:
+        response.delete_cookie("token")
+        response.headers["Location"] = "/"
+        response.status_code = 302
+    else:
+        return RedirectResponse(url="/", status_code=302)
+    
+    return response
+
+
 @router.post("/add_product", response_class=JSONResponse, response_model=dict)
 async def add_product(user: dict = Depends(get_current_user),
                       name: str = Form(...),
@@ -135,33 +151,19 @@ async def add_user(user: dict = Depends(get_current_user),
         return JSONResponse(status_code=he.status_code, content={"error": he.detail})
     
 
-@router.get("/logout")
-async def logout_get(request: Request, response: Response):
-    logger.info("GET: Logout page")
-
-    user = get_current_user(request)
-
-    if user:
-        response.delete_cookie("token")
-        response.headers["Location"] = "/"
-        response.status_code = 302
-    else:
-        return RedirectResponse(url="/", status_code=302)
-    
-    return response
-
 @router.delete("/products/{product_id}", response_class=JSONResponse, response_model=dict)
 async def delete_product(product_id: int,
                          user: dict = Depends(get_current_user)):
 
     logger.info(f"POST: Removing {product_id} from dashboard")
-    
+
     if not user:
         return JSONResponse(content={"redirect_url": "/user/login"}, status_code=401)
     
     product_api.delete_product(product_id)
 
     return JSONResponse(status_code=200, content={"message": "Producto eliminado de base de datos"})
+
 
 @router.delete("/users/{user_id}", response_class=JSONResponse, response_model=dict)
 async def delete_user(user_id: int,
@@ -176,6 +178,7 @@ async def delete_user(user_id: int,
 
     return JSONResponse(status_code=200, content={"message": "Usuario eliminado de base de datos"})
 
+
 @router.get("/products/{product_id}", response_class=JSONResponse, response_model=dict)
 async def get_product_details(product_id: int,
                               user: dict = Depends(get_current_user)):
@@ -189,7 +192,6 @@ async def get_product_details(product_id: int,
     return JSONResponse(status_code=200, content={"product": product.model_dump()})
     
 
-
 @router.put("/products/{product_id}", response_class=JSONResponse, response_model=dict)
 async def update_product(product_id: int,
                          user: dict = Depends(get_current_user),
@@ -202,9 +204,6 @@ async def update_product(product_id: int,
                          discount_decimal: float = Form(default=None),
                          stars: float = Form(default=None),
                          image: UploadFile = File(default=None)):
-    
-    if not user:
-        return JSONResponse(content={"redirect_url": "/user/login"}, status_code=401)
 
     logger.info(f"PUT: Updating product {product_id}")
 

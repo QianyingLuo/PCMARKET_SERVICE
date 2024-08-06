@@ -30,6 +30,7 @@
             {% endif %}
             <li><a class="sidebar-element" href="/favorites">Favoritos</a></li>
             <li><a class="sidebar-element" href="/cart">Mi cesta</a></li>
+            <li><a class="sidebar-element" href="/orders/overview">Mis pedidos</a></li>
             <li class="sidebar-heading">Categorías</li>
             <li><a class="sidebar-element" href="/category/laptops">Portátiles</a></li>
             <li><a class="sidebar-element" href="/category/smartphones">Smartphones</a></li>
@@ -53,6 +54,9 @@
             {% if user %}
             <li class="hideOnMobile username">
                 <p class="navbar-elements">Hola, {{ user["name"] }}</p>
+                <ul class="drop-menu">
+                    <li><a href="/orders/overview">Mis pedidos</a></li>
+                </ul>
             </li>
                 {% if user["type"] == "administrador" %}
                 <li class="hideOnMobile"><a href="/dashboard/products" class="dashboard">Dashboard</a></li>

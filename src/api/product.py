@@ -1,4 +1,6 @@
+import os
 from fastapi import HTTPException, status
+
 from ..domain import product as product_domain
 from ..repository.crud import product as product_crud
 from .. import config
@@ -100,11 +102,19 @@ def add_product(product: product_domain.Product) -> product_domain.Product:
 
 def delete_product(product_id: int) -> None:
     product = product_crud.get_product_by_id(product_id)
-    
+
     if not product:
         raise HTTPException(status_code=404, detail=exception_messages.PRODUCT_NOT_FOUND)
     
+    image_relative_path = product.image.replace("static/images/", "")
+
+    image_full_path = os.path.join(config.UPLOAD_FOLDER, image_relative_path)
+
     product_crud.delete_product(product_id)
+
+    if os.path.exists(image_full_path):
+        os.remove(image_full_path)
+    
 
 def update_product(product: product_domain.Product) -> product_domain.Product:
     product_crud.update_product(product)

@@ -53,21 +53,24 @@ function editProduct(event) {
         method: 'PUT',
         body: formData,
     })
+    
     .then(response => response.json())
     .then(data => {
-
+        
         if (data.error) {
             window.alert(data.error)
         } else if (data.message) {
 
+            if (form.productImage.files[0] != undefined) {
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById("productImage-" + productId).firstElementChild.src = e.target.result;
+                };
+                reader.readAsDataURL(form.productImage.files[0]);
+            }
+
             document.getElementById("productName-" + productId).textContent = form.productName.value
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById("productImage-" + productId).firstElementChild.src = e.target.result;
-            };
-            reader.readAsDataURL(form.productImage.files[0]);
-
             document.getElementById("productDescription-" + productId).textContent = form.productDescription.value
             document.getElementById("productType-" + productId).textContent = form.productType.value
             document.getElementById("productBrand-" + productId).textContent = form.productBrand.value

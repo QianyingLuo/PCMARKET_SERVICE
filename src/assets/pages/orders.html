@@ -1,0 +1,75 @@
+{% extends "templates/base.html" %}
+
+<title>{% block title %}Mis pedidos{% endblock %}</title>
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles/orders.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+{% if order_exists %}
+<div class="small-container">
+    <table>
+        <tr>
+            <th>Fecha del pedido</th>
+            <th>Importe total</th>
+            <th>Estado</th>
+            <th></th>
+        </tr>
+
+            {% for order in orders %}
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <p>{{ order.creation_time.strftime('%Y-%m-%d') }}</p>
+                    </div>
+                </td>
+
+                <td >
+                    {{ order.amount }} €
+                </td>
+
+                <td>
+                    {{ order.status.value }}
+                </td>
+
+                <td>
+                    <a class="button-order-details" href="/orders/detail/{{ order.id }}">
+                        <i class='bx bx-detail'></i>
+                        <p>Ver pedido</p>
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="images">
+                    {% set max_display = 4 %}
+                    {% set additional_count = order.product_reference_count - max_display %}
+                    {% for product in order.products[:max_display] %}
+                        <img src="/{{ product.image }}" alt="{{ product.name }}">
+                    {% endfor %}
+                    {% if additional_count > 0 %}
+                        <div class="more-products">
+                            <span>+{{ additional_count }}</span>
+                        </div>
+                    {% endif %}
+                </td>
+            </tr>
+        <tr>
+            <td><hr class="custom-hr"></td>
+            <td><hr class="custom-hr"></td>
+            <td><hr class="custom-hr"></td>
+            <td><hr class="custom-hr"></td>
+        </tr>
+        
+        {% endfor %}
+    </table>
+</div>
+
+{% else %}
+<div class="empty-cart">
+    <p class="empty-cart-title">AÚN NO HAS REALIZADO NINGÚN PEDIDO</p>
+    <p class="empty-cart-text">Cuando hayas realizado algún pedido, aparecerá aquí. ¿Quieres empezar?</p>
+    <a href="/"><button>COMENZAR →</button></a>
+</div>
+{% endif %}
+{% endblock %}
