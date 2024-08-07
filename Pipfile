@@ -13,6 +13,8 @@ python-jose = "*"
 stripe = "*"
 jinja2 = "*"
 pydantic = {extras = ["email"], version = "*"}
+python-multipart = "*"
+starlette = "*"
 
 [dev-packages]
 isort = "*"
