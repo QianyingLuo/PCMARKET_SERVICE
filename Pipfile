@@ -6,13 +6,13 @@ name = "pypi"
 [packages]
 fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
-pydantic = "*"
 aiomysql = "*"
 mysql-connector-python = "*"
 bcrypt = "*"
 python-jose = "*"
 stripe = "*"
 jinja2 = "*"
+pydantic = {extras = ["email"], version = "*"}
 
 [dev-packages]
 isort = "*"
