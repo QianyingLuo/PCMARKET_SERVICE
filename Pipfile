@@ -12,6 +12,7 @@ mysql-connector-python = "*"
 bcrypt = "*"
 python-jose = "*"
 stripe = "*"
+jinja2 = "*"
 
 [dev-packages]
 isort = "*"
