@@ -1,0 +1,60 @@
+{% extends "templates/base.html" %}
+
+<title>{% block title %}Checkout | PcMarket{% endblock %}</title>
+
+{% block content %}
+    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="/static/styles/delivery.css">
+
+    <div class="wrapper">
+        <form onsubmit="delivery(event)">
+            <h1>Información de envío</h1>
+            <div class="two-boxes">
+                <div class="input-box">
+                    <input type="text" name="first_name" placeholder="Nombre*" required maxlength="15">
+                </div>
+                <div class="input-box">
+                    <input type="text" name="last_name" placeholder="Apellidos*" required maxlength="15">
+                </div>
+            </div>
+
+            <div class="input-box">
+                <input type="text" name="address" placeholder="Dirección*" required maxlength="40">
+            </div>
+            <div class="input-box">
+                <input type="text" name="complement_address" placeholder="Complemento dirección 1" maxlength="30">
+            </div>
+
+            <div class="two-boxes">
+                <div class="input-box">
+                    <input type="text" name="postcode" placeholder="Código postal*" required maxlength="10">
+                </div>
+                <div class="input-box">
+                    <input type="text" name="city" placeholder="Ciudad*" required maxlength="15">
+                </div>
+            </div>
+            <div class="two-boxes">
+                <div class="input-box">
+                    <input type="text" name="phone" placeholder="Número de teléfono*" required maxlength="15">
+                </div>
+                <div class="input-box">
+                    <input type="text" name="country" placeholder="País*" required maxlength="15">
+                </div>
+            </div>
+
+            <div id="card-element" class="input-box card-fields"></div>
+            <div id="card-errors" class="alert"></div>
+
+            <div class="message" id="response-message"></div>
+
+            <div class="button-container">
+                <button type="submit" data-pay-later="false" class="pay-button">Pagar</button>
+                <button type="submit" data-pay-later="true" class="pay-later-button">Pagar más tarde</button>
+            </div>
+
+        </form>
+    </div>
+
+<script type="text/javascript" src="/static/js/delivery.js"></script>
+
+{% endblock %}

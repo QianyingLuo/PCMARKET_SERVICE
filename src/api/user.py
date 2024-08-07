@@ -35,10 +35,21 @@ def do_login(user_login: user_domain.UserLogin) -> str:
         logger.warn(exception_messages.NOT_AUTHORIZED_USER_EXCEPTION)
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=exception_messages.NOT_AUTHORIZED_USER_EXCEPTION)
 
-    user_token = user_domain.UserToken(id=user.id, email=user.email, name=user.name)
+    user_token = user_domain.UserToken(id=user.id, email=user.email, name=user.name, type=user.type)
     token: str = create_access_token(user_token, timedelta(minutes=config.ACCESS_TOKEN_EXPIRE_MINUTES))
     return token
 
+
+def get_all() -> list[user_domain.User]: 
+    users = user_crud.get_all()
+    return users 
+
+def delete_user(user_id: int) -> None:
+    user = user_crud.get_user_by_id(user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail=exception_messages.USER_NOT_FOUND)
+    
+    user_crud.delete_user(user_id)
 
 
 # UTILS ################################################################################################################
@@ -49,7 +60,7 @@ def get_password_hash(password: str) -> str:
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     return bcrypt.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
 
-def create_access_token(data: user_domain.UserToken, expires_delta: timedelta):
+def create_access_token(data: user_domain.UserToken, expires_delta: timedelta) -> str:
     expire = datetime.now(timezone.utc) + expires_delta
     encoded_data: dict = data.model_dump()
     encoded_data.update({"exp": expire})

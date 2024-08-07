@@ -1,0 +1,85 @@
+{% extends "templates/base.html" %}
+
+<title>{% block title %}Mi cesta{% endblock %}</title>
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles/cart.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+{% if cart_exists and cart %}
+<div class="small-container">
+    <div class="message" id="response-message"></div>
+    <table>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+        </tr>
+            {% for item in cart %}
+            <tr id="product-row-{{ item.product_id }}">
+                <td>
+                    <div class="cart-info">
+                        <a href="/product/{{ item.product_id }}">
+                            <img src="/{{ item.image }}" alt="{{ item.name }}">
+                        </a>
+                        <div class="product-details">
+                            <a class="product-name" href="/product/{{ item.product_id }}">
+                                {{ item.name | truncate(70)}}
+                            </a>
+                            <div class="price-trash">
+                                <small>{{ item.price }} €</small>
+                                <form onsubmit="submitRemoveForm(event, '{{ item.product_id }}')">
+                                    <button type="submit" class="trash-button"><i class='bx bx-trash'></i>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="refresh-quantity">
+                        <form onsubmit="submitUpdateForm(event, '{{ item.product_id }}')" class="refresh-quantity-form">
+                            <input name="product_quantity" type="number" value="{{ item.product_quantity }}" id="update-value-input-{{ item.product_id }}">
+                            <button type="submit" class="refresh-button"><i class='bx bx-refresh' ></i></button>
+                        </form>
+                    </div>
+                </td>
+                <td class="subtotal" id="product-subtotal-{{ item.product_id}}">
+                    {{ item.subtotal }} €
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+
+    <div class="total-price">
+
+        <table>
+            <tr>
+                <td>Subtotal</td>
+                <td id="cart-subtotal">{{ total }} €</td>
+            </tr>
+            <tr>
+                <td>Envío</td>
+                <td>Gratis</td>
+            </tr>
+            <tr>
+                <td>Total<br><p>IVA incluido</p></td>
+                <td name="total" id="cart-total">{{ total }} €</td>
+            </tr>
+            <tr>
+                <td><a href="/checkout/delivery-payment" class="confirm">Confirmar</a></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+{% else %}
+<div class="empty-cart">
+    <p class="empty-cart-title">TU CARRITO ESTÁ VACÍO</p>
+    <p class="empty-cart-text">Cuando hayas añadido algo al carrito, aparecerá aquí. ¿Quieres empezar?</p>
+    <a href="/"><button>COMENZAR →</button></a>
+</div>
+{% endif %}
+<script type="text/javascript" src="/static/js/updateCart.js"></script>
+<script type="text/javascript" src="/static/js/removeProductFromCart.js"></script>
+{% endblock %}

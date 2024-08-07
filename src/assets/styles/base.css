@@ -22,7 +22,7 @@ nav .drop-menu {
     display: none;
     flex-direction: column;
     background: white;
-    width: 180px;
+    width: 160px;
     position: absolute; 
     top: 50px;
     right: 0; 
@@ -33,7 +33,7 @@ nav .drop-menu li{
     display: flex;
     align-items: center;
     margin-right: auto;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
 nav li:hover .drop-menu {
@@ -49,21 +49,41 @@ nav li:hover .drop-menu {
     margin-right: 30px;
 }
 
+.three-icons {
+    padding-right: 20px;
+}
+
+.logout {
+    padding-left: 25px;
+}
+
+.login {
+    padding-left: 25px;
+}
+
 .hideOnMobile{
     margin-bottom: 20px;
+}
+
+.hideOnMobile p {
+    cursor: pointer;
 }
 
 .menu-button{
     display: none;
 }
 
-.bxs-shopping-bag{
+.bx-heart, .bxs-heart, .bxs-shopping-bag, .bx-shopping-bag {
     font-size: 22px;
-    color: #2493e7;
+    vertical-align: middle;
 }
 
-.bx-shopping-bag{
-    font-size: 22px;
+.bxs-heart {
+    color: rgb(223, 0, 0);
+}
+
+.bxs-shopping-bag{
+    color: #2493e7;
 }
 
 @media(max-width: 700px){
@@ -98,24 +118,32 @@ nav ul > div {
 
 nav li{
     height: 50px;
-    display: inline-block;
+    display: flex;
+    align-items: center; 
     margin-right: 10px;
     position: relative;
 }
 
-nav a{
+nav a, nav p {
     height: 100%;
-    padding: 0 10px;
     text-decoration: none;
     display: flex;
     align-items: center;
     color: #1D1D1D;
+    margin-right: auto;
+    margin-top: 10px;
 }
 
+.dashboard {
+    padding: 20px 0 0 10px;
+}
 
-nav a{
-    margin-right: auto;
-    margin-top:5px;
+.products {
+    padding-right: 15px;
+}
+
+.products, .username, .three-icons, .cart {
+    padding-top: 20px;
 }
 
 .sidebar-heading{
@@ -128,7 +156,7 @@ nav a{
 .sidebar-username{
     display: flex;
     align-items: center;
-    padding-left: 10px;
+    padding: 0 10px;
     font-weight: 400; 
     color: #4a4648;
 }
@@ -160,6 +188,7 @@ nav a{
 .sidebar-element{
     background: white;
     font-weight: 450;
+    padding-left: 10px;
 }
 
 .container-footer{

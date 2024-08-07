@@ -1,0 +1,13 @@
+{% extends "templates/base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles/order_confirmation.css">
+
+<div class="order-is-placed">
+    <p>Su pedido se ha realizado correctamente, actualmente el estado se encuentra pendiente de pago.</p>
+    <p>Para seguir con el pago, puede ir al apartado Mis Pedidos. Le enviaremos el pedido tan pronto como recibamos su pago.</p>
+    <a href="/orders/overview"><button>VER MIS PEDIDOS →</button></a>
+</div>
+
+<script type="text/javascript" src="/static/js/removeProductFromFavorites.js"></script>
+{% endblock %}

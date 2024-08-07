@@ -1,0 +1,12 @@
+{% extends "templates/base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles/order_confirmation.css">
+
+<div class="order-is-placed">
+    <p>El pago se ha realizado correctamente, en breve le enviaremos el pedido.</p>
+    <a href="/orders/overview"><button>VER MIS PEDIDOS →</button></a>
+</div>
+
+<script type="text/javascript" src="/static/js/removeProductFromFavorites.js"></script>
+{% endblock %}

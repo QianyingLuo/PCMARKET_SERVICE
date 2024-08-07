@@ -1,0 +1,59 @@
+{% extends "templates/base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles/category.css">
+
+{% if favorite %}
+<div class="small-container-category">
+    <div>
+        <h2 class="category-title">Mis Favoritos</h2>
+        <div class="row">
+            {% for product in favorite_products %}
+            <div class="col-4" id="product-row-{{ product.id }}">
+                <a href="/product/{{ product.id }}"> 
+                    <img src="/{{ product.image }}" alt="{{ product.name }}">
+                </a>
+                <a class="product-link" href="/product/{{ product.id }}">
+                    <h5>{{ product.name | truncate(60) }}</h5>
+                </a>
+                <div class="rating">
+                    {% for _ in range(int(product.stars)) %}
+                    <i class="fa-solid fa-star"></i>
+                    {% endfor %}
+                    {% if product.stars % 1 >= 0.5 %}
+                    <i class="fa-regular fa-star-half-stroke"></i>
+                    {% endif %}
+                    {% for _ in range(5 - int(product.stars) - (1 if product.stars % 1 >= 0.5 else 0)) %}
+                    <i class="fa-regular fa-star"></i>
+                    {% endfor %}
+                    <form onsubmit="submitRemoveForm(event, '{{ product.id }}')">    
+                        <button type="submit" class="add-or-remove-favorite-button">
+                            <i id="favoriteIcon" class="bx bxs-heart heart-favorites"></i>
+                        </button>
+                    </form>
+                </div>
+                <p>
+                    {% if product.discount_decimal != 0 %}
+                        <span style="text-decoration: line-through;">{{ product.price }}€</span><br>
+                        <span style="color: rgb(227, 43, 43)">{{ product.discounted_price }}€</span> 
+                    {% else %}
+                        {{ product.price }}€
+                    {% endif %}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>    
+</div>
+<br><br><br><br>
+
+{% else %}
+<div class="empty-favorites-list">
+    <p class="empty-favorites-title">MIS FAVORITOS</p>
+    <p class="empty-favorites-text">0 ARTÍCULOS</p>
+    <p class="empty-favorites-text">Aún no has añadido ningún artículo a tu lista de deseos. Comienza a comprar y añade tus favoritos.</p>
+    <a href="/"><button>COMENZAR →</button></a>
+</div>
+{% endif %}
+<script type="text/javascript" src="/static/js/removeProductFromFavorites.js"></script>
+{% endblock %}

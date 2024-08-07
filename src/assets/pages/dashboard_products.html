@@ -1,0 +1,140 @@
+{% extends "templates/dashboard.html" %}
+
+{% block content %}
+<title>{% block title %}Dashboard - Productos| PcMarket{% endblock %}</title>
+
+<div class="table">
+    <div class="table-header">
+        <p>Productos</p>
+    </div>
+    <form id="new-product-form" enctype="multipart/form-data" method="POST" action="/dashboard/add_product">
+        <div class="new-info">
+            <p class="image-text">Imagen:</p><input type="file" name="image" placeholder="Imagen" required/>
+            <input type="text" name="name" placeholder="Nombre" required/>
+            <input type="text" name="description" placeholder="Descripción" required/>
+            <select name="type" required>
+                <option value="" disabled selected>Tipo</option>
+                <option value="portatil">portatil</option>
+                <option value="smartphone">smartphone</option>
+                <option value="monitor">monitor</option>
+            </select>
+            <input type="text" name="brand" placeholder="Marca" required/>
+            <input type="number" name="stock" placeholder="Stock" required/>
+            <input type="number" name="stars" step="0.1" placeholder="Estrellas" required/>
+            <input type="number" name="price" step="0.01" placeholder="Precio original" required/>
+            <input type="number" name="discount_decimal" step="0.01" placeholder="Descuento en decimal" required/>
+        </div>
+        <button type="submit" class="add-new">+ Añadir Nuevo</button>
+    </form>
+    <div class="message" id="response-message"></div>
+    
+    <div class="table-section">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Producto</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Tipo</th>
+                    <th>Marca</th>
+                    <th>Stock</th>
+                    <th>Estrellas</th>
+                    <th>Precio Original</th>
+                    <th>Descuento</th>
+                    <th>Precio rebajado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr id="product-row-{{ product.id }}">
+                    <td class="text-center">
+                        <div class="product-id-container">
+                            <span>{{ product.id }}</span>
+                            <form onsubmit="submitRemoveForm(event, '{{ product.id }}')">
+                                <button type="submit" class="trash-button"><i class='bx bx-trash'></i></button>
+                            </form>
+                            <button onclick="openEditModal('{{ product.id }}')" class="edit-button"><i class='bx bx-edit'></i></button>
+                        </div>
+                    </td>
+                    <td class="text-center" id="productImage-{{ product.id }}"><img src="/{{ product.image }}" alt="{{ product.name }}"></td>
+                    <td id="productName-{{ product.id }}">{{ product.name }}</td>
+                    <td id="productDescription-{{ product.id }}">{{ product.description }}</td>
+                    <td id="productType-{{ product.id }}" class="text-center">{{ product.type }}</td>
+                    <td id="productBrand-{{ product.id }}" class="text-center">{{ product.brand }}</td>
+                    <td id="productStock-{{ product.id }}" class="text-center">{{ product.stock }}</td>
+                    <td id="productStars-{{ product.id }}" class="text-center">{{ product.stars }}</td>
+                    <td id="productPrice-{{ product.id }}" class="text-center">{{ product.price }}</td>
+                    {% if product.discount_decimal == 0 %}
+                    <td id="productDiscount-{{ product.id }}" class="text-center">0</td>
+                    {% else %}
+                    <td id="productDiscount-{{ product.id }}" class="text-center">{{ product.discount_percentage }} %</td>
+                    {% endif %}
+                    <td id="productDiscountApplied-{{ product.id }}" class="text-center">{{ product.discounted_price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal para editar producto -->
+<div id="edit-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeEditModal()">&times;</span>
+        <h2>Editar Producto</h2>
+        <form id="edit-product-form" class="product-form" enctype="multipart/form-data"  onsubmit="editProduct(event)">
+            <input type="hidden" id="edit-product-id" name=productId>
+
+            <div class="product-two-boxes">
+                <p>Imagen</p>
+                <input type="file" id="edit-product-image" class="product-wider-input" placeholder="Image" name="productImage"/>
+            </div>
+
+            <div class="product-two-boxes">
+                <p>Nombre</p>
+                <input type="text" id="edit-product-name" class="product-wider-input" placeholder="Nombre" name="productName"/>
+            </div>
+
+            <div class="product-two-boxes">
+                <p>Descripción</p>
+                <input type="text" id="edit-product-description" class="product-wider-input" placeholder="Descripción" name="productDescription"/>
+            </div>
+
+            <div class="product-two-boxes">
+                <p>Tipo</p>
+                <select name="productType" id="edit-product-type">
+                    <option value="" disabled selected>Tipo</option>
+                    <option value="portatil">portatil</option>
+                    <option value="smartphone">smartphone</option>
+                    <option value="monitor">monitor</option>
+                </select>
+                <p>Marca</p>
+                <input type="text" id="edit-product-brand" placeholder="Marca" name="productBrand"/>
+            </div>
+
+            <div class="product-two-boxes">
+                <p>Stock</p>
+                <input type="number" id="edit-product-stock" placeholder="Stock" name="productStock"/>
+                <p>Estrellas</p>
+                <input type="number" id="edit-product-stars" step="0.1" placeholder="Estrellas" name="productStars"/>
+            </div>
+
+            <div class="product-two-boxes">
+                <p>Precio Original</p>
+                <input type="number" id="edit-product-price" step="0.01" placeholder="Precio original" name="productPrice"/>
+                <p>Descuento</p>
+                <input type="number" id="edit-product-discount" step="0.01" placeholder="Descuento en decimal" name="productDiscount"/>
+            </div>
+
+            <div class="button-container">
+                <button type="submit">Guardar Cambios</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/addProduct.js"></script>
+<script type="text/javascript" src="/static/js/removeProductFromDashboard.js"></script>
+<script type="text/javascript" src="/static/js/editProduct.js"></script>
+{% endblock %}

@@ -1,6 +1,5 @@
 import sys
 import mysql.connector as mysql_connector
-from mysql.connector.abstracts import MySQLCursorAbstract
 
 from ... import config
 from ...config.log import logger

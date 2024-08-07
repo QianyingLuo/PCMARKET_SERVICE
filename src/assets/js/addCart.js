@@ -17,31 +17,35 @@ addCartForm.addEventListener("submit", async function(event) {
         window.location.href = body.redirect_url;
     
     else {
-        textField.textContent = body.message
+        if (body.error != null) {
+            textField.textContent = body.error
+            textField.classList.add("error")
+    
+        } else {
+            textField.textContent = body.message
+
 
         document.getElementById("product_quantity").value = 1
 
         if (response.ok) {
-            const fullCartIcon = document.getElementById("cart-full")
+            const fullCartIcon = document.getElementById("fullCartIcon")
 
             if (fullCartIcon == null) {
-                const emptyCart = document.getElementById("emptyCart")
-                const emptyCartLink = document.getElementById("emptyCartLink")
-                emptyCartLink.href = "/user/login"
-                const emptyCartIcon = document.getElementById("emptyCartIcon")
-
-                const fullIcon = document.createElement("i")
-                fullIcon.classList.add("bx")
-                fullIcon.classList.add("bxs-shopping-bag")
-                
-                emptyCartLink.removeChild(emptyCartIcon);
-                emptyCartLink.appendChild(fullIcon)
-                emptyCart.append(emptyCartLink)
+                const cartIcon = document.getElementById("emptyCartIcon")
+        
+                cartIcon.classList.remove("bx-shopping-bag")
+                cartIcon.classList.add("bxs-shopping-bag")
             }
         } 
+        }
 
         setTimeout(() => {
             textField.textContent = ""
+        
+            if (textField.classList.contains("error")) {
+                textField.classList.remove("error")
+            }
+
         }, 5000)
     }
 });

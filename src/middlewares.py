@@ -5,6 +5,7 @@ from jose import ExpiredSignatureError, JWTError, jwt
 
 from . import config
 from .api import cart as cart_api
+from .api import favorite as favorite_api
 
 
 def get_current_user(request: Request) -> Optional[dict[str, Any]]:
@@ -17,7 +18,12 @@ def get_current_cart(request: Request) -> Optional[Any]:
         return request.state.data.get("cart", None)
     return None
 
-class CheckLoggedUserAndCartMiddleware(BaseHTTPMiddleware):
+def get_current_favorite(request: Request) -> Optional[Any]:
+    if hasattr(request.state, 'data') and request.state.data:
+        return request.state.data.get("favorite", None)
+    return None
+
+class CheckLoggedUserCartFavoriteMiddleware(BaseHTTPMiddleware):
     def check_user_token(self, request: Request) -> Optional[dict[str, Any]]: 
         token = request.cookies.get("token")
         if token is None:
@@ -28,15 +34,19 @@ class CheckLoggedUserAndCartMiddleware(BaseHTTPMiddleware):
 
             user_id: int = payload.get("id")
             user_name: str = payload.get("name")
+            user_type: str = payload.get("type")
 
-            if user_id is None or user_name is None:
+            if user_id is None or user_name is None or user_type is None:
                 return None
             else:
-                info = {"id": user_id, "name": user_name}
+                info = {"id": user_id, "name": user_name, "type": user_type}
                 cart_exists = cart_api.get_cart_by_user_id(user_id)
+                favorite_exists = favorite_api.check_if_favorite_list_has_items(user_id)
 
                 if cart_exists:
                     info["cart"] = cart_exists
+                if favorite_exists:
+                    info["favorite"] = favorite_exists
                 
                 return info
         
@@ -58,6 +68,8 @@ class CheckLoggedUserAndCartMiddleware(BaseHTTPMiddleware):
             
             if "cart" in user_data:
                 request.state.data["cart"] = user_data["cart"]
+            if "favorite" in user_data:
+                request.state.data["favorite"] = user_data["favorite"]
         else:
             request.state.data = None
 
@@ -69,4 +81,4 @@ class CheckLoggedUserAndCartMiddleware(BaseHTTPMiddleware):
         return response
     
 def set_middlewares(app: FastAPI) -> None:
-    app.add_middleware(CheckLoggedUserAndCartMiddleware)
+    app.add_middleware(CheckLoggedUserCartFavoriteMiddleware)

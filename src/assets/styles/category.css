@@ -20,9 +20,8 @@
 }
 
 .col-4 {
-    flex: 1 1 calc(25% - 20px); 
     box-sizing: border-box;
-    margin: 10px; 
+    margin: 15px; 
     text-align: left;
 }
 
@@ -37,13 +36,14 @@
     object-fit: contain; 
 }
 
-.rating i {
+.fa-solid, .fa-regular {
     color: #ff523b;
     font-size: 12px;
 }
 
 .rating {
     margin: 10px 0;
+    position: relative;
 }
 
 .col-4 h5 {
@@ -59,6 +59,8 @@
 .product-link {
     text-decoration: none;
     color: inherit; 
+    min-height: 50px;
+
 }
 
 .product-link:hover {
@@ -75,4 +77,51 @@
     .col-4 {
         flex: 1 1 100%;
     }
+}
+
+
+/* Specially for Favorites.html */
+.empty-favorites-list{
+    max-width: 1080px;
+    margin: 60px auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.empty-favorites-title{
+    font-weight: 800;
+    font-size: 32px;
+}
+
+.empty-favorites-text{
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.empty-favorites-list button{
+    margin-top: 14px;
+    border: none;
+    background: rgb(223, 0, 0);
+    color: white;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 16px;
+    cursor: pointer;
+}
+
+.add-or-remove-favorite-button {
+    cursor: pointer;
+    font-size: 24px;
+    text-decoration: none;
+    border: none;
+    background: none;
+    margin: 3px 0 0 5px;
+    position: absolute;
+    right: 15px;
+    top: 0;
+}
+
+.add-or-remove-favorite-button:hover{
+    color: rgb(223, 0, 0);
 }

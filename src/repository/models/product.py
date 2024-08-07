@@ -1,6 +1,6 @@
 import json
-from typing import Optional
-from pydantic import BaseModel
+from typing import Optional, Self
+from pydantic import BaseModel, Field
 from ...domain import product as product_domain
 
 class DescriptionSection(BaseModel):
@@ -35,16 +35,21 @@ class DescriptionDictionary(BaseModel):
         return product_domain.DescriptionDictionary.model_validate(result)
 
 class Product(BaseModel):
-    id: int
+    id: Optional[int] = Field(primary_key=True, autoincrement=True, default=None)
     name: str
     description: Optional[str] = None
-    type: str
-    brand: str
-    stock: int
+    type: Optional[str] = None
+    brand: Optional[str] = None
+    stock: Optional[int] = None
     price: float
     discount_decimal: float
+    discounted_price: Optional[float] = None
     stars: float
     image: str
+
+    @classmethod
+    def from_domain(cls, product_domain: product_domain.Product) -> Self:
+        return cls.model_validate(product_domain.model_dump())
     
     def to_domain(self)-> product_domain.Product:
         return product_domain.Product.model_validate(self.model_dump())
