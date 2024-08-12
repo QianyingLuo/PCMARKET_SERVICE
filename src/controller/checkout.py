@@ -127,6 +127,11 @@ def create_order(
 
     order_id = order_api.save_order(order_to_save)
     cart_api.update_order_id_in_order_cart(user_id, order_id) 
+
+    if status_data.status == OrderStatus.PAGADO:
+        for item in temporary_cart_items:
+            product_api.deduct_product_quantity(item.product_id, item.product_quantity) 
+
     order_api.delete_temporary_cart_by_user_id(user_id)
     order_api.delete_delivery_info_by_user_id(user_id)
 

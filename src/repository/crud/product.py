@@ -208,3 +208,18 @@ def update_product(product: product_domain.Product) -> product_domain.Product:
     cursor.close()
     
     return product
+
+def deduct_product_quantity(product_id: int, product_quantity: int) -> None:
+    cursor = mysql_connection.cursor(dictionary=True)
+
+    query_get_stock = "SELECT stock FROM product WHERE id = %s FOR UPDATE"
+    cursor.execute(query_get_stock, (product_id,))
+    result = cursor.fetchone()
+
+    current_stock = result['stock']
+
+    new_stock = current_stock - product_quantity
+    query_update_stock = "UPDATE product SET stock = %s WHERE id = %s"
+    cursor.execute(query_update_stock, (new_stock, product_id))
+
+    cursor.close()

@@ -118,3 +118,6 @@ def delete_product(product_id: int) -> None:
 
 def update_product(product: product_domain.Product) -> product_domain.Product:
     product_crud.update_product(product)
+
+def deduct_product_quantity(product_id: int, product_quantity: int) -> None:
+    product_crud.deduct_product_quantity(product_id, product_quantity)

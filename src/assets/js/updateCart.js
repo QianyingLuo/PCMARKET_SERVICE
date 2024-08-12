@@ -43,4 +43,5 @@ async function submitUpdateForm(event, product_id) {
             }
             
         }, 5000)
+    }
 }
