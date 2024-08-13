@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS product(
 
 CREATE TABLE IF NOT EXISTS description_section(
      id INT AUTO_INCREMENT PRIMARY KEY,
-     product_id INT,
+     product_id INT NOT NULL,
      title VARCHAR(255) NOT NULL,
      description TEXT NOT NULL,
      FOREIGN KEY (product_id) REFERENCES product(id)
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS description_section(
 
 CREATE TABLE IF NOT EXISTS description_list(
      id INT AUTO_INCREMENT PRIMARY KEY,
-     product_id INT,
+     product_id INT NOT NULL,
      title VARCHAR(255) NOT NULL,
      description TEXT NOT NULL,
      FOREIGN KEY (product_id) REFERENCES product(id)
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS description_list(
 
 CREATE TABLE IF NOT EXISTS description_dictionary(
      id INT AUTO_INCREMENT PRIMARY KEY,
-     product_id INT,
+     product_id INT NOT NULL,
      title VARCHAR(255) NOT NULL,
      description TEXT NOT NULL,
      FOREIGN KEY (product_id) REFERENCES product(id)

@@ -102,7 +102,7 @@ def get_products_by_order_id(order_id: int) -> list[dict]:
     cursor.execute(query, (order_id,))
     products = cursor.fetchall()
     cursor.close()
-    print("PRODUCTOOOOOOS:", products)
+
     return products
 
 
