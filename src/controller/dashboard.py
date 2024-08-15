@@ -194,7 +194,6 @@ async def get_product_details(product_id: int,
 
 @router.put("/products/{product_id}", response_class=JSONResponse, response_model=dict)
 async def update_product(product_id: int,
-                         user: dict = Depends(get_current_user),
                          name: str = Form(default=None),
                          description: str = Form(default=None),
                          type: str = Form(default=None),
@@ -227,6 +226,11 @@ async def update_product(product_id: int,
         raise HTTPException(status_code=404, detail="Producto no encontrado")
     
     if image:
+        image_relative_path = product_exists.image.replace("static/images/", "")
+        image_full_path = os.path.join(config.UPLOAD_FOLDER, image_relative_path)
+        if os.path.exists(image_full_path):
+            os.remove(image_full_path)
+
         image_path = os.path.join(config.UPLOAD_FOLDER, image.filename)
         with open(image_path, "wb") as buffer:
             shutil.copyfileobj(image.file, buffer)
@@ -247,5 +251,9 @@ async def update_product(product_id: int,
         stars=stars
     )
 
-    product_api.update_product(updated_product)
-    return JSONResponse(status_code=200, content={"message": "Producto actualizado correctamente"})
+    try:
+        product_api.update_product(updated_product)
+        return JSONResponse(status_code=200, content={"message": "Producto actualizado correctamente"})
+    
+    except HTTPException as he:
+        return JSONResponse(status_code=he.status_code, content={"error": he.detail})

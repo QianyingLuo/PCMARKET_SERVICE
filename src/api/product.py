@@ -117,7 +117,19 @@ def delete_product(product_id: int) -> None:
     
 
 def update_product(product: product_domain.Product) -> product_domain.Product:
-    product_crud.update_product(product)
 
+    previous_product = product_crud.get_product_by_id(product.id)
+    previous_product_name = previous_product.name
+
+    repeated_product = product_crud.get_product_by_name(product.name)
+
+    if repeated_product and repeated_product.name != previous_product_name:
+        logger.warn(exception_messages.PRODUCT_ALREADY_EXISTS_EXCEPTION)
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=exception_messages.PRODUCT_ALREADY_EXISTS_EXCEPTION)
+
+    else:
+        return product_crud.update_product(product)
+
+    
 def deduct_product_quantity(product_id: int, product_quantity: int) -> None:
     product_crud.deduct_product_quantity(product_id, product_quantity)

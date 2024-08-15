@@ -59,9 +59,7 @@ def validate_signup(
     name: str = Form(...),
     email: str = Form(...),
     password: str = Form(...),
-    confirm_password: str = Form(...),
-    address: str = Form(None),
-    phone: str = Form(None)
+    confirm_password: str = Form(...)
 ):
     logger.info("POST: Validating signup data")
 
