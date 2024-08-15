@@ -70,7 +70,7 @@ async def add_to_cart(product_id: int,
 
     quantity_error = None
 
-    if not isinstance(product_quantity, int) or product_quantity <= 0:
+    if product_quantity <= 0:
         quantity_error = "La cantidad debe ser un número entero positivo"
 
     stock = product_api.get_product_stock_by_id(product_id)
@@ -110,7 +110,7 @@ async def edit_cart(product_id: int,
 
     quantity_error = None
 
-    if not isinstance(product_quantity, int) or product_quantity <= 0:
+    if product_quantity <= 0:
         quantity_error = "La cantidad debe ser un número entero positivo"
 
     stock = product_api.get_product_stock_by_id(product_id)

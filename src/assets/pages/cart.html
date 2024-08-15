@@ -38,7 +38,7 @@
                 <td>
                     <div class="refresh-quantity">
                         <form onsubmit="submitUpdateForm(event, '{{ item.product_id }}')" class="refresh-quantity-form">
-                            <input name="product_quantity" type="number" value="{{ item.product_quantity }}" id="update-value-input-{{ item.product_id }}">
+                            <input name="product_quantity" type="number" value="{{ item.product_quantity }}" id="update-value-input-{{ item.product_id }}" required>
                             <button type="submit" class="refresh-button"><i class='bx bx-refresh' ></i></button>
                         </form>
                     </div>
