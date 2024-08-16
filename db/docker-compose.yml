@@ -1,16 +1,13 @@
 version: '3.8'
 
 services:
-  market-db:
-    container_name: market-database
+  db:
     image: mysql:latest
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: market
+      MYSQL_DATABASE: pcmarket
       MYSQL_ROOT_PASSWORD: market
     ports:
-      - 3307:3306
-    expose:
-      - 3306
+      - '3307:3306'
     volumes:
       - ../.mysql:/var/lib/mysql
