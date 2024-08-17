@@ -5,14 +5,14 @@ from ... import config
 from ...config.log import logger
 from ...config import exception_messages
 
-def connect(host, port, user, password, database):
+def connect(host, port, user, password, database_name):
     try:
         connection = mysql_connector.connect(
             host=host,
             port=port,
             user=user,
             password=password,
-            database=database,
+            database=database_name,
             autocommit=True,
         )
         return connection
@@ -23,4 +23,4 @@ def connect(host, port, user, password, database):
         sys.exit(1)
 
 
-mysql_connection = connect(config.HOST, config.PORT, config.USER, config.PASSWORD, config.DATABASE)
+mysql_connection = connect(config.HOST, config.PORT, config.DATABASE_USER, config.DATABASE_PASSWORD, config.DATABASE_NAME)
