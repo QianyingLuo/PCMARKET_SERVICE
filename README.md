@@ -9,7 +9,7 @@ PC Market is an online shop which offers a wide range of computer hardware and P
 
 ![Category page](src/assets/images/preview/preview2.jpg)
 
-
+![Product page](src/assets/images/preview/preview3.jpg)
 
 ![Login page](src/assets/images/preview/preview4.jpg)
 
