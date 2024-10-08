@@ -15,9 +15,12 @@ function makeLogin(e) {
             "Content-Type": "application/json"
         }
     }).then(e => {       
-        if (e.status === 401) document.getElementById("login-error-message").textContent = "Los datos introducidos no son validos"
+        if (e.status == 401) {
+            document.getElementById("login-error-message").textContent = "Las credenciales introducidas no son validas"
+            throw Exception
+        }
         e.json()
     }).then(res => {
         window.location.href = "/"
-    })
+    }).catch(error => {})
 }

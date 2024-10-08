@@ -105,7 +105,6 @@ def validate_signup(
 
 @router.post("/login", response_class=JSONResponse)
 def do_login(
-    response: Response,
     email: str = Body(...),
     password: str = Body(...),
 ):
@@ -114,8 +113,9 @@ def do_login(
     try:
         user_login = user_domain.UserLogin(email=email, password=password)
         token = user_api.do_login(user_login)
+        response = JSONResponse(status_code=200, content={"message": "Ok"})
         response.set_cookie(key="token", value=token, httponly=True)
-        return json.dumps({})
+        return response
     
     except HTTPException as e:
         return JSONResponse(status_code=401, content=json.dumps({ "error": e.detail}))

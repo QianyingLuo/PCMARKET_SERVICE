@@ -120,4 +120,6 @@ body {
     color: #e06666;
     font-size: 13px;
     font-weight: 500;
+    display: flex;
+    justify-content: center;
 }
