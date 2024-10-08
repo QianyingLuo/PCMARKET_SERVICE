@@ -36,7 +36,7 @@ async function delivery(event) {
         if (!error) {
             if (paymentIntent.status === 'succeeded') {
 
-                const finishPaymentResponse = await fetch('/checkout', {
+                const finishPaymentResponse = await fetch('/checkout/complete', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ async function delivery(event) {
             }, 5000)     
         }
     } else {
-        const finishPaymentResponse = await fetch('/checkout', {
+        const finishPaymentResponse = await fetch('/checkout/complete', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

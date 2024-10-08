@@ -23,7 +23,7 @@ def save_order(order: order_domain.Order, delivery_info: dict) -> int:
         delivery_info['city'],
         delivery_info['phone'], 
         delivery_info['country'],
-        order_crud.status
+        order_crud.status.value
     )
     cursor.execute(insert_query, order_data)
 

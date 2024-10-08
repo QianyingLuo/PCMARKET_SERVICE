@@ -87,7 +87,7 @@ def save_delivery_info(
     return JSONResponse(content={"clientSecret": intent_client_secret['client_secret']}, status_code=200)
 
 
-@router.post("/", response_class=JSONResponse)
+@router.post("/complete", response_class=JSONResponse)
 def create_order(
     status_data: order_domain.OrderStatusParameter = Body(...),
     user: dict = Depends(get_current_user)):
