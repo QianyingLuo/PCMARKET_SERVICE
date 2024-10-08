@@ -5,11 +5,11 @@ from ... import config
 from ..log import logger
 from .. import exception_messages
 
-async def get_mysql_pool(host, port, user, password, db):
+async def get_mysql_pool(host, port, user, password, db_name):
 
     try:
         pool = await aiomysql.create_pool(
-            host=host, port=port, user=user, password=password, db=db, charset='utf8mb4', use_unicode=True
+            host=host, port=port, user=user, password=password, db=db_name, charset='utf8mb4', use_unicode=True
         )
         return pool
 
@@ -20,7 +20,7 @@ async def get_mysql_pool(host, port, user, password, db):
 async def load_database():
 
     try:
-        pool = await get_mysql_pool(config.HOST, config.PORT, config.USER, config.PASSWORD, config.DATABASE)
+        pool = await get_mysql_pool(config.HOST, config.PORT, config.DATABASE_USER, config.DATABASE_PASSWORD, config.DATABASE_NAME)
 
     except ConnectionError as error:
         logger.error(exception_messages.CONNECTION_ERROR)

@@ -92,6 +92,7 @@
     color: #e06666;
     font-size: 13px;
     font-weight: 500;
+    min-height: 13px;
 }
 
 .card-fields {
@@ -112,5 +113,5 @@
     color: red;
     font-size: 13px;
     font-weight: 500;
-    min-height: 20px;
+    min-height: 13px;
 }

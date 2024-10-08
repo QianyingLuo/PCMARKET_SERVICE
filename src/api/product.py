@@ -69,7 +69,7 @@ def get_product_stock_by_id(product_id: int) -> int:
 
 
 def get_random_products_by_type(product_type: str) -> list[product_domain.Product]:
-    products = product_crud.get_random_products_by_type(product_type, config.NUMBER_TOP_PRODUCTS)
+    products = product_crud.get_random_products_by_type(product_type, config.NUMBER_RELATED_PRODUCTS)
     
     for product in products:
         product.discounted_price = round(product.price * (1 - product.discount_decimal), 2)
