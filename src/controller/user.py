@@ -1,7 +1,8 @@
+import json
 import re
 
-from fastapi import APIRouter, Form, HTTPException, Request, Response
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi import APIRouter, Body, Form, HTTPException, Request, Response
+from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 
 from ..api import user as user_api
 from ..domain import user as user_domain
@@ -102,23 +103,21 @@ def validate_signup(
         return templates.TemplateResponse("pages/signup.html", {"request": request, "error": he.detail}) 
     
 
-@router.post("/login", response_class=HTMLResponse)
+@router.post("/login", response_class=JSONResponse)
 def do_login(
-    request: Request,
-    response: Response,  
-    email: str = Form(...),
-    password: str = Form(...),
+    response: Response,
+    email: str = Body(...),
+    password: str = Body(...),
 ):
     logger.info("POST: User login")
 
     try:
         user_login = user_domain.UserLogin(email=email, password=password)
         token = user_api.do_login(user_login)
-        response = RedirectResponse(url="/", status_code=302)
         response.set_cookie(key="token", value=token, httponly=True)
-        return response
+        return json.dumps({})
     
     except HTTPException as e:
-        return templates.TemplateResponse("pages/login.html", status_code=401 ,context={"request": request, "error": e.detail})
+        return JSONResponse(status_code=401, content=json.dumps({ "error": e.detail}))
 
 
