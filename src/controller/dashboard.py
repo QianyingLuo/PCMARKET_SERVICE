@@ -226,15 +226,12 @@ async def update_product(product_id: int,
         raise HTTPException(status_code=404, detail="Producto no encontrado")
     
     if image:
-        image_relative_path = product_exists.image.replace("static/images/", "")
-        image_full_path = os.path.join(config.UPLOAD_FOLDER, image_relative_path)
-        if os.path.exists(image_full_path):
-            os.remove(image_full_path)
-
+        url_image_path = os.path.join("static/images", image.filename).replace(os.sep, '/')
+        
         image_path = os.path.join(config.UPLOAD_FOLDER, image.filename)
         with open(image_path, "wb") as buffer:
             shutil.copyfileobj(image.file, buffer)
-        url_image_path = os.path.join("static/images", image.filename).replace(os.sep, '/')
+
     else:
         url_image_path = product_exists.image
     

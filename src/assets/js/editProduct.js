@@ -17,7 +17,7 @@ function openEditModal(product_id) {
             document.getElementById('edit-product-stars').value = data.product.stars;
             document.getElementById('edit-product-price').value = data.product.price;
             document.getElementById('edit-product-discount').value = data.product.discount_decimal;
-            
+            document.getElementById('edit-product-image').value = "";
             document.getElementById('edit-modal').style.display = 'block';
         })
         .catch(error => console.error('Error:', error));

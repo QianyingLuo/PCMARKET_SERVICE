@@ -38,8 +38,8 @@ def render_cart(request: Request,
                     price = round(product_details.price * (1 - product_details.discount_decimal), 2)
                 else:
                     price = product_details.price
-
-                subtotal = price * item.product_quantity
+                
+                subtotal = round((price * item.product_quantity), 2)
 
                 cart_details.append({
                     "product_id": item.product_id,
@@ -47,7 +47,7 @@ def render_cart(request: Request,
                     "name": product_details.name,
                     "image": product_details.image,
                     "price": price,
-                    "subtotal": round(subtotal, 2)
+                    "subtotal": subtotal
                 })
                 total += subtotal
 

@@ -25,13 +25,13 @@ async function submitUpdateForm(event, product_id) {
             textField.textContent = body.message
 
             const subtotalField = document.getElementById("product-subtotal-" + product_id)
-            subtotalField.textContent = `${(body.product_price * product_quantity)} €`
+            subtotalField.textContent = `${(body.product_price * product_quantity).toFixed(2)} €`;
 
             const subTotalField = document.getElementById("cart-subtotal")
-            subTotalField.textContent = `${body.total_cart} €`
+            subTotalField.textContent = `${body.total_cart.toFixed(2)} €`
 
             const totalField = document.getElementById("cart-total")
-            totalField.textContent = `${body.total_cart} €`
+            totalField.textContent = `${body.total_cart.toFixed(2)} €`
 
         }
 

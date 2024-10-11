@@ -20,7 +20,7 @@ def save(user: user_domain.User) -> user_domain.User:
         return user_crud.save(user)
 
     else:
-        logger.warn(exception_messages.EMAIL_ALREADY_EXISTS_EXCEPTION)
+        logger.warning(exception_messages.EMAIL_ALREADY_EXISTS_EXCEPTION)
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=exception_messages.EMAIL_ALREADY_EXISTS_EXCEPTION)
 
         
@@ -28,11 +28,11 @@ def do_login(user_login: user_domain.UserLogin) -> str:
     user = user_crud.get_user_by_email(user_login.email)
 
     if not user:
-        logger.warn(exception_messages.NOT_AUTHORIZED_USER_EXCEPTION)
+        logger.warning(exception_messages.NOT_AUTHORIZED_USER_EXCEPTION)
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=exception_messages.NOT_AUTHORIZED_USER_EXCEPTION)
     
     if not verify_password(user_login.password, user.password):
-        logger.warn(exception_messages.NOT_AUTHORIZED_USER_EXCEPTION)
+        logger.warning(exception_messages.NOT_AUTHORIZED_USER_EXCEPTION)
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=exception_messages.NOT_AUTHORIZED_USER_EXCEPTION)
 
     user_token = user_domain.UserToken(id=user.id, email=user.email, name=user.name, type=user.type)

@@ -10,7 +10,7 @@ INSERT IGNORE INTO user (name, email, password, type) VALUES ("adminadmin", "adm
 
 CREATE TABLE IF NOT EXISTS product(
      id INT AUTO_INCREMENT PRIMARY KEY,
-     name VARCHAR(255) NOT NULL,
+     name VARCHAR(255) NOT NULL UNIQUE,
      description TEXT NULL,
      type VARCHAR(50) NOT NULL,
      brand VARCHAR(50) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS product(
      price FLOAT NOT NULL,
      discount_decimal FLOAT,
      stars FLOAT,
-     image TEXT NOT NULL
+     image VARCHAR(255) NOT NULL UNIQUE
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 

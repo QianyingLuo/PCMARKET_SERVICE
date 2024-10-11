@@ -36,7 +36,7 @@ class DescriptionDictionary(BaseModel):
 
 class Product(BaseModel):
     id: Optional[int] = Field(primary_key=True, autoincrement=True, default=None)
-    name: str
+    name: Optional[str] = None
     description: Optional[str] = None
     type: Optional[str] = None
     brand: Optional[str] = None
@@ -45,11 +45,11 @@ class Product(BaseModel):
     discount_decimal: float
     discounted_price: Optional[float] = None
     stars: float
-    image: str
+    image: Optional[str] = None
 
     @classmethod
     def from_domain(cls, product_domain: product_domain.Product) -> Self:
-        return cls.model_validate(product_domain.model_dump())
+        return cls.model_validate(product_domain.model_dump(exclude_none=True))
     
     def to_domain(self)-> product_domain.Product:
         return product_domain.Product.model_validate(self.model_dump())

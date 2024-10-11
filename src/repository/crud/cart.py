@@ -5,11 +5,11 @@ from ..models import cart as cart_model
 from ..models import order_cart as order_cart_model
 from ...domain import order_cart as order_cart_domain
 from ...config.log import logger
-from ...config.database.mysql_connection import mysql_connection
+from ...config.database.mysql_connection import get_mysql_connection
 
 def add_to_cart(cart: cart_domain.Cart) -> cart_domain.Cart:
     cart_crud = cart_model.Cart.from_domain(cart_domain=cart)
-    cursor = mysql_connection.cursor(dictionary=True)
+    cursor = get_mysql_connection().cursor(dictionary=True)
 
     select_query = """
                 SELECT product_quantity 
@@ -41,7 +41,7 @@ def add_to_cart(cart: cart_domain.Cart) -> cart_domain.Cart:
 
 def update_product_quantity(cart: cart_domain.Cart) -> cart_domain.Cart:
     cart_crud = cart_model.Cart.from_domain(cart_domain=cart)
-    cursor = mysql_connection.cursor(dictionary=True)
+    cursor = get_mysql_connection().cursor(dictionary=True)
 
     update_query = """
                 UPDATE temporary_cart 
@@ -55,14 +55,14 @@ def update_product_quantity(cart: cart_domain.Cart) -> cart_domain.Cart:
 
 
 def delete_product(product_id: int, user_id: int) -> None:
-    cursor = mysql_connection.cursor()
+    cursor = get_mysql_connection().cursor()
     delete_query = "DELETE FROM temporary_cart WHERE user_id = %s AND product_id = %s"
     cursor.execute(delete_query, (user_id, product_id))
     cursor.close()
 
 
 def get_cart_exists_by_user_id(user_id: int) -> bool:
-    cursor = mysql_connection.cursor(dictionary=True)
+    cursor = get_mysql_connection().cursor(dictionary=True)
     query = "SELECT * FROM temporary_cart WHERE user_id = %s LIMIT 1"
     cursor.execute(query, (user_id,))
     cart_data = cursor.fetchone()
@@ -77,30 +77,22 @@ def get_cart_exists_by_user_id(user_id: int) -> bool:
 def get_products_in_cart_by_user_id(user_id: int) -> list[cart_domain.Cart]:
     products: list[cart_model.Cart] = []
 
-    try:
-        if not mysql_connection.is_connected():
-            mysql_connection.connect()
+    with get_mysql_connection().cursor(dictionary=True) as cursor:
+        cursor.execute("SELECT * FROM temporary_cart WHERE user_id = %s", (user_id,))
+        rows = cursor.fetchall()
 
-        with mysql_connection.cursor(dictionary=True) as cursor:
-            cursor.execute("SELECT * FROM temporary_cart WHERE user_id = %s", (user_id,))
-            rows = cursor.fetchall()
+        if not rows:
+            return None
 
-            if not rows:
-                return None
-
-            for row in rows:
-                product = cart_model.Cart.model_validate(row)
-                products.append(product)
-
-    except mysql.connector.Error as e:
-        logger.error(f"Database operation failed: {str(e)}")
-        return None
+        for row in rows:
+            product = cart_model.Cart.model_validate(row)
+            products.append(product)
 
     return [product.to_domain() for product in products]
 
 
 def get_product_quantity_in_cart(user_id: int, product_id: int) -> int:
-    cursor = mysql_connection.cursor(dictionary=True)
+    cursor = get_mysql_connection().cursor(dictionary=True)
     select_query = """
                 SELECT product_quantity 
                 FROM temporary_cart 
@@ -120,7 +112,7 @@ def get_product_quantity_in_cart(user_id: int, product_id: int) -> int:
 
 def add_to_order_cart(cart: order_cart_domain.Order_cart) -> order_cart_domain.Order_cart:
     order_cart_crud = order_cart_model.Order_cart.from_domain(order_cart_domain=cart)
-    cursor = mysql_connection.cursor(dictionary=True)
+    cursor = get_mysql_connection().cursor(dictionary=True)
 
     insert_query = "INSERT INTO order_cart (user_id, product_id, product_quantity, subtotal) VALUES (%s, %s, %s, %s)"
     cart_data = (
@@ -136,7 +128,7 @@ def add_to_order_cart(cart: order_cart_domain.Order_cart) -> order_cart_domain.O
 
 
 def get_total_from_subtotal_in_order_cart(user_id: int) -> float:
-    cursor = mysql_connection.cursor(dictionary=True)
+    cursor = get_mysql_connection().cursor(dictionary=True)
     query = """
         SELECT SUM(subtotal) as total
         FROM order_cart
@@ -154,7 +146,7 @@ def get_total_from_subtotal_in_order_cart(user_id: int) -> float:
     
 
 def update_order_id_in_order_cart(user_id: int, order_id: int) -> None:
-    cursor = mysql_connection.cursor(dictionary=True)
+    cursor = get_mysql_connection().cursor(dictionary=True)
 
     update_query = """
                 UPDATE order_cart 

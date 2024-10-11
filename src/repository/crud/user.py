@@ -1,10 +1,10 @@
 from ...domain import user as user_domain
 from ..models import user as user_model
-from ...config.database.mysql_connection import mysql_connection
+from ...config.database.mysql_connection import get_mysql_connection
 
 def save(user: user_domain.User) -> user_domain.User:
     user_crud = user_model.User.from_domain(user_domain=user)
-    cursor = mysql_connection.cursor()
+    cursor = get_mysql_connection().cursor()
 
     insert_query = "INSERT INTO user (name, email, password, type) VALUES (%s, %s, %s, %s)"
     user_data = (
@@ -20,7 +20,7 @@ def save(user: user_domain.User) -> user_domain.User:
 
 
 def get_user_by_email(email: str):
-    cursor = mysql_connection.cursor(dictionary=True)
+    cursor = get_mysql_connection().cursor(dictionary=True)
     query = "SELECT * FROM user WHERE email = %s LIMIT 1"
     cursor.execute(query, (email,))
     user_data = cursor.fetchone()
@@ -32,7 +32,7 @@ def get_user_by_email(email: str):
         return None
     
 def get_user_by_id(id: int):
-    cursor = mysql_connection.cursor(dictionary=True)
+    cursor = get_mysql_connection().cursor(dictionary=True)
     query = "SELECT * FROM user WHERE id = %s LIMIT 1"
     cursor.execute(query, (id,))
     user_data = cursor.fetchone()
@@ -46,7 +46,7 @@ def get_user_by_id(id: int):
 def get_all() -> list[user_domain.User]:
     users: list[user_model.User] = []
 
-    cursor = mysql_connection.cursor(dictionary=True)
+    cursor = get_mysql_connection().cursor(dictionary=True)
     cursor.execute("SELECT * FROM user")
     rows = cursor.fetchall()
 
@@ -57,7 +57,7 @@ def get_all() -> list[user_domain.User]:
     return [user.to_domain() for user in users]
 
 def delete_user(user_id: int) -> None:
-    cursor = mysql_connection.cursor()
+    cursor = get_mysql_connection().cursor()
     delete_query = "DELETE FROM user WHERE id = %s"
     cursor.execute(delete_query, (user_id,))
     cursor.close()
