@@ -4,8 +4,9 @@ from ...config.database.mysql_connection import get_mysql_connection
 
 def save(delivery: delivery_domain.Delivery) -> delivery_domain.Delivery:
     delivery_crud = delivery_crud_domain.Delivery.from_domain(delivery_domain=delivery)
-    cursor = get_mysql_connection().cursor(dictionary=True)
-
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
+    
     insert_query = """
                 INSERT INTO delivery_info (user_id, first_name, last_name, address, complement_address, postcode, city, phone, country) 
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"""

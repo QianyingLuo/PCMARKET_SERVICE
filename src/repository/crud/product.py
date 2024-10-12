@@ -6,7 +6,8 @@ from ...config.database.mysql_connection import get_mysql_connection
 def get_all() -> list[product_domain.Product]:
     products: list[product_model.Product] = []
 
-    cursor = get_mysql_connection().cursor(dictionary=True)
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
     cursor.execute("SELECT * FROM product")
     rows = cursor.fetchall()
 
@@ -20,7 +21,8 @@ def get_all() -> list[product_domain.Product]:
 def get_top_products_by_type(product_type: str, limit: int) -> list[product_domain.Product]:
     products: list[product_model.Product] = []
 
-    cursor = get_mysql_connection().cursor(dictionary=True)
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
     cursor.execute("SELECT * FROM product WHERE type = %s LIMIT %s", (product_type, limit))
     rows = cursor.fetchall()
 
@@ -34,7 +36,8 @@ def get_top_products_by_type(product_type: str, limit: int) -> list[product_doma
 def get_products_by_type(product_type: str) -> list[product_domain.Product]:
     products: list[product_model.Product] = []
 
-    cursor = get_mysql_connection().cursor(dictionary=True)
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
     cursor.execute("SELECT * FROM product WHERE type = %s", (product_type,))
     rows = cursor.fetchall()
 
@@ -48,7 +51,8 @@ def get_products_by_type(product_type: str) -> list[product_domain.Product]:
 def get_discounted_products() -> list[product_domain.Product]:
     discounted_products: list[product_model.Product] = []
 
-    cursor = get_mysql_connection().cursor(dictionary=True)
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
     cursor.execute("SELECT * FROM product WHERE discount_decimal != 0")
     rows = cursor.fetchall()
 
@@ -60,7 +64,8 @@ def get_discounted_products() -> list[product_domain.Product]:
 
 
 def get_product_by_id(product_id: int) -> product_domain.Product:
-    cursor = get_mysql_connection().cursor(dictionary=True)
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
 
     query = "SELECT * FROM product WHERE id = %s LIMIT 1"
     cursor.execute(query, (product_id,))
@@ -76,7 +81,8 @@ def get_product_by_id(product_id: int) -> product_domain.Product:
 def get_random_products_by_type(product_type: str, limit: int) -> list[product_domain.Product]:
     products: list[product_model.Product] = []
 
-    cursor = get_mysql_connection().cursor(dictionary=True)
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
     cursor.execute("SELECT * FROM product WHERE type = %s ORDER BY RAND() LIMIT %s", (product_type, limit))
     rows = cursor.fetchall()
     for row in rows:
@@ -89,7 +95,8 @@ def get_random_products_by_type(product_type: str, limit: int) -> list[product_d
 def get_description_sections(product_id: int) -> list[product_model.DescriptionSection]:
     descriptions_sections: list[product_model.DescriptionSection] = []
 
-    cursor = get_mysql_connection().cursor(dictionary=True)
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
     cursor.execute("SELECT * FROM description_section WHERE product_id = %s", (product_id,))
     rows = cursor.fetchall()
 
@@ -101,7 +108,8 @@ def get_description_sections(product_id: int) -> list[product_model.DescriptionS
 
 
 def get_description_list(product_id: int) -> product_model.DescriptionList:
-    cursor = get_mysql_connection().cursor(dictionary=True)
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
     cursor.execute("SELECT * FROM description_list WHERE product_id = %s", (product_id,))
     result = cursor.fetchall()
 
@@ -112,7 +120,8 @@ def get_description_list(product_id: int) -> product_model.DescriptionList:
 
 
 def get_description_dictionary(product_id: int) -> product_model.DescriptionDictionary:
-    cursor = get_mysql_connection().cursor(dictionary=True)
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
     cursor.execute("SELECT * FROM description_dictionary WHERE product_id = %s", (product_id,))
     result = cursor.fetchall()
 
@@ -122,7 +131,8 @@ def get_description_dictionary(product_id: int) -> product_model.DescriptionDict
     return product_model.DescriptionDictionary.model_validate(result[0]).to_domain()
 
 def get_product_by_name(name: str):
-    cursor = get_mysql_connection().cursor(dictionary=True)
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
     query = "SELECT * FROM product WHERE name = %s LIMIT 1"
     cursor.execute(query, (name,))
     product_data = cursor.fetchone()
@@ -134,7 +144,8 @@ def get_product_by_name(name: str):
         return None
     
 def get_product_by_image_path(image: str):
-    cursor = get_mysql_connection().cursor(dictionary=True)
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
     query = "SELECT * FROM product WHERE image = %s LIMIT 1"
     cursor.execute(query, (image,))
     product_data = cursor.fetchone()
@@ -149,7 +160,8 @@ def get_product_by_image_path(image: str):
 def add_product(product: product_domain.Product) -> product_domain.Product:
 
     product_crud = product_crud_domain.Product.from_domain(product_domain=product)
-    cursor = get_mysql_connection().cursor()
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
 
     insert_query = "INSERT INTO product (image, name, description, type, brand, stock, price, discount_decimal, stars) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
     product_data = (
@@ -169,7 +181,8 @@ def add_product(product: product_domain.Product) -> product_domain.Product:
     return product
 
 def delete_product(product_id: int) -> None:
-    cursor = get_mysql_connection().cursor()
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
     delete_query = "DELETE FROM product WHERE id = %s"
     cursor.execute(delete_query, (product_id,))
     cursor.close()
@@ -186,7 +199,8 @@ def update_product(product: product_domain.Product) -> product_domain.Product:
     ]
 
     product_crud = product_crud_domain.Product.from_domain(product_domain=product)
-    cursor = get_mysql_connection().cursor()
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
 
     query: str = "UPDATE product SET description=%s, type=%s, brand=%s, stock=%s, price=%s,discount_decimal=%s, stars=%s"
     if product_crud.image:
@@ -206,8 +220,9 @@ def update_product(product: product_domain.Product) -> product_domain.Product:
     return product
 
 def deduct_product_quantity(product_id: int, product_quantity: int) -> None:
-    cursor = get_mysql_connection().cursor(dictionary=True)
-
+    connection = get_mysql_connection()
+    cursor = connection.cursor(dictionary=True)
+    
     query_get_stock = "SELECT stock FROM product WHERE id = %s FOR UPDATE"
     cursor.execute(query_get_stock, (product_id,))
     result = cursor.fetchone()
